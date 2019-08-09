@@ -107,6 +107,12 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, detected_added_touches_w_hand
 
         detected_added_touches = list(current_touching_objects - prev_touching_objects)
         detected_added_touches_w_hand = set()
+
+        detected_removed_touches = list(prev_touching_objects - current_touching_objects)
+        detected_removed_touches_w_hand = set()
+
+        detected_touches = detected_added_touches.extend(detected_removed_touches)
+
         for x in detected_added_touches:
             l0_bb_name = v_a.label_legend_dict[x[0]]
             l1_bb_name = v_a.label_legend_dict[x[1]]
@@ -121,9 +127,7 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, detected_added_touches_w_hand
 
         if len(detected_added_touches_w_hand) > 0:
             print("frame_no:", current_frame, get_pddl_names_of_current_touching_objects(current_touching_objects, v_a, p_p, bb_to_pddl_obj_dict))
-            named_touches = [(v_a.label_legend_dict[x[0]], v_a.label_legend_dict[x[1]]) for x in detected_added_touches_w_hand]
-            ###use graph here or not?
-            ###v_a.G.update([(0,"\n".join(x)) for x in named_touches])
+
             prev_touching_objects = copy.deepcopy(current_touching_objects)
             possible_actions = compare_action_signatures(detected_added_touches_w_hand, bb_to_pddl_obj_dict, v_a, p_p)
             if len(possible_actions) > 0:
@@ -142,7 +146,7 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, detected_added_touches_w_hand
 
 def main():
     #my_parsed_problem = ParsedPDDLProblem("take-put-domain.pddl", "take-put-instance.pddl")
-
+    my_parsed_problem = None
     # dict from bounding boxes to parsed_problem_objects_dict.keys()
     bb_to_pddl_obj_dict = {'plastic_bag': ['plastic_bag1'], 'plastic_paper_bag': ['plastic_paper_bag1'], 'g_drawer': ['g_drawer1'],
      'sponge': ['sponge1'], 'drawer': ['drawer1', 'drawer2'], 'cuttingboard': ['cuttingboard1'], 'end': ['end1'],
@@ -161,9 +165,9 @@ def main():
     # ['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
 
     for current_session in video_annotation.session_names:
-        detected_added_touches_w_hand_session = []
-        possible_actions_session =  []
-        detected_added_touches_session = []
+        detected_added_touches_session = []                 #all binary touches (i.e. start overlap, end overlap)
+        detected_added_touches_w_hand_session = []          #all binary touches with exactly one hand
+        possible_actions_session =  []                      #actions per touch where type predicates match
         print(current_session)
         video_annotation.create_single_session_dicts(current_session)
         show_annotation(my_parsed_problem, video_annotation, bb_to_pddl_obj_dict, detected_added_touches_w_hand_session, \

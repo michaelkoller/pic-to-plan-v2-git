@@ -22,7 +22,7 @@ def parse_ontology():
     return super_class_dict, individual_type_dict
 
 if __name__ == "__main__":
-    path = 'file:///home/mk/Protege-5.5.0/my_ontologies/kitchen_ontology_v1.owl'
+    path = 'file:///home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/ontologies/kitchen_ontology_v1.owl'
     onto = owlready2.get_ontology(path).load()
     class_dict, individual_dict = parse_ontology()
     print(class_dict)

@@ -4,8 +4,8 @@ from __future__ import print_function
 
 import sys
 
-from translate import graph
-from translate import pddl
+from pic_to_plan_v2.translate import graph
+from pic_to_plan_v2.translate import pddl
 
 
 def parse_typed_list(alist, only_variables=False,
