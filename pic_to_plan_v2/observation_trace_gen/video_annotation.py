@@ -2,7 +2,7 @@ from os import walk
 from .action_hypothesis_graph_class import ActionGraph
 
 class VideoAnnotation:
-    def __init__(self, video_dir_path, annot_dir_path):
+    def __init__(self, video_dir_path, annot_dir_path, bb_to_pddl_obj_dict):
         # get video file names
         self.video_dir_path = video_dir_path
         self.video_file_paths = []
@@ -21,9 +21,10 @@ class VideoAnnotation:
                 self.label_legend_paths.append(f)
 
         self.session_names = [x.split(".")[0] for x in self.video_file_paths]
-        self.labels = ['bowl', 'bread', 'counter', 'cucumber', 'cupboard', 'cuttingboard', 'drawer', 'end', 'faucet', \
-                       'fridge', 'g_drawer', 'knife', 'l_hand', 'peel', 'peeler', 'plastic_bag', 'plastic_paper_bag', \
-                       'plate', 'r_hand', 'sink', 'spice', 'spice_holder', 'spice_shaker', 'sponge', 'towel']
+        self.labels = bb_to_pddl_obj_dict.keys()
+            #['bowl', 'bread', 'counter', 'cucumber', 'cupboard', 'cuttingboard', 'drawer', 'end', 'faucet', \
+             #          'fridge', 'g_drawer', 'knife', 'l_hand', 'peel', 'peeler', 'plastic_bag', 'plastic_paper_bag', \
+             #          'plate', 'r_hand', 'sink', 'spice', 'spice_holder', 'spice_shaker', 'sponge', 'towel']
 
     def create_single_session_dicts(self, current_session_name):
         self.current_session_name = current_session_name

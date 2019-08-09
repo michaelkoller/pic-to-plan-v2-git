@@ -2,8 +2,8 @@
 import cv2
 import copy
 import itertools
-from .parsed_proplem import ParsedPDDLProblem
-from .video_annotation import VideoAnnotation
+import pic_to_plan_v2.observation_trace_gen.parsed_proplem as parsed_problem_mod
+import pic_to_plan_v2.observation_trace_gen.video_annotation as video_annotation_mod
 import pickle
 
 #['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
@@ -141,23 +141,21 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, detected_added_touches_w_hand
     cv2.destroyAllWindows()
 
 def main():
-    my_parsed_problem = ParsedPDDLProblem("take-put-domain.pddl", "take-put-instance.pddl")
+    #my_parsed_problem = ParsedPDDLProblem("take-put-domain.pddl", "take-put-instance.pddl")
 
     # dict from bounding boxes to parsed_problem_objects_dict.keys()
-    bb_to_pddl_obj_dict = {'r_hand': 'r_hand', 'l_hand': 'l_hand', 'plastic_paper_bag': 'plastic_paper_bag1',
-                           'plate': 'plate1', \
-                           'knife': 'knife1', 'cuttingboard': 'cuttingboard1', 'cupboard': 'cupboard1',
-                           'counter': 'counter1', \
-                           'drawer': 'drawer1', 'drawer': 'drawer2', 'bread': 'bread1', 'bread': 'bread2',
-                           'bread': 'bread3', 'sponge':'sponge1', 'faucet':'faucet1', 'towel':'towel1', \
-                           'g_drawer':'g_drawer1','g_drawer1':'g_drawer11', 'fridge' : 'fridge1', 'sink': 'sink1', \
-                           'cucumber':'cucumber1', 'bowl': 'bowl1', 'peeler': 'peeler1', 'peel': 'peel1', 'end':'end1', \
-                           'spice_shaker': 'spice_shaker1', 'spice_holder': 'spice_holder1', 'spice':'spice1', \
-                           'plastic_bag':'plastic_bag1'}
+    bb_to_pddl_obj_dict = {'plastic_bag': ['plastic_bag1'], 'plastic_paper_bag': ['plastic_paper_bag1'], 'g_drawer': ['g_drawer1'],
+     'sponge': ['sponge1'], 'drawer': ['drawer1', 'drawer2'], 'cuttingboard': ['cuttingboard1'], 'end': ['end1'],
+     'bowl': ['bowl1'], 'r_hand': ['r_hand'], 'bread': ['bread1', 'bread2', 'bread3'], 'knife': ['knife1'], 'plate': ['plate1'],
+     'cupboard': ['cupboard1'], 'peel': ['peel1'], 'fridge': ['fridge1'], 'cucumber': ['cucumber1'], 'sink': ['sink1'],
+     'peeler': ['peeler1'], 'spice': ['spice1'], 'faucet': ['faucet1'], 'spice_holder': ['spice_holder1'],
+     'towel': ['towel1'], 'counter': ['counter1'], 'spice_shaker': ['spice_shaker1'], 'l_hand': ['l_hand'],
+     'g_drawer1': ['g_drawer11']}
 
-    video_annotation = VideoAnnotation(
+    video_annotation = video_annotation_mod.VideoAnnotation(
         '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/Videos/', \
-        '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/')
+        '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/', \
+        bb_to_pddl_obj_dict)
 
 
     # ['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']

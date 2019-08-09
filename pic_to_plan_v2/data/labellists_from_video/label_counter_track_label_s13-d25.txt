@@ -1,0 +1,10 @@
+bread 3
+counter 1
+cupboard 1
+cuttingboard 1
+drawer 2
+knife 1
+l_hand 1
+plastic_paper_bag 1
+plate 1
+r_hand 1

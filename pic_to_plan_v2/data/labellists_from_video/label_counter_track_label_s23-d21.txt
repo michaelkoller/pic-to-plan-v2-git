@@ -1,0 +1,14 @@
+counter 1
+cucumber 2
+cupboard 1
+cuttingboard 1
+drawer 3
+end 1
+faucet 1
+fridge 1
+g_drawer 1
+knife 1
+l_hand 1
+plate 1
+r_hand 1
+sink 1
