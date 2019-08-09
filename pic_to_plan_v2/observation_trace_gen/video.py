@@ -2,8 +2,8 @@
 import cv2
 import copy
 import itertools
-from parsed_proplem import ParsedPDDLProblem
-from video_annotation import VideoAnnotation
+from .parsed_proplem import ParsedPDDLProblem
+from .video_annotation import VideoAnnotation
 import pickle
 
 #['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
