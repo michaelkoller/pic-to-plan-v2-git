@@ -1,21 +1,44 @@
 #import ..translate.pddl_parser
 from ..translate import pddl_parser
+from ..translate.pddl.conditions import Atom
+from ..translate.pddl.conditions import ExistentialCondition
+import owlready2
+import pic_to_plan_v2.observation_trace_gen.parse_ontology as parse_ontology
 
 class ParsedPDDLProblem:
     def __init__(self, domain_path, instance_path):
         self.domain_path = domain_path
         self.instance_path = instance_path
         self.parsed_problem_FD = pddl_parser.open(self.domain_path, self.instance_path)
-        self.supertype_dict = {}
-        for x in self.parsed_problem_FD.types:
-            self.supertype_dict[x.name] = x.supertype_names
+        self.superclass_dict, self.individual_type_dict, self.onto = parse_ontology.parse_ontology()
+
         self.action_parameter_types_dict = {}
-        for x in self.parsed_problem_FD.actions:
-            self.action_parameter_types_dict[x.name] = [y.type_name for y in x.parameters]
-        self.object_type_dict = {}
-        for x in self.parsed_problem_FD.objects:
-            self.object_type_dict[x.name] = x.type_name
         # parsed_problem.objects <==> label_legend_dict.values()
-        self.parsed_problem_objects_dict = {}
-        for x in self.parsed_problem_FD.objects:
-            self.parsed_problem_objects_dict[x.name] = x
+        #TODO
+        #all the predicates that indicate a type of object must be defined in a simple conjunctive way in the precondition of an action in the template-domain.
+        #e.g., (and (graspable ?o))
+        #in formulations like (and (knife ?k) (exists (?h) (and (manipulator ?h) (in_hand ?k ?h)))), then manipulator will not be added (and here it is indeed not nec as well)
+        class_names = list(self.onto.classes())
+        class_names = [x._name for x in class_names]
+
+        #get all parameter names per action
+        for action in self.parsed_problem_FD.actions:
+            self.action_parameter_types_dict[action.name] = {}
+            for param in action.parameters:
+                param_name = param.name.strip("?")
+                self.action_parameter_types_dict[action.name][param_name] = []
+
+        #go through all preconditions and add them to the right parameter for each action
+        for action in self.parsed_problem_FD.actions:
+            for precondition in action.precondition.parts:
+                if isinstance(precondition, Atom):
+                    arg_name = precondition.args[0].strip("?")
+                    if arg_name in self.action_parameter_types_dict[action.name].keys():
+                        found_precondition_name = precondition.key[0]
+                        if found_precondition_name in class_names:
+                            self.action_parameter_types_dict[action.name][arg_name].append(found_precondition_name)
+                            print("\t" + found_precondition_name)
+                        else:
+                            print("\tNOT A CLASS", found_precondition_name)
+                elif isinstance(precondition, ExistentialCondition):
+                    print("Found existential condition. Ignore for now")

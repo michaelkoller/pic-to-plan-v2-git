@@ -123,7 +123,9 @@
 
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#manipulator"/>
+    </owl:Class>
     
 
 
@@ -138,6 +140,12 @@
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#location -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#location"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#manipulator -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#manipulator"/>
     
 
 

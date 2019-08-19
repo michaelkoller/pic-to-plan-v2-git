@@ -6,6 +6,7 @@ import pic_to_plan_v2.observation_trace_gen.parsed_proplem as parsed_problem_mod
 import pic_to_plan_v2.observation_trace_gen.video_annotation as video_annotation_mod
 import pickle
 
+
 #['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
 #label names from all sessions ['bowl', 'bread', 'counter', 'cucumber', 'cupboard', 'cuttingboard', 'drawer', 'end', 'faucet', 'fridge', 'g_drawer', 'knife', 'l_hand', 'peel', 'peeler', 'plastic_bag', 'plastic_paper_bag', 'plate', 'r_hand', 'sink', 'spice', 'spice_holder', 'spice_shaker', 'sponge', 'towel']
 
@@ -61,7 +62,8 @@ def get_pddl_super_types(x, v_a, p_p, bb_to_pddl_obj_dict):
     l1_pddl_type = p_p.object_type_dict[l1_pddl_name]
     return (l0_pddl_type, l1_pddl_type)
 
-def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, detected_added_touches_w_hand_session, possible_actions_session, detected_added_touches_session):
+def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, manipulator_events, \
+                        non_manipulator_events, possible_actions_session):
     # read in video and draw annotation
     cap = cv2.VideoCapture(
         v_a.video_dir_path + v_a.current_session_name + '.avi')
@@ -107,46 +109,65 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, detected_added_touches_w_hand
 
         detected_added_touches = list(current_touching_objects - prev_touching_objects)
         detected_added_touches_w_hand = set()
+        detected_added_touches_wo_hand = set()
 
         detected_removed_touches = list(prev_touching_objects - current_touching_objects)
         detected_removed_touches_w_hand = set()
+        detected_removed_touches_wo_hand = set()
 
-        detected_touches = detected_added_touches.extend(detected_removed_touches)
+        detected_touches = detected_added_touches + detected_removed_touches #using "extend" results in None, but I want [] if empty
+        detected_touches_w_hand = set()
+        detected_touches_wo_hand = set()
 
-        for x in detected_added_touches:
+        for x in detected_touches:
             l0_bb_name = v_a.label_legend_dict[x[0]]
             l1_bb_name = v_a.label_legend_dict[x[1]]
-            l0_pddl_name = bb_to_pddl_obj_dict[l0_bb_name]
-            l1_pddl_name = bb_to_pddl_obj_dict[l1_bb_name]
-            l0_pddl_type = p_p.object_type_dict[l0_pddl_name]
-            l1_pddl_type = p_p.object_type_dict[l1_pddl_name]
-            if ("hand" != l0_pddl_type and "hand" == l1_pddl_type) or \
-                    ("hand" == l0_pddl_type and "hand" != l1_pddl_type):
-                detected_added_touches_w_hand.add((min(x[0], x[1]), max(x[0], x[1]))) #add numbers sorted
+            # TODO here are the multiple instances of an object type in bb_to_pddl_obj_dict[l0_bb_name]
+            # if multiple instances exist in a scene, you need some tracking to see which instances are assigned, etc...
+            # ignore this for now...
+            l0_pddl_name = bb_to_pddl_obj_dict[l0_bb_name][0]
+            l1_pddl_name = bb_to_pddl_obj_dict[l1_bb_name][0]
+            l0_pddl_type = p_p.individual_type_dict[l0_pddl_name][0]._name #TODO does the onto.individuals just return lists or did I add smthng?
+            l1_pddl_type = p_p.individual_type_dict[l1_pddl_name][0]._name
 
+            #exclude manipulator - manipulator touches for now
+            if (p_p.onto["manipulator"] not in p_p.superclass_dict[l0_pddl_type] and \
+                    p_p.onto["manipulator"] in p_p.superclass_dict[l1_pddl_type]) or \
+                    (p_p.onto["manipulator"] in p_p.superclass_dict[l0_pddl_type] and \
+                     p_p.onto["manipulator"] not in p_p.superclass_dict[l1_pddl_type]):
+                detected_touches_w_hand.add((min(x[0], x[1]), max(x[0], x[1]))) #add numbers sorted
+            elif (p_p.onto["manipulator"] not in p_p.superclass_dict[l0_pddl_type] and \
+                    p_p.onto["manipulator"] not in p_p.superclass_dict[l1_pddl_type]):
+                detected_touches_wo_hand.add((min(x[0], x[1]), max(x[0], x[1]))) #add numbers sorted
 
-        if len(detected_added_touches_w_hand) > 0:
-            print("frame_no:", current_frame, get_pddl_names_of_current_touching_objects(current_touching_objects, v_a, p_p, bb_to_pddl_obj_dict))
-
+        #TODO maybe I don't need to distinguish between manipulator actions and other in the end, because after all I want to
+        #have all reasonable actions in the possible actions. also this saves some lookups in lists, see above
+        
+        if len(detected_touches_w_hand) > 0 or len(detected_touches_wo_hand) > 0:
+            print("w\t", detected_touches_w_hand)
+            print("wo\t", detected_touches_wo_hand)
+            print("---")
             prev_touching_objects = copy.deepcopy(current_touching_objects)
-            possible_actions = compare_action_signatures(detected_added_touches_w_hand, bb_to_pddl_obj_dict, v_a, p_p)
-            if len(possible_actions) > 0:
-                print("poss act:")
-                for x in possible_actions:
-                    print(x)
-                possible_actions_session.append((current_frame, possible_actions))
-            detected_added_touches_w_hand_session.append((current_frame, detected_added_touches_w_hand))
-            #cv2.waitKey(0)
-        if len(detected_added_touches) > 0:
-            detected_added_touches_session.append((current_frame, detected_added_touches))
-        #find way to keep track of active objects, like tools!
+
+
+        #     possible_actions = compare_action_signatures(detected_added_touches_w_hand, bb_to_pddl_obj_dict, v_a, p_p)
+        #     if len(possible_actions) > 0:
+        #         print("poss act:")
+        #         for x in possible_actions:
+        #             print(x)
+        #         possible_actions_session.append((current_frame, possible_actions))
+        #     detected_added_touches_w_hand_session.append((current_frame, detected_added_touches_w_hand))
+        #     #cv2.waitKey(0)
+        # if len(detected_added_touches) > 0:
+        #     detected_added_touches_session.append((current_frame, detected_added_touches))
+        # #find way to keep track of active objects, like tools!
 
     cap.release()
     cv2.destroyAllWindows()
 
 def main():
-    #my_parsed_problem = ParsedPDDLProblem("take-put-domain.pddl", "take-put-instance.pddl")
-    my_parsed_problem = None
+    my_parsed_problem = parsed_problem_mod.ParsedPDDLProblem("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl", \
+                                                            "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects.pddl")
     # dict from bounding boxes to parsed_problem_objects_dict.keys()
     bb_to_pddl_obj_dict = {'plastic_bag': ['plastic_bag1'], 'plastic_paper_bag': ['plastic_paper_bag1'], 'g_drawer': ['g_drawer1'],
      'sponge': ['sponge1'], 'drawer': ['drawer1', 'drawer2'], 'cuttingboard': ['cuttingboard1'], 'end': ['end1'],
@@ -161,22 +182,20 @@ def main():
         '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/', \
         bb_to_pddl_obj_dict)
 
-
     # ['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
-
     for current_session in video_annotation.session_names:
-        detected_added_touches_session = []                 #all binary touches (i.e. start overlap, end overlap)
-        detected_added_touches_w_hand_session = []          #all binary touches with exactly one hand
-        possible_actions_session =  []                      #actions per touch where type predicates match
+        manipulator_events = []                 #all binary starts and ends of overlaps between a manipulator and another object type
+        non_manipulator_events = []             #all binary starts and ends of overlaps between non-manipulator objects
+        possible_actions_session =  []          #all actions from manipulator_events and non_manipulator_events where the object predicates match to an action
         print(current_session)
         video_annotation.create_single_session_dicts(current_session)
-        show_annotation(my_parsed_problem, video_annotation, bb_to_pddl_obj_dict, detected_added_touches_w_hand_session, \
-                        possible_actions_session, detected_added_touches_session)
+        show_annotation(my_parsed_problem, video_annotation, bb_to_pddl_obj_dict, manipulator_events, \
+                        non_manipulator_events, possible_actions_session)
         #show_annotation(random.choice(session_names), parsed_problem)
         print(current_session, "done")
-        pickle.dump(detected_added_touches_w_hand_session, open("detected_added_touches_w_hand_session_"+str(current_session)+".p", "wb"))
+        pickle.dump(non_manipulator_events, open("detected_added_touches_w_hand_session_"+str(current_session)+".p", "wb"))
         pickle.dump(possible_actions_session, open("possible_actions_session_"+str(current_session)+".p", "wb"))
-        pickle.dump(detected_added_touches_session, open("detected_added_touches_session_"+str(current_session)+".p", "wb"))
+        pickle.dump(manipulator_events, open("detected_added_touches_session_"+str(current_session)+".p", "wb"))
 
 if __name__ == "__main__":
     main()

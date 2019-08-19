@@ -92,3 +92,18 @@ arguments are a domain, an instance and a plan
 
 -----
 TODO maybe it makes sense to push Val, FD and ProbPR also to a git repo so I have a place where I can pull running code...
+
+
+
+
+
+
+-----
+1: parse ontology
+    reads in the ontology and fills in template-domain.pddl and template-instance.pddl as template-domain-inserted-predicates.pddl and 
+    template-instance.parsed.objects.pddl
+2: watch video
+    load the superclass and individual type dict via parse_ontology()
+    find all touch events
+    find all possible actions
+    

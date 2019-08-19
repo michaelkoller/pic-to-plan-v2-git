@@ -1,5 +1,6 @@
 import csv
 import owlready2
+import dill
 
 def parse_ontology():
     path = 'file:///home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/ontologies/kitchen_ontology_v1.owl'
@@ -19,12 +20,13 @@ def parse_ontology():
     for i in individuals:
         individual_type_dict[i._name] = i.is_a
 
-    return super_class_dict, individual_type_dict
+    return super_class_dict, individual_type_dict, onto
 
 if __name__ == "__main__":
-    path = 'file:///home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/ontologies/kitchen_ontology_v1.owl'
-    onto = owlready2.get_ontology(path).load()
-    class_dict, individual_dict = parse_ontology()
+    #open ontology
+    #class dict --> all superclasses of a class
+    #individual_dict --> class of that individual
+    class_dict, individual_dict, onto = parse_ontology()
     print(class_dict)
     print(individual_dict)
     print(list(class_dict.keys()))
@@ -56,5 +58,3 @@ if __name__ == "__main__":
     f = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects.pddl", "w")
     f.write(template_instance_string)
     f.close()
-
-
