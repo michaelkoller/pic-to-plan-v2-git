@@ -42,3 +42,14 @@ class ParsedPDDLProblem:
                             print("\tNOT A CLASS", found_precondition_name)
                 elif isinstance(precondition, ExistentialCondition):
                     print("Found existential condition. Ignore for now")
+
+        #this is needed for signature matching in watch_video.py
+        self.action_name_list = []
+        self.action_param_type_list = []
+        for action_name, action_param_type_dict in self.action_parameter_types_dict.items():
+            self.action_name_list.append(action_name)
+            names = list(action_param_type_dict.items())
+            new_names = []
+            for (x, y) in names:
+                new_names.append((x, [self.onto[z] for z in y]))
+            self.action_param_type_list.append(new_names)

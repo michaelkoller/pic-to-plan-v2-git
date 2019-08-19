@@ -44,7 +44,7 @@
 
 (:action put_in_hand
     :parameters (?o ?h)
-    :precondition (and (manipulator ?h) (graspable ?o) (hand_empty ?h) (not(= ?o ?h)) (not(grasped ?o)) )
+    :precondition (and (manipulator ?h) (hand ?h) (graspable ?o) (hand_empty ?h) (not(= ?o ?h)) (not(grasped ?o)) ) ;hand is just to test
 	:effect	(and (in_hand ?o ?h) (grasped ?o) (not (hand_empty ?h)) (used ?o) (active ?o))
 )
 
