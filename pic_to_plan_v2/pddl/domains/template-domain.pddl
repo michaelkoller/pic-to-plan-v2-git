@@ -31,7 +31,7 @@
 (:action close_storage_with_hand
     :parameters(?s ?h)
     :precondition (and (manipulator ?h) (storage ?s) (hand_empty ?h) )
-    :effect (and (not(open ?s)) (used ?s) (active ?o))
+    :effect (and (not(open ?s)) (used ?s) (active ?s))
 )
 
 (:action cut

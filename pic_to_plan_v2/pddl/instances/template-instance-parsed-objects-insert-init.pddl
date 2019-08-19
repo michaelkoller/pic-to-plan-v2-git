@@ -32,16 +32,8 @@
 	sponge1
 	towel1
 );end objects
-;TODO choose if insert most recent state in tree or just a basic hardcoded one
-	;TODO How to handle that the hands must be active always?
-
-	;TODO choose if insert most recent state in tree or just a basic hardcoded one
 (:init
-    (hand_empty r_hand) ;this template holds the absolute beginning state.
-    (hand_empty l_hand) ;put your assumptions about the start of a session here
-	(active r_hand)
-	(active l_hand)
-	;end hands active
+    ;static class memberships:
     (bowl bowl1)
 	(container bowl1)
 	(graspable bowl1)
@@ -119,7 +111,8 @@
 	(tool towel1)
 	(graspable towel1)
 	;end of class membership predicates
-    ;<insert_init>
+    ;current state:
+    <insert_init>
 );end init
 
 (:goal (and (grasped cucumber1) (open drawer1))
