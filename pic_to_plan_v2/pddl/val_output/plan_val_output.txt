@@ -1,4 +1,30 @@
-;Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try
+;Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(open_storage_with_hand cupboard1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Adding (open cupboard1)
+Adding (used cupboard1)
+Adding (active cupboard1)
+Plan executed successfully - checking goal
+Goal not satisfied
+Plan invalid
+
+Plan Repair Advice:
+
+The goal is not satisfied
+(Follow each of:
+    (Set (grasped cucumber1) to true)
+    and (Set (open drawer1) to true)
+)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_1
 ;Plan to validate:
 
 Plan size: 1
@@ -27,4 +53,4 @@ The goal is not satisfied
 
 
 Failed plans:
- /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try 
+ /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_1 

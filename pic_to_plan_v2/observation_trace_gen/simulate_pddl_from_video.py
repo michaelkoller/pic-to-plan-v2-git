@@ -74,65 +74,77 @@ def build_tree():
     for timestep in possible_actions_session:
         frame_no = timestep[0]
         open_state_set_for_timestep = []
-        for try_action in timestep[1]:
-            for s in open_state_set:
+        for s in open_state_set:
+            current_plan_path_string = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_"
+            try_action_strings = []
+            for i, try_action in enumerate(timestep[1]):
                 try_action_string = "(" + " ".join(try_action) + ")"    #create the plan for the action to try
-                f = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try", "w")
+                try_action_strings.append(try_action_string)
+                f = open(current_plan_path_string+str(i), "w")
                 f.write(try_action_string + "\n;cost = 1 (unit cost)")
                 f.close()
 
-                current_state_set = tree[s].data[0]
-                current_state_string = " ".join(current_state_set)
+            current_state_set = tree[s].data[0]
+            current_state_string = " ".join(current_state_set)
 
-                template_instance = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects-insert-init.pddl", \
+            template_instance = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects-insert-init.pddl", \
                     "r")
-                template_instance_string = "".join(template_instance.readlines())
-                parsed_template_instance_string = template_instance_string.replace("<insert_init>", current_state_string)
-                f = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl", "w")
-                f.write(parsed_template_instance_string)
-                f.close()
+            template_instance_string = "".join(template_instance.readlines())
+            parsed_template_instance_string = template_instance_string.replace("<insert_init>", current_state_string)
+            f = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl", "w")
+            f.write(parsed_template_instance_string)
+            f.close()
 
-                cmd = '/home/mk/Planning/VAL/validate -v /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try > /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt'
-                #cmd = '/home/mk/Planning/VAL/validate -v  /home/mk/PycharmProjects/pic-to-plan/take-put-domain.pddl /home/mk/PycharmProjects/pic-to-plan/current-state-take-put-instance-no-handempty.pddl /home/mk/PycharmProjects/pic-to-plan/val_exp/open_sas_plan > plan_val_output.txt' #check for unsatisfied precondition --> action not applicable in current state
-                t_os_start = time.time()
-                os.system(cmd)
-                t_os_end = time.time()
-                tot_os_cmd_time += t_os_end - t_os_start
+            cmd = '/home/mk/Planning/VAL/validate -v /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl \
+                    /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl ' \
+                    + " ".join([current_plan_path_string+str(i) for i in range(len(timestep[1]))]) + \
+                    ' > /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt'
+            #cmd = '/home/mk/Planning/VAL/validate -v  /home/mk/PycharmProjects/pic-to-plan/take-put-domain.pddl /home/mk/PycharmProjects/pic-to-plan/current-state-take-put-instance-no-handempty.pddl /home/mk/PycharmProjects/pic-to-plan/val_exp/open_sas_plan > plan_val_output.txt' #check for unsatisfied precondition --> action not applicable in current state
+            t_os_start = time.time()
+            os.system(cmd)
+            t_os_end = time.time()
+            tot_os_cmd_time += t_os_end - t_os_start
 
-                plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r")
-                plan_val_output_joined = "".join(plan_val_output.readlines())
-                #print(plan_val_output_joined)
+            plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r")
+            plan_val_output_joined = "".join(plan_val_output.readlines())
+            #print(plan_val_output_joined)
 
-                new_state_set = copy.deepcopy(current_state_set)
-                plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r") #TODO superfluous open
-                for line in plan_val_output:
-                    if "Deleting" in line:
-                        m = re_compiled.search(line)
-                        atom_to_delete = m.group(0)
-                        #print("DEL", atom_to_delete)
-                        if atom_to_delete in new_state_set:
-                            new_state_set.remove(atom_to_delete)
-                    elif "Adding" in line:
-                        m = re_compiled.search(line)
-                        atom_to_add = m.group(0)
-                        #print("ADD", atom_to_add)
-                        if atom_to_add not in new_state_set:
-                            new_state_set.add(atom_to_add)
-                sorted_new_state_string = " ".join(sorted(new_state_set))
+            new_state_sets = []
+            plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r") #TODO superfluous open, but readlines changes the iterator...
+            for line in plan_val_output:
+                if ";Checking plan:" in line:
+                    new_state_sets.append(copy.deepcopy(current_state_set))
+                elif "Deleting" in line:
+                    m = re_compiled.search(line)
+                    atom_to_delete = m.group(0)
+                    #print("DEL", atom_to_delete)
+                    if atom_to_delete in new_state_sets[-1]:
+                        new_state_sets[-1].remove(atom_to_delete)
+                elif "Adding" in line:
+                    m = re_compiled.search(line)
+                    atom_to_add = m.group(0)
+                    #print("ADD", atom_to_add)
+                    if atom_to_add not in new_state_sets[-1]:
+                        new_state_sets[-1].add(atom_to_add)
+
+            sorted_new_state_strings = [" ".join(sorted(new_s)) for new_s in new_state_sets]
+            for i, sorted_new_state_string in enumerate(sorted_new_state_strings):
                 if sorted_new_state_string not in state_string_to_node_id_dict.keys():
-                    tree.create_node(sorted_new_state_string, tree_id_counter, data=[new_state_set, try_action_string], parent=tree[s].identifier) #in the root there was no previous action
+                    tree.create_node(sorted_new_state_string, tree_id_counter, data=[new_state_sets[i], try_action_strings[i]], parent=tree[s].identifier) #in the root there was no previous action
                     open_state_set_for_timestep.append(tree_id_counter)
                     state_string_to_node_id_dict[sorted_new_state_string] = tree_id_counter
                     tree_id_counter += 1
-                t1 = time.time()
+            t1 = time.time()
 
-                if t1-t0 > 30:
-                    t0 = t1
-                    tree.show()
-                    print(frame_no, tree_id_counter)
-                if time.time() - t_start > 7:
-                    break
+            if t1-t0 > 30:
+                t0 = t1
+                tree.show()
+                print(frame_no, tree_id_counter)
+            if time.time() - t_start > 20:
+                break
+
         open_state_set.extend(open_state_set_for_timestep)
+
     tree.show()
     t_stop = time.time()
     processing_time = t_stop - t_start
@@ -141,7 +153,7 @@ def build_tree():
     print("Time spent in os.system", tot_os_cmd_time)
 
 if __name__ == "__main__":
-    run_type = 3
+    run_type = 1
 
     if run_type == 1:
         build_tree()
@@ -169,3 +181,6 @@ if __name__ == "__main__":
 #TODO --> give time horizon for applicability of actions: remove "old nodes" from the open set
 #   the though is, that maybe not every applied action is correct, but after a while, it is probable, that the initial state
 #   is not the best state to apply a newly seen action to. it is more likely, that some of the previous actions were correct, hopefully
+#TODO --> save current state files for reusage
+
+#16:57 start zeit alter echtzeitfaktor 6.5
