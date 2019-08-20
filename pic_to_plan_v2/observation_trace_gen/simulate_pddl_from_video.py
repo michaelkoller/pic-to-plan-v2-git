@@ -83,7 +83,6 @@ def build_tree():
                 f = open(current_plan_path_string+str(i), "w")
                 f.write(try_action_string + "\n;cost = 1 (unit cost)")
                 f.close()
-
             current_state_set = tree[s].data[0]
             current_state_string = " ".join(current_state_set)
 
@@ -108,11 +107,10 @@ def build_tree():
             plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r")
             plan_val_output_joined = "".join(plan_val_output.readlines())
             #print(plan_val_output_joined)
-
             new_state_sets = []
             plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r") #TODO superfluous open, but readlines changes the iterator...
             for line in plan_val_output:
-                if ";Checking plan:" in line:
+                if "Checking plan" in line:
                     new_state_sets.append(copy.deepcopy(current_state_set))
                 elif "Deleting" in line:
                     m = re_compiled.search(line)
@@ -134,14 +132,13 @@ def build_tree():
                     open_state_set_for_timestep.append(tree_id_counter)
                     state_string_to_node_id_dict[sorted_new_state_string] = tree_id_counter
                     tree_id_counter += 1
+
             t1 = time.time()
 
             if t1-t0 > 30:
                 t0 = t1
                 tree.show()
                 print(frame_no, tree_id_counter)
-            if time.time() - t_start > 20:
-                break
 
         open_state_set.extend(open_state_set_for_timestep)
 
