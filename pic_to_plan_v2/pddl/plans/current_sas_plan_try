@@ -1,2 +1,2 @@
-(put_out_of_hand plastic_paper_bag1 l_hand)
+(close_storage_with_hand cupboard1 r_hand)
 ;cost = 1 (unit cost)

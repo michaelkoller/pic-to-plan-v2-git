@@ -112,7 +112,7 @@
 	(graspable towel1)
 	;end of class membership predicates
     ;current state:
-    (active drawer1) (used drawer1) (in_hand bread1 l_hand) (active bread1) (in_hand knife1 r_hand) (active l_hand) (grasped knife1) (grasped bread1) (active plastic_paper_bag1) (used knife1) (active r_hand) (used bread1) (active counter1) (active knife1)
+    (hand_empty l_hand) (hand_empty r_hand) (active r_hand) (active l_hand)
 );end init
 
 (:goal (and (grasped cucumber1) (open drawer1))

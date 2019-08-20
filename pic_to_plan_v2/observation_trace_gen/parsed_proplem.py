@@ -37,9 +37,10 @@ class ParsedPDDLProblem:
                         found_precondition_name = precondition.key[0]
                         if found_precondition_name in class_names:
                             self.action_parameter_types_dict[action.name][arg_name].append(found_precondition_name)
-                            print("\t" + found_precondition_name)
+                            #print("\t" + found_precondition_name)
                         else:
-                            print("\tNOT A CLASS", found_precondition_name)
+                            #print("\tNOT A CLASS", found_precondition_name)
+                            pass
                 elif isinstance(precondition, ExistentialCondition):
                     print("Found existential condition. Ignore for now")
 
