@@ -1,41 +1,41 @@
 event: ns : Nanoseconds
 events: ns
-summary: 15248209000
+summary: 11641440000
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/parse_ontology.py
 fn=parse_ontology
-5 82000
+5 79000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=classes
 calls=32 233
-5 1494000
+5 1496000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=individuals
 calls=31 252
-5 1202999
+5 1202000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=get_ontology
 calls=1 463
-5 326000
+5 334000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=load
 calls=1 709
-5 1392000
+5 1400000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=72 0
-5 3000
+5 1000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=41 0
-5 3000
+5 1000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/parsed_proplem.py
 fn=__init__
-9 64000
+9 54999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/parse_ontology.py
 cfn=parse_ontology
 calls=1 5
-9 4503000
+9 4513000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/parsed_proplem.py
 cfn=<listcomp>:22
 calls=1 22
@@ -43,7 +43,7 @@ calls=1 22
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/parsed_proplem.py
 cfn=<listcomp>:55
 calls=10 55
-9 29999
+9 29000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=key
 calls=14 238
@@ -51,19 +51,19 @@ calls=14 238
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/pddl_file.py
 cfn=open
 calls=1 30
-9 2392999
+9 2414000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=classes
 calls=32 233
-9 44000
+9 47000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=20 0
-9 4000
+9 6000
 cfl=~
 cfn=<built-in method builtins.print>
 calls=1 0
-9 11000
+9 12000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=30 0
@@ -71,7 +71,7 @@ calls=30 0
 cfl=~
 cfn=<method 'items' of 'dict' objects>
 calls=6 0
-9 0
+9 1000
 cfl=~
 cfn=<method 'keys' of 'dict' objects>
 calls=14 0
@@ -79,7 +79,7 @@ calls=14 0
 cfl=~
 cfn=<method 'strip' of 'str' objects>
 calls=24 0
-9 1000
+9 3000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/parsed_proplem.py
 fn=<listcomp>:22
@@ -87,135 +87,163 @@ fn=<listcomp>:22
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/parsed_proplem.py
 fn=<listcomp>:55
-55 7000
+55 8000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=__getitem__:74
 calls=10 74
-55 23000
+55 21000
 
-fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/ttt.py
+fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/simulate_pddl_from_video.py
 fn=build_tree
-13 469147000
+13 400953000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/parsed_proplem.py
 cfn=__init__
 calls=1 9
-13 7058999
+13 7089000
+cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/simulate_pddl_from_video.py
+cfn=<listcomp>:99
+calls=805 99
+13 3642000
+cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/simulate_pddl_from_video.py
+cfn=<listcomp>:128
+calls=805 128
+13 17273000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/video_annotation.py
 cfn=__init__
 calls=1 5
-13 150999
+13 158000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=__getitem__:74
 calls=80 74
-13 126000
+13 119999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=identifier
 calls=49 117
-13 102000
+13 144000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__init__
 calls=1 83
 13 1000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__getitem__
-calls=1439 108
-13 7351000
+calls=854 108
+13 5730000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=create_node
 calls=50 303
-13 3248999
+13 4365000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=depth
 calls=1 312
-13 314999
+13 846000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=show
 calls=2 708
-13 1398999
+13 2626000
 cfl=/usr/lib/python3.6/codecs.py
 cfn=decode
-calls=2780 318
-13 9484000
+calls=1618 318
+13 7700999
 cfl=/usr/lib/python3.6/copy.py
 cfn=deepcopy
-calls=1390 132
-13 147609000
+calls=1720 132
+13 160904000
 cfl=/usr/lib/python3.6/re.py
 cfn=compile
 calls=1 231
-13 135000
+13 141999
 cfl=~
 cfn=<built-in method _pickle.load>
 calls=2 0
-13 208999
+13 210999
+cfl=~
+cfn=<built-in method builtins.len>
+calls=805 0
+13 539000
 cfl=~
 cfn=<built-in method builtins.print>
 calls=4 0
-13 44000
+13 99000
 cfl=~
 cfn=<built-in method builtins.sorted>
-calls=1391 0
-13 7369000
+calls=1 0
+13 1000
 cfl=~
 cfn=<built-in method io.open>
-calls=6954 0
-13 587803000
+calls=4944 0
+13 483803000
 cfl=~
 cfn=<built-in method posix.system>
-calls=1390 0
-13 13653739000
+calls=805 0
+13 10236305999
 cfl=~
 cfn=<built-in method time.time>
-calls=5563 0
-13 9998000
+calls=3223 0
+13 6938000
 cfl=~
 cfn=<method 'add' of 'set' objects>
-calls=1578 0
-13 904000
+calls=1804 0
+13 589000
 cfl=~
 cfn=<method 'append' of 'list' objects>
-calls=49 0
-13 8000
+calls=3489 0
+13 1081999
 cfl=~
 cfn=<method 'close' of '_io.TextIOWrapper' objects>
-calls=2781 0
-13 136320000
+calls=2526 0
+13 143658999
 cfl=~
 cfn=<method 'extend' of 'list' objects>
 calls=200 0
-13 94999
+13 56000
 cfl=~
 cfn=<method 'group' of '_sre.SRE_Match' objects>
-calls=2677 0
-13 939000
+calls=3172 0
+13 1410000
 cfl=~
 cfn=<method 'join' of 'str' objects>
-calls=6956 0
-13 16883000
+calls=4946 0
+13 14504000
 cfl=~
 cfn=<method 'keys' of 'dict' objects>
-calls=1390 0
-13 792000
+calls=1720 0
+13 744000
 cfl=~
 cfn=<method 'readlines' of '_io._IOBase' objects>
-calls=2781 0
-13 167519000
+calls=1611 0
+13 121256999
 cfl=~
 cfn=<method 'remove' of 'set' objects>
-calls=511 0
-13 329000
+calls=646 0
+13 399999
 cfl=~
 cfn=<method 'replace' of 'str' objects>
-calls=1391 0
-13 8649000
+calls=806 0
+13 5777000
 cfl=~
 cfn=<method 'search' of '_sre.SRE_Pattern' objects>
-calls=2677 0
-13 5789000
+calls=3172 0
+13 7327999
 cfl=~
 cfn=<method 'write' of '_io.TextIOWrapper' objects>
-calls=2781 0
-13 4267000
+calls=2526 0
+13 4216999
+
+fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/simulate_pddl_from_video.py
+fn=<listcomp>:99
+99 3642000
+
+fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/simulate_pddl_from_video.py
+fn=<listcomp>:128
+128 6174000
+cfl=~
+cfn=<built-in method builtins.sorted>
+calls=1720 0
+128 7730000
+cfl=~
+cfn=<method 'join' of 'str' objects>
+calls=1720 0
+128 3369000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/video_annotation.py
 fn=__init__
@@ -223,11 +251,11 @@ fn=__init__
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/video_annotation.py
 cfn=<listcomp>
 calls=1 23
-5 5000
+5 4000
 cfl=/usr/lib/python3.6/os.py
 cfn=walk
 calls=5 277
-5 130999
+5 139000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=30 0
@@ -239,11 +267,11 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/video_annotation.py
 fn=<listcomp>
-23 3000
+23 0
 cfl=~
 cfn=<method 'split' of 'str' objects>
 calls=10 0
-23 2000
+23 4000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/graph.py
 fn=transitive_closure
@@ -251,7 +279,7 @@ fn=transitive_closure
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/graph.py
 cfn=<genexpr>:32
 calls=1 32
-29 1000
+29 0
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/graph.py
 cfn=<genexpr>:32
 calls=1 32
@@ -263,7 +291,7 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/graph.py
 fn=<genexpr>:32
-32 1000
+32 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/graph.py
 fn=<genexpr>:32
@@ -275,7 +303,7 @@ fn=__init__
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/actions.py
 cfn=uniquify_variables
 calls=5 41
-9 143000
+9 146000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=5 0
@@ -283,15 +311,15 @@ calls=5 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/actions.py
 fn=uniquify_variables
-41 18000
+41 21000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/actions.py
 cfn=<listcomp>
 calls=5 42
-41 5000
+41 3000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=uniquify_variables:42
 calls=5 42
-41 64000
+41 65999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=uniquify_variables
 calls=17 39
@@ -299,19 +327,19 @@ calls=17 39
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/actions.py
 fn=<listcomp>
-42 5000
+42 3000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=__init__:11
-11 14000
+11 8000
 cfl=~
 cfn=<built-in method builtins.hash>
 calls=27 0
-11 27000
+11 28000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=__hash__
-14 18000
+14 27000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=_postorder_visit
@@ -319,15 +347,15 @@ fn=_postorder_visit
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=<listcomp>:29
 calls=45 29
-28 61000
+28 56999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=_propagate
 calls=37 33
-28 14999
+28 21000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=_simplified:115
 calls=7 115
-28 35000
+28 34000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=_simplified:177
 calls=1 177
@@ -335,19 +363,19 @@ calls=1 177
 cfl=~
 cfn=<built-in method builtins.getattr>
 calls=45 0
-28 16000
+28 13000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=<listcomp>:29
-29 18999
+29 14999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=_postorder_visit
 calls=22 28
-29 48000
+29 47000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=_propagate
-33 11000
+33 16000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=change_parts:81
 calls=17 81
@@ -359,31 +387,31 @@ calls=1 195
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=change_parts:252
 calls=20 252
-33 2000
+33 3000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=simplified
-35 9000
+35 11000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=_postorder_visit
 calls=23 28
-35 128999
+35 127000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=uniquify_variables:42
-42 14000
+42 21000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:11
 calls=13 11
-42 18000
+42 17000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=<listcomp>:48
 calls=13 48
-42 117000
+42 116000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=<listcomp>:48
-48 12000
+48 14999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=uniquify_variables:183
 calls=2 183
@@ -391,11 +419,11 @@ calls=2 183
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=uniquify_variables:254
 calls=38 254
-48 89999
+48 84000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=__init__:79
-79 4000
+79 5000
 cfl=~
 cfn=<built-in method builtins.hash>
 calls=17 0
@@ -407,27 +435,27 @@ fn=change_parts:81
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=__eq__:83
-83 6000
+83 3000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=_simplified:115
-115 14000
+115 20000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:11
 calls=7 11
-115 10000
+115 8000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=63 0
-115 11000
+115 3000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=7 0
-115 0
+115 2000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=21 0
-115 0
+115 1000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=__init__:164
@@ -451,11 +479,11 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=uniquify_variables:183
-183 5000
+183 6000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=uniquify_variables:42
 calls=2 42
-183 16000
+183 14999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:164
 calls=2 164
@@ -475,23 +503,23 @@ calls=2 55
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=change_parts:195
-195 1000
+195 2000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:164
 calls=1 164
-195 2000
+195 1000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=__init__:226
-226 85999
+226 97000
 cfl=~
 cfn=<built-in method builtins.hash>
 calls=219 0
-226 32999
+226 28000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=__eq__:230
-230 2000
+230 7000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=key
@@ -499,55 +527,55 @@ fn=key
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=change_parts:252
-252 2000
+252 3000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=uniquify_variables:254
-254 12000
+254 9000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=rename_variables
 calls=38 256
-254 78000
+254 75000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=rename_variables
-256 61000
+256 49999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:226
 calls=55 226
-256 26000
+256 29999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=<genexpr>
 calls=118 257
-256 23000
+256 28000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=<genexpr>
-257 18000
+257 21000
 cfl=~
 cfn=<method 'get' of 'dict' objects>
 calls=63 0
-257 5000
+257 7000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=negate:277
-277 6000
+277 5000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:226
 calls=13 226
-277 8000
+277 11000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 fn=negate:293
-293 7000
+293 2000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:226
 calls=4 226
-293 1000
+293 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=__init__:17
-17 13000
+17 11000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=__eq__
@@ -555,63 +583,63 @@ fn=__eq__
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__eq__:83
 calls=26 83
-21 6000
+21 3000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__eq__:230
 calls=26 230
-21 2000
+21 7000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=uniquify_variables
-39 20000
+39 18999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=uniquify_variables:42
 calls=17 42
-39 2000
+39 3000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=rename_variables
 calls=17 256
-39 32000
+39 32999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=<listcomp>
 calls=17 41
-39 2000
+39 1000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=<listcomp>
-41 2000
+41 1000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=__init__:133
-133 17000
+133 16000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=48 0
-133 4000
+133 6000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=48 0
-133 3000
+133 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=normalize:145
-145 7000
+145 6000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=__init__:133
 calls=4 133
-145 6000
+145 7000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=normalize:165
 calls=16 165
-145 0
+145 2000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=16 0
-145 3000
+145 1000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=extract_cost:150
-150 4000
+150 2000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=__init__:133
 calls=4 133
@@ -623,15 +651,15 @@ calls=16 0
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=16 0
-150 1000
+150 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=__init__:161
-161 6000
+161 4000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=normalize:165
-165 0
+165 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 fn=extract_cost:167
@@ -643,11 +671,11 @@ fn=__init__:21
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/pddl_types.py
 fn=__init__:36
-36 18999
+36 14999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/pddl_types.py
 fn=__hash__
-40 0
+40 3000
 cfl=~
 cfn=<built-in method builtins.hash>
 calls=4 0
@@ -659,11 +687,11 @@ fn=uniquify_name
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/predicates.py
 fn=__init__
-2 39000
+2 10000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/predicates.py
 fn=get_arity
-9 4000
+9 7000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=37 0
@@ -679,15 +707,15 @@ fn=__init__:62
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/lisp_parser.py
 fn=parse_nested_list
-10 6000
+10 9000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/lisp_parser.py
 cfn=tokenize
 calls=2 20
-10 24000
+10 24999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/lisp_parser.py
 cfn=parse_list_aux
 calls=17 32
-10 954000
+10 962000
 cfl=~
 cfn=<built-in method builtins.next>
 calls=2 0
@@ -695,11 +723,11 @@ calls=2 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/lisp_parser.py
 fn=tokenize
-20 321000
+20 358000
 cfl=/usr/lib/python3.6/encodings/latin_1.py
 cfn=decode
 calls=5 25
-20 9000
+20 8000
 cfl=~
 cfn=<method 'encode' of 'str' objects>
 calls=213 0
@@ -707,99 +735,99 @@ calls=213 0
 cfl=~
 cfn=<method 'lower' of 'str' objects>
 calls=798 0
-20 63000
+20 65999
 cfl=~
 cfn=<method 'replace' of 'str' objects>
 calls=639 0
-20 108000
+20 104000
 cfl=~
 cfn=<method 'split' of 'str' objects>
 calls=426 0
-20 89999
+20 70999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/lisp_parser.py
 fn=parse_list_aux
-32 276000
+32 283000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/lisp_parser.py
 cfn=parse_list_aux
 calls=779 32
-32 863000
+32 878000
 cfl=~
 cfn=<built-in method builtins.next>
 calls=796 0
-32 678000
+32 678999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_typed_list
-11 70000
+11 65999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/pddl_types.py
 cfn=__init__:36
 calls=79 36
-11 18000
+11 14999
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=79 0
-11 2000
+11 4000
 cfl=~
 cfn=<method 'index' of 'list' objects>
 calls=44 0
-11 12000
+11 14000
 cfl=~
 cfn=<method 'startswith' of 'str' objects>
 calls=48 0
-11 5000
+11 8000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=set_supertypes
-35 2000
+35 3000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/graph.py
 cfn=transitive_closure
 calls=1 29
-35 8000
+35 7000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_predicate
-49 21000
+49 28000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/predicates.py
 cfn=__init__
 calls=37 2
-49 5000
+49 10000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_typed_list
 calls=37 11
-49 68000
+49 64000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_condition
-61 13000
+61 14000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=simplified
 calls=6 35
-61 104000
+61 99999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=uniquify_variables:42
 calls=6 42
-61 79000
+61 80000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_condition_aux
 calls=6 66
-61 128000
+61 124000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_condition_aux
-66 24999
+66 28000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:11
 calls=7 11
-66 13000
+66 11000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:164
 calls=1 164
-66 3000
+66 4000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_typed_list
 calls=1 11
-66 2000
+66 3000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_condition_aux
 calls=2 66
@@ -807,55 +835,55 @@ calls=2 66
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=<listcomp>:91
 calls=8 91
-66 104999
+66 104000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_literal
 calls=20 104
-66 70000
+66 68000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=3 0
-66 1000
+66 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=<listcomp>:91
-91 14000
+91 10000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_condition_aux
 calls=22 66
-91 92000
+91 96000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_literal
-104 41000
+104 37999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:226
 calls=37 226
-104 27000
+104 29000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=_get_predicate_id_and_arity
 calls=37 124
-104 49999
+104 51000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=41 0
-104 3000
+104 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=_get_predicate_id_and_arity
-124 31000
+124 28000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/predicates.py
 cfn=get_arity
 calls=37 9
-124 8000
+124 11000
 cfl=~
 cfn=<method 'get' of 'dict' objects>
 calls=74 0
-124 11000
+124 12000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_effects
-144 9000
+144 13000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=normalize:145
 calls=4 145
@@ -863,7 +891,7 @@ calls=4 145
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=extract_cost:150
 calls=4 150
-144 14000
+144 13000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=normalize:165
 calls=1 165
@@ -875,7 +903,7 @@ calls=1 167
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=add_effect
 calls=5 155
-144 175000
+144 170999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_effect
 calls=5 195
@@ -883,43 +911,43 @@ calls=5 195
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=add_effect
-155 64000
+155 56999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=simplified
 calls=17 35
-155 34000
+155 37999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:79
 calls=17 79
-155 6000
+155 7000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=negate:277
 calls=13 277
-155 14000
+155 16000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=negate:293
 calls=4 293
-155 8000
+155 4000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=__init__:17
 calls=34 17
-155 13000
+155 11000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=__eq__
 calls=26 21
-155 26000
+155 28000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=add_effect
 calls=16 155
-155 158000
+155 156000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=89 0
-155 7000
+155 8000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=17 0
-155 3000
+155 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_effect
@@ -927,63 +955,63 @@ fn=parse_effect
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=__init__:133
 calls=4 133
-195 12000
+195 9000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/effects.py
 cfn=__init__:161
 calls=17 161
-195 6000
+195 4000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_literal
 calls=17 104
-195 51000
+195 52000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=<listcomp>:199
 calls=4 199
-195 70999
+195 74000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=<listcomp>:199
-199 5000
+199 9000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_effect
 calls=16 195
-199 65999
+199 64999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_action
-246 27000
+246 29000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/actions.py
 cfn=__init__
 calls=5 9
-246 150999
+246 154000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_typed_list
 calls=5 11
-246 21000
+246 22000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_condition
 calls=5 61
-246 290000
+246 285000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_effects
 calls=5 144
-246 308000
+246 307000
 cfl=~
 cfn=<built-in method builtins.iter>
 calls=5 0
-246 1000
+246 0
 cfl=~
 cfn=<built-in method builtins.len>
 calls=5 0
-246 2000
+246 0
 cfl=~
 cfn=<built-in method builtins.next>
 calls=40 0
-246 1000
+246 3000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_task
-299 14999
+299 13000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/tasks.py
 cfn=__init__:8
 calls=1 8
@@ -995,7 +1023,7 @@ calls=1 62
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=<listcomp>:310
 calls=1 310
-299 1000
+299 2000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=<listcomp>:313
 calls=1 313
@@ -1003,11 +1031,11 @@ calls=1 313
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_domain_pddl
 calls=11 320
-299 990999
+299 995999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_task_pddl
 calls=8 399
-299 224000
+299 228999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=check_for_duplicates
 calls=1 493
@@ -1019,19 +1047,19 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=<listcomp>:310
-310 1000
+310 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=<listcomp>:313
-313 9000
+313 8000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:226
 calls=30 226
-313 12000
+313 13000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_domain_pddl
-320 35000
+320 69000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/pddl_types.py
 cfn=__init__:21
 calls=1 21
@@ -1039,11 +1067,11 @@ calls=1 21
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/pddl_types.py
 cfn=__init__:36
 calls=2 36
-320 1000
+320 0
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/predicates.py
 cfn=__init__
 calls=1 2
-320 34000
+320 0
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/tasks.py
 cfn=__init__:62
 calls=2 62
@@ -1055,19 +1083,19 @@ calls=1 35
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_action
 calls=5 246
-320 801000
+320 799999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=<listcomp>:360
 calls=1 360
-320 101000
+320 104999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=<genexpr>:373
 calls=2 373
-320 0
+320 1000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=<genexpr>:377
 calls=39 377
-320 2000
+320 4000
 cfl=~
 cfn=<built-in method builtins.iter>
 calls=1 0
@@ -1095,27 +1123,27 @@ calls=2 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=<listcomp>:360
-360 7000
+360 3000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_predicate
 calls=37 49
-360 94000
+360 102000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=<genexpr>:373
-373 0
+373 1000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=<genexpr>:377
-377 2000
+377 4000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=parse_task_pddl
-399 68000
+399 83000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__init__:226
 calls=80 226
-399 44999
+399 40000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/tasks.py
 cfn=__init__:62
 calls=1 62
@@ -1123,15 +1151,15 @@ calls=1 62
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_typed_list
 calls=1 11
-399 16000
+399 18000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_condition
 calls=1 61
-399 34000
+399 32999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=check_atom_consistency
 calls=80 483
-399 42999
+399 36000
 cfl=~
 cfn=<built-in method builtins.iter>
 calls=1 0
@@ -1143,23 +1171,23 @@ calls=3 0
 cfl=~
 cfn=<built-in method builtins.next>
 calls=6 0
-399 2000
+399 1000
 cfl=~
 cfn=<method 'add' of 'set' objects>
 calls=80 0
-399 14999
+399 16000
 cfl=~
 cfn=<method 'extend' of 'list' objects>
 calls=1 0
-399 1000
+399 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=check_atom_consistency
-483 36000
+483 24999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__hash__
 calls=160 14
-483 7000
+483 11000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 fn=check_for_duplicates
@@ -1171,35 +1199,35 @@ calls=30 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/pddl_file.py
 fn=parse_pddl_file
-14 37999
+14 37000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/lisp_parser.py
 cfn=parse_nested_list
 calls=2 10
-14 1011999
+14 1024000
 cfl=~
 cfn=<built-in method io.open>
 calls=2 0
-14 75999
+14 75000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/pddl_file.py
 fn=open
-30 4000
+30 6000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/parsing_functions.py
 cfn=parse_task
 calls=1 299
-30 1263000
+30 1272000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/pddl_file.py
 cfn=parse_pddl_file
 calls=2 14
-30 1126000
+30 1135999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/driver.py
 fn=__init__
-124 1000
+124 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/driver.py
 fn=parse
-128 9000
+128 7000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/driver.py
 cfn=_guess_format
 calls=1 222
@@ -1207,23 +1235,23 @@ calls=1 222
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=create_parse_func
 calls=1 1029
-128 36000
+128 35000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=on_finish
 calls=1 1104
-128 591000
+128 600000
 cfl=~
 cfn=<built-in method builtins.getattr>
 calls=1 0
-128 0
+128 1000
 cfl=~
 cfn=<owlready2_optimized.parse_rdfxml>
 calls=1 0
-128 585000
+128 578000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/driver.py
 fn=_guess_format
-222 16000
+222 13000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=1 0
@@ -1231,15 +1259,15 @@ calls=1 0
 cfl=~
 cfn=<method 'endswith' of 'bytes' objects>
 calls=1 0
-222 0
+222 1000
 cfl=~
 cfn=<method 'find' of 'bytes' objects>
 calls=1 0
-222 1000
+222 0
 cfl=~
 cfn=<method 'lstrip' of 'bytes' objects>
 calls=1 0
-222 0
+222 1000
 cfl=~
 cfn=<method 'read' of '_io.BufferedReader' objects>
 calls=1 0
@@ -1247,11 +1275,11 @@ calls=1 0
 cfl=~
 cfn=<method 'seek' of '_io.BufferedReader' objects>
 calls=1 0
-222 0
+222 1000
 cfl=~
 cfn=<method 'seekable' of '_io.BufferedReader' objects>
 calls=1 0
-222 0
+222 1000
 cfl=~
 cfn=<method 'split' of 'bytes' objects>
 calls=1 0
@@ -1263,15 +1291,15 @@ calls=2 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/entity.py
 fn=mro
-86 27000
+86 20000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/entity.py
 fn=__new__
-96 139000
+96 153000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_cache_entity
 calls=31 351
-96 24999
+96 21000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=__init__
 calls=31 68
@@ -1279,27 +1307,27 @@ calls=31 68
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=__bool__
 calls=93 262
-96 65999
+96 62000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=__setitem__
 calls=31 165
-96 67000
+96 62000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=get
 calls=31 193
-96 18000
+96 14999
 cfl=~
 cfn=<built-in method __new__ of type object at 0x9ecf80>
 calls=31 0
-96 337000
+96 308000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=31 0
-96 1000
+96 3000
 cfl=~
 cfn=<method 'get' of 'dict' objects>
 calls=62 0
-96 6000
+96 11000
 cfl=~
 cfn=<method 'pop' of 'dict' objects>
 calls=31 0
@@ -1307,79 +1335,79 @@ calls=31 0
 cfl=~
 cfn=<method 'update' of 'dict' objects>
 calls=31 0
-96 16000
+96 20000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/entity.py
 fn=__init__
-155 35000
+155 37000
 cfl=~
 cfn=<method 'items' of 'dict' objects>
 calls=31 0
-155 5000
+155 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/entity.py
 fn=__instancecheck__
-413 48000
+413 37999
 cfl=~
 cfn=<built-in method builtins.hasattr>
 calls=60 0
-413 23000
+413 16000
 cfl=~
-cfn=<function ThingClass.__instancecheck__ at 0x7efdcba02b70>
+cfn=<function ThingClass.__instancecheck__ at 0x7fc76bed58c8>
 calls=30 0
-413 3000
+413 4000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/individual.py
 fn=__new__
-74 29999
+74 41000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_cache_entity
 calls=30 351
-74 18000
+74 23000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=__bool__
 calls=30 262
-74 26000
+74 20000
 cfl=~
 cfn=<built-in method __new__ of type object at 0x9ecf80>
 calls=30 0
-74 6000
+74 5000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=30 0
-74 35000
+74 36000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/individual.py
 fn=__init__
-111 144000
+111 141999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/individual.py
 cfn=__setattr__
 calls=90 250
-111 54000
+111 53000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_abbreviate_dict
 calls=30 477
-111 20000
+111 24000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=__init__
 calls=30 68
-111 16000
+111 21000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=__bool__
 calls=30 262
-111 24999
+111 22000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=__setitem__
 calls=30 165
-111 54999
+111 56000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=90 0
-111 16000
+111 18999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/individual.py
 fn=__setattr__
-250 54000
+250 53000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=__init__:35
@@ -1391,7 +1419,7 @@ calls=1 165
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=1 0
-35 1000
+35 0
 cfl=~
 cfn=<method 'endswith' of 'str' objects>
 calls=2 0
@@ -1403,55 +1431,55 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=__getitem__:74
-74 34000
+74 32000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=__getitem__:488
 calls=90 488
-74 114999
+74 109000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=classes
-233 44999
+233 39000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_get_by_storid
 calls=62 493
-233 1455999
+233 1468000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_get_obj_triples_po_s
 calls=64 1354
-233 37000
+233 36000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=individuals
-252 37000
+252 32999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_get_by_storid
 calls=30 493
-252 1088000
+252 1097000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_get_obj_triples_po_s
 calls=31 1354
-252 17000
+252 26000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=30 0
-252 61000
+252 46000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=_cache_entity
-351 34000
+351 29999
 cfl=~
 cfn=<built-in method builtins.len>
 calls=61 0
-351 9000
+351 14000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=get_ontology
-463 5000
+463 7000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=__init__:631
 calls=1 631
-463 321000
+463 327000
 cfl=~
 cfn=<method 'endswith' of 'str' objects>
 calls=2 0
@@ -1459,55 +1487,55 @@ calls=2 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=__getitem__:488
-488 42000
+488 46000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_get_by_storid
 calls=86 493
-488 37000
+488 34000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_abbreviate_dict
 calls=90 477
-488 36000
+488 29000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=_get_by_storid
-493 94999
+493 94000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_load_by_storid
 calls=53 502
-493 2446000
+493 2457000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=get
 calls=208 193
-493 59000
+493 68000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=_load_by_storid
-502 394000
+502 421000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/entity.py
 cfn=__new__
 calls=31 96
-502 704000
+502 683999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/entity.py
 cfn=__init__
 calls=31 155
-502 40000
+502 39000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/individual.py
 cfn=__new__
 calls=30 74
-502 114999
+502 125000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/individual.py
 cfn=__init__
 calls=30 111
-502 330000
+502 337000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_get_by_storid
 calls=30 493
-502 18999
+502 20000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_load_by_storid
 calls=8 502
-502 376000
+502 374000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=get_namespace
 calls=61 690
@@ -1515,7 +1543,7 @@ calls=61 690
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_unabbreviate_dict
 calls=61 486
-502 29000
+502 12000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=context_2_user_context
 calls=53 524
@@ -1523,51 +1551,51 @@ calls=53 524
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_get_obj_triples_sp_co
 calls=92 652
-502 441999
+502 457000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=__enter__
 calls=61 264
-502 84999
+502 83000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=__exit__
 calls=61 266
-502 92000
+502 89000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=get
 calls=26 193
-502 16000
+502 12000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=91 0
-502 10000
+502 12000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=91 0
-502 8000
+502 9000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=56 0
-502 7000
+502 5000
 cfl=~
 cfn=<method 'rsplit' of 'str' objects>
 calls=61 0
-502 29000
+502 26000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=__init__:631
-631 42999
+631 51000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=__init__:35
 calls=1 35
-631 14000
+631 13000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_add_obj_triple_spo
 calls=1 820
-631 24000
+631 23000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=__init__:1043
 calls=1 1043
-631 2000
+631 3000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=acquire_write_lock
 calls=1 408
@@ -1579,11 +1607,11 @@ calls=1 411
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=sub_graph
 calls=1 448
-631 90999
+631 97000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_abbreviate_dict
 calls=1 477
-631 78000
+631 79000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=__bool__
 calls=2 784
@@ -1591,19 +1619,19 @@ calls=2 784
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_has_obj_triple_spo
 calls=1 1210
-631 29000
+631 26000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=__init__
 calls=1 68
-631 2000
+631 1000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=__bool__
 calls=1 262
-631 4000
+631 3000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=__init__:102
 calls=2 102
-631 12000
+631 10000
 cfl=~
 cfn=<built-in method builtins.getattr>
 calls=36 0
@@ -1611,23 +1639,23 @@ calls=36 0
 cfl=~
 cfn=<built-in method builtins.setattr>
 calls=36 0
-631 10000
+631 9000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=get_namespace
-690 44999
+690 48000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=get
 calls=61 193
-690 27000
+690 29999
 cfl=~
 cfn=<method 'endswith' of 'str' objects>
 calls=122 0
-690 20000
+690 14000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=load
-709 26000
+709 24999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/driver.py
 cfn=parse
 calls=1 128
@@ -1639,7 +1667,7 @@ calls=1 767
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_load_properties
 calls=1 782
-709 31000
+709 32999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=__init__:1043
 calls=1 1043
@@ -1647,11 +1675,11 @@ calls=1 1043
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 cfn=_get_onto_file
 calls=1 1078
-709 2000
+709 3000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=acquire_write_lock
 calls=1 408
-709 0
+709 1000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=release_write_lock
 calls=1 411
@@ -1663,15 +1691,15 @@ calls=1 477
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=add_ontology_alias
 calls=1 1142
-709 13000
+709 14999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=get_last_update_time
 calls=1 1145
-709 13000
+709 14000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_get_data_triples_sp_od
 calls=1 1345
-709 18000
+709 18999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=_set
 calls=1 72
@@ -1679,7 +1707,7 @@ calls=1 72
 cfl=/usr/lib/python3.6/weakref.py
 cfn=__setitem__
 calls=1 165
-709 5000
+709 4000
 cfl=~
 cfn=<built-in method io.open>
 calls=1 0
@@ -1691,23 +1719,23 @@ calls=1 0
 cfl=~
 cfn=<method 'endswith' of 'str' objects>
 calls=1 0
-709 0
+709 1000
 cfl=~
 cfn=<method 'startswith' of 'str' objects>
 calls=2 0
-709 0
+709 1000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=<listcomp>
-767 2000
+767 1000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_get_obj_triples_sp_o
 calls=1 664
-767 14999
+767 16000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=_load_properties
-782 5000
+782 7000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_get_obj_triples_po_s
 calls=3 1354
@@ -1715,11 +1743,11 @@ calls=3 1354
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=_add_obj_triple_spo
-820 1000
+820 2000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_add_obj_triple_raw_spo
 calls=1 1161
-820 21000
+820 18999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=get
 calls=1 251
@@ -1727,23 +1755,23 @@ calls=1 251
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=__init__:1043
-1043 3000
+1043 4000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/namespace.py
 fn=_get_onto_file
-1078 0
+1078 3000
 cfl=~
 cfn=<method 'endswith' of 'str' objects>
 calls=1 0
-1078 1000
+1078 0
 cfl=~
 cfn=<method 'startswith' of 'str' objects>
 calls=1 0
-1078 1000
+1078 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=acquire_write_lock
-408 2000
+408 3000
 cfl=~
 cfn=<method 'acquire' of '_thread.RLock' objects>
 calls=2 0
@@ -1751,43 +1779,43 @@ calls=2 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=release_write_lock
-411 1000
+411 3000
 cfl=~
 cfn=<method 'release' of '_thread.RLock' objects>
 calls=2 0
-411 2000
+411 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=select_abbreviate_method
-416 59999
+416 63000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=<genexpr>
 calls=204 421
-416 18999
+416 14000
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=2 0
-416 10000
+416 9000
 cfl=~
 cfn=<method 'fetchall' of 'sqlite3.Cursor' objects>
 calls=1 0
-416 101000
+416 103000
 cfl=~
 cfn=<method 'fetchone' of 'sqlite3.Cursor' objects>
 calls=1 0
-416 0
+416 1000
 cfl=~
 cfn=<method 'values' of 'dict' objects>
 calls=1 0
-416 1000
+416 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=<genexpr>
-421 18999
+421 14000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=fix_base_iri
-438 4000
+438 9000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=1 0
@@ -1803,11 +1831,11 @@ calls=2 0
 cfl=~
 cfn=<method 'fetchone' of 'sqlite3.Cursor' objects>
 calls=2 0
-438 1000
+438 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=sub_graph
-448 12000
+448 14000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=__init__
 calls=1 1018
@@ -1815,27 +1843,27 @@ calls=1 1018
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=4 0
-448 72000
+448 75000
 cfl=~
 cfn=<method 'fetchone' of 'sqlite3.Cursor' objects>
 calls=3 0
-448 0
+448 1000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=_abbreviate_dict
-477 41000
+477 39000
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=1 0
-477 68000
+477 69000
 cfl=~
 cfn=<method 'get' of 'dict' objects>
 calls=122 0
-477 26000
+477 24999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=_unabbreviate_dict
-486 29000
+486 12000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=context_2_user_context
@@ -1847,15 +1875,15 @@ calls=53 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=_get_obj_triples_sp_co
-652 62000
+652 58000
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=92 0
-652 310000
+652 320000
 cfl=~
 cfn=<method 'fetchall' of 'sqlite3.Cursor' objects>
 calls=92 0
-652 70000
+652 79000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=_get_obj_triples_sp_o
@@ -1863,7 +1891,7 @@ fn=_get_obj_triples_sp_o
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=1 0
-664 13000
+664 14000
 cfl=~
 cfn=<method 'fetchall' of 'sqlite3.Cursor' objects>
 calls=1 0
@@ -1875,35 +1903,35 @@ fn=__bool__
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=__init__
-1018 6000
+1018 5000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/driver.py
 cfn=__init__
 calls=1 124
-1018 1000
+1018 2000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=create_parse_func
-1029 7000
+1029 6000
 cfl=~
 cfn=<method 'cursor' of 'sqlite3.Connection' objects>
 calls=1 0
-1029 1000
+1029 2000
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Cursor' objects>
 calls=2 0
-1029 28000
+1029 27000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=_abbreviate
-1067 64999
+1067 69000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=62 0
-1067 6000
+1067 4000
 cfl=~
 cfn=<method 'get' of 'dict' objects>
 calls=298 0
-1067 27000
+1067 36000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=insert_objs
@@ -1915,11 +1943,11 @@ calls=2 0
 cfl=~
 cfn=<method 'executemany' of 'sqlite3.Cursor' objects>
 calls=2 0
-1077 287000
+1077 292999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=insert_datas
-1085 1000
+1085 2000
 cfl=~
 cfn=<method 'clear' of 'list' objects>
 calls=1 0
@@ -1931,23 +1959,23 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=on_finish
-1104 14999
+1104 13000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=select_abbreviate_method
 calls=1 416
-1104 190999
+1104 189999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=fix_base_iri
 calls=1 438
-1104 36000
+1104 40000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=insert_objs
 calls=1 1077
-1104 294000
+1104 300000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=insert_datas
 calls=1 1085
-1104 9000
+1104 10000
 cfl=/usr/lib/python3.6/genericpath.py
 cfn=getmtime
 calls=1 53
@@ -1955,7 +1983,7 @@ calls=1 53
 cfl=~
 cfn=<built-in method time.time>
 calls=1 0
-1104 0
+1104 1000
 cfl=~
 cfn=<method 'endswith' of 'str' objects>
 calls=1 0
@@ -1971,7 +1999,7 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=add_ontology_alias
-1142 0
+1142 2000
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=1 0
@@ -1979,11 +2007,11 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=get_last_update_time
-1145 1000
+1145 3000
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=1 0
-1145 12000
+1145 11000
 cfl=~
 cfn=<method 'fetchone' of 'sqlite3.Cursor' objects>
 calls=1 0
@@ -1991,11 +2019,11 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=_add_obj_triple_raw_spo
-1161 3000
+1161 2000
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=1 0
-1161 18000
+1161 17000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=_has_obj_triple_spo
@@ -2003,7 +2031,7 @@ fn=_has_obj_triple_spo
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=1 0
-1210 26000
+1210 23000
 cfl=~
 cfn=<method 'fetchone' of 'sqlite3.Cursor' objects>
 calls=1 0
@@ -2015,7 +2043,7 @@ fn=_get_data_triples_sp_od
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=1 0
-1345 16000
+1345 17000
 cfl=~
 cfn=<method 'fetchall' of 'sqlite3.Cursor' objects>
 calls=1 0
@@ -2023,19 +2051,19 @@ calls=1 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 fn=_get_obj_triples_po_s
-1354 11000
+1354 21000
 cfl=~
 cfn=<method 'execute' of 'sqlite3.Connection' objects>
 calls=6 0
-1354 37000
+1354 36000
 cfl=~
 cfn=<method 'fetchall' of 'sqlite3.Cursor' objects>
 calls=6 0
-1354 32000
+1354 31000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 fn=__init__
-68 42999
+68 47000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 fn=_set
@@ -2043,119 +2071,119 @@ fn=_set
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 fn=get
-251 82000
+251 59000
 cfl=~
 cfn=<built-in method builtins.getattr>
 calls=277 0
-251 39000
+251 53000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 fn=set
-252 28000
+252 39000
 cfl=~
 cfn=<built-in method builtins.setattr>
 calls=122 0
-252 24000
+252 18999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 fn=__bool__
-262 54000
+262 46000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=get
 calls=154 251
-262 67000
+262 61000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 fn=__enter__
-264 34000
+264 31000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=get
 calls=61 251
-264 35000
+264 29000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=set
 calls=61 252
-264 16000
+264 23000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 fn=__exit__
-266 39000
+266 34000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=get
 calls=61 251
-266 17000
+266 20000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/util.py
 cfn=set
 calls=61 252
-266 36000
+266 35000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=__init__
-40 664000
+40 628000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=_set_identifier
 calls=50 68
-40 32000
+40 46000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=__lt__
-65 32000
+65 56999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=tag
 calls=110 144
-65 29000
+65 49999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=_set_identifier
-68 32000
+68 46000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=bpointer:75
-75 11000
+75 32000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=bpointer:83
-83 35000
+83 41000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=fpointer
-93 16000
+93 35000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=identifier
-117 146000
+117 238999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=is_leaf
-133 26000
+133 80999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=fpointer
 calls=50 93
-133 5000
+133 8000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=50 0
-133 3000
+133 7000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=tag
-144 44999
+144 75000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=update_bpointer
-157 73000
+157 189000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=bpointer:83
 calls=50 83
-157 35000
+157 41000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 fn=update_fpointer
-161 128999
+161 171999
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=49 0
-161 17000
+161 20000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=__init__
@@ -2163,219 +2191,219 @@ fn=__init__
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=__getitem__
-108 7457999
+108 5938000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=__print_backend
-132 109999
+132 218000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=get_label
 calls=51 169
-132 49999
+132 85999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__get
 calls=2 186
-132 14999
+132 27000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__get_iter
 calls=53 204
-132 843000
+132 1633000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=write
 calls=51 734
-132 206000
+132 346000
 cfl=~
 cfn=<method 'encode' of 'str' objects>
 calls=51 0
-132 51000
+132 99000
 cfl=~
 cfn=<method 'format' of 'str' objects>
 calls=51 0
-132 64999
+132 113000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=get_label
-169 34000
+169 61000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=tag
 calls=51 144
-169 16000
+169 24999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=key
-177 6000
+177 14000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=__get
-186 14999
+186 27000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=filter_
-189 14999
+189 26000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=__get_iter
-204 473000
+204 890000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=fpointer
 calls=51 93
-204 11000
+204 27000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=identifier
 calls=49 117
-204 6000
+204 21000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__getitem__
 calls=51 108
-204 11000
+204 23000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=filter_
 calls=51 189
-204 8000
+204 13000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__get_iter
 calls=169 204
-204 658000
+204 1268000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=<listcomp>:224
 calls=51 224
-204 79000
+204 176000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=contains
 calls=51 299
-204 17000
+204 26000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=51 0
-204 11000
+204 14999
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=49 0
-204 9000
+204 12000
 cfl=~
 cfn=<method 'join' of 'str' objects>
 calls=49 0
-204 64999
+204 127000
 cfl=~
 cfn=<method 'pop' of 'list' objects>
 calls=49 0
-204 16000
+204 28000
 cfl=~
 cfn=<method 'sort' of 'list' objects>
 calls=51 0
-204 137000
+204 274999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=<lambda>
-218 16000
+218 28000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=<listcomp>:224
-224 48000
+224 113000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__getitem__
 calls=98 108
-224 24000
+224 49999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=filter_
 calls=49 189
-224 7000
+224 13000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=__update_bpointer
-238 79000
+238 116000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=update_bpointer
 calls=50 157
-238 108000
+238 229999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__getitem__
 calls=50 108
-238 16000
+238 23000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=__update_fpointer
-242 349000
+242 388000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=update_fpointer
 calls=49 161
-242 146000
+242 192000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__getitem__
 calls=49 108
-242 32000
+242 37000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=__real_true
-248 10000
+248 21000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=add_node
-251 691000
+251 1093000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=identifier
 calls=201 117
-251 32999
+251 56999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__update_bpointer
 calls=50 238
-251 203000
+251 368999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__update_fpointer
 calls=50 242
-251 527000
+251 616999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=contains
 calls=49 299
-251 31000
+251 40000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=100 0
-251 138000
+251 174000
 cfl=~
 cfn=<method 'update' of 'dict' objects>
 calls=50 0
-251 136000
+251 99000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=contains
-299 54000
+299 80999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=create_node
-303 794000
+303 1242000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=__init__
 calls=50 40
-303 696000
+303 674000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=add_node
 calls=50 251
-303 1759000
+303 2449000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=depth
-312 24999
+312 56999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=identifier
 calls=26 117
-312 5000
+312 17000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=leaves
 calls=1 445
-312 64000
+312 151999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=level
 calls=26 458
-312 220999
+312 620000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=leaves
-445 24000
+445 51000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=is_leaf
 calls=50 133
-445 34000
+445 96000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=26 0
@@ -2383,203 +2411,203 @@ calls=26 0
 cfl=~
 cfn=<method 'values' of 'dict' objects>
 calls=1 0
-445 1000
+445 0
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=level
-458 23000
+458 67000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=<listcomp>:467
 calls=26 467
-458 196000
+458 549999
 cfl=~
 cfn=<built-in method builtins.len>
 calls=26 0
-458 2000
+458 3000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=<listcomp>:467
-467 27000
+467 62000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=rsearch
 calls=120 672
-467 169000
+467 488000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=rsearch
-672 118000
+672 345000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=bpointer:75
 calls=68 75
-672 11000
+672 32000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__getitem__
 calls=162 108
-672 24000
+672 75000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__real_true
 calls=94 248
-672 10000
+672 21000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=contains
 calls=26 299
-672 6000
+672 14999
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=show
-708 17000
+708 31000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=__print_backend
 calls=2 132
-708 1340000
+708 2522000
 cfl=~
 cfn=<built-in method builtins.print>
 calls=2 0
-708 42000
+708 73000
 
 fl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 fn=write
-734 145000
+734 239999
 cfl=~
 cfn=<method 'decode' of 'bytes' objects>
 calls=51 0
-734 61000
+734 106000
 
 fl=/usr/lib/python3.6/_bootlocale.py
 fn=getpreferredencoding
-23 19700000
+23 16485000
 cfl=~
 cfn=<built-in method _locale.nl_langinfo>
-calls=6952 0
-23 22240000
+calls=4942 0
+23 16916000
 
 fl=/usr/lib/python3.6/codecs.py
 fn=__new__
-93 4000
+93 6000
 cfl=~
 cfn=<built-in method __new__ of type object at 0x9ecf80>
 calls=1 0
-93 1000
+93 0
 
 fl=/usr/lib/python3.6/codecs.py
 fn=__init__:185
-185 4755000
+185 4199000
 
 fl=/usr/lib/python3.6/codecs.py
 fn=__init__:259
-259 8697000
+259 6137000
 
 fl=/usr/lib/python3.6/codecs.py
 fn=__init__:308
-308 14327000
+308 11150000
 cfl=/usr/lib/python3.6/codecs.py
 cfn=__init__:259
-calls=4171 259
-308 8695999
+calls=2416 259
+308 6136000
 
 fl=/usr/lib/python3.6/codecs.py
 fn=decode
-318 25686000
+318 19559999
 cfl=~
 cfn=<built-in method _codecs.utf_8_decode>
-calls=8342 0
-318 16243000
+calls=4848 0
+318 12466000
 
 fl=/usr/lib/python3.6/copy.py
 fn=deepcopy
-132 72549000
+132 76251000
 cfl=/usr/lib/python3.6/copy.py
 cfn=_deepcopy_atomic
-calls=9990 190
-132 1668000
+calls=13120 190
+132 2731000
 cfl=/usr/lib/python3.6/copy.py
 cfn=_deepcopy_list
-calls=1390 210
-132 38895000
+calls=1720 210
+132 56870000
 cfl=/usr/lib/python3.6/copy.py
 cfn=_keep_alive
-calls=2780 252
-132 9297999
+calls=3440 252
+132 10118000
 cfl=/usr/lib/python3.6/copy.py
 cfn=_reconstruct
-calls=1390 268
-132 84010000
+calls=1720 268
+132 101252000
 cfl=~
 cfn=<built-in method builtins.getattr>
-calls=2780 0
-132 3545999
+calls=3440 0
+132 4057000
 cfl=~
 cfn=<built-in method builtins.id>
-calls=12770 0
-132 2800999
+calls=16560 0
+132 3721000
 cfl=~
 cfn=<built-in method builtins.isinstance>
-calls=1390 0
-132 1201000
+calls=1720 0
+132 1349000
 cfl=~
 cfn=<built-in method builtins.issubclass>
-calls=1390 0
-132 990999
+calls=1720 0
+132 1073999
 cfl=~
 cfn=<method '__reduce_ex__' of 'object' objects>
-calls=1390 0
-132 11949999
+calls=1720 0
+132 10447999
 cfl=~
 cfn=<method 'get' of 'dict' objects>
-calls=26930 0
-132 7936000
+calls=34840 0
+132 10747000
 
 fl=/usr/lib/python3.6/copy.py
 fn=_deepcopy_atomic
-190 1668000
+190 2731000
 
 fl=/usr/lib/python3.6/copy.py
 fn=_deepcopy_list
-210 10811999
+210 14695000
 cfl=/usr/lib/python3.6/copy.py
 cfn=deepcopy
-calls=9990 132
-210 25696999
+calls=13120 132
+210 38675999
 cfl=~
 cfn=<built-in method builtins.id>
-calls=1390 0
-210 269000
+calls=1720 0
+210 356000
 cfl=~
 cfn=<method 'append' of 'list' objects>
-calls=9990 0
-210 2117000
+calls=13120 0
+210 3143000
 
 fl=/usr/lib/python3.6/copy.py
 fn=_keep_alive
-252 7293000
+252 8693000
 cfl=~
 cfn=<built-in method builtins.id>
-calls=4170 0
-252 1524000
+calls=5160 0
+252 859000
 cfl=~
 cfn=<method 'append' of 'list' objects>
-calls=1390 0
-252 481000
+calls=1720 0
+252 566000
 
 fl=/usr/lib/python3.6/copy.py
 fn=_reconstruct
-268 17821999
+268 17450999
 cfl=/usr/lib/python3.6/copy.py
 cfn=<genexpr>
-calls=2780 273
-268 65945000
+calls=3440 273
+268 83497000
 cfl=~
 cfn=<built-in method builtins.id>
-calls=1390 0
-268 243000
+calls=1720 0
+268 303999
 
 fl=/usr/lib/python3.6/copy.py
 fn=<genexpr>
-273 4406000
+273 4458999
 cfl=/usr/lib/python3.6/copy.py
 cfn=deepcopy
-calls=1390 132
-273 61539000
+calls=1720 132
+273 79038000
 
 fl=/usr/lib/python3.6/encodings/__init__.py
 fn=normalize_encoding
@@ -2591,31 +2619,31 @@ calls=1 0
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=10 0
-43 1000
+43 0
 cfl=~
 cfn=<method 'isalnum' of 'str' objects>
 calls=10 0
-43 0
+43 1000
 cfl=~
 cfn=<method 'join' of 'str' objects>
 calls=1 0
-43 1000
+43 0
 
 fl=/usr/lib/python3.6/encodings/__init__.py
 fn=search_function
-71 7000
+71 9000
 cfl=/usr/lib/python3.6/encodings/__init__.py
 cfn=normalize_encoding
 calls=1 43
-71 8000
+71 7000
 cfl=/usr/lib/python3.6/encodings/latin_1.py
 cfn=getregentry
 calls=1 41
-71 12000
+71 11000
 cfl=~
 cfn=<built-in method builtins.__import__>
 calls=1 0
-71 7000
+71 6000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=1 0
@@ -2623,23 +2651,23 @@ calls=1 0
 cfl=~
 cfn=<method 'get' of 'dict' objects>
 calls=2 0
-71 0
+71 1000
 
 fl=/usr/lib/python3.6/encodings/latin_1.py
 fn=decode
-25 4000
+25 5000
 cfl=~
 cfn=<built-in method _codecs.latin_1_decode>
 calls=5 0
-25 5000
+25 3000
 
 fl=/usr/lib/python3.6/encodings/latin_1.py
 fn=getregentry
-41 7000
+41 5000
 cfl=/usr/lib/python3.6/codecs.py
 cfn=__new__
 calls=1 93
-41 5000
+41 6000
 
 fl=/usr/lib/python3.6/enum.py
 fn=__call__
@@ -2647,19 +2675,19 @@ fn=__call__
 cfl=/usr/lib/python3.6/enum.py
 cfn=__new__
 calls=4 517
-267 1000
+267 4000
 
 fl=/usr/lib/python3.6/enum.py
 fn=__new__
-517 1000
+517 4000
 
 fl=/usr/lib/python3.6/enum.py
 fn=__and__
-803 4000
+803 3000
 cfl=/usr/lib/python3.6/enum.py
 cfn=__call__
 calls=4 267
-803 2000
+803 5000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=2 0
@@ -2679,19 +2707,19 @@ fn=walk
 cfl=/usr/lib/python3.6/os.py
 cfn=walk
 calls=2 277
-277 22000
+277 24999
 cfl=/usr/lib/python3.6/posixpath.py
 cfn=join
 calls=1 75
-277 4000
+277 6000
 cfl=/usr/lib/python3.6/posixpath.py
 cfn=islink
 calls=1 168
-277 7000
+277 8000
 cfl=~
 cfn=<built-in method builtins.next>
 calls=48 0
-277 56999
+277 59000
 cfl=~
 cfn=<built-in method posix.fspath>
 calls=3 0
@@ -2699,15 +2727,15 @@ calls=3 0
 cfl=~
 cfn=<built-in method posix.scandir>
 calls=3 0
-277 18999
+277 21000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=45 0
-277 1000
+277 5000
 cfl=~
 cfn=<method 'is_dir' of 'posix.DirEntry' objects>
 calls=45 0
-277 4000
+277 1000
 
 fl=/usr/lib/python3.6/posixpath.py
 fn=_get_sep
@@ -2715,7 +2743,7 @@ fn=_get_sep
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=1 0
-41 0
+41 1000
 
 fl=/usr/lib/python3.6/posixpath.py
 fn=join
@@ -2723,11 +2751,11 @@ fn=join
 cfl=/usr/lib/python3.6/posixpath.py
 cfn=_get_sep
 calls=1 41
-75 1000
+75 2000
 cfl=~
 cfn=<built-in method posix.fspath>
 calls=1 0
-75 0
+75 1000
 cfl=~
 cfn=<method 'endswith' of 'str' objects>
 calls=1 0
@@ -2743,7 +2771,7 @@ fn=islink
 cfl=~
 cfn=<built-in method _stat.S_ISLNK>
 calls=1 0
-168 0
+168 1000
 cfl=~
 cfn=<built-in method posix.lstat>
 calls=1 0
@@ -2755,15 +2783,15 @@ fn=compile
 cfl=/usr/lib/python3.6/re.py
 cfn=_compile
 calls=1 286
-231 135000
+231 141999
 
 fl=/usr/lib/python3.6/re.py
 fn=_compile
-286 10000
+286 8000
 cfl=/usr/lib/python3.6/enum.py
 cfn=__and__
 calls=2 803
-286 7000
+286 9000
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=isstring
 calls=1 539
@@ -2771,7 +2799,7 @@ calls=1 539
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=compile
 calls=1 557
-286 118000
+286 124000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=1 0
@@ -2779,15 +2807,15 @@ calls=1 0
 cfl=~
 cfn=<built-in method builtins.len>
 calls=1 0
-286 0
+286 1000
 
 fl=/usr/lib/python3.6/sre_compile.py
 fn=_compile
-64 9000
+64 5000
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_compile
 calls=1 64
-64 27000
+64 26000
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_compile_charset
 calls=1 223
@@ -2795,7 +2823,7 @@ calls=1 223
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_simple
 calls=1 388
-64 2000
+64 4000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=__getitem__
 calls=2 163
@@ -2803,19 +2831,19 @@ calls=2 163
 cfl=~
 cfn=<built-in method builtins.len>
 calls=4 0
-64 0
+64 1000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=11 0
-64 1000
+64 0
 
 fl=/usr/lib/python3.6/sre_compile.py
 fn=_compile_charset
-223 1000
+223 2000
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_optimize_charset
 calls=1 250
-223 20000
+223 18999
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=2 0
@@ -2827,7 +2855,7 @@ calls=1 0
 
 fl=/usr/lib/python3.6/sre_compile.py
 fn=_optimize_charset
-250 10000
+250 9000
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_mk_bitmap
 calls=1 376
@@ -2835,11 +2863,11 @@ calls=1 376
 cfl=~
 cfn=<built-in method builtins.len>
 calls=4 0
-250 1000
+250 0
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=3 0
-250 0
+250 1000
 cfl=~
 cfn=<method 'find' of 'bytearray' objects>
 calls=5 0
@@ -2867,11 +2895,11 @@ fn=<listcomp>
 
 fl=/usr/lib/python3.6/sre_compile.py
 fn=_simple
-388 2000
+388 3000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=__getitem__
 calls=1 163
-388 0
+388 1000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=getwidth
 calls=1 173
@@ -2879,7 +2907,7 @@ calls=1 173
 
 fl=/usr/lib/python3.6/sre_compile.py
 fn=_generate_overlap_table
-393 1000
+393 0
 cfl=~
 cfn=<built-in method builtins.len>
 calls=2 0
@@ -2895,11 +2923,11 @@ calls=1 0
 
 fl=/usr/lib/python3.6/sre_compile.py
 fn=_compile_info
-482 9000
+482 6000
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_generate_overlap_table
 calls=1 393
-482 2000
+482 1000
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_get_literal_prefix
 calls=1 414
@@ -2907,7 +2935,7 @@ calls=1 414
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=getwidth
 calls=1 173
-482 6000
+482 7000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=4 0
@@ -2923,11 +2951,11 @@ calls=7 0
 cfl=~
 cfn=<method 'extend' of 'list' objects>
 calls=2 0
-482 1000
+482 0
 
 fl=/usr/lib/python3.6/sre_compile.py
 fn=isstring
-539 0
+539 1000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=2 0
@@ -2935,15 +2963,15 @@ calls=2 0
 
 fl=/usr/lib/python3.6/sre_compile.py
 fn=_code
-542 1000
+542 3000
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_compile
 calls=1 64
-542 35000
+542 32999
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_compile_info
 calls=1 482
-542 20000
+542 16000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=1 0
@@ -2955,19 +2983,19 @@ fn=compile
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=isstring
 calls=1 539
-557 0
+557 1000
 cfl=/usr/lib/python3.6/sre_compile.py
 cfn=_code
 calls=1 542
-557 56000
+557 52000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=groups
 calls=2 81
-557 1000
+557 0
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=parse
 calls=1 844
-557 54999
+557 64999
 cfl=~
 cfn=<built-in method _sre.compile>
 calls=1 0
@@ -2987,11 +3015,11 @@ fn=groups
 cfl=~
 cfn=<built-in method builtins.len>
 calls=2 0
-81 1000
+81 0
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=__init__:111
-111 0
+111 1000
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=__len__
@@ -3003,15 +3031,15 @@ calls=3 0
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=__getitem__
-163 4000
+163 3000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=__init__:111
 calls=1 111
-163 0
+163 1000
 cfl=~
 cfn=<built-in method builtins.isinstance>
 calls=6 0
-163 2000
+163 1000
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=__setitem__
@@ -3019,11 +3047,11 @@ fn=__setitem__
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=append
-171 1000
+171 2000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=3 0
-171 0
+171 1000
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=getwidth
@@ -3035,7 +3063,7 @@ calls=1 173
 cfl=~
 cfn=<built-in method builtins.min>
 calls=4 0
-173 0
+173 1000
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=__init__:223
@@ -3051,23 +3079,23 @@ calls=1 0
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=__next
-232 4000
+232 14999
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=match
-248 1000
+248 3000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=__next
 calls=3 232
-248 0
+248 2000
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=get
-253 8000
+253 4000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=__next
 calls=13 232
-253 3000
+253 12000
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=tell
@@ -3091,7 +3119,7 @@ calls=2 0
 cfl=~
 cfn=<method 'get' of 'dict' objects>
 calls=4 0
-342 0
+342 1000
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=_parse_sub
@@ -3103,15 +3131,15 @@ calls=1 248
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=tell
 calls=1 285
-407 2000
+407 1000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=_parse
 calls=1 470
-407 42999
+407 49999
 cfl=~
 cfn=<built-in method builtins.len>
 calls=1 0
-407 0
+407 1000
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=1 0
@@ -3131,7 +3159,7 @@ calls=2 159
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=__getitem__
 calls=3 163
-470 4000
+470 2000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=__setitem__
 calls=1 167
@@ -3139,35 +3167,35 @@ calls=1 167
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=append
 calls=3 171
-470 1000
+470 3000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=match
 calls=7 248
-470 1000
+470 5000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=get
 calls=13 253
-470 11000
+470 16000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=tell
 calls=2 285
-470 0
+470 1000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=_escape
 calls=2 342
-470 6000
+470 7000
 cfl=~
 cfn=<built-in method builtins.len>
 calls=3 0
-470 1000
+470 0
 cfl=~
 cfn=<built-in method builtins.ord>
 calls=8 0
-470 2000
+470 0
 cfl=~
 cfn=<method 'append' of 'list' objects>
 calls=5 0
-470 1000
+470 0
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=fix_flags
@@ -3179,7 +3207,7 @@ calls=1 0
 
 fl=/usr/lib/python3.6/sre_parse.py
 fn=parse
-844 2000
+844 5000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=__init__:76
 calls=1 76
@@ -3191,7 +3219,7 @@ calls=1 223
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=_parse_sub
 calls=1 407
-844 48000
+844 54999
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=fix_flags
 calls=1 828
@@ -3199,7 +3227,7 @@ calls=1 828
 
 fl=/usr/lib/python3.6/weakref.py
 fn=__init__:102
-102 10000
+102 8000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=update
 calls=2 288
@@ -3211,19 +3239,19 @@ calls=2 0
 
 fl=/usr/lib/python3.6/weakref.py
 fn=__setitem__
-165 59999
+165 67000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=__new__
 calls=63 334
-165 49999
+165 35000
 cfl=/usr/lib/python3.6/weakref.py
 cfn=__init__:339
 calls=63 339
-165 22000
+165 24999
 
 fl=/usr/lib/python3.6/weakref.py
 fn=get
-193 119999
+193 125000
 
 fl=/usr/lib/python3.6/weakref.py
 fn=update
@@ -3235,15 +3263,15 @@ calls=4 0
 
 fl=/usr/lib/python3.6/weakref.py
 fn=__new__
-334 32999
+334 22000
 cfl=~
 cfn=<built-in method __new__ of type object at 0x9ecf80>
 calls=63 0
-334 17000
+334 13000
 
 fl=/usr/lib/python3.6/weakref.py
 fn=__init__:339
-339 22000
+339 24999
 
 fl=<frozen importlib._bootstrap>
 fn=_handle_fromlist
@@ -3251,39 +3279,39 @@ fn=_handle_fromlist
 cfl=~
 cfn=<built-in method builtins.hasattr>
 calls=1 0
-997 3000
+997 2000
 
 fl=<string>
 fn=<module>
-1 390999
-cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/ttt.py
+1 781000
+cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/simulate_pddl_from_video.py
 cfn=build_tree
 calls=1 13
-1 15247784000
+1 11640614000
 
 fl=~
 fn=<built-in method __new__ of type object at 0x9ecf80>
-0 334000
+0 306000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/entity.py
 cfn=mro
 calls=31 86
-0 27000
+0 20000
 
 fl=~
 fn=<built-in method _codecs.latin_1_decode>
-0 5000
+0 3000
 
 fl=~
 fn=<built-in method _codecs.utf_8_decode>
-0 16243000
+0 12466000
 
 fl=~
 fn=<built-in method _locale.nl_langinfo>
-0 22240000
+0 16916000
 
 fl=~
 fn=<built-in method _pickle.load>
-0 208999
+0 210999
 
 fl=~
 fn=<built-in method _sre.compile>
@@ -3291,7 +3319,7 @@ fn=<built-in method _sre.compile>
 
 fl=~
 fn=<built-in method _stat.S_ISLNK>
-0 0
+0 1000
 
 fl=~
 fn=<built-in method builtins.__import__>
@@ -3299,59 +3327,59 @@ fn=<built-in method builtins.__import__>
 cfl=<frozen importlib._bootstrap>
 cfn=_handle_fromlist
 calls=1 997
-0 4000
+0 3000
 
 fl=~
 fn=<built-in method builtins.exec>
-0 34000
+0 44999
 cfl=<string>
 cfn=<module>
 calls=1 1
-0 15248175000
+0 11641395000
 
 fl=~
 fn=<built-in method builtins.getattr>
-0 3607999
+0 4131000
 
 fl=~
 fn=<built-in method builtins.hasattr>
-0 26000
+0 18000
 
 fl=~
 fn=<built-in method builtins.hash>
-0 61000
+0 48000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__hash__
 calls=86 14
-0 6000
+0 12000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/pddl_types.py
 cfn=__hash__
 calls=4 40
-0 0
+0 3000
 
 fl=~
 fn=<built-in method builtins.id>
-0 4837000
+0 5240000
 
 fl=~
 fn=<built-in method builtins.isinstance>
-0 1421000
+0 1607999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/entity.py
 cfn=__instancecheck__
 calls=60 413
-0 74000
+0 58000
 
 fl=~
 fn=<built-in method builtins.issubclass>
-0 990999
+0 1073999
 
 fl=~
 fn=<built-in method builtins.iter>
-0 1000
+0 0
 
 fl=~
 fn=<built-in method builtins.len>
-0 51000
+0 603000
 cfl=/usr/lib/python3.6/sre_parse.py
 cfn=__len__
 calls=1 159
@@ -3359,51 +3387,51 @@ calls=1 159
 
 fl=~
 fn=<built-in method builtins.min>
-0 0
+0 1000
 
 fl=~
 fn=<built-in method builtins.next>
-0 170999
+0 160000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl_parser/lisp_parser.py
 cfn=tokenize
 calls=798 20
-0 594999
+0 610000
 
 fl=~
 fn=<built-in method builtins.ord>
-0 2000
+0 0
 
 fl=~
 fn=<built-in method builtins.print>
-0 97000
+0 184000
 
 fl=~
 fn=<built-in method builtins.setattr>
-0 34000
+0 28000
 
 fl=~
 fn=<built-in method builtins.sorted>
-0 7371000
+0 7732999
 
 fl=~
 fn=<built-in method io.open>
-0 518139000
+0 428969999
 cfl=/usr/lib/python3.6/_bootlocale.py
 cfn=getpreferredencoding
-calls=6952 23
-0 41940000
+calls=4942 23
+0 33401000
 cfl=/usr/lib/python3.6/codecs.py
 cfn=__init__:185
-calls=2781 185
-0 4755000
+calls=2526 185
+0 4199000
 cfl=/usr/lib/python3.6/codecs.py
 cfn=__init__:259
 calls=2 259
 0 1000
 cfl=/usr/lib/python3.6/codecs.py
 cfn=__init__:308
-calls=4171 308
-0 23023000
+calls=2416 308
+0 17286000
 cfl=/usr/lib/python3.6/encodings/__init__.py
 cfn=search_function
 calls=1 71
@@ -3411,7 +3439,7 @@ calls=1 71
 
 fl=~
 fn=<built-in method posix.fspath>
-0 0
+0 1000
 
 fl=~
 fn=<built-in method posix.lstat>
@@ -3419,7 +3447,7 @@ fn=<built-in method posix.lstat>
 
 fl=~
 fn=<built-in method posix.scandir>
-0 18999
+0 21000
 
 fl=~
 fn=<built-in method posix.stat>
@@ -3427,19 +3455,19 @@ fn=<built-in method posix.stat>
 
 fl=~
 fn=<built-in method posix.system>
-0 13653739000
+0 10236305999
 
 fl=~
 fn=<built-in method time.time>
-0 9998000
+0 6939000
 
 fl=~
-fn=<function ThingClass.__instancecheck__ at 0x7efdcba02b70>
-0 3000
+fn=<function ThingClass.__instancecheck__ at 0x7fc76bed58c8>
+0 4000
 
 fl=~
 fn=<method '__reduce_ex__' of 'object' objects>
-0 11949999
+0 10447999
 
 fl=~
 fn=<method 'acquire' of '_thread.RLock' objects>
@@ -3447,15 +3475,15 @@ fn=<method 'acquire' of '_thread.RLock' objects>
 
 fl=~
 fn=<method 'add' of 'set' objects>
-0 915999
+0 603000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/translate/pddl/conditions.py
 cfn=__hash__
 calls=80 14
-0 5000
+0 4000
 
 fl=~
 fn=<method 'append' of 'list' objects>
-0 2673000
+0 4859000
 
 fl=~
 fn=<method 'clear' of 'list' objects>
@@ -3467,15 +3495,15 @@ fn=<method 'close' of '_io.BufferedReader' objects>
 
 fl=~
 fn=<method 'close' of '_io.TextIOWrapper' objects>
-0 136320000
+0 143658999
 
 fl=~
 fn=<method 'cursor' of 'sqlite3.Connection' objects>
-0 1000
+0 2000
 
 fl=~
 fn=<method 'decode' of 'bytes' objects>
-0 61000
+0 106000
 
 fl=~
 fn=<method 'disable' of '_lsprof.Profiler' objects>
@@ -3483,39 +3511,39 @@ fn=<method 'disable' of '_lsprof.Profiler' objects>
 
 fl=~
 fn=<method 'encode' of 'str' objects>
-0 79000
+0 127000
 
 fl=~
 fn=<method 'endswith' of 'bytes' objects>
-0 0
+0 1000
 
 fl=~
 fn=<method 'endswith' of 'str' objects>
-0 21000
+0 14999
 
 fl=~
 fn=<method 'execute' of 'sqlite3.Connection' objects>
-0 625999
+0 634999
 
 fl=~
 fn=<method 'execute' of 'sqlite3.Cursor' objects>
-0 64999
+0 64000
 
 fl=~
 fn=<method 'executemany' of 'sqlite3.Cursor' objects>
-0 294999
+0 301000
 
 fl=~
 fn=<method 'extend' of 'list' objects>
-0 98000
+0 59000
 
 fl=~
 fn=<method 'fetchall' of 'sqlite3.Cursor' objects>
-0 203000
+0 213000
 
 fl=~
 fn=<method 'fetchone' of 'sqlite3.Cursor' objects>
-0 2000
+0 3000
 
 fl=~
 fn=<method 'find' of 'bytearray' objects>
@@ -3523,55 +3551,55 @@ fn=<method 'find' of 'bytearray' objects>
 
 fl=~
 fn=<method 'find' of 'bytes' objects>
-0 1000
+0 0
 
 fl=~
 fn=<method 'format' of 'str' objects>
-0 64999
+0 113000
 
 fl=~
 fn=<method 'get' of 'dict' objects>
-0 8024000
+0 10853000
 
 fl=~
 fn=<method 'group' of '_sre.SRE_Match' objects>
-0 939000
+0 1410000
 
 fl=~
 fn=<method 'index' of 'list' objects>
-0 12000
+0 14000
 
 fl=~
 fn=<method 'is_dir' of 'posix.DirEntry' objects>
-0 4000
+0 1000
 
 fl=~
 fn=<method 'isalnum' of 'str' objects>
-0 0
+0 1000
 
 fl=~
 fn=<method 'items' of 'dict' objects>
-0 5000
+0 3000
 
 fl=~
 fn=<method 'join' of 'str' objects>
-0 16933000
+0 17972000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=<lambda>
 calls=71 218
-0 16000
+0 28000
 
 fl=~
 fn=<method 'keys' of 'dict' objects>
-0 793000
+0 745000
 
 fl=~
 fn=<method 'lower' of 'str' objects>
-0 63000
+0 65999
 
 fl=~
 fn=<method 'lstrip' of 'bytes' objects>
-0 0
+0 1000
 
 fl=~
 fn=<method 'pop' of 'dict' objects>
@@ -3579,7 +3607,7 @@ fn=<method 'pop' of 'dict' objects>
 
 fl=~
 fn=<method 'pop' of 'list' objects>
-0 16000
+0 28000
 
 fl=~
 fn=<method 'read' of '_io.BufferedReader' objects>
@@ -3587,51 +3615,51 @@ fn=<method 'read' of '_io.BufferedReader' objects>
 
 fl=~
 fn=<method 'readlines' of '_io._IOBase' objects>
-0 135074000
+0 96931999
 cfl=/usr/lib/python3.6/codecs.py
 cfn=decode
-calls=5562 318
-0 32445000
+calls=3230 318
+0 24325000
 
 fl=~
 fn=<method 'release' of '_thread.RLock' objects>
-0 2000
+0 0
 
 fl=~
 fn=<method 'remove' of 'set' objects>
-0 329000
+0 399999
 
 fl=~
 fn=<method 'replace' of 'str' objects>
-0 8757000
+0 5881000
 
 fl=~
 fn=<method 'rsplit' of 'str' objects>
-0 29999
+0 27000
 
 fl=~
 fn=<method 'search' of '_sre.SRE_Pattern' objects>
-0 5789000
+0 7327999
 
 fl=~
 fn=<method 'seek' of '_io.BufferedReader' objects>
-0 0
+0 1000
 
 fl=~
 fn=<method 'seekable' of '_io.BufferedReader' objects>
-0 0
+0 1000
 
 fl=~
 fn=<method 'sort' of 'list' objects>
-0 70000
+0 154000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/node.py
 cfn=__lt__
 calls=55 65
-0 61000
+0 107000
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/treelib/tree.py
 cfn=key
 calls=49 177
-0 6000
+0 14000
 
 fl=~
 fn=<method 'split' of 'bytes' objects>
@@ -3639,7 +3667,7 @@ fn=<method 'split' of 'bytes' objects>
 
 fl=~
 fn=<method 'split' of 'str' objects>
-0 92000
+0 75000
 
 fl=~
 fn=<method 'startswith' of 'bytes' objects>
@@ -3647,11 +3675,11 @@ fn=<method 'startswith' of 'bytes' objects>
 
 fl=~
 fn=<method 'startswith' of 'str' objects>
-0 6000
+0 9000
 
 fl=~
 fn=<method 'strip' of 'str' objects>
-0 1000
+0 3000
 
 fl=~
 fn=<method 'translate' of 'bytearray' objects>
@@ -3659,21 +3687,21 @@ fn=<method 'translate' of 'bytearray' objects>
 
 fl=~
 fn=<method 'update' of 'dict' objects>
-0 151999
+0 118999
 
 fl=~
 fn=<method 'values' of 'dict' objects>
-0 2000
+0 0
 
 fl=~
 fn=<method 'write' of '_io.TextIOWrapper' objects>
-0 4267000
+0 4216999
 
 fl=~
 fn=<owlready2_optimized.parse_rdfxml>
-0 486999
+0 468999
 cfl=/home/mk/PycharmProjects/pic-to-plan-v2-git/venv/lib/python3.6/site-packages/owlready2/triplelite.py
 cfn=_abbreviate
 calls=298 1067
-0 98000
+0 109000
 

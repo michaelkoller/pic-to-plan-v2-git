@@ -4,7 +4,7 @@ import pic_to_plan_v2.observation_trace_gen.video_annotation as video_annotation
 import os
 import re
 import time
-from treelib import Node, Tree
+from treelib import Tree
 import copy
 import cProfile
 import pstats
@@ -111,14 +111,17 @@ def build_tree():
             plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r") #TODO superfluous open, but readlines changes the iterator...
             for line in plan_val_output:
                 if "Checking plan" in line:
+                    new_atom_added = False
                     new_state_sets.append(copy.deepcopy(current_state_set))
                 elif "Deleting" in line:
+                    new_atom_added = True
                     m = re_compiled.search(line)
                     atom_to_delete = m.group(0)
                     #print("DEL", atom_to_delete)
                     if atom_to_delete in new_state_sets[-1]:
                         new_state_sets[-1].remove(atom_to_delete)
                 elif "Adding" in line:
+                    new_atom_added = True
                     m = re_compiled.search(line)
                     atom_to_add = m.group(0)
                     #print("ADD", atom_to_add)
@@ -127,7 +130,7 @@ def build_tree():
 
             sorted_new_state_strings = [" ".join(sorted(new_s)) for new_s in new_state_sets]
             for i, sorted_new_state_string in enumerate(sorted_new_state_strings):
-                if sorted_new_state_string not in state_string_to_node_id_dict.keys():
+                if new_atom_added and sorted_new_state_string not in state_string_to_node_id_dict.keys(): #new atom short circuits logical expression
                     tree.create_node(sorted_new_state_string, tree_id_counter, data=[new_state_sets[i], try_action_strings[i]], parent=tree[s].identifier) #in the root there was no previous action
                     open_state_set_for_timestep.append(tree_id_counter)
                     state_string_to_node_id_dict[sorted_new_state_string] = tree_id_counter
@@ -139,6 +142,8 @@ def build_tree():
                 t0 = t1
                 tree.show()
                 print(frame_no, tree_id_counter)
+            if time.time() - t_start > 10:
+                break
 
         open_state_set.extend(open_state_set_for_timestep)
 
@@ -150,7 +155,7 @@ def build_tree():
     print("Time spent in os.system", tot_os_cmd_time)
 
 if __name__ == "__main__":
-    run_type = 1
+    run_type = 2
 
     if run_type == 1:
         build_tree()
