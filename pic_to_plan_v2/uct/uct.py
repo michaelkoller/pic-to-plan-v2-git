@@ -7,6 +7,14 @@ import pic_to_plan_v2.observation_trace_gen.parsed_proplem as parsed_problem_mod
 import pic_to_plan_v2.observation_trace_gen.video_annotation as video_annotation_mod
 import os
 import copy
+import cProfile
+import pstats
+from pyprof2calltree import convert, visualize
+import networkx as nx
+import matplotlib.pyplot as plt
+import pic_to_plan_v2.observation_trace_gen.draw_search_tree as draw_search_tree_mod
+import pic_to_plan_v2.observation_trace_gen.create_pr_instance as create_pr_instance_mod
+import pic_to_plan_v2.observation_trace_gen.call_plan_rec as call_plan_rec_mod
 
 class UCTSearch:
     def __init__(self):
@@ -59,7 +67,7 @@ class UCTSearch:
                 s = "(" + str(atom.predicate) + " " + " ".join(atom.args) + ")"
                 self.current_state_set.add(s)
 
-    def uct_search(self, s_0, possible_actions, iteration_limit=None, time_limit=2):
+    def uct_search(self, s_0, possible_actions, iteration_limit=None, time_limit=None):
         """ s_0                 ... initial state
             possible_actions    ... action candidates, [(fram_no, [actions], (...), ...)]
                                     these are not necessarily applicable in a given state.
@@ -80,6 +88,10 @@ class UCTSearch:
             # if time.time() - t_1 > 10:
             #     t_1 = time.time()
             #     self.v_0.print_subtree()
+
+            if self.n_iter % 10 == 0:
+                self.save_dot()
+
             v_l = self.tree_policy(self.v_0)
             delta = self.default_policy(v_l)
             self.backup(v_l, delta)
@@ -91,7 +103,11 @@ class UCTSearch:
         print("FINISHED", "Frame no:", str(self.possible_actions_session[-1][0]), "Node count:", str(Node.nid))
         print("Processing time:", processing_time, "Video length:", self.possible_actions_session[-1][0] / 30.0, "Realtime factor:",
               self.possible_actions_session[-1][0] / (30.0 * processing_time))
-        return 0 #TODO return the most likely obs traces per goal with probability estimate
+        return 0
+
+    def save_dot(self):
+        G = uct_search.create_nx_graph()
+        draw_search_tree_mod.draw_tree_nx(G, self.n_iter)
 
     def tree_policy(self, v):
         while not v.is_terminal:
@@ -101,21 +117,30 @@ class UCTSearch:
                 expanded_v =  self.expand(v)
                 return expanded_v
             else:
-                v = v.get_best_child()              #TODO get_best_child
+                v = v.get_best_child()
         return v #currently never reached, because no useful "is_terminal" definable
 
     def expand(self, v):
         if v.untried_children is None:
             v.untried_children = v.get_children_from_possible_actions() #call to VAL
-        v_child =  v.choose_untried_action()        #TODO choose untried action needs to create the state in v_child and store action
+        v_child =  v.choose_untried_action()
         return v_child
 
-
     def default_policy(self, v):
-        if v.nid == 300:
-            return 1 #TODO dummy value
+        if v.prev_action == "nop":
+            return v.parent.total_reward #TODO can you do it just like that??? avoid plan rec in nop action states, since nothing has changed anyway
         else:
-            return 0
+            obs = []
+            while True:
+                if v.parent is not None:
+                    if v.prev_action != "nop":
+                        obs.append(v.prev_action)
+                    v = v.parent
+                else:
+                    break
+            obs.reverse()
+            create_pr_instance_mod.create_pr_instance(obs)
+            return call_plan_rec_mod.call_plan_rec()
 
     def backup(self, v, delta):
         while v is not None:
@@ -131,10 +156,77 @@ class UCTSearch:
         for v in path:
             print(str(v))
 
+    def create_nx_graph(self):
+        G = nx.DiGraph()
+
+        def get_nx_nodes_a_edges(v, G):
+            G.add_node(v.nid)
+            if v.prev_action == "nop":
+                G.node[v.nid]['color'] = 'red'
+                G.node[v.nid]['fillcolor'] = 'red'
+            else:
+                G.node[v.nid]['color'] = 'black'
+                G.node[v.nid]['fillcolor'] = 'white'
+            G.node[v.nid]["penwidth"] = 5 * (v.total_reward / v.num_visits) if v.num_visits > 0 else 1
+            G.node[v.nid]["total_reward"] = v.total_reward
+            G.node[v.nid]["num_visits"] = v.num_visits
+            G.node[v.nid]["prev_action"] = v.prev_action
+            G.node[v.nid]["nid"] = v.nid
+            G.node[v.nid]["parent_nid"] = v.parent.nid if v.parent is not None else "root"
+            G.node[v.nid]["depth"] = v.depth
+
+            for c in v.children.values():
+                G.add_edge(v.nid, c.nid)
+                G.edges[v.nid, c.nid]['penwidth'] = 5 * (c.total_reward / c.num_visits)
+                get_nx_nodes_a_edges(c, G)
+        get_nx_nodes_a_edges(self.v_0, G)
+        return G
 
 if __name__ == "__main__":
+    # G = nx.DiGraph()
+    # G.add_node(1)
+    # G.add_node(2)
+    # G.add_node(3)
+    # G.add_edge(1,2)
+    # G.add_edge(1,3)
+    # G.edges[1,2]['penwidth'] = 3
+    # print(G.edges[1,2])
+    # print(G.edges)
+    # exit()
+    run_type = 1
     uct_search = UCTSearch()
 
-    uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), uct_search.possible_actions_session, iteration_limit=60)
+    if run_type == 1:
+        uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), uct_search.possible_actions_session)
+    elif run_type == 2:
+        cProfile.run("uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), uct_search.possible_actions_session, iteration_limit=10)", "profilestats")
+        p = pstats.Stats('profilestats')
+        # p.strip_dirs().sort_stats('cumulative').print_stats()
+        p.sort_stats('cumulative').print_stats()
+    elif run_type == 3:
+        profiler = cProfile.Profile()
+        profiler.run("uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), uct_search.possible_actions_session, iteration_limit=10)")
+        visualize(profiler.getstats())
+        convert(profiler.getstats(), 'profiling_results.kgrind')
+    else:
+        print("provide valid run_type number")
+
+    G = uct_search.create_nx_graph()
+    draw_search_tree_mod.draw_tree_nx(G, 'final')
     print("done")
 
+#TODO make DAG
+#TODO make state lookup
+#TODO draw graph https://plot.ly/python/tree-plots/
+
+#TODO are nop state really that good?
+
+#http://www.webgraphviz.com/
+#insert test.dot there
+
+#kgraphviewer
+
+#look at the test.dot-file in observation_trace_gen
+
+#Hash results of plan rec
+#possible to save prelim results and use for next step? probably not.

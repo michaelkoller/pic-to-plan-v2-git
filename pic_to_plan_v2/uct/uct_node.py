@@ -3,6 +3,7 @@ import random
 import os
 import re
 import copy
+import time
 
 class Node:
     nid = 0
@@ -61,14 +62,15 @@ class Node:
         f = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl", "w")
         f.write(parsed_template_instance_string)
         f.close()
-
         cmd = '/home/mk/Planning/VAL/validate -v /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl \
                 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl ' \
                 + " ".join([current_plan_path_string+str(i) for i in range(len(actions_to_VAL))]) + \
                 ' > /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt'
         #cmd = '/home/mk/Planning/VAL/validate -v  /home/mk/PycharmProjects/pic-to-plan/take-put-domain.pddl /home/mk/PycharmProjects/pic-to-plan/current-state-take-put-instance-no-handempty.pddl /home/mk/PycharmProjects/pic-to-plan/val_exp/open_sas_plan > plan_val_output.txt' #check for unsatisfied precondition --> action not applicable in current state
+        #t1 = time.time()
         os.system(cmd)
-
+        #t2 = time.time()
+        #print(t2-t1)
         plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r")
         plan_val_output_joined = "".join(plan_val_output.readlines())
         new_state_sets = []

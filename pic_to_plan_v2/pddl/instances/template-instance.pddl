@@ -17,7 +17,8 @@
     ;<insert_init>
 );end init
 
-(:goal (and (grasped cucumber1) (open drawer1))
-);end goal
+(:goal (and
+(grasped cucumber1) (open drawer1)
+));end goal
 
 );end define

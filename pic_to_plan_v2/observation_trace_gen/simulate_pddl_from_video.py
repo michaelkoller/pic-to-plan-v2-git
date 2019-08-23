@@ -155,7 +155,7 @@ def build_tree():
     print("Time spent in os.system", tot_os_cmd_time)
 
 if __name__ == "__main__":
-    run_type = 2
+    run_type = 1
 
     if run_type == 1:
         build_tree()
