@@ -3,42 +3,42 @@
 
 Plan size: 1
 1:
-(open_storage_with_hand cupboard1 r_hand)
+(put_in_hand plastic_paper_bag1 r_hand)
  
 
 Plan Validation details
 -----------------------
 
 Checking next happening (time 1)
-Adding (open cupboard1)
-Adding (used cupboard1)
-Adding (active cupboard1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
+Plan failed because of unsatisfied precondition in:
+(put_in_hand plastic_paper_bag1 r_hand)
+
+Plan failed to execute
 
 Plan Repair Advice:
 
-The goal is not satisfied
+(put_in_hand plastic_paper_bag1 r_hand) has an unsatisfied precondition at time 1
 (Follow each of:
-    (Set (grasped cucumber1) to true)
-    and (Set (open drawer1) to true)
+    (Set (hand_empty r_hand) to true)
+    and (Set (grasped plastic_paper_bag1) to false)
 )
 Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_1
 ;Plan to validate:
 
 Plan size: 1
 1:
-(close_storage_with_hand cupboard1 r_hand)
+(put_out_of_hand plastic_paper_bag1 r_hand)
  
 
 Plan Validation details
 -----------------------
 
 Checking next happening (time 1)
-Deleting (open cupboard1)
-Adding (used cupboard1)
-Adding (active cupboard1)
+Deleting (in_hand plastic_paper_bag1 r_hand)
+Deleting (grasped plastic_paper_bag1)
+Adding (hand_empty r_hand)
+Adding (used plastic_paper_bag1)
+Adding (active plastic_paper_bag1)
 Plan executed successfully - checking goal
 Goal not satisfied
 Plan invalid

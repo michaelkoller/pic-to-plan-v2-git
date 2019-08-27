@@ -42,8 +42,8 @@ class Node:
         actions_to_VAL = self.possible_actions[self.depth][1]
         pos_act_children =  self.call_VAL(actions_to_VAL)
         nop_child = Node(self.state, self, self.possible_actions, "nop", self.depth + 1)
-        asdf = pos_act_children + [nop_child]
-        return asdf
+        pos_act_children_plus_nop = pos_act_children + [nop_child]
+        return pos_act_children_plus_nop
 
     def call_VAL(self, actions_to_VAL):
         current_plan_path_string = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_"
@@ -75,18 +75,19 @@ class Node:
         plan_val_output_joined = "".join(plan_val_output.readlines())
         new_state_sets = []
         plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r") #TODO superfluous open, but readlines changes the iterator...
+        new_atom_added_list = []
         for line in plan_val_output:
             if "Checking plan" in line:
-                new_atom_added = False
+                new_atom_added_list.append(False)
                 new_state_sets.append(copy.deepcopy(self.state))
             elif "Deleting" in line:
-                new_atom_added = True
+                new_atom_added_list[-1] = True
                 m = Node.re_compiled.search(line)
                 atom_to_delete = m.group(0)
                 if atom_to_delete in new_state_sets[-1]:
                     new_state_sets[-1].remove(atom_to_delete)
             elif "Adding" in line:
-                new_atom_added = True
+                new_atom_added_list[-1] = True
                 m = Node.re_compiled.search(line)
                 atom_to_add = m.group(0)
                 if atom_to_add not in new_state_sets[-1]:
@@ -97,7 +98,7 @@ class Node:
             #TODO introduce a dict to look up existing states. if existing states occur, allow multiple parents.
             #this results in a DAG, and needs to update the backup fct. take care of duplicate rewards as paths remerge later,
             #depth will be more complex to define, nop action maybe useless afterwards
-            if new_atom_added: # and sorted_new_state_string not in state_string_to_node_id_dict.keys(): #new atom short circuits logical expression
+            if new_atom_added_list[i]: # and sorted_new_state_string not in state_string_to_node_id_dict.keys(): #new atom short circuits logical expression
                 new_node = Node(new_state, self, self.possible_actions, try_action_strings[i], self.depth + 1)
                 children.append(new_node)
         return children

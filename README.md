@@ -107,3 +107,99 @@ TODO maybe it makes sense to push Val, FD and ProbPR also to a git repo so I hav
     find all touch events
     find all possible actions
     
+    
+    
+    
+--------------TIM
+is there really no relevant work?
+look for keywords: goal estimation
+
+- from video to planning instance --> more than activity rec
+- uses plan recognition
+- object manipulation problems
+
+task recognition (atomic actions form bigger task)
+compare own work to task recognition approaches and then say, "we also can plan with the result"
+
+- compare final picture of mpii cooking 2 for "simple" activity rec systems
+- see if my approach has same goal estimation, but then it has more than label info
+
+- this is how well my thing estimates the goal as well as whole plan
+- "manual annotation": "correct plan" for each video, including the actions the human has done
+compare against that
+--> manual annotation an observation sequence with the most important actions at least (~10-12)
+resulting plans should include these key actions
+
+- ablation, what parameters to compare
+- use more drastic differences as comparison (e.g., no mcts parameter variations)
+
+--- quickly generating test data:
+define problem instance,
+let planner solve it
+use plan to reconstruct all touch events
+use this possible_actions list as input for own pipeline
+
+- use VR for generating lots of videos??
+
+Problems
++++ dataset small, no variation in scenario
++++ record different settings, like blockworld
++++ whats the related work really?
+
++++ STEPS
+improve system
+dataset preparation 
+evaluation
+write up
+
+
++++ 
+abstract
+introduction
+    vision 
+    challenge
+    approach
+    results
+    contributions list:
+        gap bridged
+        works even with only bounding boxes
+    outline
+related work
+    background VS competition
+    activity rec (only from video to label)
+    plan rec (only from logic formulation to plan/goal estimation)
+    --> nothing bridges gap
+    everything i find on goal/plan estation (important is what is input and output)
+    (related work shows what works so far, what is missing)
+method
+    system overview
+        top down
+        from high level to point where eachs submodule needs to be explained
+    object tracking
+    planning
+    symbol grounding
+    ontologies
+    mcts
+        where is the entry point for explanations?
+        show most relevant of each topic
+dataset expanation 
+    metric
+    annotation generation
+evaluation
+    compare against "ground truth" annotation, whatever that is (plans!)
+    all comparisons of ablations are against ground truth
+    find way to compare against activity recognition (last frame??)
+conclusion (i.e. outlook + summary)
+
++++ threats: 
+    evaluation weak, small dataset, no generality shown
+    --> generate more data for evaluation!
+    --> if there really is a gap, how can you evaluate it against other things?
+    novelty?
+    --> related work, introduction reeally needs to argue why this contribution is novel
+    --> it's not on a robot yet, so this needs to be argued in the conclusion
+    --> can I come up with really simple demo (needs not really to be on actual robot)
+    --> show the robot can act on the recognized goal via twin domains (one for observation, one for own planning)
+        --> demonstration why it's useful, links back to high level
+        this approach lends itself to feed back into observed situation
+        Gap: when a robot observes smthng, it usually wants to act somehow.

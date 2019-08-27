@@ -1,7 +1,7 @@
 import tarfile
 
 def create_pr_instance(obs):
-    print("cr pr in", obs)
+    print("create plan rec instance:", obs)
     joined_obs = "\n".join(obs)
     obs_file = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/obs.dat", "w")
     obs_file.write(joined_obs)
