@@ -182,10 +182,10 @@ method
     mcts
         where is the entry point for explanations?
         show most relevant of each topic
-dataset expanation 
+dataset explanation 
     metric
     annotation generation
-evaluation
+evaluation      
     compare against "ground truth" annotation, whatever that is (plans!)
     all comparisons of ablations are against ground truth
     find way to compare against activity recognition (last frame??)
@@ -203,3 +203,6 @@ conclusion (i.e. outlook + summary)
         --> demonstration why it's useful, links back to high level
         this approach lends itself to feed back into observed situation
         Gap: when a robot observes smthng, it usually wants to act somehow.
+        
+Generalised Domain Model Acquisition from Action Traces
+--> is my work just in the other direction?

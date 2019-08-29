@@ -179,7 +179,7 @@ class UCTSearch:
             G.node[v.nid]["nid"] = v.nid
             G.node[v.nid]["parent_nid"] = v.parent.nid if v.parent is not None else "root"
             G.node[v.nid]["depth"] = v.depth
-            G.node[v.nid]["label"] = "id"+str(v.nid)+" "+str(v.prev_action) + "\n" +str(v.num_visits) + " "+ str(round(v.total_reward,3))
+            G.node[v.nid]["label"] = "id"+str(v.nid)+" "+str(v.prev_action) + "\n" +str(v.num_visits) + " "+ str(round(v.total_reward,3)) + " " + str(round(v.total_reward/v.num_visits,3))
 
             for c in v.children.values():
                 G.add_edge(v.nid, c.nid)
@@ -271,3 +271,28 @@ if __name__ == "__main__":
 #problem: if an action sequence explains a "short" goal as well as a "long" goal, which is preferred?
 #solution: probably dont consider action sequence length
 #it should be such that, as soon as a goal is plausible, it should be rated highly no matter what
+
+#TODO: DAG is possible to construct and helpful in reducing number of states in search. But in general, with pddl
+#domains, there can be loops, e.g., an action plus its reverse action (pick up, put down) this can potentially destroy
+#a dag, e.g.: 0 --> 1 <--> 2  as a search tree.
+#but we can argue, that an action sequence that loops back can never be a good plan:
+#say, there is a sequence pi = pi'+pi'', pi' leads from s_0 to s', and pi'' from s' to s' over some other states, then
+#if for all actions c(a) >0, and the goal is s', then of course pi' is sufficient and the better plan to reach s' than pi' + pi''
+#so, we need an algorithmmic check if the next action to be added as achild creates a loop in the otherwise DAG.
+#if a loop would be created, we know we don't need it.
+
+#DAG TODO:
+#have hashtable for state lookup, use state descriptor as hashvalue (set to list, sort list, join by " " --> unique state string)
+#store values in edges, rather than in nodes
+
+#TODO MAYBE BIG DRAWBACK:
+#say, there is a correct action sequence and each action needs effects of its predecessor in their precondition
+#A->B->C
+#now lets say, the object tracker somehow doesn't provide object touches that would lead to try out B,
+#but the possible actions lead to try out A and then C
+#but now, C wont be even tried out, because C is not applicable from A
+#although, if there would be an observation sequence including A -> C, then the plan recognition process would
+#rediscover B in the solution from initial state to state after action C
+#Maybe it is not complete, to filter the possible actions to applicable actions?
+
+#TODO childs 2008, gaudel 2010, saffidine2010 lesen
