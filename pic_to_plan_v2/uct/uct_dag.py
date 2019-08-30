@@ -75,40 +75,43 @@ class UCTSearch:
         self.t_start = time.time()
         self. s_0 = s_0
         self.node_dict = dict()
-        self.v_0 = Node(self.s_0, None, self.possible_actions)
+        self.v_0 = Node(self.s_0, None, self.possible_actions_session)
         self.node_dict[self.v_0.__hash__()] = self.v_0
         self.n_iter = 0
         self.iteration_limit = iteration_limit if iteration_limit != None else  math.inf
         self.time_limit = time_limit if time_limit != None else math.inf
-        self.max_tree_depth = len(self.possible_actions) #there are no more observed actions from the bounding box overlaps after that.
+        self.max_tree_depth = len(self.possible_actions_session) #there are no more observed actions from the bounding box overlaps after that.
                                                     #the tree at max level cannot be expanded further
                                                     #at max level you can only call default policy
                                                     #in DAG, there cannot be a longer path than this
-        self.v_0.untried_children = self.v_0.call_VAL(self.possible_actions[0][1]) #should return (edge, node) tuples
+        self.v_0.untried_children = self.v_0.call_VAL(self.possible_actions_session[0][1])
 
-        # t_1 = time.time()
         while (time.time()-self.t_start < self.time_limit and self.n_iter < self.iteration_limit):
-            # if time.time() - t_1 > 10:
-            #     t_1 = time.time()
-            #     self.v_0.print_subtree()
+            # if self.n_iter % 100 == 0:
+            #     print("iter", self.n_iter)
+            #     self.save_dot()
 
-            if self.n_iter % 10 == 0:
-                self.save_dot()
 
-            v_l = self.tree_policy(self.v_0)
+            v_l, edge_descent_trace = self.tree_policy(self.v_0)
+            #print("desc", edge_descent_trace)
             if v_l.__hash__() in self.node_dict: #this state already exists and has a value
-                print("found duplicate node")
-                del v_l.parent.children[v_l.nid] #the additional parent of the child node is not set yet
+                #print("found duplicate node")
+                if len(edge_descent_trace) > 0:
+                    edge_descent_trace[-1].destination = self.node_dict[v_l.__hash__()]
+                    if self.loop_check():
+                        loop_creating_edge = edge_descent_trace[-1]
+                        loop_creating_edge.origin.out_edges.remove(loop_creating_edge)
+                        print(self.loop_check())
+                    ###TODO! Avoid loops, otherwise no DAG
+                    ###multiedges ok, though... do they cause problems?
                 v_l = self.node_dict[v_l.__hash__()]
-                if v_l.parent is not None:
-                    v_l.parent.children[v_l.nid] = v_l
-                delta = v_l.total_reward / v_l.num_visits
+                delta = v_l.get_mean_reward()
             else:
+                self.node_dict[v_l.__hash__()] = v_l
                 delta = self.default_policy(v_l)
-            print(v_l.nid, v_l.prev_action, v_l.total_reward, delta)
-            self.backup(v_l, delta)
+            self.backup(edge_descent_trace, delta)
             self.n_iter += 1
-        self.v_0.print_subtree()
+        #self.v_0.print_subtree()
         self.get_best_path()
         t_stop = time.time()
         processing_time = t_stop - self.t_start
@@ -117,26 +120,46 @@ class UCTSearch:
               self.possible_actions_session[-1][0] / (30.0 * processing_time))
         return 0
 
+    def loop_check(self):
+        print("in loop check")
+        v_set = set()
+        result = [False]
+        self.loop_check_aux(self.v_0, v_set, result)
+        print(result[0])
+        return result[0]
+
+    def loop_check_aux(self, v, v_set, result):
+        if v in v_set:
+            print("loop detected:", v)
+            result[0] = True
+            return True
+        else:
+            v_set.add(v)
+            for e in v.out_edges:
+                return self.loop_check_aux(e.destination, v_set, result)
+
     def save_dot(self):
         G = uct_search.create_nx_graph()
         draw_search_tree_mod.draw_tree_nx(G, self.n_iter)
 
     def tree_policy(self, v):
+        edge_descent_trace = []
         while not v.is_terminal:
-            if v.untried_children == [] and v.out_edges == [] #this means there are no further possible actions to try
-                return v
+            if v.untried_children == [] and v.out_edges == []:
+                return v, edge_descent_trace
             elif not v.is_fully_expanded():
-                expanded_v =  self.expand(v)
-                return expanded_v
+                expanded_e, expanded_v =  self.expand(v)
+                return expanded_v, edge_descent_trace
             else:
-                v = v.get_best_child()
-        return v #currently never reached, because no useful "is_terminal" definable
+                e, v = v.get_best_child()
+                edge_descent_trace.append(e)
+        return v, edge_descent_trace #currently never reached, because no useful "is_terminal" definable
 
     def expand(self, v):
         if v.untried_children is None:
             v.untried_children = v.get_children_from_possible_actions() #call to VAL
-        v_child =  v.choose_untried_action()
-        return v_child
+        e_child, v_child = v.choose_untried_action()
+        return e_child, v_child
 
     def default_policy(self, v):
         #dummy def pol
@@ -153,11 +176,10 @@ class UCTSearch:
         create_pr_instance_mod.create_pr_instance(obs)
         return call_plan_rec_mod.call_plan_rec()
 
-    def backup(self, v, delta):
-        while v is not None:
-            v.num_visits += 1
-            v.total_reward += delta
-            v = v.parent
+    def backup(self, edge_descent_trace, delta):
+        for e in edge_descent_trace[::-1]:
+            e.total_reward += delta
+            e.num_visits += 1
 
     def get_best_path(self):
         path = [self.v_0]
@@ -171,26 +193,23 @@ class UCTSearch:
         G = nx.DiGraph()
 
         def get_nx_nodes_a_edges(v, G):
-            G.add_node(v.nid)
-            if v.prev_action == "nop":
-                G.node[v.nid]['color'] = 'red'
-                G.node[v.nid]['fillcolor'] = 'red'
-            else:
+
+            if v.nid not in G.nodes:
+                G.add_node(v.nid)
                 G.node[v.nid]['color'] = 'black'
                 G.node[v.nid]['fillcolor'] = 'white'
-            G.node[v.nid]["penwidth"] = 5 * (v.total_reward / v.num_visits) if v.num_visits > 0 else 1
-            G.node[v.nid]["total_reward"] = v.total_reward
-            G.node[v.nid]["num_visits"] = v.num_visits
-            G.node[v.nid]["prev_action"] = v.prev_action
-            G.node[v.nid]["nid"] = v.nid
-            G.node[v.nid]["parent_nid"] = v.parent.nid if v.parent is not None else "root"
-            G.node[v.nid]["depth"] = v.depth
-            G.node[v.nid]["label"] = "id"+str(v.nid)+" "+str(v.prev_action) + "\n" +str(v.num_visits) + " "+ str(round(v.total_reward,3)) + " " + str(round(v.total_reward/v.num_visits,3) if v.num_visits > 0 else "")
+                #G.node[v.nid]["penwidth"] = 5 * (v.get_mean_reward()) if v.get_visit_count() > 0 else 1
+                G.node[v.nid]["total_reward"] = v.get_total_reward()
+                G.node[v.nid]["num_visits"] = v.get_visit_count()
+                G.node[v.nid]["nid"] = v.nid
+                G.node[v.nid]["state"] = v.state_string
+                G.node[v.nid]["label"] = "id"+str(v.nid)#+ " "+ str(v.state_string) + "\n"+ str(round(v.get_mean_reward(),3))
 
-            for c in v.children.values():
-                G.add_edge(v.nid, c.nid)
-                G.edges[v.nid, c.nid]['penwidth'] = 5 * (c.total_reward / c.num_visits)
-                get_nx_nodes_a_edges(c, G)
+            for e in v.out_edges:
+                #if (v.nid, e.destination.nid) not in G.edges:
+                G.add_edge(e.origin.nid, e.destination.nid)
+                G.edges[e.origin.nid, e.destination.nid]['penwidth'] = 5 * (e.get_mean_reward())
+                get_nx_nodes_a_edges(e.destination, G)
         get_nx_nodes_a_edges(self.v_0, G)
         return G
 
@@ -209,20 +228,20 @@ if __name__ == "__main__":
     uct_search = UCTSearch()
 
     if run_type == 1:
-        uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), uct_search.possible_actions_session)
+        uct_search.uct_search(copy.deepcopy(uct_search.current_state_set))
     elif run_type == 2:
-        cProfile.run("uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), uct_search.possible_actions_session, iteration_limit=10)", "profilestats")
+        cProfile.run("uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), iteration_limit=10)", "profilestats")
         p = pstats.Stats('profilestats')
         # p.strip_dirs().sort_stats('cumulative').print_stats()
         p.sort_stats('cumulative').print_stats()
     elif run_type == 3:
         profiler = cProfile.Profile()
-        profiler.run("uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), uct_search.possible_actions_session, iteration_limit=10)")
+        profiler.run("uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), iteration_limit=10)")
         visualize(profiler.getstats())
         convert(profiler.getstats(), 'profiling_results.kgrind')
     elif run_type == "test_put":
         p_a = [(342, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand'), ('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (372, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (379, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (386, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (438, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (490, [('open_storage_with_hand', 'cupboard1', 'r_hand'), ('close_storage_with_hand', 'cupboard1', 'r_hand')]), (492, [('open_storage_with_hand', 'cupboard1', 'l_hand'), ('close_storage_with_hand', 'cupboard1', 'l_hand')]), (524, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (527, [('open_storage_with_hand', 'cupboard1', 'r_hand'), ('close_storage_with_hand', 'cupboard1', 'r_hand')]), (528, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand')]), (531, [('open_storage_with_hand', 'cupboard1', 'l_hand'), ('close_storage_with_hand', 'cupboard1', 'l_hand')]), (759, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (786, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (787, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (794, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (805, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (819, [('open_storage_with_hand', 'cupboard1', 'r_hand'), ('close_storage_with_hand', 'cupboard1', 'r_hand')]), (821, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (822, [('open_storage_with_hand', 'cupboard1', 'l_hand'), ('close_storage_with_hand', 'cupboard1', 'l_hand')]), (831, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (842, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (868, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand')]), (892, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (897, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (904, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (1255, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (1256, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (1277, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (1347, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1349, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1353, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (1355, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1357, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1361, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand')]), (1368, [('open_storage_with_hand', 'cupboard1', 'l_hand'), ('close_storage_with_hand', 'cupboard1', 'l_hand')]), (1387, [('open_storage_with_hand', 'drawer1', 'r_hand'), ('close_storage_with_hand', 'drawer1', 'r_hand'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1394, [('open_storage_with_hand', 'drawer1', 'l_hand'), ('close_storage_with_hand', 'drawer1', 'l_hand')]), (1395, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1408, [('open_storage_with_hand', 'cupboard1', 'r_hand'), ('close_storage_with_hand', 'cupboard1', 'r_hand')]), (1417, [('open_storage_with_hand', 'cupboard1', 'r_hand'), ('close_storage_with_hand', 'cupboard1', 'r_hand')]), (1426, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1460, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1468, [('open_storage_with_hand', 'cupboard1', 'r_hand'), ('close_storage_with_hand', 'cupboard1', 'r_hand'), ('open_storage_with_hand', 'cupboard1', 'l_hand'), ('close_storage_with_hand', 'cupboard1', 'l_hand')]), (1473, [('cut', 'plastic_paper_bag1', 'knife1'), ('put_in_hand', 'knife1', 'r_hand'), ('put_out_of_hand', 'knife1', 'r_hand'), ('cut', 'r_hand', 'knife1'), ('cut', 'drawer1', 'knife1')]), (1478, [('cut', 'cupboard1', 'knife1'), ('cut', 'plastic_paper_bag1', 'knife1')]), (1488, [('open_storage_with_hand', 'drawer1', 'r_hand'), ('close_storage_with_hand', 'drawer1', 'r_hand')]), (1489, [('cut', 'plastic_paper_bag1', 'knife1'), ('cut', 'cupboard1', 'knife1')]), (1497, [('cut', 'counter1', 'knife1')]), (1500, [('cut', 'bread1', 'knife1'), ('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand'), ('open_storage_with_hand', 'cupboard1', 'r_hand'), ('close_storage_with_hand', 'cupboard1', 'r_hand')]), (1518, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand')]), (1534, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1540, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (1543, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (1551, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1560, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1603, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1617, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1620, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1647, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1649, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1658, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1670, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1767, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1773, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1778, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1780, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1783, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1788, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (1789, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (1791, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand')]), (1793, [('cut', 'bread1', 'knife1')]), (1794, [('cut', 'bread1', 'knife1')]), (1795, [('cut', 'plate1', 'knife1'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1802, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand'), ('cut', 'bread1', 'knife1'), ('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1803, [('cut', 'plastic_paper_bag1', 'knife1')]), (1805, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1807, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1821, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1823, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (1826, [('put_in_hand', 'knife1', 'r_hand'), ('put_out_of_hand', 'knife1', 'r_hand'), ('cut', 'r_hand', 'knife1')]), (1841, [('open_storage_with_hand', 'cupboard1', 'l_hand'), ('close_storage_with_hand', 'cupboard1', 'l_hand')]), (1873, [('open_storage_with_hand', 'cupboard1', 'l_hand'), ('close_storage_with_hand', 'cupboard1', 'l_hand')]), (1879, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand'), ('cut', 'drawer1', 'knife1'), ('open_storage_with_hand', 'drawer1', 'l_hand'), ('close_storage_with_hand', 'drawer1', 'l_hand'), ('open_storage_with_hand', 'drawer1', 'r_hand'), ('close_storage_with_hand', 'drawer1', 'r_hand')]), (1882, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand'), ('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1883, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1892, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1896, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1899, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1912, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (1913, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1923, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1924, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (1931, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1933, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1966, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (1968, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (1983, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (1998, [('put_in_hand', 'cuttingboard1', 'l_hand'), ('put_out_of_hand', 'cuttingboard1', 'l_hand')]), (2024, [('put_in_hand', 'cuttingboard1', 'l_hand'), ('put_out_of_hand', 'cuttingboard1', 'l_hand')]), (2025, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (2026, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand')]), (2027, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2030, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand'), ('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2031, [('put_in_hand', 'knife1', 'r_hand'), ('put_out_of_hand', 'knife1', 'r_hand'), ('cut', 'r_hand', 'knife1'), ('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2033, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (2047, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (2049, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2050, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand'), ('cut', 'plastic_paper_bag1', 'knife1'), ('cut', 'plate1', 'knife1')]), (2051, [('cut', 'bread1', 'knife1')]), (2052, [('cut', 'cuttingboard1', 'knife1')]), (2055, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2063, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2070, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand')]), (2071, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand'), ('put_in_hand', 'cuttingboard1', 'l_hand'), ('put_out_of_hand', 'cuttingboard1', 'l_hand')]), (2072, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (2077, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2078, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2082, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2192, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2194, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2197, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2199, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2202, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2204, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2270, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2285, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2296, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2303, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2310, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2362, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2365, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2382, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2384, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2479, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2491, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('cut', 'bread1', 'knife1'), ('cut', 'bread1', 'knife1')]), (2518, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand'), ('put_in_hand', 'cuttingboard1', 'l_hand'), ('put_out_of_hand', 'cuttingboard1', 'l_hand')]), (2519, [('put_in_hand', 'cuttingboard1', 'l_hand'), ('put_out_of_hand', 'cuttingboard1', 'l_hand')]), (2520, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (2521, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2530, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2568, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2569, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2572, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (2573, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (2581, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2594, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2600, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (2601, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2602, [('put_in_hand', 'cuttingboard1', 'l_hand'), ('put_out_of_hand', 'cuttingboard1', 'l_hand')]), (2603, [('cut', 'bread1', 'knife1')]), (2608, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (2609, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand')]), (2610, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'knife1', 'r_hand'), ('put_out_of_hand', 'knife1', 'r_hand'), ('cut', 'r_hand', 'knife1')]), (2612, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand'), ('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2614, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2619, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (2626, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2627, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2628, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand'), ('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (2630, [('put_in_hand', 'knife1', 'r_hand'), ('put_out_of_hand', 'knife1', 'r_hand'), ('cut', 'r_hand', 'knife1')]), (2631, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2635, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2639, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2640, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2656, [('cut', 'bread1', 'knife1')]), (2657, [('put_in_hand', 'knife1', 'r_hand'), ('put_out_of_hand', 'knife1', 'r_hand'), ('cut', 'r_hand', 'knife1')]), (2659, [('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand'), ('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand'), ('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2660, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2661, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2679, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2680, [('put_in_hand', 'plastic_paper_bag1', 'r_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'r_hand')]), (2681, [('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand'), ('put_in_hand', 'bread1', 'r_hand'), ('put_out_of_hand', 'bread1', 'r_hand')]), (2682, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand'), ('put_in_hand', 'plate1', 'r_hand'), ('put_out_of_hand', 'plate1', 'r_hand')]), (2684, [('put_in_hand', 'knife1', 'r_hand'), ('put_out_of_hand', 'knife1', 'r_hand'), ('cut', 'r_hand', 'knife1'), ('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2693, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2702, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (2703, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand'), ('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (2705, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (2706, [('put_in_hand', 'plastic_paper_bag1', 'l_hand'), ('put_out_of_hand', 'plastic_paper_bag1', 'l_hand')]), (2712, [('put_in_hand', 'cuttingboard1', 'l_hand'), ('put_out_of_hand', 'cuttingboard1', 'l_hand')]), (2724, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (2732, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (2733, [('put_in_hand', 'bread1', 'l_hand'), ('put_out_of_hand', 'bread1', 'l_hand')]), (2744, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (2752, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2753, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2771, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (2773, [('put_in_hand', 'plate1', 'l_hand'), ('put_out_of_hand', 'plate1', 'l_hand')]), (2816, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2821, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2848, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2862, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2908, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2922, [('put_in_hand', 'knife1', 'l_hand'), ('put_out_of_hand', 'knife1', 'l_hand'), ('cut', 'l_hand', 'knife1')]), (2941, [('put_in_hand', 'cuttingboard1', 'r_hand'), ('put_out_of_hand', 'cuttingboard1', 'r_hand')]), (2942, [('put_in_hand', 'cuttingboard1', 'l_hand'), ('put_out_of_hand', 'cuttingboard1', 'l_hand')]), (2946, [('put_in_hand', 'knife1', 'r_hand'), ('put_out_of_hand', 'knife1', 'r_hand'), ('cut', 'r_hand', 'knife1')]), (2951, [('open_storage_with_hand', 'cupboard1', 'r_hand'), ('close_storage_with_hand', 'cupboard1', 'r_hand')])]
-        uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), p_a)
+        uct_search.uct_search(copy.deepcopy(uct_search.current_state_set))
     else:
         print("provide valid run_type number")
 

@@ -4,56 +4,66 @@ import os
 import re
 import copy
 import time
+import pic_to_plan_v2.uct.uct_edge as uct_edge_mod
 
 class Node:
     nid = 0
     re_compiled = re.compile(r"\([A-Za-z0-9_ ]+\)") #TODO pass it down from uct_search instead of setting it here
 
-    def __init__(self, state, parent, possible_actions, prev_action, depth):
+    def __init__(self, state, in_edge, possible_actions):
         self.state = state
+        self.state_string = " ".join(sorted(list(self.state)))
+        self.hash_value = self.state_string.__hash__()
         self.is_terminal = False #you always need to check with Plan Rec to get reward
-        self.parent = parent
-        self.num_visits = 0
-        self.total_reward = 0
-        self.depth = depth
-        self.children = {}
+        self.in_edges = [in_edge]
+        self.out_edges = []
         self.possible_actions = possible_actions
         self.untried_children = None #self.get_children_from_possible_actions() #call to VAL
-        self.prev_action = prev_action
         self.nid = Node.nid
+        self.expanded_possible_action_indices = []
         Node.nid += 1
 
     def __repr__(self):
-        return "ID " + str(self.nid) + " Depth " + str(self.depth) + " Prev Act " + str(self.prev_action)
+        return "ID " + str(self.nid) + " " + self.state_string
 
     def __str__(self):
-        return "ID " + str(self.nid) + " Depth " + str(self.depth) + " Prev Act " + str(self.prev_action)
+        return "ID " + str(self.nid) + " " + self.state_string
+
+    def __hash__(self):
+        return self.hash_value
 
     def is_fully_expanded(self):
         return self.untried_children is not None and len(self.untried_children) == 0
 
     def choose_untried_action(self):
         len_untried_children = len(self.untried_children)
-        chosen_child = self.untried_children.pop(random.randint(0, len_untried_children - 1))
-        self.children[chosen_child.nid] = chosen_child
-        return chosen_child
+        chosen_child_edge_plus_node = self.untried_children.pop(random.randint(0, len_untried_children - 1))
+        self.out_edges.append(chosen_child_edge_plus_node[0])
+        return chosen_child_edge_plus_node
 
     def get_children_from_possible_actions(self):
-        actions_to_VAL = self.possible_actions[self.depth][1]
-        pos_act_children =  self.call_VAL(actions_to_VAL)
-        nop_child = Node(self.state, self, self.possible_actions, "nop", self.depth + 1)
-        pos_act_children_plus_nop = pos_act_children + [nop_child]
-        return pos_act_children_plus_nop
+        pos_act_children = self.call_VAL(self.possible_actions[self.get_min_in_edge_possible_action_index()][1])
+        return pos_act_children
 
-    def call_VAL(self, actions_to_VAL):
+    def get_min_in_edge_possible_action_index(self):
+        return min([e.possible_actions_index for e in self.in_edges]) if self.in_edges != [None] else 0
+
+    def call_VAL(self, n_iter):
         current_plan_path_string = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_"
+
         try_action_strings = []
-        for i, try_action in enumerate(actions_to_VAL):
-            try_action_string = "(" + " ".join(try_action) + ")"    #create the plan for the action to try
-            try_action_strings.append(try_action_string)
-            f = open(current_plan_path_string+str(i), "w")
-            f.write(try_action_string + "\n;cost = 1 (unit cost)")
-            f.close()
+        plan_file_names = []
+        pos_act_indices = []
+        for pos_act_index in range(self.get_min_in_edge_possible_action_index(), len(self.possible_actions)):
+            for i, try_action in enumerate(self.possible_actions[pos_act_index][1]):
+                try_action_string = "(" + " ".join(try_action) + ")"    #create the plan for the action to try
+                if try_action_string not in try_action_strings:
+                    try_action_strings.append(try_action_string)
+                    plan_file_names.append(current_plan_path_string+str(pos_act_index)+"_"+str(i))
+                    pos_act_indices.append(pos_act_index)
+                    f = open(plan_file_names[-1], "w")
+                    f.write(try_action_string + "\n;cost = 1 (unit cost)")
+                    f.close()
         current_state_string = " ".join(self.state)
         template_instance = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects-insert-init.pddl", \
                 "r")
@@ -64,13 +74,10 @@ class Node:
         f.close()
         cmd = '/home/mk/Planning/VAL/validate -v /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl \
                 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl ' \
-                + " ".join([current_plan_path_string+str(i) for i in range(len(actions_to_VAL))]) + \
+                + " ".join(plan_file_names) + \
                 ' > /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt'
         #cmd = '/home/mk/Planning/VAL/validate -v  /home/mk/PycharmProjects/pic-to-plan/take-put-domain.pddl /home/mk/PycharmProjects/pic-to-plan/current-state-take-put-instance-no-handempty.pddl /home/mk/PycharmProjects/pic-to-plan/val_exp/open_sas_plan > plan_val_output.txt' #check for unsatisfied precondition --> action not applicable in current state
-        #t1 = time.time()
         os.system(cmd)
-        #t2 = time.time()
-        #print(t2-t1)
         plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r")
         plan_val_output_joined = "".join(plan_val_output.readlines())
         new_state_sets = []
@@ -99,38 +106,68 @@ class Node:
             #this results in a DAG, and needs to update the backup fct. take care of duplicate rewards as paths remerge later,
             #depth will be more complex to define, nop action maybe useless afterwards
             if new_atom_added_list[i]: # and sorted_new_state_string not in state_string_to_node_id_dict.keys(): #new atom short circuits logical expression
-                new_node = Node(new_state, self, self.possible_actions, try_action_strings[i], self.depth + 1)
-                children.append(new_node)
+                new_edge = uct_edge_mod.Edge(self, None, try_action_strings[i], pos_act_indices[i]) #origin, destination, action, possible_action_index):
+                new_node = Node(new_state, new_edge, self.possible_actions) #state, in_edge, possible_actions):
+                new_edge.destination = new_node
+                children.append((new_edge, new_node))
         return children
 
-    def get_best_child(self, exploration_value=0.7071067811865475): #1 / math.sqrt(2)
+    def get_best_child(self, exploration_value=1.4142135623730951): #math.sqrt(2)
         best_value = -math.inf
-        best_nodes = []
-        for child in self.children.values():
-            if child.num_visits == 0:
-                node_value = math.inf
+        best_edges = []
+        for e in self.out_edges:
+            if e.num_visits == 0:
+                edge_value = math.inf
             else:
-                node_value = child.total_reward / child.num_visits + \
-                         exploration_value * math.sqrt(2 * math.log(self.num_visits) / child.num_visits)
-            if node_value > best_value:
-                best_value = node_value
-                best_nodes = [child]
-            elif node_value == best_value:
-                best_nodes.append(child)
-        return random.choice(best_nodes)
+                # print("EEE", e)
+                # print(e.origin)
+                # print(e.destination)
+                # print(self.get_visit_count(), e.num_visits)
+                # print("in", self.in_edges)
+                # if None not in self.in_edges:
+                #     print("in", [x.num_visits for x in self.in_edges])
+                #     if 0 in [x.num_visits for x in self.in_edges]:
+                #         print("aha")
+                edge_value = e.total_reward / e.num_visits + \
+                         exploration_value * math.sqrt(math.log(self.get_visit_count()) / e.num_visits)
+            if edge_value > best_value:
+                best_value = edge_value
+                best_edges = [e]
+            elif edge_value == best_value:
+                best_edges.append(e)
+        chosen_edge = random.choice(best_edges)
+        return chosen_edge, chosen_edge.destination
 
-    #def default_policy(self):
-    #    rewards = []
-    #    return rewards #len(rewards) == |Goals|, best value per goal
+    def get_visit_count(self):
+        self.num_visits = sum([e.num_visits for e in self.in_edges]) if None not in self.in_edges else 1
+        return self.num_visits
 
-    def get_untried_children_status(self):
-        if self.untried_children is None:
-            return "No untried children yet"
-        else:
-            return str(len(self.untried_children))
+    def get_total_reward(self):
+        self.total_reward = sum([e.total_reward for e in self.in_edges]) if self.in_edges != [None] else 0
+        return self.total_reward
 
-    def print_subtree(self):
-        print("\t"*self.depth + "ID " + str(self.nid) + " Depth " + str(self.depth) + " Prev Act " + str(self.prev_action) + \
-              " len_chil " + str(len(self.children) if self.children is not None else ""))
-        for c in self.children.values():
-            c.print_subtree()
+    def get_mean_reward(self):
+        self.mean_reward = self.get_total_reward() / self.get_visit_count()  if self.get_visit_count() != 0 else math.inf
+        return self.mean_reward
+
+if __name__ == "__main__":
+    a = dict()
+    n1 = Node(["a", "b"], None, None, None, None)
+    n2 = Node(["a", "b"], None, None, None, None)
+    n3 = Node(["a", "c"], None, None, None, None)
+    print(n1.state_string)
+    print(n1.__hash__())
+    print(n2.state_string)
+    print(n2.__hash__())
+    print(n3.state_string)
+    print(n3.__hash__())
+    a[n1.__hash__()] = n1
+    print(a)
+    print(n1.__hash__() in a)
+    print(n2.__hash__() in a)
+    print(n3.__hash__() in a)
+    n1.a = 0
+    n2.a = 1
+    if n2.__hash__() not in a:
+        a[n2.__hash__()] = n2
+    print(a[n2.__hash__()].a)
