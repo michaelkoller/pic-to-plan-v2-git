@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import pic_to_plan_v2.observation_trace_gen.draw_search_tree as draw_search_tree_mod
 import pic_to_plan_v2.observation_trace_gen.create_pr_instance as create_pr_instance_mod
 import pic_to_plan_v2.observation_trace_gen.call_plan_rec as call_plan_rec_mod
+import pic_to_plan_v2.uct.uct_edge as uct_edge_mod
 
 class UCTSearch:
     def __init__(self):
@@ -76,6 +77,8 @@ class UCTSearch:
         self. s_0 = s_0
         self.node_dict = dict()
         self.v_0 = Node(self.s_0, None, self.possible_actions_session)
+        self.e_0 = uct_edge_mod.Edge(None, self.v_0, None, 0)
+        self.v_0.in_edges = [self.e_0]
         self.node_dict[self.v_0.__hash__()] = self.v_0
         self.n_iter = 0
         self.iteration_limit = iteration_limit if iteration_limit != None else  math.inf
@@ -86,26 +89,30 @@ class UCTSearch:
                                                     #in DAG, there cannot be a longer path than this
         self.v_0.untried_children = self.v_0.call_VAL(self.possible_actions_session[0][1])
 
+        avoid_dup_no = 0
         while (time.time()-self.t_start < self.time_limit and self.n_iter < self.iteration_limit):
-            # if self.n_iter % 100 == 0:
-            #     print("iter", self.n_iter)
-            #     self.save_dot()
-
+            if self.n_iter % 10 == 0:
+                print("iter", self.n_iter)
+                print("avoided duplicate nodes:", avoid_dup_no)
+                self.save_dot()
 
             v_l, edge_descent_trace = self.tree_policy(self.v_0)
             #print("desc", edge_descent_trace)
             if v_l.__hash__() in self.node_dict: #this state already exists and has a value
-                #print("found duplicate node")
+                #print("FOUND DUP NODE")
+                avoid_dup_no += 1
                 if len(edge_descent_trace) > 0:
-                    edge_descent_trace[-1].destination = self.node_dict[v_l.__hash__()]
-                    if self.loop_check():
-                        loop_creating_edge = edge_descent_trace[-1]
-                        loop_creating_edge.origin.out_edges.remove(loop_creating_edge)
-                        print(self.loop_check())
-                    ###TODO! Avoid loops, otherwise no DAG
-                    ###multiedges ok, though... do they cause problems?
-                v_l = self.node_dict[v_l.__hash__()]
-                delta = v_l.get_mean_reward()
+                    #check if there is a way from the DESTINATION to ORIGIN (i.e., reverse direction)
+                    if self.check_if_reachable(self.node_dict[v_l.__hash__()], edge_descent_trace[-1].origin):
+                        #print("AVOIDED LOOP")
+                        del edge_descent_trace[-1] #delete the loop creating edge from the backup path
+                        pass #TODO so, here I neither insert node nor change edge, should I abort (via continue?) in this case?
+                        #No, because then this path will be chosen again, if the rewards aren't changed
+                    else:
+                        #change edge from current node to already existing node
+                        edge_descent_trace[-1].destination = self.node_dict[v_l.__hash__()]
+                    v_l = self.node_dict[v_l.__hash__()]
+                    delta = v_l.get_mean_reward()
             else:
                 self.node_dict[v_l.__hash__()] = v_l
                 delta = self.default_policy(v_l)
@@ -120,23 +127,15 @@ class UCTSearch:
               self.possible_actions_session[-1][0] / (30.0 * processing_time))
         return 0
 
-    def loop_check(self):
-        print("in loop check")
-        v_set = set()
-        result = [False]
-        self.loop_check_aux(self.v_0, v_set, result)
-        print(result[0])
-        return result[0]
+    def check_if_reachable(self, from_here, to_here):
+        visited = set()
+        self.check_if_reachable_aux(from_here, visited)
+        return to_here in visited
 
-    def loop_check_aux(self, v, v_set, result):
-        if v in v_set:
-            print("loop detected:", v)
-            result[0] = True
-            return True
-        else:
-            v_set.add(v)
-            for e in v.out_edges:
-                return self.loop_check_aux(e.destination, v_set, result)
+    def check_if_reachable_aux(self, v, visited):
+        visited.add(v)
+        for e in v.out_edges:
+            self.check_if_reachable_aux(e.destination, visited)
 
     def save_dot(self):
         G = uct_search.create_nx_graph()
@@ -148,7 +147,8 @@ class UCTSearch:
             if v.untried_children == [] and v.out_edges == []:
                 return v, edge_descent_trace
             elif not v.is_fully_expanded():
-                expanded_e, expanded_v =  self.expand(v)
+                expanded_e, expanded_v = self.expand(v)
+                edge_descent_trace.append(expanded_e)
                 return expanded_v, edge_descent_trace
             else:
                 e, v = v.get_best_child()
@@ -180,6 +180,8 @@ class UCTSearch:
         for e in edge_descent_trace[::-1]:
             e.total_reward += delta
             e.num_visits += 1
+        self.e_0.total_reward += delta
+        self.e_0.num_visits += 1
 
     def get_best_path(self):
         path = [self.v_0]
@@ -193,22 +195,20 @@ class UCTSearch:
         G = nx.DiGraph()
 
         def get_nx_nodes_a_edges(v, G):
-
-            if v.nid not in G.nodes:
-                G.add_node(v.nid)
-                G.node[v.nid]['color'] = 'black'
-                G.node[v.nid]['fillcolor'] = 'white'
-                #G.node[v.nid]["penwidth"] = 5 * (v.get_mean_reward()) if v.get_visit_count() > 0 else 1
-                G.node[v.nid]["total_reward"] = v.get_total_reward()
-                G.node[v.nid]["num_visits"] = v.get_visit_count()
-                G.node[v.nid]["nid"] = v.nid
-                G.node[v.nid]["state"] = v.state_string
-                G.node[v.nid]["label"] = "id"+str(v.nid)#+ " "+ str(v.state_string) + "\n"+ str(round(v.get_mean_reward(),3))
+            G.add_node(v.nid)
+            G._node[v.nid]['color'] = 'black'
+            G._node[v.nid]['fillcolor'] = 'white'
+            G._node[v.nid]["total_reward"] = v.get_total_reward()
+            G._node[v.nid]["num_visits"] = v.get_visit_count()
+            G._node[v.nid]["nid"] = v.nid
+            G._node[v.nid]["state"] = v.state_string
+            G._node[v.nid]["label"] = "id"+str(v.nid)+ " " + str(round(v.get_mean_reward(),3) )#+ "\n"+ str(v.state_string)
 
             for e in v.out_edges:
                 #if (v.nid, e.destination.nid) not in G.edges:
                 G.add_edge(e.origin.nid, e.destination.nid)
                 G.edges[e.origin.nid, e.destination.nid]['penwidth'] = 5 * (e.get_mean_reward())
+                G.edges[e.origin.nid, e.destination.nid]['label'] = str(e.action).replace(" ", "\n")
                 get_nx_nodes_a_edges(e.destination, G)
         get_nx_nodes_a_edges(self.v_0, G)
         return G
@@ -220,9 +220,12 @@ if __name__ == "__main__":
     # G.add_node(3)
     # G.add_edge(1,2)
     # G.add_edge(1,3)
+    # G.node[2]["test"] = "asdf"
     # G.edges[1,2]['penwidth'] = 3
     # print(G.edges[1,2])
     # print(G.edges)
+    # print(G.nodes)
+    # print(1 not in G.nodes)
     # exit()
     run_type = 1 #"test_put"
     uct_search = UCTSearch()
