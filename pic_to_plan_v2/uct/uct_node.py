@@ -112,24 +112,19 @@ class Node:
                 children.append((new_edge, new_node))
         return children
 
-    def get_best_child(self, exploration_value=1.4142135623730951): #math.sqrt(2)
+    def get_best_child(self, exploration_value=1.4142135623730951, d_1=1, d_2=1, d_3=1): #math.sqrt(2)
         best_value = -math.inf
         best_edges = []
         for e in self.out_edges:
             if e.num_visits == 0:
                 edge_value = math.inf
             else:
-                # print("EEE", e)
-                # print(e.origin)
-                # print(e.destination)
-                # print(self.get_visit_count(), e.num_visits)
-                # print("in", self.in_edges)
-                # if None not in self.in_edges:
-                #     print("in", [x.num_visits for x in self.in_edges])
-                #     if 0 in [x.num_visits for x in self.in_edges]:
-                #         print("aha")
-                edge_value = e.total_reward / e.num_visits + \
-                         exploration_value * math.sqrt(math.log(self.get_visit_count()) / e.num_visits)
+                #Standart UCT
+                # edge_value = e.total_reward / e.num_visits + \
+                #              exploration_value * math.sqrt(math.log(self.get_visit_count()) / e.num_visits)
+                #Saffidine, 2010, UCD
+                edge_value = e.get_mu(d_1) + \
+                             exploration_value * math.sqrt(math.log(e.get_p(d_2)) / e.get_n(d_3))
             if edge_value > best_value:
                 best_value = edge_value
                 best_edges = [e]

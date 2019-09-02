@@ -14,7 +14,9 @@ class Edge:
         self.origin = origin
         self.destination = destination
         self.num_visits = 1 #TODO Achtung, hack, sollte eigentlich mit 0 funktionieren!!!!!!!!!!!!!
+        self.n_prime = 1
         self.total_reward = 0
+        self.mu_prime = 0
         self.eid = Edge.eid
         self.possible_actions_index = possible_action_index
         self.frame_no = -1
@@ -34,3 +36,21 @@ class Edge:
 
     def get_mean_reward(self):
         return self.total_reward / self.num_visits if self.num_visits != 0 else math.inf
+
+    #from Saffidine, 2010, UCD
+    def get_mu(self, depth):
+        print(self)
+        if depth == 0:
+            return self.get_mean_reward()
+        else:
+            return ((self.mu_prime * self.n_prime) + sum([f.get_mu(depth-1) * f.num_visits for f in self.get_children_edges()])) / \
+                   (self.n_prime + sum([g.num_visits for g in self.get_children_edges()]))
+
+    def get_n(self, depth):
+        if depth == 0:
+            return self.num_visits
+        else:
+            return self.n_prime + sum([f.get_n(depth-1) for f in self.get_children_edges()])
+
+    def get_p(self, depth):
+        return sum([f.get_n(depth) for f in self.get_siblings_plus_self()])
