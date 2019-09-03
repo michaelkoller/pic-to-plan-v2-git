@@ -23,10 +23,10 @@ class Edge:
         Edge.eid += 1
 
     def __repr__(self):
-        return "ID " + str(self.eid) + " PAI " + str(self.possible_actions_index) + " Act " + str(self.action)
+        return "ID " + str(self.eid) + " " + str(round(self.get_mean_reward,2)) + " PAI " + str(self.possible_actions_index) + " Act " + str(self.action)
 
     def __str__(self):
-        return "ID " + str(self.eid) + " PAI " + str(self.possible_actions_index) + " Act " + str(self.action)
+        return "ID " + str(self.eid) + " " + str(round(self.get_mean_reward,2)) + " PAI " + str(self.possible_actions_index) + " Act " + str(self.action)
 
     def get_siblings_plus_self(self):
         return self.origin.out_edges
