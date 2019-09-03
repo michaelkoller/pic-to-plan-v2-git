@@ -32,9 +32,24 @@
 	sponge1
 	towel1
 );end objects
+
 (:init
-    ;static class memberships:
-    (bowl bowl1)
+    (dummy)
+    (hand_empty r_hand)
+    (hand_empty l_hand)
+    (stored cucumber1)
+    (stored_in cucumber1 fridge1)
+    (stored knife1)
+    (stored_in knife1 drawer1)
+    (stored peeler1)
+    (stored_in peeler1 drawer1)
+    (stored cuttingboard1)
+    (stored_in cuttingboard1 drawer1)
+    (stored plate1)
+    (stored_in plate1 cupboard1)
+    (stored bowl1)
+    (stored_in bowl1 cupboard1)
+    (bowl bowl1) ; start ontology facts
 	(container bowl1)
 	(graspable bowl1)
 	(bread bread1)
@@ -110,13 +125,12 @@
 	(towel towel1)
 	(tool towel1)
 	(graspable towel1)
-	;end of class membership predicates
-    ;current state:
-    (in_hand bread1 r_hand) (open drawer1) (hand_empty l_hand) (active l_hand) (used bread1) (grasped bread1) (used drawer1) (active r_hand) (active drawer1) (active bread1)
 );end init
 
 (:goal (and
-(grasped cucumber1) (open drawer1)
+(cut_in_pieces cucumber1) (peeled cucumber1) (contained_in cucumber1 bowl1)
 ));end goal
 
 );end define
+
+

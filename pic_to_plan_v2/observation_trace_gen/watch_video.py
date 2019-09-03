@@ -54,6 +54,10 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
         current_frame += 1
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+        if cv2.waitKey(1) & 0xFF == ord('p'):
+            while True:
+                if cv2.waitKey(1) & 0xFF == ord('p'):
+                    break
 
         detected_added_touches = list(current_touching_objects - prev_touching_objects)
         detected_removed_touches = list(prev_touching_objects - current_touching_objects)
@@ -117,7 +121,8 @@ def main():
         bb_to_pddl_obj_dict)
 
     # ['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
-    for current_session in video_annotation.session_names:
+    #for current_session in video_annotation.session_names:
+    for current_session in ["s37-d21"]:
         touch_events = []                       #all binary starts and ends of overlaps between two objects (frame_no, [all touches])
         possible_actions_session = []          #all actions from manipulator_events and non_manipulator_events where the object predicates match to an action (frame_no, [all_actions])
         print(current_session)

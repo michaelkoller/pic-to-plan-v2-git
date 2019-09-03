@@ -221,6 +221,10 @@ class UCTSearch:
                 G.add_edge(e.origin.nid, e.destination.nid)
                 G.edges[e.origin.nid, e.destination.nid]['penwidth'] = 5 * (e.get_mean_reward())
                 G.edges[e.origin.nid, e.destination.nid]['label'] = str(e.action).replace(" ", "\\n")
+                G.edges[e.origin.nid, e.destination.nid]['total_reward'] = str(round(e.total_reward, 2))
+                G.edges[e.origin.nid, e.destination.nid]['num_visits'] = str(round(e.num_visits, 2))
+                G.edges[e.origin.nid, e.destination.nid]['mean_reward'] = str(round(e.get_mean_reward(), 2))
+                G.edges[e.origin.nid, e.destination.nid]['saffidine_mu'] = str(round(e.get_mu(1), 2)) #TODO Attention, parameter should be same d_1 as in algorithm!!!
                 get_nx_nodes_a_edges(e.destination, G)
         get_nx_nodes_a_edges(self.v_0, G)
         return G
@@ -400,3 +404,40 @@ if __name__ == "__main__":
 
 
 #http://www.webgraphviz.com/ --> zeigt pfeildicke
+
+
+#TODO fully detailed kitchen output for problem: cut and peel cucumber
+#   GNU nano 2.9.3                                       sas_plan.1
+#
+# (open_storage_with_hand drawer1 l_hand)
+# (unstore knife1 l_hand drawer1)
+# (open_storage_with_hand fridge1 r_hand)
+# (unstore cucumber1 r_hand fridge1)
+# (cut cucumber1 knife1)
+# (put_out_of_hand knife1 l_hand)
+# (unstore peeler1 l_hand drawer1)
+# (peel cucumber1 peeler1)
+# ; cost = 8 (unit cost)
+#
+
+#TODO recognize more specific goals: if facts in goal1 is superset of goal2 and both goals are fulfilled,
+#the stricter, harder goal should be higher in evaluation
+
+#TODO runtime comparison: goal recognition accuracy over iteration graph
+
+#TODO distinguish between estimating the right goal and the quality of the found observation trace
+
+#TODO there are people who also clean up after themselves (clean utensils, throw away garbage)
+#also, everybody closes storages right after using them
+#SO: how to deal with multiple goals?
+#should I have goals: cut, peel, throw away, clean in parallel or in combination?
+#the algorithm then says that multiple goals are likely in parallel?
+#the planner then has to find a plan that combines multiple plans for the highly likely goals
+#e.g.: it's possible that a person only cuts cucumber, but also that they wash, cut, throw away garbage and clean afterwards
+#how do i distinguish these cases? yes, in both cases the person eventually cuts the cucumber, but the second person is more involved
+
+#TODO multiple instances....
+#TODO different storage places for e.g. bread (cupboard vs fridge)
+
+#TODO http://csci431.artifice.cc/notes/pddl.html
+#nice practical description of fast downward, which heuristics are for adl (when effect)

@@ -1,0 +1,106 @@
+s13-d21
+drawer cuttinbboard
+drawer knife
+fridge cucumber
+cupboard plate
+
+washes cucumber
+dries hands with towel
+cuts off cucumberends
+puts cucumber on plate
+
+s13-d21
+cupboard plastic_paper_bag
+!!!plasticpaperbag contains bread
+cubpoard plate
+drawer knife
+drawer cuttingboard
+!!!multiple bread instances
+
+s21-d21
+fridge cucumber
+washes cucumber
+drawer knife
+cupboard
+bowl
+drawer peeler
+washes, peels, cuts
+throws away peel (location = g_drawer!)
+puts cucumber in bowl
+
+s22-d25
+cupboard plastic_paper_bag
+drawer cuttingboard
+drawer knife
+
+s23-d21
+fridge cucumber
+drawer cuttingboard
+drawer knife
+washes cuttingboard!
+washes knife!
+washes cucumber!
+cuts off cucumber end!
+throws away cucumber end in g_drawer!
+cupboard plate
+washes plate!
+puts cucumber on plate
+washes knife and cuttingboard again!
+
+s27-d21
+fridge cucumber
+drawer cuttingboard
+drawer knife
+washes cucumber
+takes second knife and uses this instead of first knife to cut
+
+s28-d25
+drawer cuttingboard
+drawer knife
+fridge plastic_paper_bag with bread??
+cuts bread
+puts plasticpaperbag with bread back into fridge??
+cupboard plate
+puts bread onto plate
+washes knife
+dries knife
+puts knife back into drawer
+cleans breadcrumbs off cuttingboard into g_drawer
+puts back cuttingboard into drawer
+
+s31-d25
+fridge plasticpaperbag
+cupboard plate
+drawer cuttingboard
+drawer knife
+washes hands?!?
+takes out bread of bag
+cuts bread
+puts back into bag
+cleans cuttingboard into g_drawer
+
+s37-d21
+fridge cucumber
+drawer knife
+drawer cuttingboard
+cupboard plate
+tears off plastic wrapping of cucumber???
+throws away plastic wrapping
+washes cucumber
+cuts cucumber
+cuts off cucumber ends
+drawer peeler
+peels cucumber
+cuts cucumber
+puts cucumber onto plate
+spice holder spice
+puts 2 spices on counter
+then gets another spice and uses this on cucumber
+puts back all 3 spices into spice holder
+--> there is an object plastic_bag on the cucumber
+
+s37-d25
+fridge plastic paper bag with bread
+drawer cuttingboard
+drawer knife
+cuts bread
