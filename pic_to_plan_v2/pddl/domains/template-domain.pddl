@@ -6,38 +6,37 @@
     (in_hand ?x ?y)
     (grasped ?o)
     (open ?s)
-    (used ?o)
-    (active ?o )
+    (cut ?o)
 );end predicates
 
 (:action put_in_hand
     :parameters (?o ?h)
     :precondition (and (manipulator ?h) (hand ?h) (graspable ?o) (hand_empty ?h) (not(= ?o ?h)) (not(grasped ?o)) ) ;hand is just to test
-	:effect	(and (in_hand ?o ?h) (grasped ?o) (not (hand_empty ?h)) (used ?o) (active ?o))
+	:effect	(and (in_hand ?o ?h) (grasped ?o) (not (hand_empty ?h)))
 )
 
 (:action put_out_of_hand
     :parameters (?o ?h)
     :precondition (and (manipulator ?h) (graspable ?o) (in_hand ?o ?h))
-	:effect	(and (not(in_hand ?o ?h)) (not(grasped ?o)) (hand_empty ?h) (used ?o) (active ?o))
+	:effect	(and (not(in_hand ?o ?h)) (not(grasped ?o)) (hand_empty ?h) )
 )
 
 (:action open_storage_with_hand
     :parameters(?s ?h)
     :precondition (and (manipulator ?h) (storage ?s) (hand_empty ?h) )
-    :effect (and (open ?s) (used ?s) (active ?s))
+    :effect (and (open ?s) )
 )
 
 (:action close_storage_with_hand
     :parameters(?s ?h)
     :precondition (and (manipulator ?h) (storage ?s) (hand_empty ?h) )
-    :effect (and (not(open ?s)) (used ?s) (active ?s))
+    :effect (and (not(open ?s)))
 )
 
 (:action cut
     :parameters(?o ?k)
-    :precondition (and (knife ?k) (exists (?h) (and (manipulator ?h) (in_hand ?k ?h))))
-    :effect (active ?o)
+    :precondition (and (knife ?k) (grasped ?k) (food ?o) (grasped ?o))
+    :effect (and (cut ?o))
 )
 ;end actions
 

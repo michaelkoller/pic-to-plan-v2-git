@@ -1,486 +1,4 @@
-;Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_99_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand cuttingboard1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (hand_empty l_hand)
-Adding (in_hand cuttingboard1 l_hand)
-Adding (grasped cuttingboard1)
-Adding (used cuttingboard1)
-Adding (active cuttingboard1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (grasped cucumber1) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_99_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand cuttingboard1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand cuttingboard1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand cuttingboard1 l_hand) has an unsatisfied precondition at time 1
-(Set (in_hand cuttingboard1 l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_101_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand bread1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand bread1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand bread1 l_hand) has an unsatisfied precondition at time 1
-(Set (grasped bread1) to false)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_101_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand bread1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand bread1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand bread1 l_hand) has an unsatisfied precondition at time 1
-(Set (in_hand bread1 l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_102_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand plastic_paper_bag1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (hand_empty l_hand)
-Adding (in_hand plastic_paper_bag1 l_hand)
-Adding (grasped plastic_paper_bag1)
-Adding (used plastic_paper_bag1)
-Adding (active plastic_paper_bag1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (grasped cucumber1) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_102_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand plastic_paper_bag1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand plastic_paper_bag1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand plastic_paper_bag1 l_hand) has an unsatisfied precondition at time 1
-(Set (in_hand plastic_paper_bag1 l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_103_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand knife1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (hand_empty l_hand)
-Adding (in_hand knife1 l_hand)
-Adding (grasped knife1)
-Adding (used knife1)
-Adding (active knife1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (grasped cucumber1) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_103_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand knife1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand knife1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand knife1 l_hand) has an unsatisfied precondition at time 1
-(Set (in_hand knife1 l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_103_2
-;Plan to validate:
-
-Plan size: 1
-1:
-(cut l_hand knife1)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(cut l_hand knife1)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(cut l_hand knife1) has an unsatisfied precondition at time 1
-(Follow one of:
-    (Follow each of:
-        (Set (manipulator bowl1) to true)
-        and (Set (in_hand knife1 bowl1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread1) to true)
-        and (Set (in_hand knife1 bread1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread2) to true)
-        and (Set (in_hand knife1 bread2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread3) to true)
-        and (Set (in_hand knife1 bread3) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter1) to true)
-        and (Set (in_hand knife1 counter1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter2) to true)
-        and (Set (in_hand knife1 counter2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cucumber1) to true)
-        and (Set (in_hand knife1 cucumber1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cupboard1) to true)
-        and (Set (in_hand knife1 cupboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cuttingboard1) to true)
-        and (Set (in_hand knife1 cuttingboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer1) to true)
-        and (Set (in_hand knife1 drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer2) to true)
-        and (Set (in_hand knife1 drawer2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator end1) to true)
-        and (Set (in_hand knife1 end1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator faucet1) to true)
-        and (Set (in_hand knife1 faucet1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator fridge1) to true)
-        and (Set (in_hand knife1 fridge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer1) to true)
-        and (Set (in_hand knife1 g_drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer11) to true)
-        and (Set (in_hand knife1 g_drawer11) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator knife1) to true)
-        and (Set (in_hand knife1 knife1) to true)
-    )
-    or 
-    (Set (in_hand knife1 l_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator peel1) to true)
-        and (Set (in_hand knife1 peel1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator peeler1) to true)
-        and (Set (in_hand knife1 peeler1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_bag1) to true)
-        and (Set (in_hand knife1 plastic_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_paper_bag1) to true)
-        and (Set (in_hand knife1 plastic_paper_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plate1) to true)
-        and (Set (in_hand knife1 plate1) to true)
-    )
-    or 
-    (Set (in_hand knife1 r_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator sink1) to true)
-        and (Set (in_hand knife1 sink1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice1) to true)
-        and (Set (in_hand knife1 spice1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_holder1) to true)
-        and (Set (in_hand knife1 spice_holder1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_shaker1) to true)
-        and (Set (in_hand knife1 spice_shaker1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator sponge1) to true)
-        and (Set (in_hand knife1 sponge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator towel1) to true)
-        and (Set (in_hand knife1 towel1) to true)
-    )
-)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand plate1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (hand_empty l_hand)
-Adding (in_hand plate1 l_hand)
-Adding (grasped plate1)
-Adding (used plate1)
-Adding (active plate1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (grasped cucumber1) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand plate1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand plate1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand plate1 l_hand) has an unsatisfied precondition at time 1
-(Set (in_hand plate1 l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_2
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand cuttingboard1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand cuttingboard1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand cuttingboard1 r_hand) has an unsatisfied precondition at time 1
-(Set (hand_empty r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_3
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand cuttingboard1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand cuttingboard1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand cuttingboard1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand cuttingboard1 r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_4
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand bread1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand bread1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand bread1 r_hand) has an unsatisfied precondition at time 1
-(Follow each of:
-    (Set (hand_empty r_hand) to true)
-    and (Set (grasped bread1) to false)
-)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_5
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand bread1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (in_hand bread1 r_hand)
-Deleting (grasped bread1)
-Adding (hand_empty r_hand)
-Adding (used bread1)
-Adding (active bread1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (grasped cucumber1) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_0
+;Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_45_0
 ;Plan to validate:
 
 Plan size: 1
@@ -500,8 +18,11 @@ Plan failed to execute
 Plan Repair Advice:
 
 (put_in_hand knife1 r_hand) has an unsatisfied precondition at time 1
-(Set (hand_empty r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_1
+(Follow each of:
+    (Set (hand_empty r_hand) to true)
+    and (Set (grasped knife1) to false)
+)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_45_1
 ;Plan to validate:
 
 Plan size: 1
@@ -513,21 +34,23 @@ Plan Validation details
 -----------------------
 
 Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand knife1 r_hand)
-
-Plan failed to execute
+Deleting (in_hand knife1 r_hand)
+Deleting (grasped knife1)
+Adding (hand_empty r_hand)
+Plan executed successfully - checking goal
+Goal not satisfied
+Plan invalid
 
 Plan Repair Advice:
 
-(put_out_of_hand knife1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand knife1 r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_2
+The goal is not satisfied
+(Set (grasped cucumber1) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_46_0
 ;Plan to validate:
 
 Plan size: 1
 1:
-(cut r_hand knife1)
+(open_storage_with_hand drawer1 r_hand)
  
 
 Plan Validation details
@@ -535,185 +58,20 @@ Plan Validation details
 
 Checking next happening (time 1)
 Plan failed because of unsatisfied precondition in:
-(cut r_hand knife1)
+(open_storage_with_hand drawer1 r_hand)
 
 Plan failed to execute
 
 Plan Repair Advice:
 
-(cut r_hand knife1) has an unsatisfied precondition at time 1
-(Follow one of:
-    (Follow each of:
-        (Set (manipulator bowl1) to true)
-        and (Set (in_hand knife1 bowl1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread1) to true)
-        and (Set (in_hand knife1 bread1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread2) to true)
-        and (Set (in_hand knife1 bread2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread3) to true)
-        and (Set (in_hand knife1 bread3) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter1) to true)
-        and (Set (in_hand knife1 counter1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter2) to true)
-        and (Set (in_hand knife1 counter2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cucumber1) to true)
-        and (Set (in_hand knife1 cucumber1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cupboard1) to true)
-        and (Set (in_hand knife1 cupboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cuttingboard1) to true)
-        and (Set (in_hand knife1 cuttingboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer1) to true)
-        and (Set (in_hand knife1 drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer2) to true)
-        and (Set (in_hand knife1 drawer2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator end1) to true)
-        and (Set (in_hand knife1 end1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator faucet1) to true)
-        and (Set (in_hand knife1 faucet1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator fridge1) to true)
-        and (Set (in_hand knife1 fridge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer1) to true)
-        and (Set (in_hand knife1 g_drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer11) to true)
-        and (Set (in_hand knife1 g_drawer11) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator knife1) to true)
-        and (Set (in_hand knife1 knife1) to true)
-    )
-    or 
-    (Set (in_hand knife1 l_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator peel1) to true)
-        and (Set (in_hand knife1 peel1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator peeler1) to true)
-        and (Set (in_hand knife1 peeler1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_bag1) to true)
-        and (Set (in_hand knife1 plastic_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_paper_bag1) to true)
-        and (Set (in_hand knife1 plastic_paper_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plate1) to true)
-        and (Set (in_hand knife1 plate1) to true)
-    )
-    or 
-    (Set (in_hand knife1 r_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator sink1) to true)
-        and (Set (in_hand knife1 sink1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice1) to true)
-        and (Set (in_hand knife1 spice1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_holder1) to true)
-        and (Set (in_hand knife1 spice_holder1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_shaker1) to true)
-        and (Set (in_hand knife1 spice_shaker1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator sponge1) to true)
-        and (Set (in_hand knife1 sponge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator towel1) to true)
-        and (Set (in_hand knife1 towel1) to true)
-    )
-)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_3
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand plastic_paper_bag1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand plastic_paper_bag1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand plastic_paper_bag1 r_hand) has an unsatisfied precondition at time 1
+(open_storage_with_hand drawer1 r_hand) has an unsatisfied precondition at time 1
 (Set (hand_empty r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_4
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_46_1
 ;Plan to validate:
 
 Plan size: 1
 1:
-(put_out_of_hand plastic_paper_bag1 r_hand)
+(close_storage_with_hand drawer1 r_hand)
  
 
 Plan Validation details
@@ -721,387 +79,15 @@ Plan Validation details
 
 Checking next happening (time 1)
 Plan failed because of unsatisfied precondition in:
-(put_out_of_hand plastic_paper_bag1 r_hand)
+(close_storage_with_hand drawer1 r_hand)
 
 Plan failed to execute
 
 Plan Repair Advice:
 
-(put_out_of_hand plastic_paper_bag1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand plastic_paper_bag1 r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_106_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand plate1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand plate1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand plate1 r_hand) has an unsatisfied precondition at time 1
+(close_storage_with_hand drawer1 r_hand) has an unsatisfied precondition at time 1
 (Set (hand_empty r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_106_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand plate1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand plate1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand plate1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand plate1 r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_109_2
-;Plan to validate:
-
-Plan size: 1
-1:
-(cut plastic_paper_bag1 knife1)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(cut plastic_paper_bag1 knife1)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(cut plastic_paper_bag1 knife1) has an unsatisfied precondition at time 1
-(Follow one of:
-    (Follow each of:
-        (Set (manipulator bowl1) to true)
-        and (Set (in_hand knife1 bowl1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread1) to true)
-        and (Set (in_hand knife1 bread1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread2) to true)
-        and (Set (in_hand knife1 bread2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread3) to true)
-        and (Set (in_hand knife1 bread3) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter1) to true)
-        and (Set (in_hand knife1 counter1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter2) to true)
-        and (Set (in_hand knife1 counter2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cucumber1) to true)
-        and (Set (in_hand knife1 cucumber1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cupboard1) to true)
-        and (Set (in_hand knife1 cupboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cuttingboard1) to true)
-        and (Set (in_hand knife1 cuttingboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer1) to true)
-        and (Set (in_hand knife1 drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer2) to true)
-        and (Set (in_hand knife1 drawer2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator end1) to true)
-        and (Set (in_hand knife1 end1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator faucet1) to true)
-        and (Set (in_hand knife1 faucet1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator fridge1) to true)
-        and (Set (in_hand knife1 fridge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer1) to true)
-        and (Set (in_hand knife1 g_drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer11) to true)
-        and (Set (in_hand knife1 g_drawer11) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator knife1) to true)
-        and (Set (in_hand knife1 knife1) to true)
-    )
-    or 
-    (Set (in_hand knife1 l_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator peel1) to true)
-        and (Set (in_hand knife1 peel1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator peeler1) to true)
-        and (Set (in_hand knife1 peeler1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_bag1) to true)
-        and (Set (in_hand knife1 plastic_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_paper_bag1) to true)
-        and (Set (in_hand knife1 plastic_paper_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plate1) to true)
-        and (Set (in_hand knife1 plate1) to true)
-    )
-    or 
-    (Set (in_hand knife1 r_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator sink1) to true)
-        and (Set (in_hand knife1 sink1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice1) to true)
-        and (Set (in_hand knife1 spice1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_holder1) to true)
-        and (Set (in_hand knife1 spice_holder1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_shaker1) to true)
-        and (Set (in_hand knife1 spice_shaker1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator sponge1) to true)
-        and (Set (in_hand knife1 sponge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator towel1) to true)
-        and (Set (in_hand knife1 towel1) to true)
-    )
-)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_109_3
-;Plan to validate:
-
-Plan size: 1
-1:
-(cut plate1 knife1)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(cut plate1 knife1)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(cut plate1 knife1) has an unsatisfied precondition at time 1
-(Follow one of:
-    (Follow each of:
-        (Set (manipulator bowl1) to true)
-        and (Set (in_hand knife1 bowl1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread1) to true)
-        and (Set (in_hand knife1 bread1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread2) to true)
-        and (Set (in_hand knife1 bread2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread3) to true)
-        and (Set (in_hand knife1 bread3) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter1) to true)
-        and (Set (in_hand knife1 counter1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter2) to true)
-        and (Set (in_hand knife1 counter2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cucumber1) to true)
-        and (Set (in_hand knife1 cucumber1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cupboard1) to true)
-        and (Set (in_hand knife1 cupboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cuttingboard1) to true)
-        and (Set (in_hand knife1 cuttingboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer1) to true)
-        and (Set (in_hand knife1 drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer2) to true)
-        and (Set (in_hand knife1 drawer2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator end1) to true)
-        and (Set (in_hand knife1 end1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator faucet1) to true)
-        and (Set (in_hand knife1 faucet1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator fridge1) to true)
-        and (Set (in_hand knife1 fridge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer1) to true)
-        and (Set (in_hand knife1 g_drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer11) to true)
-        and (Set (in_hand knife1 g_drawer11) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator knife1) to true)
-        and (Set (in_hand knife1 knife1) to true)
-    )
-    or 
-    (Set (in_hand knife1 l_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator peel1) to true)
-        and (Set (in_hand knife1 peel1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator peeler1) to true)
-        and (Set (in_hand knife1 peeler1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_bag1) to true)
-        and (Set (in_hand knife1 plastic_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_paper_bag1) to true)
-        and (Set (in_hand knife1 plastic_paper_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plate1) to true)
-        and (Set (in_hand knife1 plate1) to true)
-    )
-    or 
-    (Set (in_hand knife1 r_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator sink1) to true)
-        and (Set (in_hand knife1 sink1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice1) to true)
-        and (Set (in_hand knife1 spice1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_holder1) to true)
-        and (Set (in_hand knife1 spice_holder1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_shaker1) to true)
-        and (Set (in_hand knife1 spice_shaker1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator sponge1) to true)
-        and (Set (in_hand knife1 sponge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator towel1) to true)
-        and (Set (in_hand knife1 towel1) to true)
-    )
-)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_110_0
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_0
 ;Plan to validate:
 
 Plan size: 1
@@ -1121,157 +107,13 @@ Plan failed to execute
 Plan Repair Advice:
 
 (cut bread1 knife1) has an unsatisfied precondition at time 1
-(Follow one of:
-    (Follow each of:
-        (Set (manipulator bowl1) to true)
-        and (Set (in_hand knife1 bowl1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread1) to true)
-        and (Set (in_hand knife1 bread1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread2) to true)
-        and (Set (in_hand knife1 bread2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread3) to true)
-        and (Set (in_hand knife1 bread3) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter1) to true)
-        and (Set (in_hand knife1 counter1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter2) to true)
-        and (Set (in_hand knife1 counter2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cucumber1) to true)
-        and (Set (in_hand knife1 cucumber1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cupboard1) to true)
-        and (Set (in_hand knife1 cupboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cuttingboard1) to true)
-        and (Set (in_hand knife1 cuttingboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer1) to true)
-        and (Set (in_hand knife1 drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer2) to true)
-        and (Set (in_hand knife1 drawer2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator end1) to true)
-        and (Set (in_hand knife1 end1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator faucet1) to true)
-        and (Set (in_hand knife1 faucet1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator fridge1) to true)
-        and (Set (in_hand knife1 fridge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer1) to true)
-        and (Set (in_hand knife1 g_drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer11) to true)
-        and (Set (in_hand knife1 g_drawer11) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator knife1) to true)
-        and (Set (in_hand knife1 knife1) to true)
-    )
-    or 
-    (Set (in_hand knife1 l_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator peel1) to true)
-        and (Set (in_hand knife1 peel1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator peeler1) to true)
-        and (Set (in_hand knife1 peeler1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_bag1) to true)
-        and (Set (in_hand knife1 plastic_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_paper_bag1) to true)
-        and (Set (in_hand knife1 plastic_paper_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plate1) to true)
-        and (Set (in_hand knife1 plate1) to true)
-    )
-    or 
-    (Set (in_hand knife1 r_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator sink1) to true)
-        and (Set (in_hand knife1 sink1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice1) to true)
-        and (Set (in_hand knife1 spice1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_holder1) to true)
-        and (Set (in_hand knife1 spice_holder1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_shaker1) to true)
-        and (Set (in_hand knife1 spice_shaker1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator sponge1) to true)
-        and (Set (in_hand knife1 sponge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator towel1) to true)
-        and (Set (in_hand knife1 towel1) to true)
-    )
-)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_111_0
+(Set (grasped bread1) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_1
 ;Plan to validate:
 
 Plan size: 1
 1:
-(cut cuttingboard1 knife1)
+(put_in_hand plate1 l_hand)
  
 
 Plan Validation details
@@ -1279,159 +121,41 @@ Plan Validation details
 
 Checking next happening (time 1)
 Plan failed because of unsatisfied precondition in:
-(cut cuttingboard1 knife1)
+(put_in_hand plate1 l_hand)
 
 Plan failed to execute
 
 Plan Repair Advice:
 
-(cut cuttingboard1 knife1) has an unsatisfied precondition at time 1
-(Follow one of:
-    (Follow each of:
-        (Set (manipulator bowl1) to true)
-        and (Set (in_hand knife1 bowl1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread1) to true)
-        and (Set (in_hand knife1 bread1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread2) to true)
-        and (Set (in_hand knife1 bread2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator bread3) to true)
-        and (Set (in_hand knife1 bread3) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter1) to true)
-        and (Set (in_hand knife1 counter1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator counter2) to true)
-        and (Set (in_hand knife1 counter2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cucumber1) to true)
-        and (Set (in_hand knife1 cucumber1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cupboard1) to true)
-        and (Set (in_hand knife1 cupboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator cuttingboard1) to true)
-        and (Set (in_hand knife1 cuttingboard1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer1) to true)
-        and (Set (in_hand knife1 drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator drawer2) to true)
-        and (Set (in_hand knife1 drawer2) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator end1) to true)
-        and (Set (in_hand knife1 end1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator faucet1) to true)
-        and (Set (in_hand knife1 faucet1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator fridge1) to true)
-        and (Set (in_hand knife1 fridge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer1) to true)
-        and (Set (in_hand knife1 g_drawer1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator g_drawer11) to true)
-        and (Set (in_hand knife1 g_drawer11) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator knife1) to true)
-        and (Set (in_hand knife1 knife1) to true)
-    )
-    or 
-    (Set (in_hand knife1 l_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator peel1) to true)
-        and (Set (in_hand knife1 peel1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator peeler1) to true)
-        and (Set (in_hand knife1 peeler1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_bag1) to true)
-        and (Set (in_hand knife1 plastic_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plastic_paper_bag1) to true)
-        and (Set (in_hand knife1 plastic_paper_bag1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator plate1) to true)
-        and (Set (in_hand knife1 plate1) to true)
-    )
-    or 
-    (Set (in_hand knife1 r_hand) to true)
-    or 
-    (Follow each of:
-        (Set (manipulator sink1) to true)
-        and (Set (in_hand knife1 sink1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice1) to true)
-        and (Set (in_hand knife1 spice1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_holder1) to true)
-        and (Set (in_hand knife1 spice_holder1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator spice_shaker1) to true)
-        and (Set (in_hand knife1 spice_shaker1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator sponge1) to true)
-        and (Set (in_hand knife1 sponge1) to true)
-    )
-    or 
-    (Follow each of:
-        (Set (manipulator towel1) to true)
-        and (Set (in_hand knife1 towel1) to true)
-    )
+(put_in_hand plate1 l_hand) has an unsatisfied precondition at time 1
+(Follow each of:
+    (Set (hand_empty l_hand) to true)
+    and (Set (grasped plate1) to false)
 )
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_199_0
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_2
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand plate1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Deleting (in_hand plate1 l_hand)
+Deleting (grasped plate1)
+Adding (hand_empty l_hand)
+Plan executed successfully - checking goal
+Goal not satisfied
+Plan invalid
+
+Plan Repair Advice:
+
+The goal is not satisfied
+(Set (grasped cucumber1) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_3
 ;Plan to validate:
 
 Plan size: 1
@@ -1452,7 +176,7 @@ Plan Repair Advice:
 
 (open_storage_with_hand cupboard1 r_hand) has an unsatisfied precondition at time 1
 (Set (hand_empty r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_199_1
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_4
 ;Plan to validate:
 
 Plan size: 1
@@ -1473,7 +197,433 @@ Plan Repair Advice:
 
 (close_storage_with_hand cupboard1 r_hand) has an unsatisfied precondition at time 1
 (Set (hand_empty r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_48_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand plastic_paper_bag1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand plastic_paper_bag1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand plastic_paper_bag1 l_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_48_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand plastic_paper_bag1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand plastic_paper_bag1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand plastic_paper_bag1 l_hand) has an unsatisfied precondition at time 1
+(Set (in_hand plastic_paper_bag1 l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_49_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand plastic_paper_bag1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand plastic_paper_bag1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand plastic_paper_bag1 r_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_49_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand plastic_paper_bag1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand plastic_paper_bag1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand plastic_paper_bag1 r_hand) has an unsatisfied precondition at time 1
+(Set (in_hand plastic_paper_bag1 r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_50_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand bread1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand bread1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand bread1 l_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_50_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand bread1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand bread1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand bread1 l_hand) has an unsatisfied precondition at time 1
+(Set (in_hand bread1 l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_52_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand knife1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand knife1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand knife1 l_hand) has an unsatisfied precondition at time 1
+(Follow each of:
+    (Set (hand_empty l_hand) to true)
+    and (Set (grasped knife1) to false)
+)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_52_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand knife1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand knife1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand knife1 l_hand) has an unsatisfied precondition at time 1
+(Set (in_hand knife1 l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_54_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand bread1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand bread1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand bread1 r_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_54_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand bread1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand bread1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand bread1 r_hand) has an unsatisfied precondition at time 1
+(Set (in_hand bread1 r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_72_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand plate1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand plate1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand plate1 r_hand) has an unsatisfied precondition at time 1
+(Follow each of:
+    (Set (hand_empty r_hand) to true)
+    and (Set (grasped plate1) to false)
+)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_72_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand plate1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand plate1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand plate1 r_hand) has an unsatisfied precondition at time 1
+(Set (in_hand plate1 r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_78_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(open_storage_with_hand cupboard1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(open_storage_with_hand cupboard1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(open_storage_with_hand cupboard1 l_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_78_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(close_storage_with_hand cupboard1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(close_storage_with_hand cupboard1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(close_storage_with_hand cupboard1 l_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_80_2
+;Plan to validate:
+
+Plan size: 1
+1:
+(open_storage_with_hand drawer1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(open_storage_with_hand drawer1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(open_storage_with_hand drawer1 l_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_80_3
+;Plan to validate:
+
+Plan size: 1
+1:
+(close_storage_with_hand drawer1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(close_storage_with_hand drawer1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(close_storage_with_hand drawer1 l_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_90_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand cuttingboard1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand cuttingboard1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand cuttingboard1 r_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_90_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand cuttingboard1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand cuttingboard1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand cuttingboard1 r_hand) has an unsatisfied precondition at time 1
+(Set (in_hand cuttingboard1 r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_95_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand cuttingboard1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand cuttingboard1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand cuttingboard1 l_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_95_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand cuttingboard1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand cuttingboard1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand cuttingboard1 l_hand) has an unsatisfied precondition at time 1
+(Set (in_hand cuttingboard1 l_hand) to true)
 
 
 Failed plans:
- /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_99_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_99_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_101_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_101_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_102_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_102_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_103_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_103_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_103_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_4 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_104_5 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_105_4 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_106_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_106_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_109_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_109_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_110_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_111_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_199_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_199_1 
+ /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_45_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_45_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_46_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_46_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_47_4 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_48_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_48_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_49_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_49_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_50_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_50_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_52_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_52_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_54_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_54_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_72_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_72_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_78_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_78_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_80_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_80_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_90_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_90_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_95_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_95_1 

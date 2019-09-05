@@ -1,6 +1,6 @@
 import pydot
 
-graph = pydot.graph_from_dot_file("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/nx_1640.dot")
+graph = pydot.graph_from_dot_file("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/nx_2030.dot")
 print(graph)
 print(graph[0].obj_dict['nodes'])
 print(graph[0].obj_dict['edges'])
@@ -20,7 +20,7 @@ for (p,c) in edges:
     else:
         in_edge_dict[c] = [p]
 
-print(graph[0].obj_dict['edges'][('0','3')][0]['attributes']['saffidine_mu'])
+#print(graph[0].obj_dict['edges'][('0','3')][0]['attributes']['saffidine_mu'])
 
 current_node = graph[0].obj_dict['nodes']['0'][0]['name']
 current_edge = None #graph[0].obj_dict['edges'][('0','3')][0]['name']
@@ -35,10 +35,19 @@ goals = ["(used plastic_paper_bag1)", "(used plate1)", "(used knife1)", "(used c
 goal_state_number = 0
 for n in graph[0].obj_dict['nodes']:
     if n != "node":
+        state = graph[0].obj_dict['nodes'][n][0]['attributes']['state']
+        no_goals_list = [y in state for y in goals]
+        no_goal_facts_true = no_goals_list.count(True)
+        if no_goal_facts_true >= 3:
+            print(no_goal_facts_true, "out of", len(goals), "reached in ")
+            print(graph[0].obj_dict['nodes'][n][0]['name'], graph[0].obj_dict['nodes'][n][0])
+            print(graph[0].obj_dict['nodes'][n][0]['name'], graph[0].obj_dict['nodes'][n][0]['attributes']['state'])
         if all(x in graph[0].obj_dict['nodes'][n][0]['attributes']['state'] for x in goals):
+            print("ABSOLUTE GOAL REACHED")
             goal_state_number += 1
             print(graph[0].obj_dict['nodes'][n][0]['name'], graph[0].obj_dict['nodes'][n][0])
             print(graph[0].obj_dict['nodes'][n][0]['name'], graph[0].obj_dict['nodes'][n][0]['attributes']['state'])
+print("GOAL STATES")
 print(goal_state_number,  "/", len(graph[0].obj_dict['nodes']))
 direction = "down"
 chosen_next_node = None
@@ -88,26 +97,4 @@ while chosen_next_node != "exit":
     elif chosen_next_node == "down":
         direction = "down"
         print("DIRECTION DOWN")
-# while current_node in out_edge_dict:
-#     print("--------------")
-#     print(current_node)
-#     #print(float(graph[0].obj_dict['nodes'][current_node][0]['attributes']['total_reward']) / float(graph[0].obj_dict['nodes'][current_node][0]['attributes']['num_visits']))
-#     #print(graph[0].obj_dict['nodes'][current_node][0]['attributes']['prev_action'])
-#     best_reward = 0
-#     best_next_node = None
-#     best_next_edge = None
-#     for e in out_edge_dict[current_node]:
-#         #child_reward = float(graph[0].obj_dict['nodes'][e][0]['attributes']['total_reward']) / float(graph[0].obj_dict['nodes'][e][0]['attributes']['num_visits'])
-#         edge_reward = float(graph[0].obj_dict['edges'][(str(current_node),str(e))][0]['attributes']['saffidine_mu'])
-#         if edge_reward >= best_reward:
-#             best_reward = edge_reward
-#             best_next_edge = (str(current_node), str(e))
-#             best_next_node = e
-#     print("ACTION", graph[0].obj_dict['edges'][(current_node, best_next_node)][0]['attributes']['label'])
-#     current_node = best_next_node
-#
-# #print(graph[0].obj_dict['nodes']['0']['attributes'])
-# #print(graph[0].obj_dict['nodes']['0']['total_reward'])
-# #print(graph[0].obj_dict['nodes']['0']['num_visits'])
-#
 

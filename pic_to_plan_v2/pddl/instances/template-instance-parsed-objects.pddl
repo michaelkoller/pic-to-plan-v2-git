@@ -39,8 +39,6 @@
 (:init
     (hand_empty r_hand) ;this template holds the absolute beginning state.
     (hand_empty l_hand) ;put your assumptions about the start of a session here
-	(active r_hand)
-	(active l_hand)
 	;end hands active
     (bowl bowl1)
 	(container bowl1)

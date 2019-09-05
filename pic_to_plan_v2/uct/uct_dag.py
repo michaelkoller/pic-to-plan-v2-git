@@ -17,7 +17,7 @@ import pic_to_plan_v2.observation_trace_gen.create_pr_instance as create_pr_inst
 import pic_to_plan_v2.observation_trace_gen.call_plan_rec as call_plan_rec_mod
 import pic_to_plan_v2.uct.uct_edge as uct_edge_mod
 from datetime import datetime
-
+import collections
 
 class UCTSearch:
     def __init__(self):
@@ -94,15 +94,21 @@ class UCTSearch:
         avoid_dup_no = 0
         while (time.time()-self.t_start < self.time_limit and self.n_iter < self.iteration_limit):
             if self.n_iter % 10 == 0 and self.n_iter != 0:
+                print(self.n_iter)
+            if self.n_iter % 1000 == 0 and self.n_iter != 0:
                 print(datetime.now())
                 print("iter", self.n_iter)
                 print("avoided duplicate nodes:", avoid_dup_no)
+
+                look_for_dup_states = collections.Counter()
+                for vals in self.node_dict.values():
+                    look_for_dup_states[vals.state_string] += 1
+                print(look_for_dup_states.most_common(1)[0])
                 self.save_dot()
                 #pickle.dump(self.node_dict, open( "uct_dat_"+str(self.n_iter)+".p", "wb" ) )
 
-            final_v_l = None
-            final_edge_descent_trace = []
 
+            final_edge_descent_trace = []
             v_l, edge_descent_trace = self.tree_policy(self.v_0)
 
             while True:
@@ -112,34 +118,38 @@ class UCTSearch:
                         #check if there is a way from the DESTINATION to ORIGIN (i.e., reverse direction)
                         if self.check_if_reachable(self.node_dict[v_l.__hash__()], edge_descent_trace[-1].origin):
                             #AVOIDED LOOP
+                            for i in range(len(edge_descent_trace[-1].origin.out_edges)):
+                                if edge_descent_trace[-1].origin.out_edges[i].destination == v_l:
+                                    del edge_descent_trace[-1].origin.out_edges[i]
                             del edge_descent_trace[-1] #delete the loop creating edge from the backup path
-                            final_v_l = self.node_dict[v_l.__hash__()]
                             final_edge_descent_trace += edge_descent_trace
-                            v_l = self.node_dict[v_l.__hash__()]
-                            delta = v_l.get_mean_reward()
+                            if len(final_edge_descent_trace) > 0:
+                                delta = final_edge_descent_trace[-1].destination.get_mean_reward()
                             break
                             #TODO so, here I neither insert node nor change edge, should I abort (via continue?) in this case?
                             #No, because then this path will be chosen again, if the rewards aren't changed
                             #this is kind of a terminal node insofar, that the current selected action wont ever become better
                         else:
                             #change edge from current node to already existing node
-                            print(v_l, "already in node dict")
+                            #print(v_l, "already in node dict")
                             edge_descent_trace[-1].destination = self.node_dict[v_l.__hash__()]
                             self.node_dict[v_l.__hash__()].in_edges.append(edge_descent_trace[-1])
                             final_edge_descent_trace += edge_descent_trace
                             v_l = self.node_dict[v_l.__hash__()]
                             v_l, edge_descent_trace = self.tree_policy(v_l)
+                    else:
+                        break #this is the case, if the edge descent has len 1, but then it is detected as a loop and thus deleted.
                 else:
                     self.node_dict[v_l.__hash__()] = v_l
                     final_edge_descent_trace += edge_descent_trace
-                    final_v_l =  v_l
                     delta = self.default_policy(v_l, [e.action for e in final_edge_descent_trace])
                     #attach mu' and n' to this new edge
                     edge_descent_trace[-1].mu_prime = delta
                     edge_descent_trace[-1].n_prime = 1
                     break
 
-            self.backup(final_edge_descent_trace, delta)
+            if len(final_edge_descent_trace)> 0:
+                self.backup(final_edge_descent_trace, delta)
             self.n_iter += 1
         #self.v_0.print_subtree()
         self.get_best_path()
@@ -186,7 +196,7 @@ class UCTSearch:
 
     def default_policy(self, v, observation_trace):
         # #dummy def pol
-        # return 1
+        return 1
         ###############
         create_pr_instance_mod.create_pr_instance(observation_trace)
         return call_plan_rec_mod.call_plan_rec()
@@ -210,24 +220,26 @@ class UCTSearch:
         G = nx.DiGraph()
 
         def get_nx_nodes_a_edges(v, G):
-            G.add_node(v.nid)
-            G._node[v.nid]['color'] = 'black'
-            G._node[v.nid]['fillcolor'] = 'white'
-            G._node[v.nid]["total_reward"] = v.get_total_reward()
-            G._node[v.nid]["num_visits"] = v.get_visit_count()
-            G._node[v.nid]["nid"] = v.nid
-            G._node[v.nid]["state"] = v.state_string
-            G._node[v.nid]["label"] = "id"+str(v.nid)+ " " + str(round(v.get_mean_reward(),3) )#+ "\n"+ str(v.state_string)
+            node_name = v.state_string
+            G.add_node(node_name)
+            G._node[node_name]['color'] = 'black'
+            G._node[node_name]['fillcolor'] = 'white'
+            G._node[node_name]["total_reward"] = v.get_total_reward()
+            G._node[node_name]["num_visits"] = v.get_visit_count()
+            G._node[node_name]["nid"] = v.nid
+            G._node[node_name]["state"] = v.state_string
+            G._node[node_name]["label"] = "id"+str(v.nid)+ " " + str(round(v.get_mean_reward(),3) )+ "\n"+ str(v.state_string.replace(") (", ")\\n("))
 
             for e in v.out_edges:
                 #if (v.nid, e.destination.nid) not in G.edges:
-                G.add_edge(e.origin.nid, e.destination.nid)
-                G.edges[e.origin.nid, e.destination.nid]['penwidth'] = 5 * (e.get_mean_reward())
-                G.edges[e.origin.nid, e.destination.nid]['label'] = str(e.action).replace(" ", "\\n")
-                G.edges[e.origin.nid, e.destination.nid]['total_reward'] = str(round(e.total_reward, 2))
-                G.edges[e.origin.nid, e.destination.nid]['num_visits'] = str(round(e.num_visits, 2))
-                G.edges[e.origin.nid, e.destination.nid]['mean_reward'] = str(round(e.get_mean_reward(), 2))
-                G.edges[e.origin.nid, e.destination.nid]['saffidine_mu'] = str(round(e.get_mu(1), 2)) #TODO Attention, parameter should be same d_1 as in algorithm!!!
+                G.add_edge(e.origin.state_string, e.destination.state_string)
+                G.edges[e.origin.state_string, e.destination.state_string]['pos_act_index'] = e.possible_actions_index
+                G.edges[e.origin.state_string, e.destination.state_string]['penwidth'] = 5 * (e.get_mean_reward())
+                G.edges[e.origin.state_string, e.destination.state_string]['label'] = str(e.action).replace(" ", "\\n") + "\\nPAI"+str(e.possible_actions_index)+" "+str(round(e.get_mu(1), 2))
+                G.edges[e.origin.state_string, e.destination.state_string]['total_reward'] = str(round(e.total_reward, 2))
+                G.edges[e.origin.state_string, e.destination.state_string]['num_visits'] = str(round(e.num_visits, 2))
+                G.edges[e.origin.state_string, e.destination.state_string]['mean_reward'] = str(round(e.get_mean_reward(), 2))
+                G.edges[e.origin.state_string, e.destination.state_string]['saffidine_mu'] = str(round(e.get_mu(1), 2)) #TODO Attention, parameter should be same d_1 as in algorithm!!!
                 get_nx_nodes_a_edges(e.destination, G)
         get_nx_nodes_a_edges(self.v_0, G)
         return G

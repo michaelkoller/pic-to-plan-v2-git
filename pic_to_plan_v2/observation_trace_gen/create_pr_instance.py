@@ -22,18 +22,18 @@ def create_pr_instance(obs):
     tar = tarfile.open("sample.tar.bz2", "w:bz2")
     tar.add(
         "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl",
-        arcname="domain.pddl")  # ok
+        arcname="domain.pddl")
     tar.add("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/goal_sets/goal_set_used.pddl",
-            arcname="hyps.dat")  # ok
+            arcname="hyps.dat")
     tar.add(
         "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/obs.dat",
         arcname="obs.dat")
     tar.add(
         "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/pr_test_example/real_hyp.dat",
-        arcname="real_hyp.dat")  # ok
+        arcname="real_hyp.dat")
     tar.add(
         "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/template.pddl",
-        arcname="template.pddl")  # ok
+        arcname="template.pddl")
     tar.close()
 
 if __name__ == "__main__":
