@@ -16,6 +16,8 @@ import pic_to_plan_v2.observation_trace_gen.draw_search_tree as draw_search_tree
 import pic_to_plan_v2.observation_trace_gen.create_pr_instance as create_pr_instance_mod
 import pic_to_plan_v2.observation_trace_gen.call_plan_rec as call_plan_rec_mod
 import pic_to_plan_v2.uct.uct_edge as uct_edge_mod
+from datetime import datetime
+
 
 class UCTSearch:
     def __init__(self):
@@ -92,6 +94,7 @@ class UCTSearch:
         avoid_dup_no = 0
         while (time.time()-self.t_start < self.time_limit and self.n_iter < self.iteration_limit):
             if self.n_iter % 10 == 0 and self.n_iter != 0:
+                print(datetime.now())
                 print("iter", self.n_iter)
                 print("avoided duplicate nodes:", avoid_dup_no)
                 self.save_dot()
@@ -441,3 +444,18 @@ if __name__ == "__main__":
 
 #TODO http://csci431.artifice.cc/notes/pddl.html
 #nice practical description of fast downward, which heuristics are for adl (when effect)
+
+#TODO domain action model only with arity <= 2
+#put_in_container(?o ?c ?h)
+# --> put in container(?o ?c)
+# pre: exists h s.t. in_hand ?o ?h
+#description: if arity <= 2, all is fine
+#if arity > 2 and only 2 objects are in effects under a condition of the 3rd variable: use when (exists with 3rd variable) (effects with first 2 variables) with dummy precondition
+#if arity > 2 and 3 variables are in effects: use dummy precondition and forall 3rd var ( when x then y), but you need to make sure, that that the actions assing facts
+#in such a way that the forall condition can only ever trigger once (i.e. on one object in the forall variables) pay attentino that you put the forall x when y then z,
+#the when part is strict enough for that
+#another trick: set arity reduced copies of a predicate e.g. (in_hand ?o ?h) plus (grasped ?o) and only allow the predicates to be changed together
+#the predicate with the lower arity can be used in other actions as a check without needing that additional variable ?h
+
+#TODO config files with different test conditions + paths that store stuff s.t. there are no overwrites
+

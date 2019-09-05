@@ -67,8 +67,8 @@
     (dummy)
     (washed ?o)
     (faucet_open ?f)
+    (contained ?o)
     (contained_in ?o ?c)
-    (in_some_container ?o)
     (on_something ?o)
 );end predicates
 
@@ -84,17 +84,21 @@
 	:effect	(and (not(in_hand ?o ?h)) (not(grasped ?o)) (hand_empty ?h))
 )
 
-(:action put_object_on
-    :parameters (?o1 ?o2 ?h)
-    :precondition (and (manipulator ?h) (graspable ?o1) (in_hand ?o1 ?h))
-	:effect	(and (when (not(container ?o2)) (and (on ?o1 ?o2) (on_something ?o1)))
-	        (when (container ?o2) (and (contained_in ?o1 ?o2) (in_some_container ?o1))))
+(:action put_o1_on_o2
+    :parameters (?o1 ?o2)
+    :precondition (and (grasped ?o1) (not (stored ?o1)) (not (contained ?o1)) ) ;(not (on_something ?o1))) with this FD exits with -9
+	:effect	(and
+	            (when (not(container ?o2)) (and (on ?o1 ?o2) (on_something ?o1)))
+	            (when (container ?o2) (and (contained_in ?o1 ?o2) (contained ?o1))) )
 )
 
-(:action grasp_object_currently_on
-    :parameters (?o1 ?o2 ?h)
-    :precondition (and (manipulator ?h) (graspable ?o1) (hand_empty ?h) (on ?o1 ?o2))
-	:effect	(and (not(on ?o1 ?o2)) (not(hand_empty ?h)) (grasped ?o1) (in_hand ?o1 ?h))
+(:action put_o1_away_from_o2
+    :parameters (?o1 ?o2)
+    :precondition (and (grasped o1))
+	:effect	(and
+                (when (not(container ?o2)) (and (not(on ?o1 ?o2)) (not(on_something ?o1))))
+	            (when (container ?o2) (and (not(contained_in ?o1 ?o2)) (not(contained ?o1))))
+            )
 )
 
 (:action open_storage_with_hand
@@ -116,38 +120,42 @@
 ;)
 
 (:action cut_on_cuttingboard
-    :parameters(?o ?k ?cb)
-    :precondition (and (knife ?k) (grasped ?k) (grasped ?o) (on ?o ?cb) (cuttingboard ?cb) (not (stored ?cb))(not(stored ?o)) (washed ?o))
+    :parameters(?o ?k)
+    :precondition (and (knife ?k) (grasped ?k) (grasped ?o) (not(stored ?o)) (not(contained ?o)) (washed ?o) (exists (?cb) (and (on ?o ?cb) (cuttingboard ?cb) (not (stored ?cb)))))
     :effect (cut_in_pieces ?o)
 )
 
 (:action peel
     :parameters(?o ?p)
-    :precondition (and (peeler ?p) (grasped ?p) (grasped ?o) (not(stored ?o)))
+    :precondition (and (peeler ?p) (grasped ?p) (grasped ?o) (not(stored ?o)) (not(contained ?o)) )
     :effect (peeled ?o)
 )
 
 (:action unstore
-    :parameters (?o ?h ?s)
-    :precondition (and (manipulator ?h) (graspable ?o) (storage ?s) (hand_empty ?h) (not(= ?o ?h)) (not(grasped ?o)) (stored_in ?o ?s) (open ?s))
-	:effect	(and (in_hand ?o ?h) (grasped ?o) (not (hand_empty ?h)) (not(stored ?o)) (not(stored_in ?o ?s)))
+    :parameters (?o ?s)
+    :precondition (and (storage ?s) (graspable ?o) (stored_in ?o ?s) (open ?s) (not(grasped ?o)))
+	:effect	(and (not(stored ?o)) (not(stored_in ?o ?s)))
 )
 
 (:action store
-    :parameters (?o ?h ?s)
-    :precondition (and (manipulator ?h) (graspable ?o) (storage ?s) (not(= ?o ?h))  (in_hand ?o ?h) (grasped ?o) (not (hand_empty ?h)) (not(stored_in ?o ?s)) (open ?s))
-	:effect	(and (not(in_hand ?o ?h)) (not(grasped ?o)) (hand_empty ?h) (not(stored ?o)) (stored_in ?o ?s) )
+    :parameters (?o ?s)
+    :precondition (and (not(stored ?o)) (not(stored_in ?o ?s)) (open ?s) (grasped ?o) (storage ?s))
+	:effect	(and (stored ?o) (stored_in ?o ?s) (not(grasped ?o))
+	            (forall (?h) (when (in_hand ?o ?h) (and (not(in_hand ?o ?h)) (hand_empty ?h))))
+	        )
 )
 
 (:action open_faucet
-    :parameters (?f)
-    :precondition (and (faucet ?f))
+    :parameters (?f ?h)
+    :precondition (and (faucet ?f) (manipulator ?h))
     :effect (and (faucet_open ?f))
 )
 
 (:action wash
     :parameters (?o ?f)
-    :precondition (and (faucet ?f) (faucet_open ?f) (not(in_some_container ?o)) (not(on_something ?o)) (not(stored ?o)))
+    :precondition (and (faucet ?f) (faucet_open ?f) (grasped ?o) (not(contained ?o)) (not(on_something ?o)) (not(stored ?o))
+                  (exists (?h) (and (manipulator ?h) (hand_empty ?h)))
+                  )
     :effect (and (washed ?o) (not(faucet_open ?f))) ; describes that you close the faucet after retrieving smthng
 )
 
