@@ -4,9 +4,13 @@ import tarfile
 
 def call_plan_rec():
     t0 = time.time()
-    obs_trace_dir = dir_path = os.path.dirname(os.path.realpath(__file__))
+    obs_trace_dir = os.path.dirname(os.path.realpath(__file__))
     print(obs_trace_dir)
-    os.chdir("/home/mk/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/")
+    #location outside of project
+    # os.chdir("/home/mk/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/")
+    #location within project
+    os.chdir("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/prob-plan-recognition/")
+
     #os.system("python2 ~/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/prob_PR.py -G \
     #    -e /home/mk/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/block-words_michael_test.tar.bz2")
 
@@ -18,11 +22,14 @@ def call_plan_rec():
     #os.execvp("/usr/bin/python", ["/usr/bin/python" ,"/home/mk/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/prob_PR.py",  "-G", \
     #    "-e", "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/sample.tar.bz2"])
 
-    #working call to pr
-    os.system("/usr/bin/python /home/mk/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/prob_PR.py -G \
-            -e /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/sample.tar.bz2")
+    #call outside of this project
+    # #working call to pr
+    # os.system("/usr/bin/python /home/mk/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/prob_PR.py -G \
+    #         -e /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/sample.tar.bz2")
 
-    results = tarfile.open("/home/mk/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/results.tar.bz2", "r:bz2")
+    #call inside project fr 6.9. hier weitermachen
+    os.system("/usr/bin/python /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/prob-plan-recognition/prob_PR.py -G \
+             -e /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/sample.tar.bz2")
 
     results = tarfile.open("/home/mk/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/results.tar.bz2", "r:bz2")
     report = results.extractfile("report.txt")

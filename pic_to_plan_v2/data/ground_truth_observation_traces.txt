@@ -1,0 +1,29 @@
+"s13-d25"
+open cupoard
+unstore breadbag
+take breadbag
+close cupboard
+put breadbag on table
+open cupoard
+unstore plate
+take plate
+close cupboard
+put plate on table
+take bread out of breadbag
+open drawer
+unstore knife
+take knife
+close drawer
+cut bread with knife
+put knife on plate
+open drawer
+unstore cuttingboard
+take cuttingboard
+close drawer
+take bread
+put bread on cuttingboard
+take knife
+grasp bread
+cut bread
+put cut bread on plate
+wrap up bread again

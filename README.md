@@ -5,7 +5,9 @@ Input
 - Ontology about tracked objects
 - Planning domain
 - Set of goals
-
+- s_0
+- (list of possible actions as intermediate result)
+    
 Step 1
 - Generate observation trace
 
@@ -206,3 +208,13 @@ conclusion (i.e. outlook + summary)
         
 Generalised Domain Model Acquisition from Action Traces
 --> is my work just in the other direction?
+
+
+
+########from pddl domain template
+; in ~/Planning/fastdownwardplanner, run
+; ./fast-downward.py /home/mk/PycharmProjects/pic-to-plan/take-put-domain.pddl /home/mk/PycharmProjects/pic-to-plan/take-put-instance.pddl --search "astar(lmcut())"
+; in a terminal
+; in that folder, sas_plan is the plan output
+;VALIDATE doesn't work if an action has no preconditions specified
+-----------------

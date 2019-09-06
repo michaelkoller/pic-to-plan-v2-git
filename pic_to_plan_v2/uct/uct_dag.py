@@ -93,9 +93,9 @@ class UCTSearch:
 
         avoid_dup_no = 0
         while (time.time()-self.t_start < self.time_limit and self.n_iter < self.iteration_limit):
+            # if self.n_iter % 10 == 0 and self.n_iter != 0:
+            #     print(self.n_iter)
             if self.n_iter % 10 == 0 and self.n_iter != 0:
-                print(self.n_iter)
-            if self.n_iter % 1000 == 0 and self.n_iter != 0:
                 print(datetime.now())
                 print("iter", self.n_iter)
                 print("avoided duplicate nodes:", avoid_dup_no)
@@ -196,7 +196,7 @@ class UCTSearch:
 
     def default_policy(self, v, observation_trace):
         # #dummy def pol
-        return 1
+        #return 1
         ###############
         create_pr_instance_mod.create_pr_instance(observation_trace)
         return call_plan_rec_mod.call_plan_rec()
@@ -228,7 +228,7 @@ class UCTSearch:
             G._node[node_name]["num_visits"] = v.get_visit_count()
             G._node[node_name]["nid"] = v.nid
             G._node[node_name]["state"] = v.state_string
-            G._node[node_name]["label"] = "id"+str(v.nid)+ " " + str(round(v.get_mean_reward(),3) )+ "\n"+ str(v.state_string.replace(") (", ")\\n("))
+            G._node[node_name]["label"] = "id"+str(v.nid) + " " + str(round(v.get_mean_reward(),3) )+ "\n"+ str(v.state_string.replace(") (", ")\\n("))
 
             for e in v.out_edges:
                 #if (v.nid, e.destination.nid) not in G.edges:

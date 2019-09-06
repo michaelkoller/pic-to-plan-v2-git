@@ -34,10 +34,10 @@ if __name__ == "__main__":
     #write class membership predicates into domain template
     template_domain = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain.pddl", "r")
     template_domain_string = "".join(template_domain.readlines())
-    class_instance_predicate_string = ";the following defines class membership predicates\n"
+    class_instance_predicate_string = []
     for c in list(class_dict.keys()):
-        class_instance_predicate_string += "("+ c + " ?o)\n\t"
-    class_instance_predicate_string += ";end class membership predicates"
+        class_instance_predicate_string.append("("+ c + " ?o)")
+    class_instance_predicate_string = "\n    ".join(class_instance_predicate_string)
     parsed_template_instance_string = template_domain_string.replace("<insert-class-instance-predicates>", class_instance_predicate_string)
     f = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl", "w")
     f.write(parsed_template_instance_string)
@@ -46,14 +46,13 @@ if __name__ == "__main__":
     #write objects into instance template for session start
     template_instance = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance.pddl", "r")
     template_instance_string = "".join(template_instance.readlines())
-    template_instance_string = template_instance_string.replace("<insert_objects>", "\n\t".join(list(individual_dict.keys())))
+    template_instance_string = template_instance_string.replace("<insert_objects>", "\n    ".join(list(individual_dict.keys())))
 
     new_predicates = []
     for o in list(individual_dict.keys()):
         for cls in class_dict[individual_dict[o][0]._name]:
             new_predicates.append("(" + cls._name + " " + o + ")")
-    new_predicates.append(";end of class membership predicates")
-    template_instance_string = template_instance_string.replace("<insert_class_memberships>", "\n\t".join(new_predicates))
+    template_instance_string = template_instance_string.replace("<insert_class_memberships>", "\n    ".join(new_predicates))
 
     f = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects.pddl", "w")
     f.write(template_instance_string)
@@ -64,9 +63,9 @@ if __name__ == "__main__":
         "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-insert-init.pddl", "r")
     template_instance_string = "".join(template_instance.readlines())
     template_instance_string = template_instance_string.replace("<insert_objects>",
-                                                                "\n\t".join(list(individual_dict.keys())))
+                                                                "\n    ".join(list(individual_dict.keys())))
     template_instance_string = template_instance_string.replace("<insert_class_memberships>",
-                                                                "\n\t".join(new_predicates))
+                                                                "\n    ".join(new_predicates))
 
     f = open(
         "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects-insert-init.pddl",
