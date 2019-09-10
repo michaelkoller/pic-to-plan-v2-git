@@ -95,7 +95,7 @@ class UCTSearch:
         while (time.time()-self.t_start < self.time_limit and self.n_iter < self.iteration_limit):
             # if self.n_iter % 10 == 0 and self.n_iter != 0:
             #     print(self.n_iter)
-            if self.n_iter % 10 == 0 and self.n_iter != 0:
+            if self.n_iter % 30 == 0 and self.n_iter != 0:
                 print(datetime.now())
                 print("iter", self.n_iter)
                 print("avoided duplicate nodes:", avoid_dup_no)
@@ -105,6 +105,7 @@ class UCTSearch:
                     look_for_dup_states[vals.state_string] += 1
                 print(look_for_dup_states.most_common(1)[0])
                 self.save_dot()
+                self.save_nodes_and_edges()
                 #pickle.dump(self.node_dict, open( "uct_dat_"+str(self.n_iter)+".p", "wb" ) )
 
 
@@ -215,6 +216,30 @@ class UCTSearch:
             path.append(v_child)
         for v in path:
             print(str(v))
+
+    def save_nodes_and_edges(self):
+        new_node_dict = collections.defaultdict(list)
+        new_in_edge_dict = collections.defaultdict(list)
+        new_out_edge_dict = collections.defaultdict(list)
+        self.save_nodes_and_edges_aux(new_node_dict, new_in_edge_dict, new_out_edge_dict, self.v_0)
+        pickle.dump(new_node_dict, open("node_dict"+str(self.n_iter)+".p", "wb"))
+        pickle.dump(new_in_edge_dict, open("in_edge_dict"+str(self.n_iter)+".p", "wb"))
+        pickle.dump(new_out_edge_dict, open("out_edge_dict"+str(self.n_iter)+".p", "wb"))
+
+    def save_nodes_and_edges_aux(self, new_node_dict, new_in_edge_dict, new_out_edge_dict, current_node):
+        current_node_copy = copy.deepcopy(current_node)
+        current_node_copy.out_edges = None
+        current_node_copy.in_edges = None
+        new_node_dict[current_node_copy.state_string] = current_node_copy
+        if current_node.out_edges is not None:
+            for i in range(len(current_node.out_edges)):
+                e = copy.deepcopy(current_node.out_edges[i])
+                e.origin = None
+                e.destination = None
+                new_out_edge_dict[current_node_copy.state_string].append([current_node.out_edges[i].destination.state_string, e])
+                new_in_edge_dict[current_node.out_edges[i].destination.state_string].append([current_node_copy.state_string, e])
+
+                self.save_nodes_and_edges_aux(new_node_dict, new_in_edge_dict, new_out_edge_dict, current_node.out_edges[i].destination)
 
     def create_nx_graph(self):
         G = nx.DiGraph()
@@ -471,3 +496,36 @@ if __name__ == "__main__":
 
 #TODO config files with different test conditions + paths that store stuff s.t. there are no overwrites
 
+#TODO best upper bound PAI: half a second latser than last? --> but then the NOP action isn't represented...
+
+#TODO: Big problem. loop avoidance denies deeper trees? Is that even the case? if not, then you need to proof why this isnt a problem
+
+#TODO: at some level of domain complexity I will need to reintroduce (active ?o), e.g., if there is a new slice of bread after cutting
+
+#Todo: describe procedure wher you reduce the arity of an action to 2
+
+#TODO: describe how better activity recognition should help in my approach. e.g., aksoy: only instantiate a cut action with the respective
+#objects when a cut action has been recognized
+
+#TODO: explain tradeoff between having less options using VAL and using all available options:
+# When I use VAL, there are only actions that immediately result in the next state.
+#So, if there is an observation missing, I wont use it in that situation.
+#My approach cannot deal with missing obs (but with noisy, I guess)
+#Geffner approach is not as strong as PR revisited approach (but uses less calls to Planner)
+#E.G: Ground truth: A->B->C. Obs A->C, where A->C is not applicable --> my approach won't catch thatn
+
+#TODO: explain how concept net can be used
+
+#TODO: really don't forget to describe the alternatives to VAL:
+#1 dont use VAL and take everything
+#2 dont use VAL and see if there is at least a plan from last state to a state with the effects of the currently considered action
+#then: the longer the plan is, the more unlikely it is.
+#in both variants 1 and 2, nodes lose their unique state description, but this way you could deal with missing observations at least.
+
+#TODO: have a look at progressive widening and pruning in MCTS:
+#coulom, computing elo ratings of move patterns in the game of go
+#chaslot, winands, herik, progressive strategies for mcts
+
+
+#TODO: improve selection mechanism? take into consideration the number of actions?
+#4 possibilities good/bad pr value, many/few actions already taken

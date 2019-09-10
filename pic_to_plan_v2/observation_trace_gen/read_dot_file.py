@@ -1,11 +1,11 @@
 import pydot
 
-graph = pydot.graph_from_dot_file("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/nx_2030.dot")
+graph = pydot.graph_from_dot_file("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/observation_trace_gen/nx_99810.dot")
 print(graph)
 print(graph[0].obj_dict['nodes'])
 print(graph[0].obj_dict['edges'])
 
-n = graph[0].obj_dict['nodes']['0'][0]['attributes']['num_visits']
+n = graph[0].obj_dict['nodes']['"(hand_empty l_hand) (hand_empty r_hand)"'][0]['attributes']['num_visits']
 
 edges = graph[0].obj_dict['edges']
 in_edge_dict = {}
@@ -19,19 +19,19 @@ for (p,c) in edges:
         in_edge_dict[c].append(p)
     else:
         in_edge_dict[c] = [p]
-
 #print(graph[0].obj_dict['edges'][('0','3')][0]['attributes']['saffidine_mu'])
 
-current_node = graph[0].obj_dict['nodes']['0'][0]['name']
+current_node = graph[0].obj_dict['nodes']['"(hand_empty l_hand) (hand_empty r_hand)"'][0]['name']
 current_edge = None #graph[0].obj_dict['edges'][('0','3')][0]['name']
 current_edge_label = None #graph[0].obj_dict['edges'][('0','3')][0]['attributes']['label']
 print(current_node)
 print(current_node in out_edge_dict)
 print(out_edge_dict[current_node])
-print(graph[0].obj_dict['nodes']['0'][0]['attributes']['state'])
+print(graph[0].obj_dict['nodes']['"(hand_empty l_hand) (hand_empty r_hand)"'][0]['attributes']['state'])
 
 #list all goal states
 goals = ["(used plastic_paper_bag1)", "(used plate1)", "(used knife1)", "(used cuttingboard1)"]
+goals = ["(cut bread1)"]
 goal_state_number = 0
 for n in graph[0].obj_dict['nodes']:
     if n != "node":
@@ -70,12 +70,13 @@ while chosen_next_node != "exit":
         else:
             print("NO EDGES IN UP DIRECTION FROM HERE")
     eee = sorted(eee, key=lambda tup: tup[3], reverse=True)
+    print("CHOOSE AMONG THESE (1st argument is key)")
     for e in eee:
         e = map(str, e)
         print(" ".join(e))
     print("INPUT NEXT NODE NUMBER | jump | up | down:")
     chosen_next_node = input()
-    if chosen_next_node.isdigit():
+    if chosen_next_node != "jump" and chosen_next_node != "up" and chosen_next_node != "down":
         if direction == "down":
             a = current_node
             b = chosen_next_node
@@ -97,4 +98,6 @@ while chosen_next_node != "exit":
     elif chosen_next_node == "down":
         direction = "down"
         print("DIRECTION DOWN")
+    else:
+        print("NO VALID ACTION TAKEN")
 

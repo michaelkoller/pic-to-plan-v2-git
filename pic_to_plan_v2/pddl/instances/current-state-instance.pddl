@@ -109,7 +109,7 @@
     (towel towel1)
     (tool towel1)
     (graspable towel1)
-    (hand_empty l_hand) (hand_empty r_hand) (open cupboard1)
+    (in_hand cuttingboard1 r_hand) (open cupboard1) (hand_empty l_hand) (open drawer1) (grasped cuttingboard1)
 )
 (:goal (and
 (grasped cucumber1) (open drawer1)
