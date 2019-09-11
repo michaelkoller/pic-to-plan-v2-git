@@ -2,17 +2,17 @@ import networkx as nx
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 import matplotlib.pyplot as plt
 
-def draw_tree_nx(G, name):
+def draw_tree_nx(G, name, current_results_dir):
     # write dot file to use with graphviz
     # run "dot -Tpng test.dot >test.png"
-    write_dot(G,'nx_' + str(name) + '.dot')
+    write_dot(G,current_results_dir + '/nx_' + str(name) + '.dot')
 
     # same layout using matplotlib with no labels
-    plt.title('draw_networkx')
+    plt.title(name)
     pos =graphviz_layout(G, prog='dot')
     plt.figure(1, figsize=(1200, 1200))
     nx.draw(G, pos, with_labels=False, arrows=True, node_size=1)
-    plt.savefig('nx_' + str(name) + '.png')
+    plt.savefig(current_results_dir +'/nx_' + str(name) + '.png')
     plt.show()
 
 

@@ -103,9 +103,11 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
     cap.release()
     cv2.destroyAllWindows()
 
-def main():
-    my_parsed_problem = parsed_problem_mod.ParsedPDDLProblem("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl", \
-                                                            "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects.pddl")
+def main_watch_video(domain_path, instance_path, session, ontology_path): #input grounded role labeling dataset session here
+    domain_path_inserted_predicates = domain_path.replace(".pddl", "-inserted-predicates.pddl")
+    instance_path_inserted_predicates = instance_path.replace(".pddl", "-parsed-objects.pddl")
+    my_parsed_problem = parsed_problem_mod.ParsedPDDLProblem(domain_path_inserted_predicates, \
+                                                            instance_path_inserted_predicates, ontology_path)
     # dict from bounding boxes to parsed_problem_objects_dict.keys()
     bb_to_pddl_obj_dict = {'plastic_bag': ['plastic_bag1'], 'plastic_paper_bag': ['plastic_paper_bag1'], 'g_drawer': ['g_drawer1'],
      'sponge': ['sponge1'], 'drawer': ['drawer1', 'drawer2'], 'cuttingboard': ['cuttingboard1'], 'end': ['end1'],
@@ -115,13 +117,15 @@ def main():
      'towel': ['towel1'], 'counter': ['counter1'], 'spice_shaker': ['spice_shaker1'], 'l_hand': ['l_hand'],
      'g_drawer1': ['g_drawer11']}
 
+    ###ATTENTION: Where the videos are stored won't be automated, as this is different for each dataset
     video_annotation = video_annotation_mod.VideoAnnotation(
         '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/Videos/', \
         '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/', \
         bb_to_pddl_obj_dict)
 
     # ['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
-    for current_session in video_annotation.session_names:
+    #for current_session in video_annotation.session_names:
+    for current_session in [session]:
     #for current_session in ["s37-d21"]:
         touch_events = []                       #all binary starts and ends of overlaps between two objects (frame_no, [all touches])
         possible_actions_session = []          #all actions from manipulator_events and non_manipulator_events where the object predicates match to an action (frame_no, [all_actions])
@@ -136,4 +140,4 @@ def main():
                     open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/possible_actions/possible_actions_session_"+str(current_session)+".p", "wb"))
 
 if __name__ == "__main__":
-    main()
+    main_watch_video()

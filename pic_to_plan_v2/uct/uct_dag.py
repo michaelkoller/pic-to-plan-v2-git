@@ -20,15 +20,25 @@ from datetime import datetime
 import collections
 
 class UCTSearch:
-    def __init__(self):
+    def __init__(self, domain_inserted_predicates_path, instance_parsed_objects_path, session_name, ontology_path, \
+                 save_after_X_iterations, experiment_name, current_results_dir, goal_path):
         self.t_start = time.time()
-
+        self.save_after_X_iterations = save_after_X_iterations
+        self.experiment_name = experiment_name
+        self.current_results_dir = current_results_dir
         # compile re for later use
         self.re_compiled = re.compile(r"\([A-Za-z0-9_ ]+\)")
+        self.domain_inserted_predicates_path = domain_inserted_predicates_path
+        self.instance_parsed_objects_path = instance_parsed_objects_path
+        self.ontology_path = ontology_path
+        self.goal_path = goal_path
 
-        self.my_parsed_problem = parsed_problem_mod.ParsedPDDLProblem(
-            "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl", \
-            "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects.pddl")
+        #self.my_parsed_problem = parsed_problem_mod.ParsedPDDLProblem(
+        #    "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl", \
+        #    "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects.pddl")
+
+        self.my_parsed_problem = parsed_problem_mod.ParsedPDDLProblem(domain_inserted_predicates_path, instance_parsed_objects_path, ontology_path)
+
         # dict from bounding boxes to parsed_problem_objects_dict.keys()
         self.bb_to_pddl_obj_dict = {'plastic_bag': ['plastic_bag1'], 'plastic_paper_bag': ['plastic_paper_bag1'],
                                'g_drawer': ['g_drawer1'],
@@ -49,7 +59,7 @@ class UCTSearch:
             '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/', \
             self.bb_to_pddl_obj_dict)
 
-        self.session_name = "s13-d25"
+        self.session_name = session_name
         print(self.session_name)
         self.touch_events = pickle.load(open(
             "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/overlap_detections/touch_events_" + self.session_name + ".p",
@@ -78,7 +88,7 @@ class UCTSearch:
         self.t_start = time.time()
         self. s_0 = s_0
         self.node_dict = dict()
-        self.v_0 = Node(self.s_0, None, self.possible_actions_session)
+        self.v_0 = Node(self.s_0, None, self.possible_actions_session, self.domain_inserted_predicates_path, self.instance_parsed_objects_path)
         self.e_0 = uct_edge_mod.Edge(None, self.v_0, None, 0)
         self.v_0.in_edges = [self.e_0]
         self.node_dict[self.v_0.__hash__()] = self.v_0
@@ -92,23 +102,7 @@ class UCTSearch:
         self.v_0.untried_children = self.v_0.call_VAL(self.possible_actions_session[0][1])
 
         avoid_dup_no = 0
-        while (time.time()-self.t_start < self.time_limit and self.n_iter < self.iteration_limit):
-            # if self.n_iter % 10 == 0 and self.n_iter != 0:
-            #     print(self.n_iter)
-            if self.n_iter % 30 == 0 and self.n_iter != 0:
-                print(datetime.now())
-                print("iter", self.n_iter)
-                print("avoided duplicate nodes:", avoid_dup_no)
-
-                look_for_dup_states = collections.Counter()
-                for vals in self.node_dict.values():
-                    look_for_dup_states[vals.state_string] += 1
-                print(look_for_dup_states.most_common(1)[0])
-                self.save_dot()
-                self.save_nodes_and_edges()
-                #pickle.dump(self.node_dict, open( "uct_dat_"+str(self.n_iter)+".p", "wb" ) )
-
-
+        while (time.time()-self.t_start <= self.time_limit and self.n_iter <= self.iteration_limit):
             final_edge_descent_trace = []
             v_l, edge_descent_trace = self.tree_policy(self.v_0)
 
@@ -151,9 +145,22 @@ class UCTSearch:
 
             if len(final_edge_descent_trace)> 0:
                 self.backup(final_edge_descent_trace, delta)
+
+            if self.n_iter % self.save_after_X_iterations == 0:
+                print(datetime.now())
+                print("iter", self.n_iter)
+                print("avoided duplicate nodes:", avoid_dup_no)
+
+                look_for_dup_states = collections.Counter()
+                for vals in self.node_dict.values():
+                    look_for_dup_states[vals.state_string] += 1
+                print(look_for_dup_states.most_common(1)[0])
+                self.save_dot()
+                self.save_nodes_and_edges()
+                #pickle.dump(self.node_dict, open( "uct_dat_"+str(self.n_iter)+".p", "wb" ) )
             self.n_iter += 1
+
         #self.v_0.print_subtree()
-        self.get_best_path()
         t_stop = time.time()
         processing_time = t_stop - self.t_start
         print("FINISHED", "Frame no:", str(self.possible_actions_session[-1][0]), "Node count:", str(Node.nid))
@@ -172,8 +179,8 @@ class UCTSearch:
             self.check_if_reachable_aux(e.destination, visited)
 
     def save_dot(self):
-        G = uct_search.create_nx_graph()
-        draw_search_tree_mod.draw_tree_nx(G, self.n_iter)
+        G = self.create_nx_graph()
+        draw_search_tree_mod.draw_tree_nx(G, self.experiment_name + "_" + str(self.n_iter), self.current_results_dir)
 
     def tree_policy(self, v):
         edge_descent_trace = []
@@ -199,7 +206,7 @@ class UCTSearch:
         # #dummy def pol
         #return 1
         ###############
-        create_pr_instance_mod.create_pr_instance(observation_trace)
+        create_pr_instance_mod.create_pr_instance(observation_trace, self.domain_inserted_predicates_path, self.instance_parsed_objects_path, self.goal_path)
         return call_plan_rec_mod.call_plan_rec()
 
     def backup(self, edge_descent_trace, delta):
@@ -209,22 +216,14 @@ class UCTSearch:
         self.e_0.total_reward += delta
         self.e_0.num_visits += 1
 
-    def get_best_path(self):
-        path = [self.v_0]
-        while path[-1].children is not None and len(path[-1].children)>0:
-            v_child = path[-1].get_best_child(0) #no more exploration
-            path.append(v_child)
-        for v in path:
-            print(str(v))
-
     def save_nodes_and_edges(self):
         new_node_dict = collections.defaultdict(list)
         new_in_edge_dict = collections.defaultdict(list)
         new_out_edge_dict = collections.defaultdict(list)
         self.save_nodes_and_edges_aux(new_node_dict, new_in_edge_dict, new_out_edge_dict, self.v_0)
-        pickle.dump(new_node_dict, open("node_dict"+str(self.n_iter)+".p", "wb"))
-        pickle.dump(new_in_edge_dict, open("in_edge_dict"+str(self.n_iter)+".p", "wb"))
-        pickle.dump(new_out_edge_dict, open("out_edge_dict"+str(self.n_iter)+".p", "wb"))
+        pickle.dump(new_node_dict, open(self.current_results_dir+"/node_dict_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
+        pickle.dump(new_in_edge_dict, open(self.current_results_dir+"/in_edge_dict_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
+        pickle.dump(new_out_edge_dict, open(self.current_results_dir+"/out_edge_dict_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
 
     def save_nodes_and_edges_aux(self, new_node_dict, new_in_edge_dict, new_out_edge_dict, current_node):
         current_node_copy = copy.deepcopy(current_node)

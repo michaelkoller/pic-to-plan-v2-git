@@ -6,11 +6,11 @@ import owlready2
 import pic_to_plan_v2.observation_trace_gen.parse_ontology as parse_ontology
 
 class ParsedPDDLProblem:
-    def __init__(self, domain_path, instance_path):
+    def __init__(self, domain_path, instance_path, ontology_path):
         self.domain_path = domain_path
         self.instance_path = instance_path
         self.parsed_problem_FD = pddl_parser.open(self.domain_path, self.instance_path)
-        self.superclass_dict, self.individual_type_dict, self.onto = parse_ontology.parse_ontology()
+        self.superclass_dict, self.individual_type_dict, self.onto = parse_ontology.parse_ontology(ontology_path)
 
         self.action_parameter_types_dict = {}
         # parsed_problem.objects <==> label_legend_dict.values()

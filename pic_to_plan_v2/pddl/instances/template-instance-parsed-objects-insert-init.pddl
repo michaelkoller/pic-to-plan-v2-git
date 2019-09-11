@@ -112,6 +112,6 @@
     <insert_init>
 )
 (:goal (and
-(grasped cucumber1) (open drawer1)
+(goaldummy)
 ))
 )

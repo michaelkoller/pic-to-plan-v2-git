@@ -9,6 +9,6 @@
     <insert_class_memberships>
 )
 (:goal (and
-(grasped cucumber1) (open drawer1)
+(goaldummy)
 ))
 )

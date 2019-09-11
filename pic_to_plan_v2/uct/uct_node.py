@@ -10,7 +10,7 @@ class Node:
     nid = 0
     re_compiled = re.compile(r"\([A-Za-z0-9_ ]+\)") #TODO pass it down from uct_search instead of setting it here
 
-    def __init__(self, state, in_edge, possible_actions):
+    def __init__(self, state, in_edge, possible_actions, domain_path_inserted_predicates, instance_parsed_objects_path):
         self.state = state
         self.state_string = " ".join(sorted(list(self.state)))
         self.hash_value = self.state_string.__hash__()
@@ -21,6 +21,8 @@ class Node:
         self.untried_children = None #self.get_children_from_possible_actions() #call to VAL
         self.nid = Node.nid
         self.expanded_possible_action_indices = []
+        self.instance_parsed_objects_path = instance_parsed_objects_path
+        self.domain_path_inserted_predicates = domain_path_inserted_predicates
         Node.nid += 1
 
     def __repr__(self):
@@ -49,6 +51,7 @@ class Node:
         return min([e.possible_actions_index for e in self.in_edges]) if self.in_edges != [None] else 0
 
     def call_VAL(self, n_iter):
+        #TODO create unique place for current sas plans
         current_plan_path_string = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_"
 
         try_action_strings = []
@@ -65,17 +68,24 @@ class Node:
                     f.write(try_action_string + "\n;cost = 1 (unit cost)")
                     f.close()
         current_state_string = " ".join(self.state)
-        template_instance = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects-insert-init.pddl", \
-                "r")
+        #"/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects-insert-init.pddl"
+        template_instance = open(self.instance_parsed_objects_path.replace(".pddl", "-insert-init.pddl"), "r")
         template_instance_string = "".join(template_instance.readlines())
         parsed_template_instance_string = template_instance_string.replace("<insert_init>", current_state_string)
+        #TODO make unique current state instances
         f = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl", "w")
         f.write(parsed_template_instance_string)
         f.close()
-        cmd = '/home/mk/Planning/VAL/validate -v /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl \
-                /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl ' \
-                + " ".join(plan_file_names) + \
-                ' > /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt'
+        cmd = '/home/mk/Planning/VAL/validate -v ' + self.domain_path_inserted_predicates + \
+                        ' /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl ' \
+              + " ".join(plan_file_names) + \
+              ' > /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt'
+        ###hardcoded files
+        # cmd = '/home/mk/Planning/VAL/validate -v /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl \
+        #         /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl ' \
+        #         + " ".join(plan_file_names) + \
+        #         ' > /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt'
+        ###end hardcoded
         #cmd = '/home/mk/Planning/VAL/validate -v  /home/mk/PycharmProjects/pic-to-plan/take-put-domain.pddl /home/mk/PycharmProjects/pic-to-plan/current-state-take-put-instance-no-handempty.pddl /home/mk/PycharmProjects/pic-to-plan/val_exp/open_sas_plan > plan_val_output.txt' #check for unsatisfied precondition --> action not applicable in current state
         os.system(cmd)
         plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r")
@@ -107,7 +117,7 @@ class Node:
             #depth will be more complex to define, nop action maybe useless afterwards
             if new_atom_added_list[i]: # and sorted_new_state_string not in state_string_to_node_id_dict.keys(): #new atom short circuits logical expression
                 new_edge = uct_edge_mod.Edge(self, None, try_action_strings[i], pos_act_indices[i]) #origin, destination, action, possible_action_index):
-                new_node = Node(new_state, new_edge, self.possible_actions) #state, in_edge, possible_actions):
+                new_node = Node(new_state, new_edge, self.possible_actions, self.domain_path_inserted_predicates, self.instance_parsed_objects_path) #state, in_edge, possible_actions):
                 new_edge.destination = new_node
                 children.append((new_edge, new_node))
         return children
