@@ -76,7 +76,7 @@ class UCTSearch:
         self.current_state_set = set()
         for atom in self.current_state_FD:
             if atom.predicate != "=" and self.my_parsed_problem.onto[
-                atom.predicate] is None:  # TODO only add non-static atoms (static atoms defined in domain need to be checked, too?)
+                atom.predicate] is None:
                 s = "(" + str(atom.predicate) + " " + " ".join(atom.args) + ")"
                 self.current_state_set.add(s)
 
@@ -121,9 +121,6 @@ class UCTSearch:
                             if len(final_edge_descent_trace) > 0:
                                 delta = final_edge_descent_trace[-1].destination.get_mean_reward()
                             break
-                            #TODO so, here I neither insert node nor change edge, should I abort (via continue?) in this case?
-                            #No, because then this path will be chosen again, if the rewards aren't changed
-                            #this is kind of a terminal node insofar, that the current selected action wont ever become better
                         else:
                             #change edge from current node to already existing node
                             #print(v_l, "already in node dict")
@@ -324,26 +321,11 @@ if __name__ == "__main__":
     draw_search_tree_mod.draw_tree_nx(G, 'final')
     print("done")
 
-#TODO make DAG
-#TODO make state lookup
-#TODO draw graph https://plot.ly/python/tree-plots/
-
-#TODO are nop state really that good?
-
-#http://www.webgraphviz.com/
-#insert test.dot there
-
-#kgraphviewer
-
-#look at the test.dot-file in observation_trace_gen
-
 #Hash results of plan rec
 #possible to save prelim results and use for next step? probably not.
 
-#TODO make it that unfinished prob folders in ramirez folder are removed automatically
-
 ###
-#TODO at level 2 (frame no 342), check if the states are correctly expanded --> there are never put_in_hand/put_out_of_hand actions!!!
+#TODO, look at the level 1 and 2 expansions (i.e., are all the actions there?)
 #TODO: when the search tree has reached max level (no more children to expand) and has done the plan recognition policy already in that state
 #then save the PR result for later, if that node is reached again. This would then be similar to a "isTerminal" condition in the
 #pseudo code
@@ -381,10 +363,6 @@ if __name__ == "__main__":
 #so, we need an algorithmmic check if the next action to be added as achild creates a loop in the otherwise DAG.
 #if a loop would be created, we know we don't need it.
 
-#DAG TODO:
-#have hashtable for state lookup, use state descriptor as hashvalue (set to list, sort list, join by " " --> unique state string)
-#store values in edges, rather than in nodes
-
 #TODO MAYBE BIG DRAWBACK:
 #say, there is a correct action sequence and each action needs effects of its predecessor in their precondition
 #A->B->C
@@ -395,7 +373,7 @@ if __name__ == "__main__":
 #rediscover B in the solution from initial state to state after action C
 #Maybe it is not complete, to filter the possible actions to applicable actions?
 
-#TODO childs 2008, gaudel 2010, saffidine2010 lesen
+#TODO childs 2008, gaudel 2010, saffidine2010 in references
 
 #TODO about which possible actions are available at a state:
 #again, possible actions is a list [(frame_no, [actions_at_frame_no]), (...), (...), ...]
@@ -430,7 +408,7 @@ if __name__ == "__main__":
 
 #branching factor is #distinct actions
 
-#TODO avoid outgoing edges in a node with ther same actions!
+#TODO avoid outgoing edges in a node with ther same actions! check that
 #this could potentially happen if you need to insert possible actions many times
 
 #so now i have all unique actions at the root node as edges
@@ -462,7 +440,7 @@ if __name__ == "__main__":
 #TODO recognize more specific goals: if facts in goal1 is superset of goal2 and both goals are fulfilled,
 #the stricter, harder goal should be higher in evaluation
 
-#TODO runtime comparison: goal recognition accuracy over iteration graph
+#TODO runtime comparison: goal recognition accuracy over iteration graph --> this is different than the % of provided possible actions list (100% is ground truth goal reached)
 
 #TODO distinguish between estimating the right goal and the quality of the found observation trace
 
@@ -528,3 +506,41 @@ if __name__ == "__main__":
 
 #TODO: improve selection mechanism? take into consideration the number of actions?
 #4 possibilities good/bad pr value, many/few actions already taken
+
+#Todo: explain how there is no reverting back to previous states (because I avoid loops, i have dag)
+#if a human makes a suboptimal plan w/ loops, the program will only see the optimal plan
+
+#TODO 1st experiment:
+#goals: cut bread, cut cucumber, plus a reasonable goal that is never in the video.
+#let the cut bread/cucumber minimal domain run over all videos, get accuracy.
+#measure: follow most likely path, take the first/last goal (or goal along the most likely path with the highest prob) in the path as label,
+#and no goal if there is no goal state in the path
+#increase validity of dataset by adding the missing bread/cucumber bounding box plus object contacts. otherwise you can just say
+#that the system is the same as only looking for object touches...
+
+#TODO: IMPORTANT EXPERIMENT
+#give unfinished possible actions lists and see if the correct goal is found!
+#funktioniert es wenn die possible actions aufhören bevor ein goal erreicht ist?
+#Tests dann mit verschieden komplexen Domains mit unterschielich vollständigen possible actions
+#Higher saffidine coesffs for more complex domains?
+#preparation for that type of experiment:
+#find first goal state in the possible actions, probably need to hand annotate that from video...
+#this is the 100% condition (whole action sequence given)
+#50% gives then the first haft of this 100% possible action list.
+#when hand annotating, distinguish: when does the person actually finish task VS
+#when is the first maybe accidental bounding box touch that enables the algorithm to find the right goal.
+#metric: look if the
+#possible action index of the last action that leads to the goal state should be from the same time in video as the
+#last action the person took before reaching goal
+#problem: if there are the same two actions in a node, the lower PAI will be added, not the higher one.
+
+#TODO
+#create ground truth plan per video per domain
+
+#TODO
+#fkn bug where there is the same edge twice in a node, e.g.
+#(grasped cuttingboard1) (grasped knife1) (in_hand cuttingboard1 r_hand) (in_hand knife1 l_hand)
+#STATE ID 25 (grasped cuttingboard1) (grasped knife1) (in_hand cuttingboard1 r_hand) (in_hand knife1 l_hand)
+#CHOOSE AMONG THESE (1st argument is key)
+#(cut cuttingboard1) (grasped cuttingboard1) (grasped knife1) (in_hand cuttingboard1 r_hand) (in_hand knife1 l_hand);	(cut_w_knife cuttingboard1 knife1);	ID 70 0.69 PAI 94 Act (cut_w_knife cuttingboard1 knife1);	0.881;	0.688
+#(cut cuttingboard1) (grasped cuttingboard1) (grasped knife1) (in_hand cuttingboard1 r_hand) (in_hand knife1 l_hand);	(cut_w_knife cuttingboard1 knife1);	ID 70 0.69 PAI 94 Act (cut_w_knife cuttingboard1 knife1);	0.881;	0.688

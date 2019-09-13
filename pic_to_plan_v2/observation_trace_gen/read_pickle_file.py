@@ -1,10 +1,11 @@
 import pickle
 
-experiment_name = "Cut_bread_and_cucumber_initial_exp"
-iter = 0
-out_edge_dict = pickle.load( open( "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/"+experiment_name+"/out_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
-in_edge_dict = pickle.load( open( "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/"+experiment_name+"/in_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
-node_dict = pickle.load( open( "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/"+experiment_name+"/node_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
+experiment_folder_name = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/ccb_minimal_cut_graspable_test_exp_2019-09-12 16:19:31.445103/"
+experiment_name = "ccb_minimal_cut_graspable_test_exp"
+iter = 293
+out_edge_dict = pickle.load( open( experiment_folder_name + "out_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
+in_edge_dict = pickle.load( open( experiment_folder_name + "in_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
+node_dict = pickle.load( open( experiment_folder_name + "node_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 
 current_node = "(hand_empty l_hand) (hand_empty r_hand)"
 current_edge = None #graph[0].obj_dict['edges'][('0','3')][0]['name']
