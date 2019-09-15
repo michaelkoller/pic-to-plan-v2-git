@@ -1,6 +1,6 @@
 import tarfile
 
-def create_pr_instance(obs, domain_path_inserted_predicates, instance_path_parsed_objects, goal_path):
+def create_pr_instance(obs, domain_path_inserted_predicates, instance_path_parsed_objects, goal_path,  archive_path, archive_name):
     print("create plan rec instance:", obs)
     joined_obs = "\n".join(obs)
     obs_file = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/obs.dat", "w")
@@ -18,7 +18,7 @@ def create_pr_instance(obs, domain_path_inserted_predicates, instance_path_parse
     template_file_pr.write(template_instance_string)
     template_file_pr.close()
 
-    tar = tarfile.open("sample.tar.bz2", "w:bz2")
+    tar = tarfile.open(archive_path + archive_name + ".tar.bz2", "w:bz2")
     "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/template-domain-inserted-predicates.pddl"
     tar.add(domain_path_inserted_predicates, arcname="domain.pddl")
     tar.add(goal_path, arcname="hyps.dat")

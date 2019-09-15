@@ -18,6 +18,7 @@ import pic_to_plan_v2.observation_trace_gen.call_plan_rec as call_plan_rec_mod
 import pic_to_plan_v2.uct.uct_edge as uct_edge_mod
 from datetime import datetime
 import collections
+import multiprocessing as mp
 
 class UCTSearch:
     def __init__(self, domain_inserted_predicates_path, instance_parsed_objects_path, session_name, ontology_path, \
@@ -103,9 +104,10 @@ class UCTSearch:
 
         avoid_dup_no = 0
         while (time.time()-self.t_start <= self.time_limit and self.n_iter <= self.iteration_limit):
+
+            
             final_edge_descent_trace = []
             v_l, edge_descent_trace = self.tree_policy(self.v_0)
-
             while True:
                 if v_l.__hash__() in self.node_dict: #this state already exists and has a value
                     avoid_dup_no += 1
@@ -120,6 +122,7 @@ class UCTSearch:
                             final_edge_descent_trace += edge_descent_trace
                             if len(final_edge_descent_trace) > 0:
                                 delta = final_edge_descent_trace[-1].destination.get_mean_reward()
+                                self.backup(final_edge_descent_trace, delta)
                             break
                         else:
                             #change edge from current node to already existing node
@@ -134,14 +137,63 @@ class UCTSearch:
                 else:
                     self.node_dict[v_l.__hash__()] = v_l
                     final_edge_descent_trace += edge_descent_trace
-                    delta = self.default_policy(v_l, [e.action for e in final_edge_descent_trace])
-                    #attach mu' and n' to this new edge
-                    edge_descent_trace[-1].mu_prime = delta
-                    edge_descent_trace[-1].n_prime = 1
+
+                    ###find parallelization candidates
+                    #useable_cores = mp.cpu_count() - 2
+                    useable_cores = 10
+
+                    final_edge_descent_traces = [final_edge_descent_trace]
+                    v_ls = [v_l]
+                    for it, (edge, dest_node) in enumerate(final_edge_descent_trace[-1].origin.untried_children):
+                        if it >= useable_cores -1: # avoid using more cores than available (-1, because there is already one added in the beginning)
+                            break
+                        print(edge, dest_node)
+                        if dest_node.__hash__() not in self.node_dict:
+                            print("candidate")
+                            self.node_dict[dest_node.__hash__()] = dest_node
+                            final_edge_descent_trace[-1].origin.out_edges.append(edge)
+                            #final_edge_descent_trace[-1].origin.untried_children.remove((edge, dest_node)) no, this messes with the loop
+                            final_edge_descent_trace[-1].origin.untried_children[it] = None
+                            v_ls.append(dest_node)
+                            final_edge_descent_traces.append(copy.deepcopy(final_edge_descent_trace)[:-1]+ [edge])
+                    for x in range(final_edge_descent_trace[-1].origin.untried_children.count(None)):
+                        final_edge_descent_trace[-1].origin.untried_children.remove(None)
+                    #default policy
+                    for i in range(len(v_ls)):
+                        archive_path = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/"
+                        archive_name = "pr_instance_"+ str(i)
+                        create_pr_instance_mod.create_pr_instance([e.action for e in final_edge_descent_traces[i]], self.domain_inserted_predicates_path,
+                                                              self.instance_parsed_objects_path, self.goal_path, archive_path, archive_name)
+
+                    return_array = mp.Array('f',[-1.0 for _ in range(len(v_ls))])
+                    processes = [mp.Process(target=call_plan_rec_mod.call_plan_rec, args=(j, return_array)) for j in range(len(v_ls))]
+                    for p in processes:
+                        p.start()
+                    for p in processes:
+                        p.join()
+                    return_values = [return_array[i] for i in range(len(v_ls))]
+                    # asdf = zip(zip(v_ls, final_edge_descent_traces), return_values)
+                    # for w in asdf:
+                    #     print(w)
+                    # print("vls", v_ls)
+                    # print("edges", final_edge_descent_traces)
+                    # print("rd", return_values)
+                    #delta = call_plan_rec_mod.call_plan_rec(0)
+                    #old default policy call. its just the two lines above! delta = self.default_policy(v_l, [e.action for e in final_edge_descent_trace])
+
+                    for l in range(len(v_ls)):
+                        final_edge_descent_traces[l][-1].mu_prime = return_values[l]
+                        final_edge_descent_traces[l][-1].n_prime = 1
+                        if len(final_edge_descent_traces[l]) > 0:
+                            self.backup(final_edge_descent_traces[l], return_values[l])
                     break
 
-            if len(final_edge_descent_trace)> 0:
-                self.backup(final_edge_descent_trace, delta)
+                    #attach mu' and n' to this new edge
+                    # edge_descent_trace[-1].mu_prime = delta
+                    # edge_descent_trace[-1].n_prime = 1
+                    # if len(final_edge_descent_trace) > 0:
+                    #     self.backup(final_edge_descent_trace, delta)
+                    # break
 
             if self.n_iter % self.save_after_X_iterations == 0:
                 print(datetime.now())

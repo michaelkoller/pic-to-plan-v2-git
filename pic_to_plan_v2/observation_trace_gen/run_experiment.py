@@ -48,7 +48,7 @@ parse_ontology_mod.main_parse_ontology(ontology_path, domain_path, instance_path
 
 ###watch video
 #ATTENTION: TODO eventually, watch video must run, too. now it only needs to run, if the domain or ontology has changed
-watch_video_mod.main_watch_video(domain_path, instance_path, session_name, ontology_path)
+#watch_video_mod.main_watch_video(domain_path, instance_path, session_name, ontology_path)
 
 domain_inserted_predicates_path = domain_path.replace(".pddl", "-inserted-predicates.pddl")
 instance_inserted_predicates_path = instance_path.replace(".pddl", "-parsed-objects.pddl")
