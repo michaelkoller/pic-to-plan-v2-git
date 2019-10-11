@@ -1,8 +1,8 @@
 import pickle
 
-experiment_folder_name = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/ccb_minimal_cut_graspable_test_exp_2019-09-12 16:19:31.445103/"
-experiment_name = "ccb_minimal_cut_graspable_test_exp"
-iter = 293
+experiment_folder_name = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/Cut_bread_and_cucumber_initial_exp_2019-10-10 08:25:56.726985/"
+experiment_name = "Cut_bread_and_cucumber_initial_exp"
+iter = 1
 out_edge_dict = pickle.load( open( experiment_folder_name + "out_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 in_edge_dict = pickle.load( open( experiment_folder_name + "in_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 node_dict = pickle.load( open( experiment_folder_name + "node_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
@@ -27,9 +27,12 @@ for n in node_dict:
             print("ABSOLUTE GOAL REACHED")
             goal_state_number += 1
             print(n, node_dict[n])
-
+roo = node_dict["(hand_empty l_hand) (hand_empty r_hand)"]
+ooo = node_dict["(grasped bread1) (grasped knife1) (in_hand bread1 r_hand) (in_hand knife1 l_hand)"]
 nnn = node_dict["(grasped bread1) (grasped knife1) (in_hand bread1 l_hand) (in_hand knife1 r_hand)"]
 nnnn = out_edge_dict["(grasped bread1) (grasped knife1) (in_hand bread1 l_hand) (in_hand knife1 r_hand)"]
+mmm = node_dict["(cut bread1) (grasped bread1) (grasped knife1) (in_hand bread1 l_hand) (in_hand knife1 r_hand)"]
+omom = node_dict["(grasped plastic_paper_bag1) (hand_empty r_hand) (in_hand plastic_paper_bag1 l_hand)"]
 print("GOAL STATES")
 print(goal_state_number,  "/", len(node_dict))
 direction = "down"

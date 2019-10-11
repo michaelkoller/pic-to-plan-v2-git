@@ -1,0 +1,12 @@
+experiment_name: Cut_bread_and_cucumber_initial_exp-s21-d21
+experiment_comment: first test series
+domain: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/ccb_minimal_template_domain.pddl
+instance: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance.pddl
+goals: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/goal_sets/goal_set_used.pddl
+ontology: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/ontologies/kitchen_ontology_v1.owl
+possible_actions: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/possible_actions/possible_actions_session_s21-d21.p
+session_name: s21-d21
+;duration of experiment in seconds, -1 for infinite
+time: 14400
+results_dir: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/
+save_after_X_iterations: 10000

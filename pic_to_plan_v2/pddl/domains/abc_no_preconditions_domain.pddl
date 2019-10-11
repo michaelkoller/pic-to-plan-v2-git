@@ -1,0 +1,41 @@
+(define (domain cut-cucumber)
+(:requirements :adl)
+(:predicates
+    <insert-class-instance-predicates>
+    (hand_empty ?x)
+    (in_hand ?x ?y)
+    (grasped ?o)
+    (cut ?o)
+    (goaldummy)
+    (a)
+    (b)
+    (c)
+    (d)
+    (e)
+)
+(:action act_a
+    :parameters (?o)
+    :precondition (goaldummy)
+    :effect (a)
+)
+(:action act_b
+    :parameters (?o)
+    :precondition (goaldummy)
+    :effect (b)
+)
+(:action act_c
+    :parameters (?o)
+    :precondition (goaldummy)
+    :effect (c)
+)
+(:action act_d
+    :parameters (?o)
+    :precondition (goaldummy)
+    :effect (d)
+)
+(:action act_e
+    :parameters (?o)
+    :precondition (goaldummy)
+    :effect (e)
+)
+)

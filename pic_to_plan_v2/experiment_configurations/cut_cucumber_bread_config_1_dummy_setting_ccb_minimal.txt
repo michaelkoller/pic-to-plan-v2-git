@@ -1,6 +1,6 @@
-experiment_name: ccb_minimal_cut_graspable_test_exp
-experiment_comment: a minimal domain test for debugging, no storage open or close, more free insofar that you can cut every graspable thing, not just food
-domain: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/ccb_minimal_template_domain_cut_graspable.pddl
+experiment_name: Cut_bread_and_cucumber_initial_exp
+experiment_comment: initial domain test
+domain: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/ccb_minimal_template_domain.pddl
 instance: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance.pddl
 goals: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/goal_sets/goal_set_used.pddl
 ontology: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/ontologies/kitchen_ontology_v1.owl
@@ -8,9 +8,9 @@ possible_actions: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/dat
 session_name: s13-d25
 ;instead of possible actions, gibe just the path to the video and let it watch that to create the possible actions
 ;duration of experiment in seconds, -1 for infinite
-time: 36000
+time: 600
 results_dir: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/
-save_after_X_iterations: 500
-;only whole line comments!
+save_after_X_iterations: 10000
+;the initial testing ground, only whole line comments!
 ;ATTENTION: Where the videos are stored won't be automated, as this is different for each dataset
 ;This file only takes the finished possible actions wrt the current domain and ontology. Maybe automate later

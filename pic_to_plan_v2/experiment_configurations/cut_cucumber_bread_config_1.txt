@@ -8,9 +8,9 @@ possible_actions: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/dat
 session_name: s13-d25
 ;instead of possible actions, gibe just the path to the video and let it watch that to create the possible actions
 ;duration of experiment in seconds, -1 for infinite
-time: 60
+time: 36000
 results_dir: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/
-save_after_X_iterations: 1
+save_after_X_iterations: 500
 ;the initial testing ground, only whole line comments!
 ;ATTENTION: Where the videos are stored won't be automated, as this is different for each dataset
 ;This file only takes the finished possible actions wrt the current domain and ontology. Maybe automate later

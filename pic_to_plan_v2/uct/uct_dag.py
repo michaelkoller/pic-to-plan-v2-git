@@ -68,6 +68,10 @@ class UCTSearch:
         self.possible_actions_session = pickle.load(open(
             "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/possible_actions/possible_actions_session_" + self.session_name + ".p",
             "rb"))
+        #######ATTENTION XXX this is just for no_preconditions test!
+        # self.possible_actions_session = pickle.load(open(
+        #     "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/possible_actions/p_a.p",
+        #     "rb"))
 
         # lama2011: /home/mk/Planning/fastdownwardplanner/fast-downward.py  --alias seq-sat-lama-2011 /home/mk/PycharmProjects/pic-to-plan/take-put-domain.pddl /home/mk/PycharmProjects/pic-to-plan/take-put-instance.pddl
         # cmd = '/home/mk/Planning/fastdownwardplanner/fast-downward.py --validate /home/mk/PycharmProjects/pic-to-plan/take-put-domain.pddl /home/mk/PycharmProjects/pic-to-plan/take-put-instance.pddl --search "astar(lmcut())" > fast_downward_out.txt'
@@ -105,7 +109,6 @@ class UCTSearch:
         avoid_dup_no = 0
         while (time.time()-self.t_start <= self.time_limit and self.n_iter <= self.iteration_limit):
 
-            
             final_edge_descent_trace = []
             v_l, edge_descent_trace = self.tree_policy(self.v_0)
             while True:
@@ -167,11 +170,17 @@ class UCTSearch:
 
                     return_array = mp.Array('f',[-1.0 for _ in range(len(v_ls))])
                     processes = [mp.Process(target=call_plan_rec_mod.call_plan_rec, args=(j, return_array)) for j in range(len(v_ls))]
-                    for p in processes:
-                        p.start()
-                    for p in processes:
-                        p.join()
-                    return_values = [return_array[i] for i in range(len(v_ls))]
+
+                    if False: #possible to return dummy values here
+                        return_values = [1 for i in range(len(v_ls))]
+                    else:
+                        for p in processes:
+                            p.start()
+                        for p in processes:
+                            p.join()
+                        return_values = [return_array[i] for i in range(len(v_ls))]
+
+
                     # asdf = zip(zip(v_ls, final_edge_descent_traces), return_values)
                     # for w in asdf:
                     #     print(w)
@@ -206,6 +215,7 @@ class UCTSearch:
                 print(look_for_dup_states.most_common(1)[0])
                 self.save_dot()
                 self.save_nodes_and_edges()
+                self.save_root_node()
                 #pickle.dump(self.node_dict, open( "uct_dat_"+str(self.n_iter)+".p", "wb" ) )
             self.n_iter += 1
 
@@ -235,6 +245,7 @@ class UCTSearch:
         edge_descent_trace = []
         while not v.is_terminal:
             if v.untried_children == [] and v.out_edges == []:
+                print("DEAD END", v.state_string)
                 return v, edge_descent_trace
             elif not v.is_fully_expanded():
                 expanded_e, expanded_v = self.expand(v)
@@ -288,6 +299,10 @@ class UCTSearch:
                 new_in_edge_dict[current_node.out_edges[i].destination.state_string].append([current_node_copy.state_string, e])
 
                 self.save_nodes_and_edges_aux(new_node_dict, new_in_edge_dict, new_out_edge_dict, current_node.out_edges[i].destination)
+
+    def save_root_node(self):
+        pickle.dump(self.v_0, open(self.current_results_dir+"/root_node_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
+
 
     def create_nx_graph(self):
         G = nx.DiGraph()

@@ -50,7 +50,11 @@ class Node:
     def get_min_in_edge_possible_action_index(self):
         return min([e.possible_actions_index for e in self.in_edges]) if self.in_edges != [None] else 0
 
-    def call_VAL(self, n_iter):
+    #TODO: problem: if the algo adds a loop-creating edge, you actually need to check, if in the destination node of that edge
+    #new possible actions need to be added. Explanation: the newly added edge could have a lower PAI than the previous and the
+    #possible actions lower than the current lowest PAI are never checked!!!!!!
+
+    def call_VAL(self, n_iter): #not using n_iter. it's just a call to get_min_in_edge
         #TODO create unique place for current sas plans
         current_plan_path_string = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_"
 
@@ -122,7 +126,7 @@ class Node:
                 children.append((new_edge, new_node))
         return children
 
-    def get_best_child(self, exploration_value=1.4142135623730951, d_1=1, d_2=1, d_3=1): #math.sqrt(2)
+    def get_best_child(self, exploration_value=1.4142135623730951, d_1=-1, d_2=0, d_3=1): #math.sqrt(2)
         best_value = -math.inf
         best_edges = []
         for e in self.out_edges:
@@ -141,6 +145,7 @@ class Node:
             elif edge_value == best_value:
                 best_edges.append(e)
         chosen_edge = random.choice(best_edges)
+        #print("in get best child, d-vals:", d_1, d_2, d_3, best_value)
         return chosen_edge, chosen_edge.destination
 
     def get_visit_count(self):

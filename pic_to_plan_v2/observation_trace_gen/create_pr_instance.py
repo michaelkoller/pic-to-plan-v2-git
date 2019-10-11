@@ -28,7 +28,7 @@ def create_pr_instance(obs, domain_path_inserted_predicates, instance_path_parse
     tar.close()
 
 if __name__ == "__main__":
-    create_pr_instance(["(put_in_hand plate1 r_hand)", "(put_in_hand knife1 r_hand)"], \
-                        "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/ccb_minimal_template_domain.pddl", \
-                        "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance.pddl", \
-                        "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/goal_sets/goal_set_used.pddl")
+    create_pr_instance(["(put_in_hand plastic_paper_bag1 r_hand)"], \
+                        "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/domains/ccb_minimal_template_domain-inserted-predicates.pddl", \
+                        "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/template-instance-parsed-objects.pddl", \
+                        "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/goal_sets/goal_set_used.pddl", "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/", "testpr")
