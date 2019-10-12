@@ -126,7 +126,7 @@ class Node:
                 children.append((new_edge, new_node))
         return children
 
-    def get_best_child(self, exploration_value=1.4142135623730951, d_1=-1, d_2=0, d_3=1): #math.sqrt(2)
+    def get_best_child(self, exploration_value=1.4142135623730951, d_1=-1, d_2=-1, d_3=-1): #math.sqrt(2)
         best_value = -math.inf
         best_edges = []
         for e in self.out_edges:

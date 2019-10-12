@@ -13,7 +13,7 @@ class Edge:
         self.action = action
         self.origin = origin
         self.destination = destination
-        self.num_visits = 1 #TODO Achtung, hack, sollte eigentlich mit 0 funktionieren!!!!!!!!!!!!!
+        self.num_visits = 0 #TODO Achtung, hack, sollte eigentlich mit 0 funktionieren!!!!!!!!!!!!!
         self.n_prime = 1
         self.total_reward = 0
         self.mu_prime = 0

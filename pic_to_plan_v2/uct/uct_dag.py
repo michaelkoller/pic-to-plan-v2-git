@@ -123,9 +123,10 @@ class UCTSearch:
                                     del edge_descent_trace[-1].origin.out_edges[i]
                             del edge_descent_trace[-1] #delete the loop creating edge from the backup path
                             final_edge_descent_trace += edge_descent_trace
-                            if len(final_edge_descent_trace) > 0:
-                                delta = final_edge_descent_trace[-1].destination.get_mean_reward()
-                                self.backup(final_edge_descent_trace, delta)
+                            #backing up smthng here might be wrong
+                            # if len(final_edge_descent_trace) > 0:
+                            #     delta = final_edge_descent_trace[-1].get_mean_reward()
+                            #     self.backup(final_edge_descent_trace, delta)
                             break
                         else:
                             #change edge from current node to already existing node
@@ -171,7 +172,7 @@ class UCTSearch:
                     return_array = mp.Array('f',[-1.0 for _ in range(len(v_ls))])
                     processes = [mp.Process(target=call_plan_rec_mod.call_plan_rec, args=(j, return_array)) for j in range(len(v_ls))]
 
-                    if False: #possible to return dummy values here
+                    if True: #possible to return dummy values here
                         return_values = [1 for i in range(len(v_ls))]
                     else:
                         for p in processes:
@@ -245,7 +246,7 @@ class UCTSearch:
         edge_descent_trace = []
         while not v.is_terminal:
             if v.untried_children == [] and v.out_edges == []:
-                print("DEAD END", v.state_string)
+                #print("DEAD END", v.state_string)
                 return v, edge_descent_trace
             elif not v.is_fully_expanded():
                 expanded_e, expanded_v = self.expand(v)
@@ -270,6 +271,8 @@ class UCTSearch:
         return call_plan_rec_mod.call_plan_rec()
 
     def backup(self, edge_descent_trace, delta):
+        print("BACKUP", edge_descent_trace[::-1])
+        print(edge_descent_trace[-1].origin)
         for e in edge_descent_trace[::-1]:
             e.total_reward += delta
             e.num_visits += 1
@@ -312,18 +315,18 @@ class UCTSearch:
             G.add_node(node_name)
             G._node[node_name]['color'] = 'black'
             G._node[node_name]['fillcolor'] = 'white'
-            G._node[node_name]["total_reward"] = v.get_total_reward()
-            G._node[node_name]["num_visits"] = v.get_visit_count()
+            G._node[node_name]["total_reward"] = v.get_total_reward() #from ingoing edges
+            G._node[node_name]["num_visits"] = v.get_visit_count() #from ingoing edges
             G._node[node_name]["nid"] = v.nid
             G._node[node_name]["state"] = v.state_string
-            G._node[node_name]["label"] = "id"+str(v.nid) + " " + str(round(v.get_mean_reward(),3) )+ "\n"+ str(v.state_string.replace(") (", ")\\n("))
+            G._node[node_name]["label"] = "ID"+str(v.nid) + " N" + str(round(v.get_visit_count(),2) )+ "\n"+ str(v.state_string.replace(") (", ")\\n("))
 
             for e in v.out_edges:
                 #if (v.nid, e.destination.nid) not in G.edges:
                 G.add_edge(e.origin.state_string, e.destination.state_string)
                 G.edges[e.origin.state_string, e.destination.state_string]['pos_act_index'] = e.possible_actions_index
                 G.edges[e.origin.state_string, e.destination.state_string]['penwidth'] = 5 * (e.get_mean_reward())
-                G.edges[e.origin.state_string, e.destination.state_string]['label'] = str(e.action).replace(" ", "\\n") + "\\nPAI"+str(e.possible_actions_index)+" "+str(round(e.get_mu(1), 2))
+                G.edges[e.origin.state_string, e.destination.state_string]['label'] = str(e.action).replace(" ", "\\n") + "\\nPAI"+str(e.possible_actions_index)+" N"+str(round(e.num_visits, 2))
                 G.edges[e.origin.state_string, e.destination.state_string]['total_reward'] = str(round(e.total_reward, 2))
                 G.edges[e.origin.state_string, e.destination.state_string]['num_visits'] = str(round(e.num_visits, 2))
                 G.edges[e.origin.state_string, e.destination.state_string]['mean_reward'] = str(round(e.get_mean_reward(), 2))
