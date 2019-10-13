@@ -1,3 +1,47 @@
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_-1_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand knife1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Deleting (hand_empty r_hand)
+Adding (in_hand knife1 r_hand)
+Adding (grasped knife1)
+Plan executed successfully - checking goal
+Goal not satisfied
+Plan invalid
+
+Plan Repair Advice:
+
+The goal is not satisfied
+(Set (goaldummy) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_-1_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand knife1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand knife1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand knife1 r_hand) has an unsatisfied precondition at time 1
+(Set (in_hand knife1 r_hand) to true)
 Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0_0
 ;Plan to validate:
 
@@ -262,50 +306,6 @@ Plan Repair Advice:
 
 (put_out_of_hand bread1 l_hand) has an unsatisfied precondition at time 1
 (Set (in_hand bread1 l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_32_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand knife1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (hand_empty r_hand)
-Adding (in_hand knife1 r_hand)
-Adding (grasped knife1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (goaldummy) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_32_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand knife1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand knife1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand knife1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand knife1 r_hand) to true)
 Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_33_0
 ;Plan to validate:
 
@@ -465,4 +465,4 @@ Plan Repair Advice:
 
 
 Failed plans:
- /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_7_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_7_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_8_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_8_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_21_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_21_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_21_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_21_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_32_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_32_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_33_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_38_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_38_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_74_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_74_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_79_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_79_1 
+ /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_-1_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_-1_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_0_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_7_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_7_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_8_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_8_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_21_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_21_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_21_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_21_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_33_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_38_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_38_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_74_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_74_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_79_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_79_1 

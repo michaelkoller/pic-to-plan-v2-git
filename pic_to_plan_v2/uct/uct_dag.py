@@ -91,7 +91,7 @@ class UCTSearch:
                                     these are not necessarily applicable in a given state.
                                     check with VAL to get applicable actions for a state from possible actions"""
         self.t_start = time.time()
-        self. s_0 = s_0
+        self.s_0 = s_0
         self.node_dict = dict()
         self.v_0 = Node(self.s_0, None, self.possible_actions_session, self.domain_inserted_predicates_path, self.instance_parsed_objects_path)
         self.e_0 = uct_edge_mod.Edge(None, self.v_0, None, 0)
@@ -443,7 +443,7 @@ if __name__ == "__main__":
 #rediscover B in the solution from initial state to state after action C
 #Maybe it is not complete, to filter the possible actions to applicable actions?
 
-#TODO childs 2008, gaudel 2010, saffidine2010 in references
+#TODO browne, childs 2008, gaudel 2010, saffidine2010 in references
 
 #TODO about which possible actions are available at a state:
 #again, possible actions is a list [(frame_no, [actions_at_frame_no]), (...), (...), ...]
@@ -606,11 +606,3 @@ if __name__ == "__main__":
 
 #TODO
 #create ground truth plan per video per domain
-
-#TODO
-#fkn bug where there is the same edge twice in a node, e.g.
-#(grasped cuttingboard1) (grasped knife1) (in_hand cuttingboard1 r_hand) (in_hand knife1 l_hand)
-#STATE ID 25 (grasped cuttingboard1) (grasped knife1) (in_hand cuttingboard1 r_hand) (in_hand knife1 l_hand)
-#CHOOSE AMONG THESE (1st argument is key)
-#(cut cuttingboard1) (grasped cuttingboard1) (grasped knife1) (in_hand cuttingboard1 r_hand) (in_hand knife1 l_hand);	(cut_w_knife cuttingboard1 knife1);	ID 70 0.69 PAI 94 Act (cut_w_knife cuttingboard1 knife1);	0.881;	0.688
-#(cut cuttingboard1) (grasped cuttingboard1) (grasped knife1) (in_hand cuttingboard1 r_hand) (in_hand knife1 l_hand);	(cut_w_knife cuttingboard1 knife1);	ID 70 0.69 PAI 94 Act (cut_w_knife cuttingboard1 knife1);	0.881;	0.688

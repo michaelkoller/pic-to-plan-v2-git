@@ -26,10 +26,10 @@ class Node:
         Node.nid += 1
 
     def __repr__(self):
-        return "ID " + str(self.nid) + " " + self.state_string
+        return "ID" + str(self.nid) + " " + self.state_string
 
     def __str__(self):
-        return "ID " + str(self.nid) + " " + self.state_string
+        return "ID" + str(self.nid) + " " + self.state_string
 
     def __hash__(self):
         return self.hash_value

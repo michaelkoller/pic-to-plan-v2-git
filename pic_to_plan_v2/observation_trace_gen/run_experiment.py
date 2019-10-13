@@ -1,7 +1,7 @@
 from datetime import datetime
 import pic_to_plan_v2.observation_trace_gen.parse_ontology as parse_ontology_mod
 import pic_to_plan_v2.observation_trace_gen.watch_video as watch_video_mod
-import pic_to_plan_v2.uct.uct_dag as uct_dag_mod
+import pic_to_plan_v2.uct.new_uct_dag as new_uct_dag_mod
 import copy
 import os
 import shutil
@@ -62,12 +62,13 @@ def run_single_video(session_name):
     current_results_dir = results_dir + experiment_name +"_"+str(datetime.now())
     os.mkdir(current_results_dir)
     print("UCT Instantiation")
-    uct_search = uct_dag_mod.UCTSearch(domain_inserted_predicates_path, instance_inserted_predicates_path, session_name, ontology_path, save_after_X_iterations, experiment_name, current_results_dir, goal_path)
+    uct_search = new_uct_dag_mod.UCT_Search(domain_inserted_predicates_path, instance_inserted_predicates_path, session_name, ontology_path, save_after_X_iterations, experiment_name, current_results_dir, goal_path)
     print("Start UCT Search")
-    uct_search.uct_search(copy.deepcopy(uct_search.current_state_set), time_limit=time)
+    uct_search.search(copy.deepcopy(uct_search.current_state_set), time_limit=time)
     #change in uct_dat line 73ffff
     end_time = datetime.now()
     print("DONE", experiment_name, "\nStart:", start_time, "\nEnd:", end_time, "\nDuration:", end_time - start_time)
+    uct_search.viz("test-viz")
 
 if __name__ == "__main__":
     sessions = ["s13-d21",
