@@ -10,6 +10,10 @@ import os
 import copy
 import pic_to_plan_v2.observation_trace_gen.create_pr_instance as create_pr_instance_mod
 import pic_to_plan_v2.observation_trace_gen.call_plan_rec as call_plan_rec_mod
+import multiprocessing as mp
+from datetime import datetime
+import collections
+
 
 d_1 = -1
 d_2 = 0
@@ -262,6 +266,12 @@ class UCT_Search:
         self.time_limit = time_limit if time_limit != None else math.inf
 
         while self.n_iter < self.n_iter_limit and time.time() - self.t_start < self.time_limit:
+            if self.n_iter % self.save_after_X_iterations == 0:
+                print("IT", self.n_iter)
+                self.viz("viz-"+str(self.n_iter))
+                self.save_nodes_and_edges()
+                self.save_root_node()
+
             #start new descent
             edge_descent_trace = []
             tp_result_node, tp_result_edge_trace = self.tree_policy(self.e_0)
@@ -301,7 +311,6 @@ class UCT_Search:
                     edge_descent_trace[-1].mu_prime = edge_descent_trace[-1].destination.mu_prime
                     edge_descent_trace[-1].n_prime = edge_descent_trace[-1].destination.n_prime
                     self.backup(edge_descent_trace, edge_descent_trace[-1].mu_prime)
-                    self.viz("test-viz")
                 elif edge_descent_trace[-1].destination.is_terminal():
                     #found a dead state (if the dest node has still untried children left, you just remove a loop creating edge during this single descent.
                     #but if the state is really dead, the terminal value should be backpropagated
@@ -331,16 +340,50 @@ class UCT_Search:
     def default_policy(self, observation_trace):
         useable_cores = 10
 
+        observation_traces = [observation_trace] #the 0-th item in the list is the original found trace, now add more traces of untried siblings
+
+        #look for additional untried children that are not yet in the node dict --> i.e., nodes for which PR definitely needs to be called
+        parent = observation_trace[-1].origin
+        for i, (child_node, child_edge) in enumerate(parent.untried_children):
+            if i >= useable_cores -1:
+                break
+            print(child_node, child_edge)
+            if child_node.__hash__() not in self.node_dict:
+                self.node_dict[child_node.__hash__()] = child_node
+                observation_trace[-1].origin.out_edges.append(child_edge)
+                observation_trace[-1].origin.untried_children[i] = None
+                observation_traces.append(copy.deepcopy(observation_trace)[:-1] + [child_edge])
+        for x in range(observation_trace[-1].origin.untried_children.count(None)):
+            observation_trace[-1].origin.untried_children.remove(None)
+
         archive_path = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/"
-        archive_name = "pr_instance_" + str(0)
-        create_pr_instance_mod.create_pr_instance([e.action for e in observation_trace[1:]],  #exclude the first item, becaus it is the dummy root edge
+        for i in range(len(observation_traces)):
+            archive_name = "pr_instance_" + str(i)
+            create_pr_instance_mod.create_pr_instance([e.action for e in observation_traces[i][1:]], # exclude the first item, becaus it is the dummy root edge
                                                   self.domain_inserted_predicates_path,
                                                   self.instance_parsed_objects_path, self.goal_path, archive_path,
                                                   archive_name)
 
-        return_array = [-1]
-        call_plan_rec_mod.call_plan_rec(0, return_array)
-        return_values = [return_array[0]]
+        return_array = mp.Array('f', [-1.0 for _ in range(len(observation_traces))])
+        processes = [mp.Process(target=call_plan_rec_mod.call_plan_rec, args=(j, return_array)) for j in
+                     range(len(observation_traces))]
+
+        if False:  # possible to return dummy values here
+            return_values = [1 for i in range(len(observation_traces))]
+        else:
+            for p in processes:
+                p.start()
+            for p in processes:
+                p.join()
+            return_values = [return_array[i] for i in range(len(observation_traces))]
+
+        for i in range(1, len(observation_traces)): # do graph updates for all new nodes except the original first one here in the def pol
+            observation_traces[i][-1].destination.mu_prime = return_values[i]
+            observation_traces[i][-1].destination.n_prime = 1.0
+            observation_traces[i][-1].mu_prime = observation_traces[i][-1].destination.mu_prime
+            observation_traces[i][-1].n_prime = observation_traces[i][-1].destination.n_prime
+            self.backup(observation_traces[i], observation_traces[i][-1].mu_prime)
+
         return return_values[0]
 
     def backup(self, edge_descent_trace, delta):
@@ -363,7 +406,9 @@ class UCT_Search:
         nd = dict()
         ed = dict()
         self.viz_add_aux(dot, self.n_0, nd, ed)
-        dot.render(viz_name+".gv", view=True)
+        date = str(datetime.now())
+        dot.render(self.current_results_dir+"/"+viz_name+"_"+str(self.n_iter)+".gv", view=False)
+
         return dot
 
     def viz_add_aux(self, dot, node, nd, ed):
@@ -380,9 +425,39 @@ class UCT_Search:
                 dot.edge(node.state_string, e.destination.state_string, e.action + "\nsmu:" + str(round(e.get_saff_mu(d_1),3)) + "\nmean:" + str(round(e.get_normal_mean_reward(),3)) + "\nn:" + str(e.num_visits) + "\nmu':" + str(round(e.mu_prime, 3)) + "\nn':" + str(e.n_prime))
                 self.viz_add_aux(dot, e.destination, nd, ed)
 
+    def save_nodes_and_edges(self):
+        new_node_dict = collections.defaultdict(list)
+        new_in_edge_dict = collections.defaultdict(list)
+        new_out_edge_dict = collections.defaultdict(list)
+        self.save_nodes_and_edges_aux(new_node_dict, new_in_edge_dict, new_out_edge_dict, self.n_0)
+        pickle.dump(new_node_dict, open(self.current_results_dir+"/node_dict_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
+        pickle.dump(new_in_edge_dict, open(self.current_results_dir+"/in_edge_dict_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
+        pickle.dump(new_out_edge_dict, open(self.current_results_dir+"/out_edge_dict_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
+
+    def save_nodes_and_edges_aux(self, new_node_dict, new_in_edge_dict, new_out_edge_dict, current_node):
+        current_node_copy = copy.deepcopy(current_node)
+        current_node_copy.out_edges = None
+        current_node_copy.in_edges = None
+        new_node_dict[current_node_copy.state_string] = current_node_copy
+        if current_node.out_edges is not None:
+            for i in range(len(current_node.out_edges)):
+                e = copy.deepcopy(current_node.out_edges[i])
+                e.saved_saff_mu_val = current_node.out_edges[i].get_saff_mu(-1)
+                e.origin = None
+                e.destination = None
+                new_out_edge_dict[current_node_copy.state_string].append([current_node.out_edges[i].destination.state_string, e])
+                new_in_edge_dict[current_node.out_edges[i].destination.state_string].append([current_node_copy.state_string, e])
+
+                self.save_nodes_and_edges_aux(new_node_dict, new_in_edge_dict, new_out_edge_dict, current_node.out_edges[i].destination)
+
+    def save_root_node(self):
+        pickle.dump(self.n_0, open(self.current_results_dir+"/root_node_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
+
 
 if __name__ == "__main__":
     uct_search = UCT_Search("")
     uct_search.search()
-    uct_search.viz("test-viz")
+    uct_search.viz("viz-" + str(uct_search.n_iter))
+    uct_search.save_nodes_and_edges()
+    uct_search.save_root_node()
     print("Finished")

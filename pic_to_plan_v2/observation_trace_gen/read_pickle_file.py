@@ -1,8 +1,8 @@
 import pickle
 
-experiment_folder_name = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/Cut_bread_and_cucumber_initial_exp-s13-d25_2019-10-11 11:50:56.589709/"
+experiment_folder_name = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/Cut_bread_and_cucumber_initial_exp-s13-d25_2019-10-14 11:24:49.410004/"
 experiment_name = "Cut_bread_and_cucumber_initial_exp-s13-d25"
-iter = 400000
+iter = 1000
 out_edge_dict = pickle.load( open( experiment_folder_name + "out_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 in_edge_dict = pickle.load( open( experiment_folder_name + "in_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 node_dict = pickle.load( open( experiment_folder_name + "node_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
@@ -10,6 +10,8 @@ node_dict = pickle.load( open( experiment_folder_name + "node_dict_"+str(experim
 current_node = "(hand_empty l_hand) (hand_empty r_hand)"
 current_edge = None #graph[0].obj_dict['edges'][('0','3')][0]['name']
 current_edge_label = None #graph[0].obj_dict['edges'][('0','3')][0]['attributes']['label']
+
+original_root_node = pickle.load( open( experiment_folder_name + "root_node_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 
 #list all goal states
 #goals = ["(used plastic_paper_bag1)", "(used plate1)", "(used knife1)", "(used cuttingboard1)"]
@@ -43,7 +45,7 @@ while chosen_next_node != "exit":
     if direction == "down":
         if current_node in out_edge_dict:
             for [to_state_string, edge] in out_edge_dict[current_node]:
-                eee.append([to_state_string, edge.action, edge, round(edge.mu_prime, 3), round(edge.total_reward/edge.num_visits, 3)])
+                eee.append([to_state_string, edge.action, edge, round(edge.saved_saff_mu_val,3), round(edge.get_normal_mean_reward(),3), round(edge.mu_prime, 3),  3])
         else:
             print("NO EDGES IN DOWN DIRECTION FROM HERE")
     elif direction == "up":
@@ -52,7 +54,7 @@ while chosen_next_node != "exit":
                 eee.append([to_state_string, edge.action, edge, round(edge.mu_prime, 3), round(edge.total_reward/edge.num_visits, 3)])
         else:
             print("NO EDGES IN UP DIRECTION FROM HERE")
-    eee = sorted(eee, key=lambda tup: tup[4], reverse=True)
+    eee = sorted(eee, key=lambda tup: tup[3], reverse=True)
     print("CHOOSE AMONG THESE (1st argument is key)")
     for e in eee:
         e = map(str, e)

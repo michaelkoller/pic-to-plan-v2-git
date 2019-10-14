@@ -68,7 +68,7 @@ def run_single_video(session_name):
     #change in uct_dat line 73ffff
     end_time = datetime.now()
     print("DONE", experiment_name, "\nStart:", start_time, "\nEnd:", end_time, "\nDuration:", end_time - start_time)
-    uct_search.viz("test-viz")
+    uct_search.viz("test-viz-final"+ str(datetime.now()))
 
 if __name__ == "__main__":
     sessions = ["s13-d21",
