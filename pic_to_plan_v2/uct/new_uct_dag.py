@@ -37,6 +37,7 @@ class Node:
         self.possible_actions = possible_actions_session
         self.domain_inserted_predicates_path = domain_inserted_predicates_path
         self.instance_parsed_objects_path = instance_parsed_objects_path
+        self.detailed_pr_vals = []
 
     def __repr__(self):
         return "ID " + str(self.nid) + " " + self.state_string
@@ -197,7 +198,7 @@ class Edge:
 
 class UCT_Search:
     def __init__(self, domain_inserted_predicates_path, instance_parsed_objects_path, session_name, ontology_path, \
-                 save_after_X_iterations, experiment_name, current_results_dir, goal_path):
+                 save_after_X_iterations, experiment_name, current_results_dir, goal_path, possible_actions_percentage):
         self.t_start = time.time()
         self.save_after_X_iterations = save_after_X_iterations
         self.experiment_name = experiment_name
@@ -207,7 +208,14 @@ class UCT_Search:
         self.domain_inserted_predicates_path = domain_inserted_predicates_path
         self.instance_parsed_objects_path = instance_parsed_objects_path
         self.ontology_path = ontology_path
+        self.possible_actions_percentage = possible_actions_percentage
         self.goal_path = goal_path
+        self.no_goals = 0
+        self.goals = []
+        with open(self.goal_path) as f:
+            for i, l in enumerate(f):
+                self.goals.append(l)
+            self.no_goals = i + 1
 
         self.my_parsed_problem = parsed_problem_mod.ParsedPDDLProblem(domain_inserted_predicates_path,
                                                                       instance_parsed_objects_path, ontology_path)
@@ -237,9 +245,10 @@ class UCT_Search:
         self.touch_events = pickle.load(open(
             "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/overlap_detections/touch_events_" + self.session_name + ".p",
             "rb"))
-        self.possible_actions_session = pickle.load(open(
+        self.possible_actions_session_full_length = pickle.load(open(
             "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/possible_actions/possible_actions_session_" + self.session_name + ".p",
             "rb"))
+        self.possible_actions_session = self.possible_actions_session_full_length[0:int(len(self.possible_actions_session_full_length)*self.possible_actions_percentage + 0.5)]
 
         # get current state from parsed problem
         self.current_state_FD = self.my_parsed_problem.parsed_problem_FD.init
@@ -365,7 +374,9 @@ class UCT_Search:
                                                   archive_name)
 
         return_array = mp.Array('f', [-1.0 for _ in range(len(observation_traces))])
-        processes = [mp.Process(target=call_plan_rec_mod.call_plan_rec, args=(j, return_array)) for j in
+        #3: pr-prob value, cost of satisfied obs, cost of unsatisfied obs
+        detailed_pr_vals_array = mp.Array('f', [-1.0 for _ in range(len(observation_traces)*self.no_goals*3)])
+        processes = [mp.Process(target=call_plan_rec_mod.call_plan_rec, args=(j, return_array, detailed_pr_vals_array)) for j in
                      range(len(observation_traces))]
 
         if False:  # possible to return dummy values here
@@ -376,6 +387,16 @@ class UCT_Search:
             for p in processes:
                 p.join()
             return_values = [return_array[i] for i in range(len(observation_traces))]
+            detailed_pr_vals = [detailed_pr_vals_array[i] for i in range(len(detailed_pr_vals_array))]
+
+        for i in range(len(observation_traces)): #insert detailed PR values for all nodes (including 0-th)
+            observation_traces[i][-1].destination.detailed_pr_vals = []
+            for j in range(self.no_goals):
+                ind = (i*self.no_goals*3) + (j*3)
+                a = [self.goals[j], detailed_pr_vals[ind], detailed_pr_vals[ind +1], detailed_pr_vals[ind + 2]]
+                observation_traces[i][-1].destination.detailed_pr_vals.append(a)
+
+        print("DET VALS", detailed_pr_vals)
 
         for i in range(1, len(observation_traces)): # do graph updates for all new nodes except the original first one here in the def pol
             observation_traces[i][-1].destination.mu_prime = return_values[i]

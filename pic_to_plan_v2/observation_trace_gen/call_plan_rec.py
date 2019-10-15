@@ -2,7 +2,7 @@ import os
 import time
 import tarfile
 
-def call_plan_rec(instance_number, return_array):
+def call_plan_rec(instance_number, return_array, detailed_pr_vals_array):
     t0 = time.time()
     obs_trace_dir = os.path.dirname(os.path.realpath(__file__))
     print(obs_trace_dir)
@@ -34,6 +34,7 @@ def call_plan_rec(instance_number, return_array):
     results = tarfile.open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/prob-plan-recognition-"+str(instance_number)+"/results.tar.bz2", "r:bz2")
     report = results.extractfile("report.txt")
     max_prob = 0
+    no_goals = 0
     for l in report:
         l = str(l).split("=")
         l0 = l[0]
@@ -41,7 +42,31 @@ def call_plan_rec(instance_number, return_array):
             l1 = l[1].strip("\\n'")
             l1_float = float(l1)
             max_prob = max(max_prob, l1_float)
+        if "Hyp_Atoms" in l0:
+            no_goals += 1
     print(max_prob)
+
+    #get detailed pr values
+    report = results.extractfile("report.txt")
+    i = instance_number * 3 * no_goals
+    for l in report:
+        l = str(l).split("=")
+        l0 = l[0]
+        if "Hyp_Cost_O" in l0:
+            l1 = l[1].strip("\\n'")
+            l1_float = float(l1)
+            detailed_pr_vals_array[i] = l1_float
+            i += 1
+        if "Hyp_Cost_Not_O" in l0:
+            l1 = l[1].strip("\\n'")
+            l1_float = float(l1)
+            detailed_pr_vals_array[i] = l1_float
+            i += 1
+        if "Hyp_Prob_O" in l0:
+            l1 = l[1].strip("\\n'")
+            l1_float = float(l1)
+            detailed_pr_vals_array[i] = l1_float
+            i += 1
 
     os.chdir(obs_trace_dir)
     t1 = time.time()

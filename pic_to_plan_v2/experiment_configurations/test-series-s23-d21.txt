@@ -7,6 +7,6 @@ ontology: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/ontolo
 possible_actions: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/possible_actions/possible_actions_session_s23-d21.p
 session_name: s23-d21
 ;duration of experiment in seconds, -1 for infinite
-time: 14400
+time: 5400
 results_dir: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/
-save_after_X_iterations: 10000
+save_after_X_iterations: 50

@@ -1,4 +1,269 @@
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_38_0
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_61_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand cuttingboard1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand cuttingboard1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand cuttingboard1 r_hand) has an unsatisfied precondition at time 1
+(Follow each of:
+    (Set (hand_empty r_hand) to true)
+    and (Set (grasped cuttingboard1) to false)
+)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_61_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand cuttingboard1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand cuttingboard1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand cuttingboard1 r_hand) has an unsatisfied precondition at time 1
+(Set (in_hand cuttingboard1 r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_61_2
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand cuttingboard1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand cuttingboard1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand cuttingboard1 l_hand) has an unsatisfied precondition at time 1
+(Follow each of:
+    (Set (hand_empty l_hand) to true)
+    and (Set (grasped cuttingboard1) to false)
+)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_61_3
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand cuttingboard1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Deleting (in_hand cuttingboard1 l_hand)
+Deleting (grasped cuttingboard1)
+Adding (hand_empty l_hand)
+Plan executed successfully - checking goal
+Goal not satisfied
+Plan invalid
+
+Plan Repair Advice:
+
+The goal is not satisfied
+(Set (goaldummy) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_62_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand knife1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand knife1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand knife1 r_hand) has an unsatisfied precondition at time 1
+(Follow each of:
+    (Set (hand_empty r_hand) to true)
+    and (Set (grasped knife1) to false)
+)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_62_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand knife1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Deleting (in_hand knife1 r_hand)
+Deleting (grasped knife1)
+Adding (hand_empty r_hand)
+Plan executed successfully - checking goal
+Goal not satisfied
+Plan invalid
+
+Plan Repair Advice:
+
+The goal is not satisfied
+(Set (goaldummy) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_66_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand bread1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand bread1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand bread1 l_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_66_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand bread1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand bread1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand bread1 l_hand) has an unsatisfied precondition at time 1
+(Set (in_hand bread1 l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_69_0
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand bread1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand bread1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand bread1 r_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_69_1
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand bread1 r_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand bread1 r_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand bread1 r_hand) has an unsatisfied precondition at time 1
+(Set (in_hand bread1 r_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_70_2
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_in_hand plastic_paper_bag1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_in_hand plastic_paper_bag1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_in_hand plastic_paper_bag1 l_hand) has an unsatisfied precondition at time 1
+(Set (hand_empty l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_70_3
+;Plan to validate:
+
+Plan size: 1
+1:
+(put_out_of_hand plastic_paper_bag1 l_hand)
+ 
+
+Plan Validation details
+-----------------------
+
+Checking next happening (time 1)
+Plan failed because of unsatisfied precondition in:
+(put_out_of_hand plastic_paper_bag1 l_hand)
+
+Plan failed to execute
+
+Plan Repair Advice:
+
+(put_out_of_hand plastic_paper_bag1 l_hand) has an unsatisfied precondition at time 1
+(Set (in_hand plastic_paper_bag1 l_hand) to true)
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_71_0
 ;Plan to validate:
 
 Plan size: 1
@@ -22,7 +287,7 @@ Plan Repair Advice:
     (Set (hand_empty l_hand) to true)
     and (Set (grasped knife1) to false)
 )
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_38_1
+Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_71_1
 ;Plan to validate:
 
 Plan size: 1
@@ -34,425 +299,16 @@ Plan Validation details
 -----------------------
 
 Checking next happening (time 1)
-Deleting (in_hand knife1 l_hand)
-Deleting (grasped knife1)
-Adding (hand_empty l_hand)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (goaldummy) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_40_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand bread1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (hand_empty r_hand)
-Adding (in_hand bread1 r_hand)
-Adding (grasped bread1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (goaldummy) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_40_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand bread1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
 Plan failed because of unsatisfied precondition in:
-(put_out_of_hand bread1 r_hand)
+(put_out_of_hand knife1 l_hand)
 
 Plan failed to execute
 
 Plan Repair Advice:
 
-(put_out_of_hand bread1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand bread1 r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_48_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand plastic_paper_bag1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (hand_empty r_hand)
-Adding (in_hand plastic_paper_bag1 r_hand)
-Adding (grasped plastic_paper_bag1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (goaldummy) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_48_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand plastic_paper_bag1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand plastic_paper_bag1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand plastic_paper_bag1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand plastic_paper_bag1 r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_52_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand plate1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand plate1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand plate1 l_hand) has an unsatisfied precondition at time 1
-(Set (hand_empty l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_52_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand plate1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand plate1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand plate1 l_hand) has an unsatisfied precondition at time 1
-(Set (in_hand plate1 l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_53_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand bread1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand bread1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand bread1 l_hand) has an unsatisfied precondition at time 1
-(Set (hand_empty l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_53_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand bread1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand bread1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand bread1 l_hand) has an unsatisfied precondition at time 1
-(Set (in_hand bread1 l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_54_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand plastic_paper_bag1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand plastic_paper_bag1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand plastic_paper_bag1 l_hand) has an unsatisfied precondition at time 1
-(Set (hand_empty l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_54_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand plastic_paper_bag1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand plastic_paper_bag1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand plastic_paper_bag1 l_hand) has an unsatisfied precondition at time 1
-(Set (in_hand plastic_paper_bag1 l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_55_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(cut_w_knife bread1 knife1)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(cut_w_knife bread1 knife1)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(cut_w_knife bread1 knife1) has an unsatisfied precondition at time 1
-(Set (grasped bread1) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_58_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand plate1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (hand_empty r_hand)
-Adding (in_hand plate1 r_hand)
-Adding (grasped plate1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (goaldummy) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_58_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand plate1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand plate1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand plate1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand plate1 r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_63_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand knife1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand knife1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand knife1 r_hand) has an unsatisfied precondition at time 1
-(Set (grasped knife1) to false)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_63_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand knife1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand knife1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand knife1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand knife1 r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_74_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand cuttingboard1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Deleting (hand_empty r_hand)
-Adding (in_hand cuttingboard1 r_hand)
-Adding (grasped cuttingboard1)
-Plan executed successfully - checking goal
-Goal not satisfied
-Plan invalid
-
-Plan Repair Advice:
-
-The goal is not satisfied
-(Set (goaldummy) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_74_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand cuttingboard1 r_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand cuttingboard1 r_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand cuttingboard1 r_hand) has an unsatisfied precondition at time 1
-(Set (in_hand cuttingboard1 r_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_79_0
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_in_hand cuttingboard1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_in_hand cuttingboard1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_in_hand cuttingboard1 l_hand) has an unsatisfied precondition at time 1
-(Set (hand_empty l_hand) to true)
-Checking plan: /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_79_1
-;Plan to validate:
-
-Plan size: 1
-1:
-(put_out_of_hand cuttingboard1 l_hand)
- 
-
-Plan Validation details
------------------------
-
-Checking next happening (time 1)
-Plan failed because of unsatisfied precondition in:
-(put_out_of_hand cuttingboard1 l_hand)
-
-Plan failed to execute
-
-Plan Repair Advice:
-
-(put_out_of_hand cuttingboard1 l_hand) has an unsatisfied precondition at time 1
-(Set (in_hand cuttingboard1 l_hand) to true)
+(put_out_of_hand knife1 l_hand) has an unsatisfied precondition at time 1
+(Set (in_hand knife1 l_hand) to true)
 
 
 Failed plans:
- /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_38_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_38_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_40_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_40_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_48_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_48_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_52_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_52_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_53_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_53_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_54_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_54_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_55_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_58_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_58_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_63_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_63_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_74_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_74_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_79_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_79_1 
+ /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_61_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_61_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_61_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_61_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_62_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_62_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_66_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_66_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_69_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_69_1 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_70_2 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_70_3 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_71_0 /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_71_1 
