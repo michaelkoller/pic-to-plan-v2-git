@@ -12,7 +12,7 @@ def run_single_video(session_name):
     #config_file_name = "cut_cucumber_bread_config_1_dummy_setting_ccb_minimal.txt"
     #config_file_name = "cut_cucumber_bread_config_1_dummy_setting.txt"
     #config_file_name = "ccb_minimal_domain_cut_graspable_config_1.txt"
-    config_file_name = "percentage75-cut-food-"+session_name+".txt"
+    config_file_name = "complex-domain-test-series-"+session_name+".txt"
 
     config_file_dir = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/experiment_configurations/"
     config_file_path = config_file_dir + config_file_name
@@ -54,9 +54,10 @@ def run_single_video(session_name):
     parse_ontology_mod.main_parse_ontology(ontology_path, domain_path, instance_path)
 
     ###watch video
-    #ATTENTION: TODO eventually, watch video must run, too. now it only needs to run, if the domain or ontology has changed
-    #watch_video_mod.main_watch_video(domain_path, instance_path, session_name, ontology_path)
-
+    #ATTENTION: TODO
+    # eventually, watch video must run, too. now it only needs to run, if the domain or ontology has changed
+    watch_video_mod.main_watch_video(domain_path, instance_path, session_name, ontology_path)
+    exit()
     domain_inserted_predicates_path = domain_path.replace(".pddl", "-inserted-predicates.pddl")
     instance_inserted_predicates_path = instance_path.replace(".pddl", "-parsed-objects.pddl")
 
@@ -65,15 +66,17 @@ def run_single_video(session_name):
     os.mkdir(current_results_dir)
     print("UCT Instantiation")
     uct_search = new_uct_dag_mod.UCT_Search(domain_inserted_predicates_path, instance_inserted_predicates_path, session_name, ontology_path, save_after_X_iterations, experiment_name, current_results_dir, goal_path, possible_actions_percentage)
+
     print("Start UCT Search")
     uct_search.search(copy.deepcopy(uct_search.current_state_set), time_limit=time)
-    #change in uct_dat line 73ffff
+    #change in uct_dag line 73ffff
     end_time = datetime.now()
     print("DONE", experiment_name, "\nStart:", start_time, "\nEnd:", end_time, "\nDuration:", end_time - start_time)
     uct_search.viz("test-viz-final"+ str(datetime.now()))
     uct_search.viz("viz-" + str(uct_search.n_iter))
     uct_search.save_nodes_and_edges()
-    uct_search.save_root_node()
+    #uct_search.save_root_node(
+    uct_search.save_UCT_DAG()
 
 if __name__ == "__main__":
     sessions = ["s13-d21",
@@ -87,7 +90,7 @@ if __name__ == "__main__":
     "s37-d21",
     "s37-d25"]
 
-    sessions = ["s13-d25"]
+    #sessions = ["s13-d25"]
 
     for s in sessions:
         run_single_video(s)

@@ -109,7 +109,7 @@
     (towel towel1)
     (tool towel1)
     (graspable towel1)
-    (grasped cuttingboard1) (in_hand cuttingboard1 l_hand) (cut bread1) (grasped knife1) (in_hand knife1 r_hand)
+    (stored spice1) (stored spice_shaker1) (stored_in spice_shaker1 spice_holder1) (stored sponge1) (stored_in bowl1 cupboard1) (stored_in plate1 cupboard1) (stored peeler1) (stored knife1) (stored_in knife1 drawer1) (stored plastic_bag1) (stored_in plastic_paper_bag1 cupboard1) (stored_in cucumber1 fridge1) (stored bowl1) (stored_in plastic_bag1 cupboard1) (open fridge1) (stored bread1) (stored_in spice1 spice_holder1) (stored_in peeler1 drawer1) (in_hand cuttingboard1 l_hand) (grasped cuttingboard1) (stored plastic_paper_bag1) (stored_in bread1 cupboard1) (stored plate1) (stored cucumber1) (stored_in sponge1 g_drawer1)
 )
 (:goal (and
 (goaldummy)

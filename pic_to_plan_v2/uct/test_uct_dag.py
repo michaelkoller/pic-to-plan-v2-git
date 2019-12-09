@@ -148,11 +148,21 @@ class Edge:
 
 
 class UCT_Search:
-    possible_actions = [(1, ["A+", "B+"]), (2, ["A+", "B+"]), (3, ["B-"]), (4, ["C+"])]
+    #possible_actions = [(1, ["A+", "B+"]), (2, ["A+", "B+"]), (3, ["B-"]), (4, ["C+"])]
     #possible_actions = [(1, ["A+"]), (2, ["A-"]), (3, ["A-"])]
     #possible_actions = [(1, ["A+", "B+", "C+", "D+"]), (2, ["A+", "B+", "C+"]), (3, ["A+", "B+"]), (4, ["A+"])]
     #possible_actions = [(1, ["A+"]), (2, ["B+"]), (3, ["C+"]), (4, ["D+"])]
+    #possible_actions = [(1, ["A+"]), (2, ["B+"]), (3, ["C+"])]
+    #possible_actions = [(1, ["A+", "B-"]), (2, ["B+", "C-"]), (3, ["C+", "A-"])] #paper?
+    #possible_actions = [(1, ["A+", "A-"]), (2, ["B+", "B-", "C-"])#, (3, ["C+", "A-"])]
+    #possible_actions = [(1, ["A+", "B+", "C+"]), (2, ["A+", "B+"]), (3, ["A+"])]
+    #possible_actions = [(1, ["A+"]), (2, ["A+", "B+"]), (3, ["A+", "B+", "C+"])]
     #possible_actions = [(1, ["A+"]), (2, ["B+"]), (3, ["A-"]), (4, ["C+"]), (5, ["B-"]), (6, ["D+"]), (7, ["C-"]), (8, ["D-"])]
+    #possible_actions = [(1, ["A+"]), (3, ["A-"]), (4, ["B+"]), (6, ["C+"]), (7, ["B-"]), (8, ["C-"])] #paper?
+    possible_actions = [(1, ["A+", "A-"]), (2, ["B+","B-"]), (3, ["A-"]), (4, ["B-"])] #paper !!!
+    possible_actions = [(1, ["A+", "A-"]), (2, ["A+","A-"]), (3, ["B+", "B-"])] #paper!!!
+    possible_actions = [(1, ["A+", "A-"]), (2, ["B+", "B-"]), (3, ["A+","A-"]), (4, ["B+", "B-"])]  # paper !!!
+    #possible_actions = [(1,["A+","B+"]), (2,["A+","C+"]), (3,["B+","B-"]), (4, ["C+"])]
     # possible_actions = [(1, ["A+", "B+", "D+"]), \
     #                     (2, ["A+", "B+", "D+"]), \
     #                     (3, ["A+", "B+", "D+"]), \
@@ -286,7 +296,9 @@ class UCT_Search:
         for e in node.out_edges:
             if e.eid not in ed:
                 ed[e.eid] = e
-                dot.edge(node.state, e.destination.state, e.action + "\nsmu:" + str(round(e.get_saff_mu(d_1),3)) + "\nmean:" + str(round(e.get_normal_mean_reward(),3)) + "\nn:" + str(e.num_visits) + "\nmu':" + str(round(e.mu_prime, 3)) + "\nn':" + str(e.n_prime))
+                #dot.edge(node.state, e.destination.state, e.action + "\nsmu:" + str(round(e.get_saff_mu(d_1),3)) + "\nmean:" + str(round(e.get_normal_mean_reward(),3)) + "\nn:" + str(e.num_visits) + "\nmu':" + str(round(e.mu_prime, 3)) + "\nn':" + str(e.n_prime))
+                dot.edge(node.state, e.destination.state,
+                         e.action)
                 self.viz_add_aux(dot, e.destination, nd, ed)
 
 

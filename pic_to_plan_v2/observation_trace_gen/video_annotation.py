@@ -21,7 +21,7 @@ class VideoAnnotation:
                 self.label_legend_paths.append(f)
 
         self.session_names = [x.split(".")[0] for x in self.video_file_paths]
-        self.labels = bb_to_pddl_obj_dict.keys()
+        self.labels = list(bb_to_pddl_obj_dict.keys())
             #['bowl', 'bread', 'counter', 'cucumber', 'cupboard', 'cuttingboard', 'drawer', 'end', 'faucet', \
              #          'fridge', 'g_drawer', 'knife', 'l_hand', 'peel', 'peeler', 'plastic_bag', 'plastic_paper_bag', \
              #          'plate', 'r_hand', 'sink', 'spice', 'spice_holder', 'spice_shaker', 'sponge', 'towel']

@@ -13,6 +13,7 @@ import pic_to_plan_v2.observation_trace_gen.call_plan_rec as call_plan_rec_mod
 import multiprocessing as mp
 from datetime import datetime
 import collections
+import pic_to_plan_v2.observation_trace_gen.save_deepcopy as save_deepcopy_mod
 
 
 d_1 = -1
@@ -38,6 +39,7 @@ class Node:
         self.domain_inserted_predicates_path = domain_inserted_predicates_path
         self.instance_parsed_objects_path = instance_parsed_objects_path
         self.detailed_pr_vals = []
+        self.do_dead_state_check = True
 
     def __repr__(self):
         return "ID " + str(self.nid) + " " + self.state_string
@@ -108,7 +110,7 @@ class Node:
                 new_state_sets.append(copy.deepcopy(self.state))
             elif "Deleting" in line:
                 new_atom_added_list[-1] = True
-                m = Node.re_compiled.search(line)
+                m = Node.re_compiled.search(line) #actually not really the correct regex, becaus (asdf asdf) (asdf asdf) will be recognized as 1 occurance, but here only ever 1 atom per line appears
                 atom_to_delete = m.group(0)
                 if atom_to_delete in new_state_sets[-1]:
                     new_state_sets[-1].remove(atom_to_delete)
@@ -200,6 +202,7 @@ class UCT_Search:
     def __init__(self, domain_inserted_predicates_path, instance_parsed_objects_path, session_name, ontology_path, \
                  save_after_X_iterations, experiment_name, current_results_dir, goal_path, possible_actions_percentage):
         self.t_start = time.time()
+        self.n_iter = 0
         self.save_after_X_iterations = save_after_X_iterations
         self.experiment_name = experiment_name
         self.current_results_dir = current_results_dir
@@ -212,9 +215,17 @@ class UCT_Search:
         self.goal_path = goal_path
         self.no_goals = 0
         self.goals = []
+        self.goal_sets = []
         with open(self.goal_path) as f:
             for i, l in enumerate(f):
+                #goal string
                 self.goals.append(l)
+                #goal set
+                found_atoms_list = Node.re_compiled.findall(l)
+                g_s = set()
+                for a in found_atoms_list:
+                    g_s.add(a)
+                self.goal_sets.append(g_s)
             self.no_goals = i + 1
 
         self.my_parsed_problem = parsed_problem_mod.ParsedPDDLProblem(domain_inserted_predicates_path,
@@ -361,7 +372,7 @@ class UCT_Search:
                 self.node_dict[child_node.__hash__()] = child_node
                 observation_trace[-1].origin.out_edges.append(child_edge)
                 observation_trace[-1].origin.untried_children[i] = None
-                observation_traces.append(copy.deepcopy(observation_trace)[:-1] + [child_edge])
+                observation_traces.append(save_deepcopy_mod.save_deepcopy_edges(observation_trace)[:-1] + [child_edge])
         for x in range(observation_trace[-1].origin.untried_children.count(None)):
             observation_trace[-1].origin.untried_children.remove(None)
 
@@ -387,7 +398,7 @@ class UCT_Search:
             for p in processes:
                 p.join()
             return_values = [return_array[i] for i in range(len(observation_traces))]
-            detailed_pr_vals = [detailed_pr_vals_array[i] for i in range(len(detailed_pr_vals_array))]
+        detailed_pr_vals = [detailed_pr_vals_array[i] for i in range(len(detailed_pr_vals_array))]
 
         for i in range(len(observation_traces)): #insert detailed PR values for all nodes (including 0-th)
             observation_traces[i][-1].destination.detailed_pr_vals = []
@@ -411,6 +422,8 @@ class UCT_Search:
         for e in edge_descent_trace:
             e.num_visits += 1
             e.total_reward += delta
+        #even if the state will be removed, the reward is backuped once, before that state is removed
+        self.dead_state_removal(edge_descent_trace[-1].destination)
 
     def check_if_reachable(self, from_here, to_here):
         visited = set()
@@ -421,6 +434,21 @@ class UCT_Search:
         visited.add(v)
         for e in v.out_edges:
             self.check_if_reachable_aux(e.destination, visited)
+
+    def dead_state_removal(self, node):
+        if node.do_dead_state_check and node.is_terminal():
+            print(node)
+            state_satisfies_goal = False
+            for g_s in self.goal_sets:
+                if g_s.issubset(node.state):
+                    state_satisfies_goal = True
+            if state_satisfies_goal == True:
+                node.do_dead_state_check = False
+            else:
+                for in_e in node.in_edges:
+                    print(in_e)
+                    if in_e in in_e.origin.out_edges:
+                        in_e.origin.out_edges.remove(in_e)
 
     def viz(self, viz_name):
         dot = Digraph(comment=viz_name)
@@ -456,13 +484,13 @@ class UCT_Search:
         pickle.dump(new_out_edge_dict, open(self.current_results_dir+"/out_edge_dict_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
 
     def save_nodes_and_edges_aux(self, new_node_dict, new_in_edge_dict, new_out_edge_dict, current_node):
-        current_node_copy = copy.deepcopy(current_node)
+        current_node_copy = save_deepcopy_mod.save_deepcopy_node(current_node)
         current_node_copy.out_edges = None
         current_node_copy.in_edges = None
         new_node_dict[current_node_copy.state_string] = current_node_copy
         if current_node.out_edges is not None:
             for i in range(len(current_node.out_edges)):
-                e = copy.deepcopy(current_node.out_edges[i])
+                e = save_deepcopy_mod.save_deepcopy_edge(current_node.out_edges[i])
                 e.saved_saff_mu_val = current_node.out_edges[i].get_saff_mu(-1)
                 e.origin = None
                 e.destination = None
@@ -474,6 +502,14 @@ class UCT_Search:
     def save_root_node(self):
         pickle.dump(self.n_0, open(self.current_results_dir+"/root_node_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
 
+    def save_UCT_DAG(self):
+        problem_swap = self.my_parsed_problem
+        self.my_parsed_problem = None
+        n_0_swap = self.n_0
+        self.n_0 = None
+        pickle.dump(self, open(self.current_results_dir+"/uct_dag_"+str(self.experiment_name)+"_"+str(self.n_iter)+".p", "wb"))
+        self.my_parsed_problem = problem_swap
+        self.n_0 = n_0_swap
 
 if __name__ == "__main__":
     uct_search = UCT_Search("")
