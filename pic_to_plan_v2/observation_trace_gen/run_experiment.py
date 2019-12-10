@@ -12,7 +12,7 @@ def run_single_video(session_name):
     #config_file_name = "cut_cucumber_bread_config_1_dummy_setting_ccb_minimal.txt"
     #config_file_name = "cut_cucumber_bread_config_1_dummy_setting.txt"
     #config_file_name = "ccb_minimal_domain_cut_graspable_config_1.txt"
-    config_file_name = "complex-domain-test-series-"+session_name+".txt"
+    config_file_name = "complex-domain-test-series-"+session_name+"-reeval-test.txt"
 
     config_file_dir = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/experiment_configurations/"
     config_file_path = config_file_dir + config_file_name
@@ -57,7 +57,7 @@ def run_single_video(session_name):
     #ATTENTION: TODO
     # eventually, watch video must run, too. now it only needs to run, if the domain or ontology has changed
     watch_video_mod.main_watch_video(domain_path, instance_path, session_name, ontology_path)
-    exit()
+
     domain_inserted_predicates_path = domain_path.replace(".pddl", "-inserted-predicates.pddl")
     instance_inserted_predicates_path = instance_path.replace(".pddl", "-parsed-objects.pddl")
 
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     "s37-d21",
     "s37-d25"]
 
-    #sessions = ["s13-d25"]
+    sessions = ["s13-d21"]
 
     for s in sessions:
         run_single_video(s)

@@ -376,6 +376,25 @@ class UCT_Search:
         for x in range(observation_trace[-1].origin.untried_children.count(None)):
             observation_trace[-1].origin.untried_children.remove(None)
 
+        #determine no remaining useable cores
+        no_unused_cores = useable_cores - len(observation_traces)
+        no_first_evaluations = len(observation_traces)
+        random_choice_lengths = [i for i in range(2, len(observation_trace))] #2, because first edge is from dummy node (TODO check)
+        chosen_obs_lengths = []
+        for i in range(no_unused_cores):
+            if len(random_choice_lengths) == 0:
+                break
+            rand_choice = random.choice(random_choice_lengths)
+            chosen_obs_lengths.append(rand_choice)
+            random_choice_lengths.remove(rand_choice)
+            observation_traces.append(save_deepcopy_mod.save_deepcopy_edges(observation_trace)[0:rand_choice])
+
+        #create additional traces + lookup table to know where to put results. use chosen_obs_lengths for that
+        #after running the pr calls, update the reevaluated nodes as follows:
+        #if the new n' result is lower than the old one, change it, and for all parent nodes
+        #in the trace, substract n * old_result and add n * new_result
+        #but this is not correct for DAGs, because the node could be reached on another path than the trace...
+
         archive_path = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/"
         for i in range(len(observation_traces)):
             archive_name = "pr_instance_" + str(i)
@@ -401,21 +420,35 @@ class UCT_Search:
         detailed_pr_vals = [detailed_pr_vals_array[i] for i in range(len(detailed_pr_vals_array))]
 
         for i in range(len(observation_traces)): #insert detailed PR values for all nodes (including 0-th)
-            observation_traces[i][-1].destination.detailed_pr_vals = []
-            for j in range(self.no_goals):
-                ind = (i*self.no_goals*3) + (j*3)
-                a = [self.goals[j], detailed_pr_vals[ind], detailed_pr_vals[ind +1], detailed_pr_vals[ind + 2]]
-                observation_traces[i][-1].destination.detailed_pr_vals.append(a)
+            if i < no_first_evaluations:
+                observation_traces[i][-1].destination.detailed_pr_vals = []
+                for j in range(self.no_goals):
+                    ind = (i*self.no_goals*3) + (j*3)
+                    a = [self.goals[j], detailed_pr_vals[ind], detailed_pr_vals[ind +1], detailed_pr_vals[ind + 2]] #which goal, prob value, cost O, cost not O (?)
+                    observation_traces[i][-1].destination.detailed_pr_vals.append(a)
+            else: # for reevaluation nodes
+                for j in range(self.no_goals):
+                    ind = (i*self.no_goals*3) + (j*3)
+                    a = [self.goals[j], detailed_pr_vals[ind], detailed_pr_vals[ind +1], detailed_pr_vals[ind + 2]]
+                    if a[3] < observation_traces[i][-1].destination.detailed_pr_vals[j][3]:
+                        observation_traces[i][-1].destination.detailed_pr_vals[j][1] = a[1]
+                        observation_traces[i][-1].destination.detailed_pr_vals[j][2] = a[2]
+                        observation_traces[i][-1].destination.detailed_pr_vals[j][3] = a[3]
 
         print("DET VALS", detailed_pr_vals)
 
         for i in range(1, len(observation_traces)): # do graph updates for all new nodes except the original first one here in the def pol
-            observation_traces[i][-1].destination.mu_prime = return_values[i]
-            observation_traces[i][-1].destination.n_prime = 1.0
-            observation_traces[i][-1].mu_prime = observation_traces[i][-1].destination.mu_prime
-            observation_traces[i][-1].n_prime = observation_traces[i][-1].destination.n_prime
-            self.backup(observation_traces[i], observation_traces[i][-1].mu_prime)
-
+            if i < no_first_evaluations:
+                observation_traces[i][-1].destination.mu_prime = return_values[i]
+                observation_traces[i][-1].destination.n_prime = 1.0
+                observation_traces[i][-1].mu_prime = observation_traces[i][-1].destination.mu_prime
+                observation_traces[i][-1].n_prime = observation_traces[i][-1].destination.n_prime
+                self.backup(observation_traces[i], observation_traces[i][-1].mu_prime)
+            else: #for reevaluation nodes
+                if return_values[i] < observation_traces[i][-1].destination.mu_prime:
+                    observation_traces[i][-1].destination.mu_prime = return_values[i]
+                    observation_traces[i][-1].mu_prime = observation_traces[i][-1].destination.mu_prime
+                    #TODO no backup of the reevaluated nodes yet
         return return_values[0]
 
     def backup(self, edge_descent_trace, delta):
