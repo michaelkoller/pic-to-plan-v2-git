@@ -1,8 +1,8 @@
 import pickle
 
-experiment_folder_name = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/Cut_bread_and_cucumber_initial_exp-s13-d25_2019-10-14 17:23:07.859970/"
-experiment_name = "Cut_bread_and_cucumber_initial_exp-s13-d25"
-iter = 1
+experiment_folder_name = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/complex_domain_exp-s13-d21_2019-12-10 12:06:24.078908/"
+experiment_name = "complex_domain_exp-s13-d21"
+iter = 50
 out_edge_dict = pickle.load( open( experiment_folder_name + "out_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 in_edge_dict = pickle.load( open( experiment_folder_name + "in_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 node_dict = pickle.load( open( experiment_folder_name + "node_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )

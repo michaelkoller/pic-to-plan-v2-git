@@ -14,6 +14,12 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
     # read in video and draw annotation
     cap = cv2.VideoCapture(
         v_a.video_dir_path + v_a.current_session_name + '.avi')
+    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH) + 0.5)
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT) + 0.5)
+    size = (width, height)
+    fourcc = cv2.VideoWriter_fourcc(*"MJPG")
+    out = cv2.VideoWriter('~/outtest/output.avi', fourcc, 30.0, size)
+
     current_frame = 0
     font = cv2.FONT_HERSHEY_PLAIN
     current_touching_objects = set()
@@ -47,9 +53,11 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
 
         if not(frame is None):
             cv2.imshow('frame', frame)
+            out.write(frame)
             pass
         else:
             cap.release()
+            out.release()
             cv2.destroyAllWindows()
         current_frame += 1
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -101,7 +109,9 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
         #    print(detected_touches)
 
     cap.release()
+    out.release()
     cv2.destroyAllWindows()
+    print("Done watching video")
 
 def main_watch_video(domain_path, instance_path, session, ontology_path): #input grounded role labeling dataset session here
     domain_path_inserted_predicates = domain_path.replace(".pddl", "-inserted-predicates.pddl")

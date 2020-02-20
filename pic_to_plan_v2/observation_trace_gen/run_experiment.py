@@ -4,7 +4,6 @@ import pic_to_plan_v2.observation_trace_gen.watch_video as watch_video_mod
 import pic_to_plan_v2.uct.new_uct_dag as new_uct_dag_mod
 import copy
 import os
-import shutil
 
 def run_single_video(session_name):
     start_time = datetime.now()
@@ -57,7 +56,7 @@ def run_single_video(session_name):
     #ATTENTION: TODO
     # eventually, watch video must run, too. now it only needs to run, if the domain or ontology has changed
     watch_video_mod.main_watch_video(domain_path, instance_path, session_name, ontology_path)
-
+    exit()
     domain_inserted_predicates_path = domain_path.replace(".pddl", "-inserted-predicates.pddl")
     instance_inserted_predicates_path = instance_path.replace(".pddl", "-parsed-objects.pddl")
 
