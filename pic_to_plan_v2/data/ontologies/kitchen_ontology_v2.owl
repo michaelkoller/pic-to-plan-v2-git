@@ -1,0 +1,2471 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#"
+     xml:base="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#apple -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#apple">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#avocado -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#avocado">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#baking_paper -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#baking_paper">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bin -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bin">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blender -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blender">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blueberries -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blueberries">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#brocolli -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#brocolli">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#butter -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#butter">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_opener -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_opener">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cap_opener -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cap_opener">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#carrot -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#carrot">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cheese -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cheese">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cocoa_jar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cocoa_jar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#jar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#coffee -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#coffee">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#coffee_machine -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#coffee_machine">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#graspable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#counter -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#counter">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cucumber -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cucumber">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cucumber_end -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cucumber_end">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#waste"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cupboard -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cupboard">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#storage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cuttingboard -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cuttingboard">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dough -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dough">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#drawer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#drawer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#storage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#faucet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#faucet"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flour_jar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flour_jar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#jar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#graspable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fork -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fork">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fridge -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fridge">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#storage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#garlic -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#garlic">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#graspable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#graspable"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#grater -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#grater">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#manipulator"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#human -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#human"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#jar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#jar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#kiwi -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#kiwi">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_sharpener -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_sharpener">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#laddle -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#laddle">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lemon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lemon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lime -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lime">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#location -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#location"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mais -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mais">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#manipulator -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#manipulator"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#milk -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#milk">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mug -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mug">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#oil -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#oil">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#olive_oil -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#olive_oil">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#onion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#onion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#orange -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#orange">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#outlet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#outlet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pan -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pan">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pear -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pear">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#peel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#peel">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#waste"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#peeler -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#peeler">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper_vegetable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper_vegetable">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pineapple -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pineapple">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_bag -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_bag">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_paper_bag -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_paper_bag">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#rolling_pin -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#rolling_pin">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salt -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salt">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sauce -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sauce">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sausage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sausage">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sink -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sink">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#smartphone -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#smartphone">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#soap -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#soap">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spatula -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spatula">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_holder -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_holder">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#storage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_shaker -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_shaker">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sponge -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sponge">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spoon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spoon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#storage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#storage"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#stove -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#stove">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugar_jar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugar_jar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#jar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_pot -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_pot">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toaster -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toaster">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tomato -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tomato">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#graspable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#towel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#towel">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tray -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tray">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#vinegar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#vinegar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#waste -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#waste">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#graspable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#whisk -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#whisk">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#zucchini -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#zucchini">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#food"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#BBQ_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#BBQ_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#apple_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#apple_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#apple"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#avocado_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#avocado_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#avocado"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#baguette_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#baguette_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#baguette_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#baguette_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#baking_paper_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#baking_paper_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#baking_paper"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#balsamic_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#balsamic_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#vinegar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer_bottle_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer_bottle_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer_can_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer_can_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer_can_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer_can_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#beer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_plate_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_plate_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_plate_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_plate_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_plate_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_plate_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_plate_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_plate_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_spoon_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#big_spoon_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spoon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bin-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bin-1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#black_sesame_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#black_sesame_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blender_body_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blender_body_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blender"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blender_cap_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blender_cap_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blender"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blueberries_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blueberries_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blueberries"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blueberries_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blueberries_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#blueberries"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bottom_cabinet_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bottom_cabinet_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cupboard"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bottom_cabinet_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bottom_cabinet_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cupboard"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bottom_cabinet_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bottom_cabinet_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cupboard"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl_9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread_loaf_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread_loaf_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#brocolli_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#brocolli_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#brocolli"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bun_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bun_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#butter_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#butter_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#butter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_opener_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_opener_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#can_opener"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cap_opener_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cap_opener_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cap_opener"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#carrot_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#carrot_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#carrot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cheese_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cheese_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cheese"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cheese_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cheese_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cheese"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate_bar_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate_bar_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate_bar_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate_bar_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cinnamon_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cinnamon_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cleaver_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cleaver_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cocoa_jar_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cocoa_jar_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cocoa_jar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#coffee_machine_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#coffee_machine_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#coffee_machine"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#creole_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#creole_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cucumber_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cucumber_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cucumber"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cumin_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cumin_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cuttingboard_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cuttingboard_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cuttingboard"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#deep_pan_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#deep_pan_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#deep_pan_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#deep_pan_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#detergent_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#detergent_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#soap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dining_table_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dining_table_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#counter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dishsoap_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dishsoap_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#soap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dough_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dough_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dough"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#drawer_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#drawer_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#drawer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_cup_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_cup_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_cup_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#egg_cup_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#end1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#end1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cucumber_end"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#espresso_cup_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#espresso_cup_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#faucet_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#faucet_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#faucet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flat_dough_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flat_dough_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#dough"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flour_jar_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flour_jar_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flour_jar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fork_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fork_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fork"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fork_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fork_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fork"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fridge_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fridge_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#fridge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#front_peeler_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#front_peeler_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#peeler"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#g_drawer1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#g_drawer1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#drawer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#g_drawer11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#g_drawer11">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#drawer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#garlic_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#garlic_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#garlic"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#grater_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#grater_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#grater"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#ground_coffee_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#ground_coffee_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#coffee"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#handsoap_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#handsoap_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#soap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hot_sauce_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hot_sauce_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#human_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#human_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#human"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#ketchup_bottle_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#ketchup_bottle_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#kitchen_knife_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#kitchen_knife_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#kitchen_sink_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#kitchen_sink_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sink"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#kitchen_table_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#kitchen_table_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#counter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_big_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_big_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_food_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_food_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_large_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_large_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_sharpener_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_sharpener_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife_sharpener"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#l_hand -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#l_hand">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#laddle_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#laddle_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#laddle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#laddle_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#laddle_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#laddle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#large_bowl_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#large_bowl_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#large_bowl_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#large_bowl_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lemon_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lemon_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lemon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lemon_half_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lemon_half_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lemon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lime_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lime_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lime_half -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lime_half">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mais_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mais_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mais"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#milk_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#milk_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#milk"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mug_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mug_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mug"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mug_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mug_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mug"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mushroom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mustard_bottle_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#mustard_bottle_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#olive_oil_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#olive_oil_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#olive_oil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#onion_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#onion_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#onion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#onion_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#onion_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#onion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#orange_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#orange_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#orange"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#orange_half_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#orange_half_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#orange"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#outlet_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#outlet_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#outlet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#outlet_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#outlet_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#outlet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pan_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pan_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paper_towel_roll_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paper_towel_roll_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#towel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paprika_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paprika_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pear_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pear_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pear"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pear_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pear_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pear"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#peel1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#peel1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#peel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper_vegetable_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper_vegetable_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pepper_vegetable"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pineapple_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pineapple_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pineapple"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_bag1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_bag1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_bag"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_paper_bag1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_paper_bag1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plastic_paper_bag"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate1"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_top_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_top_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_top_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_top_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#potato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#r_hand -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#r_hand">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#rice_vinegar_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#rice_vinegar_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#vinegar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#rolling_pin_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#rolling_pin_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#rolling_pin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sage_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sage_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salad"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salt_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salt_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#salt"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucepan_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucepan_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucepan_big_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucepan_big_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucer_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucer_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucer_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucer_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#saucer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sausage_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sausage_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sausage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sesame_oil_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sesame_oil_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#oil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#small_plate_7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#smartphone_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#smartphone_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#smartphone"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#soy_sauce_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#soy_sauce_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spatula_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spatula_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spatula"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_holder1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_holder1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_holder"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_shaker1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_shaker1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice_shaker"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sponge1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sponge1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sponge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spoon_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spoon_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spoon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#stove_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#stove_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#stove"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugar_jar_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugar_jar_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugar_jar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tarragon_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tarragon_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_cup_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_cup_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_cup_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_cup_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cup"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_pot_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_pot_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_pot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_pot_cap_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_pot_cap_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tea_pot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#thyme_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#thyme_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toaster_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toaster_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toaster"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#togarashi_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#togarashi_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tomato_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tomato_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tomato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#top_cabinet_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#top_cabinet_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cupboard"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#top_cabinet_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#top_cabinet_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cupboard"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#top_cabinet_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#top_cabinet_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cupboard"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#towel_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#towel_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#towel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tray_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tray_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tray"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#whisk_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#whisk_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#whisk"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#white_pepper -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#white_pepper">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#white_sesame_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#white_sesame_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#wine_glass_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#wine_glass_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#wine_glass_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#wine_glass_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#glass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#worcestershire_sauce_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#worcestershire_sauce_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#zucchini_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#zucchini_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#zucchini"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
