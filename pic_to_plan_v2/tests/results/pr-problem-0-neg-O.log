@@ -1,0 +1,76 @@
+Timeout: 450 seconds
+Heap restriction: 1024 MB
+Command: (/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/fd-5/fast-downward.py prob-0-PR/neg-O/pr-domain.pddl prob-0-PR/neg-O/pr-problem.pddl --evaluator "hff=ff()" --evaluator "hcea=cea()" --search "lazy_greedy([hff, hcea], preferred=[hff, hcea])") >> pr-problem-0-neg-O.log 2>&1
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: None
+INFO     translator memory limit: None
+INFO     translator command line string: /usr/bin/python /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/fd-5/builds/release/bin/translate/translate.py prob-0-PR/neg-O/pr-domain.pddl prob-0-PR/neg-O/pr-problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.040s CPU, 0.046s wall-clock]
+Normalizing task... [0.000s CPU, 0.005s wall-clock]
+Instantiating...
+Generating Datalog program... [0.010s CPU, 0.003s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.006s wall-clock]
+Preparing model... [0.010s CPU, 0.005s wall-clock]
+Generated 987 rules.
+Computing model... [0.000s CPU, 0.003s wall-clock]
+586 relevant atoms
+0 auxiliary atoms
+586 final queue length
+1044 total queue pushes
+Completing instantiation... [0.010s CPU, 0.008s wall-clock]
+Instantiating: [0.030s CPU, 0.025s wall-clock]
+Computing fact groups...
+Finding invariants...
+246 initial candidates
+Finding invariants: [16.280s CPU, 16.276s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+232 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.001s wall-clock]
+Computing fact groups: [16.280s CPU, 16.279s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.010s CPU, 0.013s wall-clock]
+852 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+7 propositions removed
+Detecting unreachable propositions: [0.010s CPU, 0.008s wall-clock]
+Reordering and filtering variables...
+215 of 239 variables necessary.
+0 of 7 mutex groups necessary.
+335 of 339 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.007s wall-clock]
+Translator variables: 215
+Translator derived variables: 0
+Translator facts: 430
+Translator goal facts: 2
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 335
+Translator axioms: 0
+Translator task size: 2906
+Translator peak memory: 389044 KB
+Writing output... [0.000s CPU, 0.003s wall-clock]
+Done! [16.380s CPU, 16.386s wall-clock]
+
+translate exit code: 0
+THIS: Namespace(alias=None, build='release', cleanup=False, components=['translate', 'search'], debug=False, filenames=['prob-0-PR/neg-O/pr-domain.pddl', 'prob-0-PR/neg-O/pr-problem.pddl'], keep_sas_file=False, log_level='info', overall_memory_limit=None, overall_time_limit=None, plan_file='sas_plan', planner_args=['prob-0-PR/neg-O/pr-domain.pddl', 'prob-0-PR/neg-O/pr-problem.pddl', '--evaluator', 'hff=ff()', '--evaluator', 'hcea=cea()', '--search', 'lazy_greedy([hff, hcea], preferred=[hff, hcea])'], portfolio=None, portfolio_bound=None, portfolio_single_plan=False, run_all=False, sas_file='output.sas', search=False, search_input='output.sas', search_memory_limit=None, search_options=['--evaluator', 'hff=ff()', '--evaluator', 'hcea=cea()', '--search', 'lazy_greedy([hff, hcea], preferred=[hff, hcea])'], search_time_limit=None, show_aliases=False, translate=False, translate_inputs=['prob-0-PR/neg-O/pr-domain.pddl', 'prob-0-PR/neg-O/pr-problem.pddl'], translate_memory_limit=None, translate_options=['--sas-file', 'output.sas'], translate_time_limit=None, validate=False, validate_memory_limit=None, validate_time_limit=None)
+
+Time spent: 16.450 seconds
