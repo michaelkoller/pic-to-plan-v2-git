@@ -5,6 +5,9 @@
 /pic_to_plan_v2/pddl/plans/*
 !/pic_to_plan_v2/pddl/plans/.gitkeep
 
+/pic_to_plan_v2/data/overlap_detections/*
+!/pic_to_plan_v2/data/overlap_detections/.gitkeep
+
 /venv/
 /tree-pictures/
 
