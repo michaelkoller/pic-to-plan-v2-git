@@ -4,13 +4,16 @@ import pic_to_plan_v2.observation_trace_gen.watch_video as watch_video_mod
 import pic_to_plan_v2.uct.new_uct_dag as new_uct_dag_mod
 import copy
 import os
-from pic_to_plan_v2.settings import ROOT_DIR as ROOT_DIR
+from pic_to_plan_v2.settings import ROOT_DIR, PROB_PLAN_REC_COPIES
 from pathlib import Path
 import shutil
 
 def run_single_video(session_name):
     ###cleanup folders in prob_plan_recognition_X when search was interrupted
-    #TODO
+    for folder in os.walk(Path(ROOT_DIR, "external/")):
+        if folder[0].endswith("prob-0-PR") or folder[0].endswith("prob-1-PR"):
+            print("Delete Folder", folder[0])
+            shutil.rmtree(folder[0])
 
     start_time = datetime.now()
     #config_file_name = "no_preconditions_test.txt"
