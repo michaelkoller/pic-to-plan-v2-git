@@ -14,7 +14,9 @@ import multiprocessing as mp
 from datetime import datetime
 import collections
 import pic_to_plan_v2.observation_trace_gen.save_deepcopy as save_deepcopy_mod
-
+import pic_to_plan_v2.settings as settings
+from pic_to_plan_v2.settings import ROOT_DIR
+from pathlib import Path
 
 d_1 = -1
 d_2 = 0
@@ -72,7 +74,7 @@ class Node:
         return pos_act_children
 
     def call_VAL(self): #not using n_iter. it's just a call to get_min_in_edge
-        current_plan_path_string = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plans/current_sas_plan_try_"
+        current_plan_path_string = Path(ROOT_DIR) / Path("pddl/plans/current_sas_plan_try_")
 
         try_action_strings = []
         plan_file_names = []
@@ -82,7 +84,7 @@ class Node:
                 try_action_string = "(" + " ".join(try_action) + ")"    #create the plan for the action to try
                 if try_action_string not in try_action_strings:
                     try_action_strings.append(try_action_string)
-                    plan_file_names.append(current_plan_path_string+str(pos_act_index)+"_"+str(i))
+                    plan_file_names.append(str(current_plan_path_string)+str(pos_act_index)+"_"+str(i))
                     pos_act_indices.append(pos_act_index)
                     f = open(plan_file_names[-1], "w")
                     f.write(try_action_string + "\n;cost = 1 (unit cost)")
@@ -91,18 +93,18 @@ class Node:
         template_instance = open(self.instance_parsed_objects_path.replace(".pddl", "-insert-init.pddl"), "r")
         template_instance_string = "".join(template_instance.readlines())
         parsed_template_instance_string = template_instance_string.replace("<insert_init>", current_state_string)
-        f = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl", "w")
+        f = open(str(Path(ROOT_DIR) / Path("pddl/instances/current-state-instance.pddl")), "w")
         f.write(parsed_template_instance_string)
         f.close()
-        cmd = '/home/mk/Planning/VAL/validate -v ' + self.domain_inserted_predicates_path + \
-                        ' /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/instances/current-state-instance.pddl ' \
-              + " ".join(plan_file_names) + \
-              ' > /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt'
+        cmd = str(Path(ROOT_DIR,  "VAL/validate")) + " -v " + self.domain_inserted_predicates_path +" "+ \
+                        str(Path(ROOT_DIR, "pddl/instances/current-state-instance.pddl")) + " " + \
+              " ".join(plan_file_names) + \
+              " > " + str(Path(ROOT_DIR, "pddl/val_output/plan_val_output.txt"))
         os.system(cmd)
-        plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r")
+        plan_val_output = Path(ROOT_DIR, "pddl/val_output/plan_val_output.txt").open(mode="r")
         plan_val_output_joined = "".join(plan_val_output.readlines())
         new_state_sets = []
-        plan_val_output = open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/val_output/plan_val_output.txt", "r") #TODO superfluous open, but readlines changes the iterator...
+        plan_val_output = Path(ROOT_DIR, "pddl/val_output/plan_val_output.txt").open(mode="r") #TODO superfluous open, but readlines changes the iterator...
         new_atom_added_list = []
         for line in plan_val_output:
             if "Checking plan" in line:
@@ -247,18 +249,18 @@ class UCT_Search:
                                     'g_drawer1': ['g_drawer11']}
 
         self.video_annotation = video_annotation_mod.VideoAnnotation(
-            '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/Videos/', \
-            '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/', \
+            settings.VIDEO_DIR_PATH, \
+            settings.ANNOT_DIR_PATH, \
             self.bb_to_pddl_obj_dict)
 
         self.session_name = session_name
         print(self.session_name)
-        self.touch_events = pickle.load(open(
-            "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/overlap_detections/touch_events_" + self.session_name + ".p",
-            "rb"))
-        self.possible_actions_session_full_length = pickle.load(open(
-            "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/possible_actions/possible_actions_session_" + self.session_name + ".p",
-            "rb"))
+        self.touch_events = pickle.load(open(Path(ROOT_DIR) /
+                                             Path("data/overlap_detections/touch_events_" + self.session_name + ".p"),
+                                             "rb"))
+        self.possible_actions_session_full_length = pickle.load(open(Path(ROOT_DIR) /
+                                                                     Path("data/possible_actions/possible_actions_session_" + self.session_name + ".p"),
+                                                                     "rb"))
         self.possible_actions_session = self.possible_actions_session_full_length[0:int(len(self.possible_actions_session_full_length)*self.possible_actions_percentage + 0.5)]
 
         # get current state from parsed problem
@@ -358,7 +360,7 @@ class UCT_Search:
         return tp_result_node, tp_result_edge_trace
 
     def default_policy(self, observation_trace):
-        useable_cores = 10
+        useable_cores = settings.CORES
 
         observation_traces = [observation_trace] #the 0-th item in the list is the original found trace, now add more traces of untried siblings
 
@@ -395,7 +397,7 @@ class UCT_Search:
         #in the trace, substract n * old_result and add n * new_result
         #but this is not correct for DAGs, because the node could be reached on another path than the trace...
 
-        archive_path = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/"
+        archive_path =  Path(ROOT_DIR) / Path("pddl/plan_rec_instances/")
         for i in range(len(observation_traces)):
             archive_name = "pr_instance_" + str(i)
             create_pr_instance_mod.create_pr_instance([e.action for e in observation_traces[i][1:]], # exclude the first item, becaus it is the dummy root edge
@@ -551,3 +553,5 @@ if __name__ == "__main__":
     uct_search.save_nodes_and_edges()
     uct_search.save_root_node()
     print("Finished")
+
+###TODO still paths without pathlib

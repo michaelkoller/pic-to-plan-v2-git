@@ -1,11 +1,18 @@
 # Plan Recognition from Object Detection Traces
 This method uses object bounding box overlaps in video frames, PDDL domains, and an object ontology to identify plans for ongoing tasks.
 
+Fast Downward dependencies
+```
+sudo apt install cmake g++ git make python3
+```
+Install requirements (not minimal yet)
+```
+pip3 install -r requirements.txt
+```
 Clone with Fast-Downward planner and build it.
 ```
-git clone --recurse-submodules
-cd pictoplangit/pictoplan/external/fd
-./build.py
+git clone --recurse-submodules https://github.com/michaelkoller/pic-to-plan-v2-git.git
+./pic-to-plan-v2-git/pic_to_plan_v2/external/downward/build.py
 ```
 Input
 * Kitchen task image sequence

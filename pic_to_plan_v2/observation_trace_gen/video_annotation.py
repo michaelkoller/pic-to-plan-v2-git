@@ -1,12 +1,14 @@
 from os import walk
 from .action_hypothesis_graph_class import ActionGraph
+from pathlib import Path
 
 class VideoAnnotation:
     def __init__(self, video_dir_path, annot_dir_path, bb_to_pddl_obj_dict):
         # get video file names
         self.video_dir_path = video_dir_path
         self.video_file_paths = []
-        for f in list(walk(video_dir_path))[0][2]:
+        print(video_dir_path)
+        for f in list(walk(str(video_dir_path)))[0][2]:
             if ".avi" in f:
                 self.video_file_paths.append(f)
 
@@ -31,13 +33,14 @@ class VideoAnnotation:
 
         # create dict from id_no to semantic label (id_no --> label_name as in annotation file for that session)
         self.label_legend_dict = {}
-        with open(self.annot_dir_path + "track_label_" + self.current_session_name + ".txt", "r") as f:
+
+        with open(str(self.annot_dir_path / Path("track_label_" + self.current_session_name + ".txt")), "r") as f:
             for line in f:
                 line = line.split()
                 self.label_legend_dict[int(line[0])] = line[1]
         # read in annotation
         self.frame_dict = {} #this dict holds all the labels found in a certain frame
-        with open(self.annot_dir_path + '/output-' + self.current_session_name + '.txt', 'r') as f:
+        with open(str(self.annot_dir_path / Path('output-' + self.current_session_name + '.txt')), 'r') as f:
             lines = f.read().splitlines()
             for line in lines:
                 line = line.split()

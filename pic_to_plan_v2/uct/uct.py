@@ -123,7 +123,7 @@ class UCTSearch:
 
     def tree_policy(self, v):
         while not v.is_terminal:
-            if v.untried_children == [] and v.out_edges == [] #this means there are no further possible actions to try
+            if v.untried_children == [] and v.out_edges == []: #this means there are no further possible actions to try
                 return v
             elif not v.is_fully_expanded():
                 expanded_v =  self.expand(v)

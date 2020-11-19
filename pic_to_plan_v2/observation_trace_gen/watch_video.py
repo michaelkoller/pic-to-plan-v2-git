@@ -5,20 +5,22 @@ import itertools
 import pic_to_plan_v2.observation_trace_gen.parsed_proplem as parsed_problem_mod
 import pic_to_plan_v2.observation_trace_gen.video_annotation as video_annotation_mod
 import pickle
-
+import pic_to_plan_v2.settings as settings
+from pathlib import Path
 
 #['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
 #label names from all sessions ['bowl', 'bread', 'counter', 'cucumber', 'cupboard', 'cuttingboard', 'drawer', 'end', 'faucet', 'fridge', 'g_drawer', 'knife', 'l_hand', 'peel', 'peeler', 'plastic_bag', 'plastic_paper_bag', 'plate', 'r_hand', 'sink', 'spice', 'spice_holder', 'spice_shaker', 'sponge', 'towel']
 
 def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_actions_session):
     # read in video and draw annotation
+    print("VIDEO TO WATCH", str(Path(v_a.video_dir_path) / Path(v_a.current_session_name + '.avi')))
     cap = cv2.VideoCapture(
-        v_a.video_dir_path + v_a.current_session_name + '.avi')
+        str(Path(v_a.video_dir_path) / Path(v_a.current_session_name + '.avi')))
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH) + 0.5)
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT) + 0.5)
     size = (width, height)
     fourcc = cv2.VideoWriter_fourcc(*"MJPG")
-    out = cv2.VideoWriter('~/outtest/output.avi', fourcc, 30.0, size)
+    out = cv2.VideoWriter('~/output.avi', fourcc, 30.0, size)
 
     current_frame = 0
     font = cv2.FONT_HERSHEY_PLAIN
@@ -114,8 +116,8 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
     print("Done watching video")
 
 def main_watch_video(domain_path, instance_path, session, ontology_path): #input grounded role labeling dataset session here
-    domain_path_inserted_predicates = domain_path.replace(".pddl", "-inserted-predicates.pddl")
-    instance_path_inserted_predicates = instance_path.replace(".pddl", "-parsed-objects.pddl")
+    domain_path_inserted_predicates = str(domain_path).replace(".pddl", "-inserted-predicates.pddl")
+    instance_path_inserted_predicates = str(instance_path).replace(".pddl", "-parsed-objects.pddl")
     my_parsed_problem = parsed_problem_mod.ParsedPDDLProblem(domain_path_inserted_predicates, \
                                                             instance_path_inserted_predicates, ontology_path)
     # dict from bounding boxes to parsed_problem_objects_dict.keys()
@@ -129,8 +131,8 @@ def main_watch_video(domain_path, instance_path, session, ontology_path): #input
 
     ###ATTENTION: Where the videos are stored won't be automated, as this is different for each dataset
     video_annotation = video_annotation_mod.VideoAnnotation(
-        '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/Videos/', \
-        '/media/hdd1/Datasets/GroundingSemanticRoleLabelingForCookingDataset/Video_annotation/Video_annotation/', \
+        settings.VIDEO_DIR_PATH, \
+        settings.ANNOT_DIR_PATH, \
         bb_to_pddl_obj_dict)
 
     # ['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
@@ -145,9 +147,9 @@ def main_watch_video(domain_path, instance_path, session, ontology_path): #input
         #show_annotation(random.choice(session_names), parsed_problem)
         print(current_session, "done")
         pickle.dump(touch_events, \
-                    open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/overlap_detections/touch_events_"+str(current_session)+".p", "wb"))
+                    open(str(Path(settings.ROOT_DIR) / Path("data/overlap_detections/touch_events_"+str(current_session)+".p")), "wb"))
         pickle.dump(possible_actions_session, \
-                    open("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/possible_actions/possible_actions_session_"+str(current_session)+".p", "wb"))
+                    open(str(Path(settings.ROOT_DIR) / Path("data/possible_actions/possible_actions_session_"+str(current_session)+".p")), "wb"))
 
 if __name__ == "__main__":
     main_watch_video()
