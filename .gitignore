@@ -1,3 +1,11 @@
-/pic_to_plan_v2/data/results/
+/pic_to_plan_v2/data/results/*
+# exception to the rule
+!/pic_to_plan_v2/data/results/.gitkeep
+
+/pic_to_plan_v2/pddl/plans/*
+!/pic_to_plan_v2/pddl/plans/.gitkeep
+
 /venv/
 /tree-pictures/
+
+/.idea/*

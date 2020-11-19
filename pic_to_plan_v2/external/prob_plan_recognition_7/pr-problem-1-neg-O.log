@@ -1,0 +1,42 @@
+Timeout: 1320 seconds
+Heap restriction: 1024 MB
+Command: (../fd_0/fast-downward.py prob-1-PR/neg-O/pr-domain.pddl prob-1-PR/neg-O/pr-problem.pddl --evaluator "hff=ff()" --evaluator "hcea=cea()" --search "lazy_greedy([hff, hcea], preferred=[hff, hcea])") >> pr-problem-1-neg-O.log 2>&1
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: None
+INFO     translator memory limit: None
+INFO     translator command line string: /usr/bin/python /home/michael/git/pic-to-plan-v2-git/pic_to_plan_v2/external/fd_0/builds/release/bin/translate/translate.py prob-1-PR/neg-O/pr-domain.pddl prob-1-PR/neg-O/pr-problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.040s CPU, 0.044s wall-clock]
+Normalizing task... [0.010s CPU, 0.004s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.002s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.010s CPU, 0.005s wall-clock]
+Preparing model... [0.000s CPU, 0.004s wall-clock]
+Generated 987 rules.
+Computing model... [0.000s CPU, 0.002s wall-clock]
+586 relevant atoms
+0 auxiliary atoms
+586 final queue length
+1044 total queue pushes
+Completing instantiation... [0.010s CPU, 0.007s wall-clock]
+Instantiating: [0.020s CPU, 0.022s wall-clock]
+Computing fact groups...
+Finding invariants...
+246 initial candidates
+Traceback (most recent call last):
+  File "../fd_0/fast-downward.py", line 6, in <module>
+    main()
+  File "/home/michael/git/pic-to-plan-v2-git/pic_to_plan_v2/external/fd_0/driver/main.py", line 32, in main
+    (exitcode, continue_execution) = run_components.run_translate(args)
+  File "/home/michael/git/pic-to-plan-v2-git/pic_to_plan_v2/external/fd_0/driver/run_components.py", line 68, in run_translate
+    memory_limit=memory_limit)
+  File "/home/michael/git/pic-to-plan-v2-git/pic_to_plan_v2/external/fd_0/driver/call.py", line 79, in get_error_output_and_returncode
+    (stdout, stderr) = p.communicate()
+  File "/usr/lib/python2.7/subprocess.py", line 478, in communicate
+    stderr = _eintr_retry_call(self.stderr.read)
+  File "/usr/lib/python2.7/subprocess.py", line 125, in _eintr_retry_call
+    return func(*args)
+KeyboardInterrupt

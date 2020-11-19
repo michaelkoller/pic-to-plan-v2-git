@@ -1,0 +1,148 @@
+Timeout: 667 seconds
+Heap restriction: 1024 MB
+Command: (../fd_0/fast-downward.py prob-1-PR/O/pr-domain.pddl prob-1-PR/O/pr-problem.pddl --evaluator "hff=ff()" --evaluator "hcea=cea()" --search "lazy_greedy([hff, hcea], preferred=[hff, hcea])") >> pr-problem-1-O.log 2>&1
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: None
+INFO     translator memory limit: None
+INFO     translator command line string: /usr/bin/python /home/michael/git/pic-to-plan-v2-git/pic_to_plan_v2/external/fd_0/builds/release/bin/translate/translate.py prob-1-PR/O/pr-domain.pddl prob-1-PR/O/pr-problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.050s CPU, 0.044s wall-clock]
+Normalizing task... [0.010s CPU, 0.004s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.002s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.005s wall-clock]
+Preparing model... [0.010s CPU, 0.004s wall-clock]
+Generated 987 rules.
+Computing model... [0.000s CPU, 0.003s wall-clock]
+586 relevant atoms
+0 auxiliary atoms
+586 final queue length
+1044 total queue pushes
+Completing instantiation... [0.010s CPU, 0.007s wall-clock]
+Instantiating: [0.020s CPU, 0.022s wall-clock]
+Computing fact groups...
+Finding invariants...
+246 initial candidates
+Finding invariants: [14.000s CPU, 14.006s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+232 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.001s wall-clock]
+Computing fact groups: [14.000s CPU, 14.008s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.010s CPU, 0.011s wall-clock]
+852 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+7 propositions removed
+Detecting unreachable propositions: [0.010s CPU, 0.007s wall-clock]
+Reordering and filtering variables...
+215 of 239 variables necessary.
+0 of 7 mutex groups necessary.
+335 of 339 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.010s CPU, 0.006s wall-clock]
+Translator variables: 215
+Translator derived variables: 0
+Translator facts: 430
+Translator goal facts: 2
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 335
+Translator axioms: 0
+Translator task size: 2906
+Translator peak memory: 364456 KB
+Writing output... [0.000s CPU, 0.003s wall-clock]
+Done! [14.110s CPU, 14.105s wall-clock]
+
+translate exit code: 0
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: None
+INFO     search memory limit: None
+INFO     search command line string: /home/michael/git/pic-to-plan-v2-git/pic_to_plan_v2/external/fd_0/builds/release/bin/downward --evaluator 'hff=ff()' --evaluator 'hcea=cea()' --search 'lazy_greedy([hff, hcea], preferred=[hff, hcea])' --internal-plan-file sas_plan < output.sas
+reading input... [t=0s]
+done reading input! [t=0s]
+Simplifying 1254 unary operators... done! [1254 unary operators]
+time to simplify: 0s
+Initializing additive heuristic...
+Initializing FF heuristic...
+Initializing context-enhanced additive heuristic...
+Building successor generator...done! [t=0.00398532s]
+peak memory difference for successor generator creation: 0 KB
+time for successor generation creation: 0s
+Variables: 215
+FactPairs: 430
+Bytes per state: 28
+Conducting lazy best first search, (real) bound = 2147483647
+New best heuristic value for cea: 8
+New best heuristic value for ff: 8
+[g=0, 1 evaluated, 0 expanded, t=0.00398532s, 10640 KB]
+Initial heuristic value for cea: 8
+Initial heuristic value for ff: 8
+New best heuristic value for cea: 7
+New best heuristic value for ff: 7
+[g=1, 2 evaluated, 1 expanded, t=0.00398532s, 10640 KB]
+New best heuristic value for cea: 6
+New best heuristic value for ff: 6
+[g=2, 3 evaluated, 2 expanded, t=0.00398532s, 10640 KB]
+New best heuristic value for cea: 5
+New best heuristic value for ff: 5
+[g=3, 4 evaluated, 3 expanded, t=0.00398532s, 10640 KB]
+New best heuristic value for cea: 4
+New best heuristic value for ff: 4
+[g=4, 5 evaluated, 4 expanded, t=0.00398532s, 10640 KB]
+New best heuristic value for cea: 3
+New best heuristic value for ff: 3
+[g=5, 6 evaluated, 5 expanded, t=0.00398532s, 10640 KB]
+New best heuristic value for cea: 2
+New best heuristic value for ff: 2
+[g=6, 7 evaluated, 6 expanded, t=0.00398532s, 10640 KB]
+New best heuristic value for cea: 1
+New best heuristic value for ff: 1
+[g=7, 8 evaluated, 7 expanded, t=0.00398532s, 10640 KB]
+Solution found!
+Actual search time: 0s [t=0.00398532s]
+open_storage_with_hand_cupboard1_l_hand  (1)
+unstore_bread1_cupboard1  (1)
+open_storage_with_hand_drawer1_l_hand  (1)
+unstore_knife1_drawer1  (1)
+explain_obs_open_storage_with_hand_fridge1_r_hand_1  (1)
+put_in_hand_bread1_l_hand  (1)
+put_in_hand_knife1_r_hand  (1)
+cut_w_knife_bread1_knife1  (1)
+Plan length: 8 step(s).
+Plan cost: 8
+Expanded 8 state(s).
+Reopened 0 state(s).
+Evaluated 9 state(s).
+Evaluations: 18
+Generated 225 state(s).
+Dead ends: 0 state(s).
+Number of registered states: 9
+Int hash set load factor: 9/16 = 0.5625
+Int hash set resizes: 4
+Search time: 0s
+Total time: 0.00398532s
+Solution found.
+Peak memory: 10640 KB
+Remove intermediate file output.sas
+
+search exit code: 0
+
+Time spent: 14.140 seconds

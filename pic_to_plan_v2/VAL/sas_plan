@@ -1,0 +1,2 @@
+(put_in_hand cucumber1 l_hand)
+; cost = 1 (unit cost)
