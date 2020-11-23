@@ -20,6 +20,8 @@
 /pic_to_plan_v2/external/prob_plan_recognition_*/*.log
 /pic_to_plan_v2/external/prob_plan_recognition_*/*.dat
 /pic_to_plan_v2/external/prob_plan_recognition_?/domain.pddl
+/pic_to_plan_v2/external/prob_plan_recognition_*/execution.stats
+/pic_to_plan_v2/external/prob_plan_recognition_*/grounding.stats
 
 /pic_to_plan_v2/pddl/instances/current-state-instance.pddl
 /pic_to_plan_v2/pddl/val_output/plan_val_output.txt
