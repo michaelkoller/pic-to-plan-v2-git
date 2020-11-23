@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 import owlready2
+from pic_to_plan_v2.settings import ROOT_DIR, V4R_DATASET_PATH, V4R_TEST_SAMPLE_NAME
 
 # object_pos_rot_path = Path(r"C:\Users\kolle\Documents\RecordingsForRender\Sample2020-11-12-15_21_20\RecordingsFiles\Annotations\PoseAndOrientation\position_and_orientation_1.json")
 # with open(object_pos_rot_path) as json_file:
@@ -8,7 +9,7 @@ import owlready2
 #     for obj in data["positionAndRotationFrameArr"][0]["objectPositionAndRotationArr"]:
 #         print(obj["name"])
 
-colormap_path = Path(r"C:\Users\kolle\Documents\RecordingsForRender\Sample2020-11-12-15_21_20\RecordingsFiles\Annotations\Colormap\colormap.json")
+colormap_path = Path(V4R_DATASET_PATH, V4R_TEST_SAMPLE_NAME, r"RecordingsFiles/Annotations/Colormap/colormap.json")
 tracked_objects = []
 with open(colormap_path) as json_file:
     data = json.load(json_file)
@@ -21,7 +22,7 @@ tracked_objects = sorted(tracked_objects)
 
     #at cup_1
 
-onto = owlready2.get_ontology(r"C:\Users\kolle\Documents\GitHub\pic-to-plan-v2-git\pic_to_plan_v2\data\ontologies\v4r_kitchen_ontology_v2.owl").load()
+onto = owlready2.get_ontology(str(Path(ROOT_DIR, r"data/ontologies/v4r_kitchen_ontology_v2.owl"))).load()
 individuals = list(onto.individuals())
 individuals = [str(i).split(".")[1] for i in individuals]
 #for individual in individuals:
