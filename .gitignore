@@ -5,6 +5,12 @@
 /pic_to_plan_v2/pddl/plans/*
 !/pic_to_plan_v2/pddl/plans/.gitkeep
 
+/pic_to_plan_v2/data/possible_actions/*
+!/pic_to_plan_v2/data/possible_actions/.gitkeep
+
+/pic_to_plan_v2/data/labellists_from_video/*
+!/pic_to_plan_v2/data/labellists_from_video/.gitkeep
+
 /pic_to_plan_v2/data/overlap_detections/*
 !/pic_to_plan_v2/data/overlap_detections/.gitkeep
 
