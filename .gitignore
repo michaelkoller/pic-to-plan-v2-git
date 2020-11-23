@@ -19,6 +19,28 @@
 /pic_to_plan_v2/external/prob_plan_recognition_*/sas_plan
 /pic_to_plan_v2/external/prob_plan_recognition_*/*.log
 /pic_to_plan_v2/external/prob_plan_recognition_*/*.dat
+/pic_to_plan_v2/external/prob_plan_recognition_?/domain.pddl
 
 /pic_to_plan_v2/pddl/instances/current-state-instance.pddl
 /pic_to_plan_v2/pddl/val_output/plan_val_output.txt
+/pic_to_plan_v2/external/prob_plan_recognition_*/hyp_0_problem.pddl
+/pic_to_plan_v2/external/prob_plan_recognition_*/hyp_1_problem.pddl
+/pic_to_plan_v2/external/prob_plan_recognition_*/prob-0-PR/
+/pic_to_plan_v2/external/prob_plan_recognition_*/template.pddl
+/pic_to_plan_v2/data/possible_actions/possible_actions*
+
+#all temp files for constructing the domains from ontologies
+/pic_to_plan_v2/pddl/domains/*-inserted-predicates.pddl
+/pic_to_plan_v2/pddl/instances/*-parsed-objects-insert-init.pddl
+/pic_to_plan_v2/pddl/instances/*-instance-parsed-objects.pddl
+/pic_to_plan_v2/pddl/instances/*-parsed-objects.pddl
+/pic_to_plan_v2/pddl/plan_rec_instances/obs.dat
+/pic_to_plan_v2/pddl/plan_rec_instances/template.pddl
+
+
+#all archives
+*.tar.bz2
+
+#all compiled bytecode python files
+*.pyc
+
