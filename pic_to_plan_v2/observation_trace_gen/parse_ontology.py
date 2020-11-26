@@ -3,7 +3,10 @@ import owlready2
 import dill
 import os
 from pic_to_plan_v2.settings import ROOT_DIR as ROOT_DIR
+from pathlib import Path
 
+
+###For the instance to be parsed, there must be a "template-instance.pddl" and a "template-instance-insert-init.pddl"
 def parse_ontology(path):
     onto = owlready2.get_ontology(str(path)).load()
     classes = list(onto.classes())
@@ -32,6 +35,8 @@ def main_parse_ontology(ontology_path, domain_path, instance_path):
     print(individual_dict)
     print(list(class_dict.keys()))
     # write class membership predicates into domain template
+    domain_path = Path(domain_path)
+    instance_path = Path(instance_path)
     template_domain = open(domain_path, "r")
     template_domain_string = "".join(template_domain.readlines())
     class_instance_predicate_string = []

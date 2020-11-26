@@ -41,8 +41,10 @@ for tracked_object in tracked_objects:
     if tracked_object not in individuals:
         print(tracked_object)
 
+#--------
 #naming exceptions:
 #baking_paper, spice_holder, mais, kitchen_table, human, faucet, drawer
 
 #naming errors:
-#parika_1
+#parika_1 --> paprika_1
+#paprika_1 --> paprika_powder_1 (thats the spice)

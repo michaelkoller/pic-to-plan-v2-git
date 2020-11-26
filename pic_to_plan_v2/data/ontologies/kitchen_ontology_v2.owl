@@ -1916,12 +1916,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate1 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#plate1"/>
-    
-
-
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#pot_1">

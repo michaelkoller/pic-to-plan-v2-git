@@ -1,4 +1,3 @@
-####current version! aug 5
 import cv2
 import copy
 import itertools
