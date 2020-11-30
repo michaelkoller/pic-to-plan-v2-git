@@ -23,22 +23,22 @@
 )
 (:action open_storage_with_hand
     :parameters(?s ?h)
-    :precondition (and (manipulator ?h) (storage ?s) (hand_empty ?h) (not (open ?s)))
+    :precondition (and (manipulator ?h) (location ?s) (hand_empty ?h) (not (open ?s)))
     :effect (and (open ?s) )
 )
 (:action close_storage_with_hand
     :parameters(?s ?h)
-    :precondition (and (manipulator ?h) (storage ?s) (hand_empty ?h) (open ?s))
+    :precondition (and (manipulator ?h) (location ?s) (hand_empty ?h) (open ?s))
     :effect (and (not(open ?s)))
 )
 (:action store
     :parameters(?o ?s)
-    :precondition (and (graspable ?o) (storage ?s) (grasped ?o) (open ?s) (not(stored ?s)))
+    :precondition (and (graspable ?o) (location ?s) (grasped ?o) (open ?s) (not(stored ?s)))
     :effect (and (stored ?o) (stored_in ?o ?s) (not (grasped ?o)) (forall (?h) (when (grasped ?o) (not(in_hand ?o ?h)))))
 )
 (:action unstore
     :parameters(?o ?s)
-    :precondition (and (graspable ?o) (storage ?s) (open ?s) (stored_in ?o ?s))
+    :precondition (and (graspable ?o) (location ?s) (open ?s) (stored_in ?o ?s))
     :effect (and (not(stored ?o)) (not(stored_in ?o ?s)))
 )
 (:action cut_w_knife

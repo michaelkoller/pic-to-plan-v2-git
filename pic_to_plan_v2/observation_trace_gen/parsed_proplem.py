@@ -44,7 +44,7 @@ class ParsedPDDLProblem:
                 elif isinstance(precondition, ExistentialCondition):
                     print("Found existential condition. Ignore for now")
 
-        #this is needed for signature matching in watch_video.py
+        #this is needed for signature matching in watch_video_gsrl.py
         self.action_name_list = []
         self.action_param_type_list = []
         for action_name, action_param_type_dict in self.action_parameter_types_dict.items():

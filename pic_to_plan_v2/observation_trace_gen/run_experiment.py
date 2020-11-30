@@ -1,6 +1,7 @@
 from datetime import datetime
 import pic_to_plan_v2.observation_trace_gen.parse_ontology as parse_ontology_mod
-import pic_to_plan_v2.observation_trace_gen.watch_video as watch_video_mod
+import pic_to_plan_v2.observation_trace_gen.watch_video_gsrl as watch_video_mod_gsrl
+import pic_to_plan_v2.observation_trace_gen.watch_video_v4rvrk as watch_video_mod_v4rvrk
 import pic_to_plan_v2.uct.new_uct_dag as new_uct_dag_mod
 import copy
 import os
@@ -9,6 +10,7 @@ from pathlib import Path
 import shutil
 import math
 import configargparse
+from pic_to_plan_v2.settings import set_args
 
 #what do i need for a general experiment:
 #dataset
@@ -42,7 +44,7 @@ def run_single_video(config_file_name):
     parser.add_argument('-c', '--config', is_config_file=True, help='config file path')
     parser.add_argument("--dataset", required=True, choices=["groundedsemanticrolelabeling", "v4rvrkitchenv1"],
                         help="which dataset is used")
-    parser.add_argument("--sample", required=True, help="dataset sample name")
+    parser.add_argument("--sample", required=True, help="dataset sample path")
     parser.add_argument("--ontology", required=True, help="OWL ontology file")
     parser.add_argument("--domain", required=True, help="PDDL domain file")
     parser.add_argument("--instance", required=True, help="PDDL instance file")
@@ -71,7 +73,7 @@ def run_single_video(config_file_name):
 
     #Instantiate the search, depending which dataset is chosen
     if args.dataset == "v4rvrkitchenv1":
-        pass
+        set_args(args)
     elif args.dataset == "groundedsemanticrolelabeling":
         with open(config_file_path, "r") as f:
             for l in f:
@@ -110,16 +112,22 @@ def run_single_video(config_file_name):
     ontology_path = args.ontology
     domain_path = args.domain
     instance_path = args.instance
+    sample_name = args.sample.split(os.sep)[-1]
+    sample_file_path = args.sample
 
     parse_ontology_mod.main_parse_ontology(ontology_path, domain_path, instance_path)
-    exit()
     ###watch video
     #     load the superclass and individual type dict via parse_ontology()
     #     find all touch events
     #     find all possible actions
     #ATTENTION: TODO
     # eventually, watch video must run, too. now it only needs to run, if the domain or ontology has changed
-    watch_video_mod.main_watch_video(domain_path, instance_path, session_name, ontology_path)
+    if args.dataset == "groundedsemanticrolelabeling":
+        watch_video_mod_gsrl.main_watch_video(domain_path, instance_path, sample_name, ontology_path)
+    elif args.dataset == "v4rvrkitchenv1":
+        watch_video_mod_v4rvrk.main_watch_video(domain_path, instance_path, sample_name, ontology_path)
+    exit()
+    #these are the finished domain and instance paths
     domain_inserted_predicates_path = str(domain_path).replace(".pddl", "-inserted-predicates.pddl")
     instance_inserted_predicates_path = str(instance_path).replace(".pddl", "-parsed-objects.pddl")
 

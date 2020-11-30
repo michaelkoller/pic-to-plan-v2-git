@@ -213,6 +213,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cutting_tool -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cutting_tool">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cuttingboard -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cuttingboard">
@@ -316,7 +324,7 @@
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#grater -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#grater">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cutting_tool"/>
     </owl:Class>
     
 
@@ -346,7 +354,7 @@
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#knife">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#tool"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cutting_tool"/>
     </owl:Class>
     
 
@@ -1857,15 +1865,15 @@
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paprika_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paprika_1">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paprika"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#parika_1 -->
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paprika_powder_1 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#parika_1">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paprika"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#paprika_powder_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#spice"/>
     </owl:NamedIndividual>
     
 
