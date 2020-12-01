@@ -12,6 +12,15 @@ import re
 #['s13-d25', 's28-d25', 's37-d25', 's21-d21', 's31-d25', 's23-d21', 's13-d21', 's27-d21', 's37-d21', 's22-d25']
 #label names from all sessions ['bowl', 'bread', 'counter', 'cucumber', 'cupboard', 'cuttingboard', 'drawer', 'end', 'faucet', 'fridge', 'g_drawer', 'knife', 'l_hand', 'peel', 'peeler', 'plastic_bag', 'plastic_paper_bag', 'plate', 'r_hand', 'sink', 'spice', 'spice_holder', 'spice_shaker', 'sponge', 'towel']
 
+def original_from_cut_object(s):
+    """
+    Filters the name of the original object from the cut object, since only the original object is known to the ontology.
+    :param s: string of the cut object, i.e., cucumber_101001
+    :return: string of original object, i.e., cucumber_1
+    """
+    r = re.match(r"[a-zA-Z\_]*([0-9]{1})", s)
+    return r.group()
+
 def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_actions_session):
     # read in video and draw annotation
     assert(settings.ARGS.dataset == "v4rvrkitchenv1", "Wrong dataset: " + settings.ARGS.dataset)
@@ -21,6 +30,13 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH) + 0.5)
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT) + 0.5)
     size = (width, height)
+    print(size)
+    #segmentation video size: 640 × 480
+    #rgb video size: 1600 × 1200
+    if settings.ARGS.dataset == "v4rvrkitchenv1":
+        s_f = 1600 / 640 #scaling factor from segmentation video size to rgb video size for bound box placements
+    elif settings.ARGS.dataset == "groundedsemanticrolelabeling":
+        s_f = 2
     fourcc = cv2.VideoWriter_fourcc(*"MJPG")
     out = cv2.VideoWriter('~/output.avi', fourcc, 30.0, size)
 
@@ -34,21 +50,15 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
         added_objects = []#add here the annotated objects
         if current_frame in v_a.frame_dict.keys():
             for annotated_obj in v_a.frame_dict[current_frame]:
-                cv2.rectangle(frame, (2 * annotated_obj[3], 2 * annotated_obj[2]),
-                              (2 * annotated_obj[1], 2 * annotated_obj[4]), (0, 255, 0), 1)
-                print(frame)
-                print(annotated_obj[0])
-                print(v_a.label_legend_dict[annotated_obj[0]][0])
-                print(annotated_obj[1])
-                print(annotated_obj[2])
+                cv2.rectangle(frame, (int(annotated_obj[3] * s_f), height - int(annotated_obj[2] * s_f)),
+                              (int(annotated_obj[1] * s_f), height - int(annotated_obj[4] * s_f)), (0, 255, 0), 1)
+
                 ###Handle names of cut objects, which have added 0s and 1s at the end of the name
                 #Need to get the original object name, since this is in the dict
-                print(annotated_obj[0])
-                key = re.match("*?[0-9]", annotated_obj[0])
-                print("KEY", key)
+                key = original_from_cut_object(annotated_obj[0])
 
                 cv2.putText(frame, v_a.label_legend_dict[key][0],
-                            (2 * annotated_obj[1] + 5, 2 * annotated_obj[2] + 15), font, 1, (255, 255, 255), 1,
+                            (int(s_f * annotated_obj[1]) + 5, height - int(s_f * annotated_obj[2] + 15)), font, 1, (180, 180, 180), 1,
                             cv2.LINE_4)
                 #go through all previously added objects and see if the rectangles overlap
                 x_min_new, y_min_new, x_max_new, y_max_new = annotated_obj[1], annotated_obj[2], annotated_obj[3], annotated_obj[4]
@@ -59,9 +69,9 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
                         current_touching_objects.discard(tuple(sorted((prev_added[0], annotated_obj[0]))))
                     elif y_min > y_max_new or y_max < y_min_new:
                         current_touching_objects.discard(tuple(sorted((prev_added[0], annotated_obj[0]))))
-                    else:
-                        cv2.rectangle(frame, (2 * max(x_min,x_min_new), 2 * max(y_min,y_min_new)),
-                                      (2 * min(x_max,x_max_new), 2 * min(y_max,y_max_new)), (0, 0, 255), 1)
+                    else: ###TODO gsrl and vr4vrk display differently: v4r needs "height - ...", gsrl doesn't
+                        cv2.rectangle(frame, (int(s_f * max(x_min,x_min_new)), height -  int(s_f * max(y_min,y_min_new))),
+                                      (int(s_f * min(x_max,x_max_new)), height - int(s_f * min(y_max,y_max_new))), (0, 0, 255), 1)
                         current_touching_objects.add(tuple(sorted((prev_added[0], annotated_obj[0]))))
                 added_objects.append(annotated_obj)
 
@@ -85,42 +95,44 @@ def show_annotation(p_p, v_a, bb_to_pddl_obj_dict, touch_events, possible_action
         detected_removed_touches = list(prev_touching_objects - current_touching_objects)
         detected_touches = detected_added_touches + detected_removed_touches #using "extend" results in None, but I want [] if empty
 
-        # for x in detected_touches:
-        #     l0_bb_name = v_a.label_legend_dict[x[0]]
-        #     l1_bb_name = v_a.label_legend_dict[x[1]]
-        #     # TODO here are the multiple instances of an object type in bb_to_pddl_obj_dict[l0_bb_name]
-        #     # if multiple instances exist in a scene, you need some tracking to see which instances are assigned, etc...
-        #     # ignore this for now...
-        #     l0_pddl_name = bb_to_pddl_obj_dict[l0_bb_name][0]
-        #     l1_pddl_name = bb_to_pddl_obj_dict[l1_bb_name][0]
-        #     l0_pddl_type = p_p.individual_type_dict[l0_pddl_name][0]._name #TODO does the onto.individuals just return lists or did I add smthng?
-        #     l1_pddl_type = p_p.individual_type_dict[l1_pddl_name][0]._name
-        #     l0_superclasses = p_p.superclass_dict[l0_pddl_type]
-        #     l1_superclasses = p_p.superclass_dict[l1_pddl_type]
-        #     for i, action in enumerate(p_p.action_param_type_list):
-        #         a = set(l0_superclasses).issuperset(set(action[0][1]))
-        #         b = set(l1_superclasses).issuperset(set(action[1][1]))
-        #         c = set(l1_superclasses).issuperset(set(action[0][1]))
-        #         d = set(l0_superclasses).issuperset(set(action[1][1]))
-        #         if a and b: #TODO these 2 ifs should catch cases, where two operators are of same type, like (unstack blockA blockB)
-        #             #print(p_p.action_name_list[i], l0_pddl_name, l1_pddl_name, action)
-        #             instantiated_actions.append((p_p.action_name_list[i], l0_pddl_name, l1_pddl_name))
-        #         if c and d:
-        #             #print(p_p.action_name_list[i], l1_pddl_name, l0_pddl_name, action)
-        #             instantiated_actions.append((p_p.action_name_list[i], l1_pddl_name, l0_pddl_name))
-        #
-        # if len(instantiated_actions) > 0:
-        #     print(current_frame, instantiated_actions)
-        #     possible_actions_session.append((current_frame, instantiated_actions))
-        # if len(detected_touches) > 0:
-        #     touch_events.append((current_frame, detected_touches))
-        #
-        # #TODO add hysteresis
-        # #TODO add object tracking / managing active instances of object classes
-        #
-        # prev_touching_objects = copy.deepcopy(current_touching_objects)
-        # #if len(detected_touches) > 0:
-        # #    print(detected_touches)
+        for x in detected_touches:
+            x_0_orig_object = original_from_cut_object(x[0])
+            x_1_orig_object = original_from_cut_object(x[1])
+            l0_bb_name = v_a.label_legend_dict[x_0_orig_object]
+            l1_bb_name = v_a.label_legend_dict[x_1_orig_object]
+            # TODO here are the multiple instances of an object type in bb_to_pddl_obj_dict[l0_bb_name]
+            # if multiple instances exist in a scene, you need some tracking to see which instances are assigned, etc...
+            # ignore this for now...
+            l0_pddl_name = bb_to_pddl_obj_dict[l0_bb_name[0]][0]
+            l1_pddl_name = bb_to_pddl_obj_dict[l1_bb_name[0]][0]
+            l0_pddl_type = p_p.individual_type_dict[l0_pddl_name][0]._name
+            l1_pddl_type = p_p.individual_type_dict[l1_pddl_name][0]._name
+            l0_superclasses = p_p.superclass_dict[l0_pddl_type]
+            l1_superclasses = p_p.superclass_dict[l1_pddl_type]
+            for i, action in enumerate(p_p.action_param_type_list):
+                a = set(l0_superclasses).issuperset(set(action[0][1]))
+                b = set(l1_superclasses).issuperset(set(action[1][1]))
+                c = set(l1_superclasses).issuperset(set(action[0][1]))
+                d = set(l0_superclasses).issuperset(set(action[1][1]))
+                if a and b: #TODO these 2 ifs should catch cases, where two operators are of same type, like (unstack blockA blockB)
+                    #print(p_p.action_name_list[i], l0_pddl_name, l1_pddl_name, action)
+                    instantiated_actions.append((p_p.action_name_list[i], l0_pddl_name, l1_pddl_name))
+                if c and d:
+                    #print(p_p.action_name_list[i], l1_pddl_name, l0_pddl_name, action)
+                    instantiated_actions.append((p_p.action_name_list[i], l1_pddl_name, l0_pddl_name))
+
+        if len(instantiated_actions) > 0:
+            print(current_frame, instantiated_actions)
+            possible_actions_session.append((current_frame, instantiated_actions))
+        if len(detected_touches) > 0:
+            touch_events.append((current_frame, detected_touches))
+
+        #TODO add hysteresis
+        #TODO add object tracking / managing active instances of object classes
+
+        prev_touching_objects = copy.deepcopy(current_touching_objects)
+        #if len(detected_touches) > 0:
+        #    print(detected_touches)
 
     cap.release()
     out.release()

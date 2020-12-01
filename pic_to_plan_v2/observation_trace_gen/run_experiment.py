@@ -5,12 +5,12 @@ import pic_to_plan_v2.observation_trace_gen.watch_video_v4rvrk as watch_video_mo
 import pic_to_plan_v2.uct.new_uct_dag as new_uct_dag_mod
 import copy
 import os
-from pic_to_plan_v2.settings import ROOT_DIR, PROB_PLAN_REC_COPIES
+from pic_to_plan_v2.settings import ROOT_DIR, PROB_PLAN_REC_COPIES, set_args
+import pic_to_plan_v2.settings as settings
 from pathlib import Path
 import shutil
 import math
 import configargparse
-from pic_to_plan_v2.settings import set_args
 
 #what do i need for a general experiment:
 #dataset
@@ -105,15 +105,16 @@ def run_single_video(config_file_name):
                         save_after_X_iterations = int(l[1])
                     elif l[0] == "possible_actions_percentage:":
                         possible_actions_percentage = float(l[1])
-    ###parse ontologya
-    #     reads in the ontology and fills in template-domain.pddl and template-instance.pddl as template-domain-inserted-predicates.pddl and
-    #     template-instance.parsed.objects.pddl
 
     ontology_path = args.ontology
     domain_path = args.domain
     instance_path = args.instance
     sample_name = args.sample.split(os.sep)[-1]
     sample_file_path = args.sample
+
+    ###parse ontologya
+    #     reads in the ontology and fills in template-domain.pddl and template-instance.pddl as template-domain-inserted-predicates.pddl and
+    #     template-instance.parsed.objects.pddl
 
     parse_ontology_mod.main_parse_ontology(ontology_path, domain_path, instance_path)
     ###watch video
@@ -125,23 +126,32 @@ def run_single_video(config_file_name):
     if args.dataset == "groundedsemanticrolelabeling":
         watch_video_mod_gsrl.main_watch_video(domain_path, instance_path, sample_name, ontology_path)
     elif args.dataset == "v4rvrkitchenv1":
-        watch_video_mod_v4rvrk.main_watch_video(domain_path, instance_path, sample_name, ontology_path)
-    exit()
+        #watch_video_mod_v4rvrk.main_watch_video(domain_path, instance_path, sample_name, ontology_path)
+        print("SKIP WATCHING VIDEO")
+
     #these are the finished domain and instance paths
     domain_inserted_predicates_path = str(domain_path).replace(".pddl", "-inserted-predicates.pddl")
     instance_inserted_predicates_path = str(instance_path).replace(".pddl", "-parsed-objects.pddl")
 
     ###uct dag
-    current_results_dir = str(results_dir / Path(experiment_name +"_"+str(datetime.now())))
+    current_results_dir = str(Path(ROOT_DIR, "data/results", sample_name +"_"+str(datetime.now())))
     os.mkdir(current_results_dir)
-    print("UCT Instantiation")
-    uct_search = new_uct_dag_mod.UCT_Search(domain_inserted_predicates_path, instance_inserted_predicates_path, session_name, ontology_path, save_after_X_iterations, experiment_name, current_results_dir, goal_path, possible_actions_percentage)
+    print("UCT Instantiation")  #second sample_name can be more descriptive experiment name
+    uct_search = new_uct_dag_mod.UCT_Search(domain_inserted_predicates_path,
+                                            instance_inserted_predicates_path,
+                                            sample_name,
+                                            ontology_path,
+                                            settings.ARGS.save_every_X_iterations,
+                                            sample_name,
+                                            current_results_dir,
+                                            settings.ARGS.goal_set,
+                                            settings.ARGS.plan_progress)
 
     print("Start UCT Search")
-    uct_search.search(copy.deepcopy(uct_search.current_state_set), time_limit=time)
+    uct_search.search(copy.deepcopy(uct_search.current_state_set), time_limit=settings.ARGS.duration)
     #change in uct_dag line 73ffff
     end_time = datetime.now()
-    print("DONE", experiment_name, "\nStart:", start_time, "\nEnd:", end_time, "\nDuration:", end_time - start_time)
+    print("DONE", sample_name, "\nStart:", start_time, "\nEnd:", end_time, "\nDuration:", end_time - start_time)
     uct_search.viz("test-viz-final"+ str(datetime.now()))
     uct_search.viz("viz-" + str(uct_search.n_iter))
     uct_search.save_nodes_and_edges()

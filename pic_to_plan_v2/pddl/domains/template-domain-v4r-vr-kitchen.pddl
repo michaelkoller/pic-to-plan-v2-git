@@ -41,7 +41,7 @@
     :precondition (and (graspable ?o) (location ?s) (open ?s) (stored_in ?o ?s))
     :effect (and (not(stored ?o)) (not(stored_in ?o ?s)))
 )
-(:action cut_w_knife
+    (:action cut_w_knife
     :parameters(?o ?k)
     :precondition (and (knife ?k) (grasped ?k) (food ?o) (grasped ?o))
     :effect (and (cut ?o))

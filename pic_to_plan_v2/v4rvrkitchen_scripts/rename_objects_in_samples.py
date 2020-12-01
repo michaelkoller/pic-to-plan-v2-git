@@ -3,18 +3,27 @@ from pathlib import Path
 import os
 
 
-replace_tuples = [("paprika_1", "paprika_powder_1")]#,
-                  # ("parika_1", "paprika_1"),
-                  # ("baking_paper", "baking_paper_1"),
-                  # ("spice_holder", "spice_holder_1"),
-                  # ("mais", "mais_1"),
-                  # ("kitchen_table", "kitchen_table_1"),
-                  # ("human", "human_1"),
-                  # ("faucet", "faucet_1"),
-                  # ("drawer", "drawer_1")]
+replace_tuples = []
+    # ("CocoaJar", "cocoajar_1"),
+    # ("CocoaLid", "cocoalid_1"),
+    # ("FlourJar", "flourjar_1"),
+    # ("FlourLid", "flourlid_1"),
+    # ("LeftHand", "lefthand_1"),
+    # ("RightHand", "righthand_1"),
+    # ("SugarJar", "sugarjar_1"),
+    # ("SugarLid", "sugarlid_1"),
+    # ("parika_1", "paprika_powder_1"),
+    # ("baking_paper", "baking_paper_1"),
+    # ("spice_holder", "spice_holder_1"),
+    # ("mais", "mais_1"),
+    # ("kitchen_table", "kitchen_table_1"),
+    # ("human", "human_1"),
+    # ("faucet", "faucet_1"),
+    # ("drawer", "drawer_1")]
 
 ####ATTENTION: REPEATEDLY RUNNING THIS SCRIPT CAN RESULT IN UNWANTED CHANGES IN DATASET
 ###eg.: replacing 2 times (human with human_1 yields human_1_1)
+print("ARE YOU SURE?")
 exit()
 
 for d in os.listdir(Path("/home/michael/datasets/V4RVRKitchenV1")):

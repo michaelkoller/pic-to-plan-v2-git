@@ -782,70 +782,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#CocoaJar -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#CocoaJar">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#CocoaLid -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#CocoaLid">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#FlourJar -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#FlourJar">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flour"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#FlourLid -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#FlourLid">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flour"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#LeftHand -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#LeftHand">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#RightHand -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#RightHand">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#SugarJar -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#SugarJar">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugar"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#SugarLid -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#SugarLid">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugar"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#apple_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#apple_1">
@@ -1254,6 +1190,22 @@
     
 
 
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cocoajar_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cocoajar_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cocoalid_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#cocoalid_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#chocolate"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#creole_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#creole_1">
@@ -1434,6 +1386,22 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#floor_1">
         <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#floor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flourjar_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flourjar_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flour"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flourlid_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flourlid_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#flour"/>
     </owl:NamedIndividual>
     
 
@@ -1674,6 +1642,14 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#large_bowl_2">
         <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lefthand_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#lefthand_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand"/>
     </owl:NamedIndividual>
     
 
@@ -1982,6 +1958,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#righthand_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#righthand_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#hand"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#rolling_pin_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#rolling_pin_1">
@@ -2218,6 +2202,22 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry_4">
         <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#strawberry"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugarjar_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugarjar_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugarlid_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugarlid_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#sugar"/>
     </owl:NamedIndividual>
     
 

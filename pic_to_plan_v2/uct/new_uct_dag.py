@@ -248,10 +248,11 @@ class UCT_Search:
                                     'l_hand': ['l_hand'],
                                     'g_drawer1': ['g_drawer11']}
 
-        self.video_annotation = video_annotation_mod.VideoAnnotation(
-            settings.VIDEO_DIR_PATH, \
-            settings.ANNOT_DIR_PATH, \
-            self.bb_to_pddl_obj_dict)
+        ###NOT ACTUALLY USED ANYWHERE
+        # self.video_annotation = video_annotation_mod.VideoAnnotation(
+        #     settings.VIDEO_DIR_PATH, \
+        #     settings.ANNOT_DIR_PATH, \
+        #     self.bb_to_pddl_obj_dict)
 
         self.session_name = session_name
         print(self.session_name)

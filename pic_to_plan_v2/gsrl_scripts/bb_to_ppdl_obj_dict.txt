@@ -1,0 +1,14 @@
+# dict from bounding boxes to parsed_problem_objects_dict.keys()
+self.bb_to_pddl_obj_dict = {'plastic_bag': ['plastic_bag1'], 'plastic_paper_bag': ['plastic_paper_bag1'],
+                            'g_drawer': ['g_drawer1'],
+                            'sponge': ['sponge1'], 'drawer': ['drawer1', 'drawer2'],
+                            'cuttingboard': ['cuttingboard1'], 'end': ['end1'],
+                            'bowl': ['bowl1'], 'r_hand': ['r_hand'], 'bread': ['bread1', 'bread2', 'bread3'],
+                            'knife': ['knife1'], 'plate': ['plate1'],
+                            'cupboard': ['cupboard1'], 'peel': ['peel1'], 'fridge': ['fridge1'],
+                            'cucumber': ['cucumber1'], 'sink': ['sink1'],
+                            'peeler': ['peeler1'], 'spice': ['spice1'], 'faucet': ['faucet1'],
+                            'spice_holder': ['spice_holder1'],
+                            'towel': ['towel1'], 'counter': ['counter1'], 'spice_shaker': ['spice_shaker1'],
+                            'l_hand': ['l_hand'],
+                            'g_drawer1': ['g_drawer11']}
