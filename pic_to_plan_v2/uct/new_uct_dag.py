@@ -493,7 +493,6 @@ class UCT_Search:
         self.viz_add_aux(dot, self.n_0, nd, ed)
         date = str(datetime.now())
         dot.render(self.current_results_dir+"/"+viz_name+"_"+str(self.n_iter)+".gv", view=False)
-
         return dot
 
     def viz_add_aux(self, dot, node, nd, ed):
@@ -503,11 +502,11 @@ class UCT_Search:
                 untried_children_status = "\nn.e."
             else:
                 untried_children_status = "" if len(node.untried_children) == 0 else "\nutchild"+str(len(node.untried_children))
-            dot.node(node.state_string, node.state_string + untried_children_status)
+            dot.node(str(node.nid), node.state_string[:100] + untried_children_status) #limit label length
         for e in node.out_edges:
             if e.eid not in ed:
                 ed[e.eid] = e
-                dot.edge(node.state_string, e.destination.state_string, e.action + "\nsmu:" + str(round(e.get_saff_mu(d_1),3)) + "\nmean:" + str(round(e.get_normal_mean_reward(),3)) + "\nn:" + str(e.num_visits) + "\nmu':" + str(round(e.mu_prime, 3)) + "\nn':" + str(e.n_prime))
+                dot.edge(str(node.nid), str(e.destination.nid), e.action + "\nsmu:" + str(round(e.get_saff_mu(d_1),3)) + "\nmean:" + str(round(e.get_normal_mean_reward(),3)) + "\nn:" + str(e.num_visits) + "\nmu':" + str(round(e.mu_prime, 3)) + "\nn':" + str(e.n_prime))
                 self.viz_add_aux(dot, e.destination, nd, ed)
 
     def save_nodes_and_edges(self):
