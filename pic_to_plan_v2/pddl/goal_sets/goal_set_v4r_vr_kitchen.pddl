@@ -1,2 +1,2 @@
-(exists (?c) (and (cucumber ?c) (cut ?c))
-(exists (?b) (and (bread ?b) (cut ?b))
+(cut cucumber_1)
+(cut bun_1)

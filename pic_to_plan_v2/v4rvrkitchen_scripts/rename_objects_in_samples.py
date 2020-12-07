@@ -3,8 +3,17 @@ from pathlib import Path
 import os
 
 
-replace_tuples = []
-    # ("CocoaJar", "cocoajar_1"),
+replace_tuples = [("Drawer_Big1", "drawer_1")]
+
+    #[("Drawer_Big1-5", "drawer_1"),
+    #                 ("Drawer_Big1-2", "drawer_1"),
+    #                 ("Drawer_Big1-1", "drawer_1"),
+    #                 ("Drawer_Big1-3", "drawer_1")]
+
+###Attention: the   must be done separately after the 4 items above, or the replacement
+#will have errors
+
+                        # ("CocoaJar", "cocoajar_1"),
     # ("CocoaLid", "cocoalid_1"),
     # ("FlourJar", "flourjar_1"),
     # ("FlourLid", "flourlid_1"),

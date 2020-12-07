@@ -56,6 +56,18 @@ with open(in_predicates_path) as json_file:
 
 for x in stored_predicates:
     print(x)
+###paste this output into instance-parsed-objects.pddl
+
+###checking for some erroneous names
+search_word = "Drawer_Big"
+wrong_names_set = set()
+for x in stored_predicates:
+    if search_word in x:
+        wrong_names_set.add(search_word + x.split("Drawer_Big")[-1].strip(")"))
+for x in wrong_names_set:
+    print(x)
+
+
 
 #loc_0 = location_individuals[0]
 #print(onto.search(type=onto.location))
