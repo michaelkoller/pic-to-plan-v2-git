@@ -491,7 +491,6 @@ class UCT_Search:
         nd = dict()
         ed = dict()
         self.viz_add_aux(dot, self.n_0, nd, ed)
-        date = str(datetime.now())
         dot.render(self.current_results_dir+"/"+viz_name+"_"+str(self.n_iter)+".gv", view=False)
         return dot
 

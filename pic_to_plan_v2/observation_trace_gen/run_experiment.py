@@ -134,7 +134,7 @@ def run_single_video(config_file_name):
     instance_inserted_predicates_path = str(instance_path).replace(".pddl", "-parsed-objects.pddl")
 
     ###uct dag
-    current_results_dir = str(Path(ROOT_DIR, "data/results", sample_name +"_"+str(datetime.now())))
+    current_results_dir = str(Path(ROOT_DIR, "data/results", sample_name +"_"+datetime.now().strftime("%Y_%m_%d-%H_%M_%S")))
     os.mkdir(current_results_dir)
     print("UCT Instantiation")  #second sample_name can be more descriptive experiment name
     uct_search = new_uct_dag_mod.UCT_Search(domain_inserted_predicates_path,
@@ -152,7 +152,7 @@ def run_single_video(config_file_name):
     #change in uct_dag line 73ffff
     end_time = datetime.now()
     print("DONE", sample_name, "\nStart:", start_time, "\nEnd:", end_time, "\nDuration:", end_time - start_time)
-    uct_search.viz("test-viz-final"+ str(datetime.now()))
+    uct_search.viz("test-viz-final"+ datetime.now().strftime("%Y_%m_%d-%H_%M_%S"))
     uct_search.viz("viz-" + str(uct_search.n_iter))
     uct_search.save_nodes_and_edges()
     #uct_search.save_root_node(
