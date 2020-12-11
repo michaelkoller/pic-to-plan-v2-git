@@ -1,9 +1,11 @@
 import pickle
-
-experiment_folder_name = "/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/data/results/complex_domain_exp-s13-d21_2019-12-10 12:06:24.078908/"
-experiment_name = "complex_domain_exp-s13-d21"
-iter = 50
-out_edge_dict = pickle.load( open( experiment_folder_name + "out_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
+import os
+experiment_folder_name = "/home/michael/git/pic-to-plan-v2-git/pic_to_plan_v2/data/results/Sample2020-11-07-17_50_50_2020-12-07%2021:17:05.796245/"
+experiment_name = "Sample2020-11-07-17_50_50_0"
+iter = 373
+out_edge_dict = pickle.load( open(r"/home/michael/git/pic-to-plan-v2-git/pic_to_plan_v2/data/results/Sample2020-11-07-17_50_50_2020-12-07 20:21:17:05.796245/out_edge_dict_Sample2020-11-07-17_50_50_0.p", "rb" ) )
+exit()
+#out_edge_dict = pickle.load( open( experiment_folder_name + "out_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 in_edge_dict = pickle.load( open( experiment_folder_name + "in_edge_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 node_dict = pickle.load( open( experiment_folder_name + "node_dict_"+str(experiment_name)+"_"+str(iter)+".p", "rb" ) )
 
@@ -15,7 +17,7 @@ original_root_node = pickle.load( open( experiment_folder_name + "root_node_"+st
 
 #list all goal states
 #goals = ["(used plastic_paper_bag1)", "(used plate1)", "(used knife1)", "(used cuttingboard1)"]
-goals = ["(cut bread1)"]
+goals = ["(cut cucumber_1)"]
 goal_state_number = 0
 for n in node_dict:
     if n != "node":
@@ -29,6 +31,8 @@ for n in node_dict:
             print("ABSOLUTE GOAL REACHED")
             goal_state_number += 1
             print(n, node_dict[n])
+
+
 roo = node_dict["(hand_empty l_hand) (hand_empty r_hand)"]
 ooo = node_dict["(grasped bread1) (grasped knife1) (in_hand bread1 r_hand) (in_hand knife1 l_hand)"]
 nnn = node_dict["(grasped bread1) (grasped knife1) (in_hand bread1 l_hand) (in_hand knife1 r_hand)"]
