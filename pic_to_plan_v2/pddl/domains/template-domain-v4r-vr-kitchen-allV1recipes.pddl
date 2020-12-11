@@ -9,6 +9,10 @@
     (cut ?o)
     (stored ?o)
     (stored_in ?o ?s)
+    (opened_faucet ?o)
+    (washed ?o)
+    (in ?x ?y)
+    (on ?x ?y)
     (goaldummy)
     (cut_cucumber_recipe_done)
     (cut_bread_recipe_done)
@@ -50,6 +54,31 @@
     :precondition (and (knife ?k) (grasped ?k) (food ?o) (grasped ?o))
     :effect (and (cut ?o))
 )
+
+    (:action open_faucet
+    :parameters(?m ?f)
+    :precondition (and (manipulator ?m) (faucet ?f) (not (opened_faucet ?f)))
+    :effect (and (opened_faucet ?f))
+)
+
+    (:action wash
+    :parameters(?o ?f)
+    :precondition (and (grasped ?o) (faucet ?f) (opened_faucet ?f))
+    :effect (and (washed ?o))
+)
+
+    (:action put_into
+    :parameters(?x ?y)
+    :precondition (and (grasped ?x) (location ?y))
+    :effect (and (in ?x ?y))
+)
+
+    (:action put_onto
+    :parameters(?x ?y)
+    :precondition (and (grasped ?x))
+    :effect (and (on ?x ?y))
+)
+
     (:action finish_recipe_cut_cucumber
     :parameters(?o)
     :precondition (and (cucumber ?o) (cut ?o))
@@ -59,5 +88,46 @@
     :parameters(?o)
     :precondition (and (bread ?o) (cut ?o))
     :effect (and (cut_bread_recipe_done))
+)
+
+(:action finish_recipe_sandwich_w_cut_bread
+    :parameters(?b ?c ?p1 ?p2)
+    :precondition (and (bread ?b) (cut ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2) (not (= ?p1 ?p2)))
+    :effect (and (sandwich_recipe_done))
+)
+
+(:action finish_recipe_sandwich_w_cut_bread_washed_produce
+    :parameters(?b ?c ?p1 ?p2)
+    :precondition (and (bread ?b) (cut ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (washed ?p1) (produce ?p2)
+                  (washed ?p2) (cut ?p2) (not (= ?p1 ?p2)))
+    :effect (and (sandwich_recipe_done))
+)
+
+(:action finish_recipe_sandwich_w_toast
+    :parameters(?b ?c ?p1 ?p2)
+    :precondition (and (bread ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2)
+                    (not (= ?p1 ?p2)) (on ?c ?b) (on ?p1 ?b) (on ?p2 ?b))
+    :effect (and (sandwich_recipe_done))
+)
+
+(:action finish_recipe_sandwich_w_toast_washed_produce
+    :parameters(?b ?c ?p1 ?p2)
+    :precondition (and (bread ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2)
+                    (not (= ?p1 ?p2)) (washed ?p1) (washed ?p2) (on ?c ?b) (on ?p1 ?b) (on ?p2 ?b))
+    :effect (and (sandwich_recipe_done))
+)
+
+(:action finish_recipe_salad_w_2produce
+    :parameters(?b ?p1 ?p2)
+    :precondition (and (bowl ?b) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2)
+                    (not (= ?p1 ?p2)) (in ?p1 ?b) (in ?p2 ?b))
+    :effect (and (salad_recipe_done))
+)
+
+(:action finish_recipe_salad_w_2produce_washed
+    :parameters(?b ?p1 ?p2)
+    :precondition (and (bowl ?b) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2)
+                    (not (= ?p1 ?p2)) (washed ?p1) (washed ?p2) (in ?p1 ?b) (in ?p2 ?b))
+    :effect (and (salad_recipe_done))
 )
 )

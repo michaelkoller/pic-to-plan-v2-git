@@ -1,0 +1,7 @@
+(:action drive-truck:parameters
+    (?truck - truck ?loc-from ?loc-to - location?city - city)
+    :precondition (and (at ?truck ?loc-from)(in-city ?loc-from ?city)(in-city ?loc-to ?city))
+    :effect  (and (at ?truck ?loc-to)(not (at ?truck ?loc-from))
+        (forall (?x - obj)
+            (when (and (in ?x ?truck))
+                (and (not (at ?x ?loc-from))(at ?x ?loc-to))))))
