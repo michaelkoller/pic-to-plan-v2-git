@@ -23,6 +23,7 @@ class Probabilistic :
 		self.reason = ""
 
 	def walk( self, dir ) :
+		print("CURRENT", os.getcwd())  ##TODO Michael remove again
 		entries = os.listdir( dir )
 		for entry in entries :
 			domain_path = os.path.join( entry, 'pr-domain.pddl' )
@@ -91,8 +92,12 @@ class Probabilistic :
 		self.generate_pddl_for_hyp_plan( hyp_problem )
 		# derive problem with G_Obs
 		trans_cmd = translation.Probabilistic_PR( 'domain.pddl', hyp_problem, 'obs.dat' )
+		print("HERE1")
 		trans_cmd.execute()
+		print("HERE2")
+
 		self.trans_time = trans_cmd.time
+		print("MOVING PROB PR TO PROB INDEX PR") ##TODO Michael remove again
 		os.system( 'mv prob-PR prob-%s-PR'%index )
 		self.costs = dict()
 		G_Obs_time = 0.0

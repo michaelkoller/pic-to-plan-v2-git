@@ -7,7 +7,7 @@ from pic_to_plan_v2.settings import ROOT_DIR, PYTHON2_PATH
 def call_plan_rec(instance_number, return_array, detailed_pr_vals_array):
     t0 = time.time()
     obs_trace_dir = os.path.dirname(os.path.realpath(__file__))
-    print(obs_trace_dir)
+    print("Obs trace dir", obs_trace_dir)
     #location outside of project
     # os.chdir("/home/mk/Planning/PlanRecGeffnerRamirez/prob-plan-recognition/")
     #location within project
@@ -45,7 +45,7 @@ def call_plan_rec(instance_number, return_array, detailed_pr_vals_array):
             max_prob = max(max_prob, l1_float)
         if "Hyp_Atoms" in l0:
             no_goals += 1
-    print(max_prob)
+    print("max prob", max_prob)
 
     #get detailed pr values
     report = results.extractfile("report.txt")
@@ -72,8 +72,7 @@ def call_plan_rec(instance_number, return_array, detailed_pr_vals_array):
     os.chdir(obs_trace_dir)
     t1 = time.time()
     duration = t1 - t0
-    print(duration)
-    #TODO why are the different calls to prob_PR.py from this script so much slower than in the terminal?
+    print("duration", duration)
 
     return_array[instance_number] = max_prob
     #Terminal call:

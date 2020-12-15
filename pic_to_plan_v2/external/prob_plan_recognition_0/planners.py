@@ -1,8 +1,10 @@
 import benchmark, os
 
+MAXMEM = 10000 # old max mem value 2048 MICHAEL
+
 class Planner :
 	
-	def __init__( self, domain, problem, index, max_time = 14400, max_mem = 2048 ) :
+	def __init__( self, domain, problem, index, max_time = 14400, max_mem = MAXMEM ) :
 		self.domain = domain
 		self.problem = problem
 		self.noext_problem = os.path.basename(self.problem).replace( '.pddl', '' )
@@ -12,7 +14,7 @@ class Planner :
 		self.cost = 1e7
 
 class Metric_FF(Planner) :
-	def __init__( self, domain, problem, index, max_time = 14400, max_mem = 2048 ) :
+	def __init__( self, domain, problem, index, max_time = 14400, max_mem = MAXMEM ) :
 		Planner.__init__( self, domain, problem, index, max_time, max_mem )
 
 	def execute( self ) :
@@ -33,7 +35,7 @@ class Metric_FF(Planner) :
 
 class HSP (Planner):
 
-	def __init__( self, domain, problem, index, max_time = 14400, max_mem = 2048 ) :
+	def __init__( self, domain, problem, index, max_time = 14400, max_mem = MAXMEM ) :
 		Planner.__init__( self, domain, problem, index, max_time, max_mem )
 		self.upper_bound = None
 
@@ -80,7 +82,7 @@ class LAMA (Planner):
 
 	greedy = False
 
-	def __init__( self, domain, problem, index,  max_time = 14400, max_mem = 2048 ) :
+	def __init__( self, domain, problem, index,  max_time = 14400, max_mem =  MAXMEM) :
 		Planner.__init__( self, domain, problem, index, max_time, max_mem )
 		self.result = os.path.basename(self.problem).replace( '.pddl','.res' )
 		self.expanded = 0
@@ -141,7 +143,7 @@ class FastDownward_LAMA (Planner):
 
 	greedy = False
 
-	def __init__( self, domain, problem, index,  max_time = 14400, max_mem = 2048 ) :
+	def __init__( self, domain, problem, index,  max_time = 14400, max_mem = MAXMEM ) :
 		Planner.__init__( self, domain, problem, index, max_time, max_mem )
 		self.result = os.path.basename(self.problem).replace( '.pddl','.res' )
 		self.expanded = 0
@@ -153,6 +155,7 @@ class FastDownward_LAMA (Planner):
 		self.length = 0
 
 	def execute( self ) :
+
 		if LAMA.greedy :
 			#cmd_string = '/home/mk/Planning/fastdownwardplanner/fast-downward.py  --alias seq-sat-lama-2011 %s %s '%( self.domain, self.problem)
 			#cmd_string = '/home/mk/Planning/fastdownwardplanner/fast-downward.py  --alias lama-first %s %s '%( self.domain, self.problem)

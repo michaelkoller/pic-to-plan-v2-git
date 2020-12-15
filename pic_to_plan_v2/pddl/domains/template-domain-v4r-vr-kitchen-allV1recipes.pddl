@@ -19,6 +19,7 @@
     (salad_recipe_done)
     (sandwich_recipe_done)
 )
+
 (:action put_in_hand
     :parameters (?o ?h)
     :precondition (and (manipulator ?h) (graspable ?o) (hand_empty ?h) (not(= ?o ?h)) (not(grasped ?o)) (not(stored ?o)))
@@ -69,7 +70,7 @@
 
     (:action put_into
     :parameters(?x ?y)
-    :precondition (and (grasped ?x) (location ?y))
+    :precondition (and (grasped ?x) (container ?y))
     :effect (and (in ?x ?y))
 )
 
@@ -92,27 +93,28 @@
 
 (:action finish_recipe_sandwich_w_cut_bread
     :parameters(?b ?c ?p1 ?p2)
-    :precondition (and (bread ?b) (cut ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2) (not (= ?p1 ?p2)))
+    :precondition (and (bread ?b) (cut ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2) (not (= ?p1 ?p2))
+                     (on ?c ?b) (on ?p1 ?b) (on ?p2 ?b) )
     :effect (and (sandwich_recipe_done))
 )
 
 (:action finish_recipe_sandwich_w_cut_bread_washed_produce
     :parameters(?b ?c ?p1 ?p2)
     :precondition (and (bread ?b) (cut ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (washed ?p1) (produce ?p2)
-                  (washed ?p2) (cut ?p2) (not (= ?p1 ?p2)))
+                  (washed ?p2) (cut ?p2) (not (= ?p1 ?p2)) (on ?c ?b) (on ?p1 ?b) (on ?p2 ?b) )
     :effect (and (sandwich_recipe_done))
 )
 
 (:action finish_recipe_sandwich_w_toast
     :parameters(?b ?c ?p1 ?p2)
-    :precondition (and (bread ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2)
+    :precondition (and (toast ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2)
                     (not (= ?p1 ?p2)) (on ?c ?b) (on ?p1 ?b) (on ?p2 ?b))
     :effect (and (sandwich_recipe_done))
 )
 
 (:action finish_recipe_sandwich_w_toast_washed_produce
     :parameters(?b ?c ?p1 ?p2)
-    :precondition (and (bread ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2)
+    :precondition (and (toast ?b) (cheese ?c) (cut ?c) (produce ?p1) (cut ?p1) (produce ?p2) (cut ?p2)
                     (not (= ?p1 ?p2)) (washed ?p1) (washed ?p2) (on ?c ?b) (on ?p1 ?b) (on ?p2 ?b))
     :effect (and (sandwich_recipe_done))
 )

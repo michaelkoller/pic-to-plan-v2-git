@@ -3,7 +3,7 @@ import os
 
 class Probabilistic_PR :
 	
-	def __init__( self, domain, problem, obs, max_time = 1800, max_mem = 2048 ) :
+	def __init__( self, domain, problem, obs, max_time = 1800, max_mem = 7168 ) : #old max mem value 2048 MICHAEL
 		self.domain = domain
 		self.problem = problem
 		self.obs_stream = obs

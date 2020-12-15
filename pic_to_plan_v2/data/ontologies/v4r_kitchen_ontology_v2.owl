@@ -699,6 +699,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toaster -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toaster">
@@ -2273,7 +2281,7 @@
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_1">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast"/>
     </owl:NamedIndividual>
     
 
@@ -2281,7 +2289,7 @@
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_2 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_2">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast"/>
     </owl:NamedIndividual>
     
 
@@ -2289,7 +2297,7 @@
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_3 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_3">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast"/>
     </owl:NamedIndividual>
     
 
@@ -2297,7 +2305,7 @@
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_4 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_4">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast"/>
     </owl:NamedIndividual>
     
 
@@ -2305,7 +2313,7 @@
     <!-- http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_5 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast_5">
-        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#bread"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/mk/ontologies/2019/7/untitled-ontology-3#toast"/>
     </owl:NamedIndividual>
     
 

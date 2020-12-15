@@ -40,7 +40,7 @@ class Program_Options :
 		self.domain_name = None
 		self.instance_names = []
 		self.max_time = 1800
-		self.max_memory = 1024
+		self.max_memory =  7168#7168=value from pr2plan in translate.py #old max_mem value 1024 MICHAEL maybe 2048 is enough
 		self.optimal = False
 		self.greedy = False
 		self.simulation = False

@@ -66,8 +66,6 @@ def run_single_video(config_file_name):
     parser.add_argument("--experiment_description",
                         help="describe what to achieve with this experiment")
 
-
-
     args = parser.parse_args()
     print(parser.format_values())
 
