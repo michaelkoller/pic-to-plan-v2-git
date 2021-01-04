@@ -115,6 +115,7 @@
     ;added goal rec fluents
     (p_0)
     (p_1)
+    (p_2)
 )
 
 (:action put_in_hand
@@ -123,6 +124,7 @@
     :effect (and (in_hand ?o ?h) (grasped ?o) (not (hand_empty ?h))
         (when (and (= ?o cucumber_1) (= ?h righthand_1)) (p_0))
         (when (and (= ?o cleaver_1) (= ?h lefthand_1) (p_0)) (p_1))
+        (when (and (= ?o mais_1) (= ?h righthand_1) (p_1)) (p_2))
         )
 )
 (:action put_out_of_hand

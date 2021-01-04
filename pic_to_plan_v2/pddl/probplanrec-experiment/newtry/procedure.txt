@@ -1,0 +1,6 @@
+changed obs.dat into
+pick up cucumber
+pick up cleaver
+add fluents p_0 ... p_(m-1) to domain
+add when clauses to actions
+add p_(m-1) or (not (p_(m-1))) to goal

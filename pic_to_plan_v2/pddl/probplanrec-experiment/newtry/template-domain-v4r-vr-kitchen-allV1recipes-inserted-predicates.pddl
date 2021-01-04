@@ -112,12 +112,18 @@
     (cut_bread_recipe_done)
     (salad_recipe_done)
     (sandwich_recipe_done)
+    ;added goal rec fluents
+    (p_0)
+    (p_1)
 )
 
 (:action put_in_hand
     :parameters (?o ?h)
     :precondition (and (manipulator ?h) (graspable ?o) (hand_empty ?h) (not(= ?o ?h)) (not(grasped ?o)) (not(stored ?o)))
-    :effect (and (in_hand ?o ?h) (grasped ?o) (not (hand_empty ?h)))
+    :effect (and (in_hand ?o ?h) (grasped ?o) (not (hand_empty ?h))
+        (when (and (= ?o cucumber_1) (= ?h righthand_1)) (p_0))
+        (when (and (= ?o cleaver_1) (= ?h lefthand_1) (p_0)) (p_1))
+        )
 )
 (:action put_out_of_hand
     :parameters (?o ?h)

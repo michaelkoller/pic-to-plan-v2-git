@@ -1168,6 +1168,6 @@
     (graspable zucchini_1)
 )
 (:goal (and
-(goaldummy)
+(cut_bread_recipe_done) (not(p_1))
 ))
 )
