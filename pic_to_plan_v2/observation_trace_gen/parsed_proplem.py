@@ -2,7 +2,6 @@
 from ..translate import pddl_parser
 from ..translate.pddl.conditions import Atom
 from ..translate.pddl.conditions import ExistentialCondition
-import owlready2
 import pic_to_plan_v2.observation_trace_gen.parse_ontology as parse_ontology
 
 class ParsedPDDLProblem:

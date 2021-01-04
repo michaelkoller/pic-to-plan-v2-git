@@ -135,15 +135,15 @@ def run_single_video(config_file_name):
     current_results_dir = str(Path(ROOT_DIR, "data/results", sample_name +"_"+datetime.now().strftime("%Y_%m_%d-%H_%M_%S")))
     os.mkdir(current_results_dir)
     print("UCT Instantiation")  #second sample_name can be more descriptive experiment name
-    uct_search = new_uct_dag_mod.UCT_Search(domain_inserted_predicates_path,
-                                            instance_inserted_predicates_path,
-                                            sample_name,
-                                            ontology_path,
-                                            settings.ARGS.save_every_X_iterations,
-                                            sample_name,
-                                            current_results_dir,
-                                            settings.ARGS.goal_set,
-                                            settings.ARGS.plan_progress)
+    uct_search = new_uct_dag_mod.UctSearch(domain_inserted_predicates_path,
+                                           instance_inserted_predicates_path,
+                                           sample_name,
+                                           ontology_path,
+                                           settings.ARGS.save_every_X_iterations,
+                                           sample_name,
+                                           current_results_dir,
+                                           settings.ARGS.goal_set,
+                                           settings.ARGS.plan_progress)
 
     print("Start UCT Search")
     uct_search.search(copy.deepcopy(uct_search.current_state_set), time_limit=settings.ARGS.duration)
@@ -154,7 +154,7 @@ def run_single_video(config_file_name):
     uct_search.viz("viz-" + str(uct_search.n_iter))
     uct_search.save_nodes_and_edges()
     #uct_search.save_root_node(
-    uct_search.save_UCT_DAG()
+    uct_search.save_uct_dag()
 
 if __name__ == "__main__":
 

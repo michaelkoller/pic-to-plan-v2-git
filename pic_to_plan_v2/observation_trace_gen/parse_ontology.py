@@ -1,6 +1,4 @@
-import csv
 import owlready2
-import dill
 import os
 from pic_to_plan_v2.settings import ROOT_DIR as ROOT_DIR
 from pathlib import Path
