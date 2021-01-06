@@ -3,7 +3,7 @@ import time
 import numpy as np
 import pickle
 #os.chdir("/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/prob-plan-recognition-5")
-#os.chdir("/usr/bin/python /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/prob-plan-recognition-7/prob_PR.py -G -e /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances/pr_instance_7.tar.bz2")
+#os.chdir("/usr/bin/python /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/prob-plan-recognition-7/prob_PR.py -G -e /home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/pddl/plan_rec_instances_ramirez/pr_instance_7.tar.bz2")
 
 #cmd_string = '/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/fd-5/fast-downward.py results/prob-1-PR/O/pr-domain.pddl results/prob-1-PR/O/pr-problem.pddl --evaluator "hff=ff()" --evaluator "hcea=cea()" --search "lazy_greedy([hff, hcea], preferred=[hff, hcea])"'
 cmd_string = '/home/mk/PycharmProjects/pic-to-plan-v2-git/pic_to_plan_v2/fd-5/fast-downward.py results/prob-1-PR/O/pr-domain.pddl results/prob-1-PR/O/pr-problem.pddl '

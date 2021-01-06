@@ -4,7 +4,7 @@ from pic_to_plan_v2.settings import ROOT_DIR as ROOT_DIR
 from pathlib import Path
 
 
-###For the instance to be parsed, there must be a "template-instance.pddl" and a "template-instance-insert-init.pddl"
+# For the instance to be parsed, there must be a "template-instance.pddl" and a "template-instance-insert-init.pddl"
 def parse_ontology(path):
     onto = owlready2.get_ontology(str(path)).load()
     classes = list(onto.classes())
@@ -14,7 +14,7 @@ def parse_ontology(path):
     for c in classes:
         super_class_dict[c._name] = [c.is_a._obj]
         c_iter = c
-        while(len(c_iter.is_a[0].is_a)>0):
+        while len(c_iter.is_a[0].is_a) > 0:
             c_iter = c_iter.is_a[0]
             super_class_dict[c._name].append(c_iter)
 
@@ -23,6 +23,7 @@ def parse_ontology(path):
         individual_type_dict[i._name] = i.is_a
 
     return super_class_dict, individual_type_dict, onto
+
 
 def main_parse_ontology(ontology_path, domain_path, instance_path):
     # open ontology

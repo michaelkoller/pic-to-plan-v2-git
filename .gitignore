@@ -42,8 +42,12 @@
 /pic_to_plan_v2/pddl/instances/*-parsed-objects-insert-init.pddl
 /pic_to_plan_v2/pddl/instances/*-instance-parsed-objects.pddl
 /pic_to_plan_v2/pddl/instances/*-parsed-objects.pddl
-/pic_to_plan_v2/pddl/plan_rec_instances/obs.dat
-/pic_to_plan_v2/pddl/plan_rec_instances/template.pddl
+/pic_to_plan_v2/pddl/plan_rec_instances_ramirez/obs.dat
+/pic_to_plan_v2/pddl/plan_rec_instances_ramirez/template.pddl
+/pic_to_plan_v2/pddl/plan_rec_instances_ramirez/*.tar.bz2
+/pic_to_plan_v2/pddl/plan_rec_instances/*
+# exception to the rule
+!/pic_to_plan_v2/pddl/plan_rec_instances/.gitkeep
 
 
 #all archives

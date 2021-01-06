@@ -36,6 +36,10 @@ class UctSearch:
         self.ontology_path = ontology_path
         self.possible_actions_percentage = possible_actions_percentage
         self.goal_path = goal_path
+        goal_file = open(self.goal_path, "r")
+        self.goal_strings = goal_file.readlines()
+        self.goal_strings = [g.strip().replace("(", "").replace(")", "").replace(" ", "_") for g in self.goal_strings]
+        goal_file.close()
         self.no_goals = 0
         self.goals = []
         self.goal_sets = []
@@ -207,20 +211,36 @@ class UctSearch:
         # in the trace, subtract n * old_result and add n * new_result
         # but this is not correct for DAGs, because the node could be reached on another path than the trace...
 
-        archive_path = Path(ROOT_DIR) / Path("pddl/plan_rec_instances/")
+        # Try new implementation:
+        pr_instance_path = Path(ROOT_DIR) / Path("pddl/plan_rec_instances/")
         for i in range(len(observation_traces)):
-            archive_name = "pr_instance_" + str(i)
+            pr_instance_name = "pr_instance_" + str(i)
             # exclude the first item, because it is the dummy root edge
             create_pr_instance_mod.create_pr_instance([e.action for e in observation_traces[i][1:]],
                                                       self.domain_inserted_predicates_path,
-                                                      self.instance_parsed_objects_path, self.goal_path, archive_path,
-                                                      archive_name)
+                                                      self.instance_parsed_objects_path, self.goal_path, pr_instance_path,
+                                                      pr_instance_name, self.goal_strings)
+
+        # # Plan Rec using Ramirez implementation
+        # archive_path = Path(ROOT_DIR) / Path("pddl/plan_rec_instances_ramirez/")
+        # for i in range(len(observation_traces)):
+        #     archive_name = "pr_instance_" + str(i)
+        #     # exclude the first item, because it is the dummy root edge
+        #     create_pr_instance_mod.create_pr_instance([e.action for e in observation_traces[i][1:]],
+        #                                               self.domain_inserted_predicates_path,
+        #                                               self.instance_parsed_objects_path, self.goal_path, archive_path,
+        #                                               archive_name)
 
         return_array = mp.Array('f', [-1.0 for _ in range(len(observation_traces))])
         # 3: pr-prob value, cost of satisfied obs, cost of unsatisfied obs
         detailed_pr_vals_array = mp.Array('f', [-1.0 for _ in range(len(observation_traces)*self.no_goals*3)])
-        processes = [mp.Process(target=call_plan_rec_mod.call_plan_rec, args=(j, return_array, detailed_pr_vals_array))
-                     for j in range(len(observation_traces))]
+
+        # Ramirez:
+        # processes = [mp.Process(target=call_plan_rec_mod.call_plan_rec_ramirez, args=(j, return_array, detailed_pr_vals_array))
+        #              for j in range(len(observation_traces))]
+
+        processes = [mp.Process(target=call_plan_rec_mod.call_plan_rec, args=(j, return_array, detailed_pr_vals_array,
+                                self.goal_strings)) for j in range(len(observation_traces))]
 
         if False:  # possible to return dummy values here
             return_values = [1 for _ in range(len(observation_traces))]
@@ -366,14 +386,5 @@ class UctSearch:
                                + "_"+str(self.n_iter) + ".p", "wb"))
         self.my_parsed_problem = problem_swap
         self.n_0 = n_0_swap
-
-
-if __name__ == "__main__":
-    uct_search = UctSearch("")
-    uct_search.search()
-    uct_search.viz("viz-" + str(uct_search.n_iter))
-    uct_search.save_nodes_and_edges()
-    uct_search.save_root_node()
-    print("Finished")
 
 # TODO still paths without pathlib
