@@ -1,6 +1,6 @@
 import os
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-CORES = 2
+CORES = 10
 PROB_PLAN_REC_COPIES = 10
 PYTHON2_PATH = "/home/michael/venv/probplanrec/bin/python2"
 RESULTS_DIR = os.path.join(ROOT_DIR, "data/results")
